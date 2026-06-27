@@ -1,0 +1,106 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8qk4n3t_room"]
+
+[ext_resource type="Script" path="res://scenes/net_room/net_room.gd" id="1_8x7y9"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(1280, 720)
+
+[node name="NetRoom" type="Node2D"]
+script = ExtResource("1_8x7y9")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0.05, 0.0, 0.1, 1)
+
+[node name="DataStreams" type="Node2D" parent="."]
+
+[node name="GridFloor" type="Node2D" parent="."]
+
+[node name="EncryptDecryptNode" type="Area2D" parent="."]
+position = Vector2(0, -200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EncryptDecryptNode"]
+shape = SubResource("RectangleShape2D_1")
+
+[node name="DecryptButton" type="Button" parent="EncryptDecryptNode"]
+offset_left = -100.0
+offset_top = -25.0
+offset_right = 100.0
+offset_bottom = 25.0
+text = "DECRYPT"
+
+[node name="NaviCustomizerCloset" type="Area2D" parent="."]
+position = Vector2(-300, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NaviCustomizerCloset"]
+shape = SubResource("RectangleShape2D_1")
+
+[node name="Sprite2D" type="Sprite2D" parent="NaviCustomizerCloset"]
+modulate = Color(0, 1, 0.5, 1)
+
+[node name="Label" type="Label" parent="NaviCustomizerCloset"]
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = -40.0
+text = "NAVI CUSTOMIZER"
+horizontal_alignment = 1
+
+[node name="CustomizerButton" type="Button" parent="NaviCustomizerCloset"]
+offset_left = -60.0
+offset_top = -30.0
+offset_right = 60.0
+offset_bottom = 0.0
+text = "OPEN"
+
+[node name="HiddenFilesLibrary" type="Area2D" parent="."]
+position = Vector2(300, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HiddenFilesLibrary"]
+shape = SubResource("RectangleShape2D_1")
+
+[node name="Sprite2D" type="Sprite2D" parent="HiddenFilesLibrary"]
+modulate = Color(1, 0.5, 0, 1)
+
+[node name="Label" type="Label" parent="HiddenFilesLibrary"]
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = -40.0
+text = "HIDDEN FILES"
+horizontal_alignment = 1
+
+[node name="LibraryButton" type="Button" parent="HiddenFilesLibrary"]
+offset_left = -60.0
+offset_top = -30.0
+offset_right = 60.0
+offset_bottom = 0.0
+text = "ACCESS"
+
+[node name="Navi" type="CharacterBody2D" parent="."]
+position = Vector2(0, 100)
+
+[node name="Sprite2D" type="Sprite2D" parent="Navi"]
+modulate = Color(0, 1, 1, 1)
+
+[node name="Camera2D" type="Camera2D" parent="Navi"]
+position = Vector2(0, 0)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="HUD"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 220.0
+offset_bottom = 40.0
+value = 100.0
+
+[node name="EnergyBar" type="ProgressBar" parent="HUD"]
+offset_left = 20.0
+offset_top = 50.0
+offset_right = 220.0
+offset_bottom = 70.0
+value = 0.0

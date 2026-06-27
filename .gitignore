@@ -1,0 +1,69 @@
+# Godot Engine
+.godot/
+*.import
+export_presets.cfg
+*.godot
+
+# Build outputs
+*.pck
+*.zip
+*.exe
+*.app
+*.dmg
+
+# OS-specific
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor temporary files
+*.scn.temp
+*.tscn.temp
+*.gd.temp
+*.cs.temp
+*.tres.temp
+
+# Save system (encrypted player data)
+saves/
+*.sav
+*.bak
+
+# Large raw assets (sync via Google Drive only)
+assets_source/
+*.psd
+*.ase
+*.aseprite
+*.kra
+*.xcf
+*.clip
+
+# Python & AI Backend
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.env
+.pytest_cache/
+ai_backend/memory/*.db
+ai_backend/config/secrets.yaml
+
+# Logs & Debug
+*.log
+debug/
+logs/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Godot-specific cache
+.cache/

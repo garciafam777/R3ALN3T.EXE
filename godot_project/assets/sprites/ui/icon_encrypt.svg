@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="8" fill="#1A1030" stroke="#00FFFF" stroke-width="2"/>
+  <path d="M20 44 L32 16 L44 44 Z" fill="none" stroke="#FF00FF" stroke-width="3"/>
+  <text x="32" y="58" text-anchor="middle" fill="#00FFFF" font-size="7">ENC</text>
+</svg>
