@@ -1,0 +1,52 @@
+# Unreal Engine Generated Folders
+Binaries/
+Build/
+DerivedDataCache/
+Intermediate/
+Saved/
+Script/
+
+# Builds folder
+/Builds/
+
+# IDE / Compilation Artifacts
+*.VC.db
+*.opensdf
+*.opendb
+*.sdf
+*.sln
+*.suo
+*.xcodeproj
+*.xcworkspace
+*.obj
+*.exe
+*.dll
+*.dylib
+*.so
+*.a
+*.lib
+
+# OS Meta-files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# DCC Temp Files (Blender/Audacity)
+*.blend1
+*.blend2
+*.aup3-shm
+*.aup3-wal
+
+# Hard Preservation Rules
+!Project/Config/
+!Project/Content/
+!Source/
+!Plugins/
+
+# Sandbox/Local Exclusions
+Project/Content/Developers/
+Project/Content/Collections/
