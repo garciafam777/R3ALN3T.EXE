@@ -1,0 +1,25 @@
+{
+  "id": "25362214",
+  "name": "Luxvortexa the Storm Herald",
+  "short_name": "Luxvortexa",
+  "tier": "TAU",
+  "element": "Fire",
+  "type": "Controller",
+  "faction": "Aegis Concord",
+  "stats": {
+    "hp": 32,
+    "atk": 10,
+    "rapid": 5,
+    "charge": 7,
+    "def": 4
+  },
+  "programs": [
+    "Inferno Pulse",
+    "Inferno Lance",
+    "Inferno Shift"
+  ],
+  "description": "A TAU-tier Fire-aligned Controller of the Aegis Concord.",
+  "color_primary": "#4b33bf",
+  "color_accent": "#f355a9",
+  "generated": "2026-06-30T02:11:13.258525"
+}

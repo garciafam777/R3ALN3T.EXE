@@ -1,0 +1,1272 @@
+I need to create a game start menu as a new React route for the app, so let me review the current project structure first.
+
+Read
+index.tsx
+I'm checking the styles and building out a cyberpunk-themed start menu for R3ALN3T.EXE with that MMBN aesthetic—dark, futuristic design with glitch effects, the title, menu options, and a copyright footer.
+
+Read
+styles.css
+Read
+__root.tsx
+I'm adding the Orbitron font to the root layout and then building out the start menu interface.
+
+src/routes/__root.tsx
+        rel: "stylesheet",
+        href: appCss,
+      },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Share+Tech+Mono&display=swap",
+      },
+    ],
+  }),
+  shellComponent: RootShell,
+src/routes/index.tsx
+import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Your App" },
+      { name: "description", content: "Replace this with a one-sentence description of your app." },
+      { property: "og:title", content: "Your App" },
+      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "R3ALN3T.EXE" },
+      { name: "description", content: "Enter the net. A futuristic grid-combat experience." },
+      { property: "og:title", content: "R3ALN3T.EXE" },
+      { property: "og:description", content: "Enter the net. A futuristic grid-combat experience." },
+    ],
+  }),
+  component: Index,
+  component: StartMenu,
+});
+// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
+function Index() {
+const MENU_ITEMS = ["NEW GAME", "CONTINUE", "OPTIONS", "EXIT"] as const;
+function StartMenu() {
+  const [selected, setSelected] = useState(0);
+  const [booted, setBooted] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setBooted(true), 600);
+    return () => clearTimeout(t);
+  }, []);
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowDown" || e.key === "s") {
+        setSelected((s) => (s + 1) % MENU_ITEMS.length);
+      } else if (e.key === "ArrowUp" || e.key === "w") {
+        setSelected((s) => (s - 1 + MENU_ITEMS.length) % MENU_ITEMS.length);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+  return (
+    <div
+      className="flex min-h-screen items-center justify-center"
+      style={{ backgroundColor: "#fcfbf8" }}
+      className="relative min-h-screen w-full overflow-hidden bg-black text-white"
+      style={{ fontFamily: "'Share Tech Mono', monospace" }}
+    >
+      <img
+        data-lovable-blank-page-placeholder="REMOVE_THIS"
+        src="https://cdn.gpteng.co/blank-app-v1.svg"
+        alt="Your app will live here!"
+      />
+      {/* Background layers */}
+      <div className="pointer-events-none absolute inset-0">
+        {/* Radial vignette */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(40,10,60,0.6) 0%, rgba(0,0,0,1) 70%)",
+          }}
+        />
+        {/* Perspective grid floor */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-[65%]"
+          style={{
+            perspective: "600px",
+            perspectiveOrigin: "50% 0%",
+          }}
+        >
+          <div
+            className="h-full w-full origin-top animate-[gridScroll_8s_linear_infinite]"
+            style={{
+              transform: "rotateX(60deg)",
+              backgroundImage:
+                "linear-gradient(rgba(255,90,40,0.55) 1px, transparent 1px), linear-gradient(90deg, rgba(255,140,60,0.45) 1px, transparent 1px)",
+              backgroundSize: "60px 60px",
+            }}
+          />
+        </div>
+        {/* Horizon glow */}
+        <div
+          className="absolute left-0 right-0"
+          style={{
+            top: "35%",
+            height: "2px",
+            background:
+              "linear-gradient(90deg, transparent, #ff6a1a 20%, #ffd27a 50%, #ff6a1a 80%, transparent)",
+            boxShadow: "0 0 30px #ff6a1a, 0 0 80px #ff3300",
+          }}
+        />
+        <div
+          className="absolute left-0 right-0"
+          style={{
+            top: "0%",
+            height: "35%",
+            background:
+              "linear-gradient(180deg, rgba(20,0,40,0.0) 0%, rgba(80,10,40,0.4) 60%, rgba(255,80,20,0.25) 100%)",
+          }}
+        />
+        {/* Scanlines */}
+        <div
+          className="absolute inset-0 opacity-20 mix-blend-overlay"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(0deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, transparent 1px, transparent 3px)",
+          }}
+        />
+        {/* Drifting embers */}
+        {Array.from({ length: 24 }).map((_, i) => (
+          <span
+            key={i}
+            className="absolute block rounded-full"
+            style={{
+              left: `${(i * 37) % 100}%`,
+              bottom: `-${10 + (i % 5) * 10}px`,
+              width: `${2 + (i % 3)}px`,
+              height: `${2 + (i % 3)}px`,
+              backgroundColor: i % 2 ? "#ff8a3d" : "#ffd07a",
+              boxShadow: "0 0 8px #ff6a1a",
+              animation: `ember ${6 + (i % 6)}s linear ${i * 0.3}s infinite`,
+              opacity: 0.85,
+            }}
+          />
+        ))}
+      </div>
+      {/* Content */}
+      <main
+        className={`relative z-10 flex min-h-screen flex-col items-center justify-between px-6 py-10 transition-opacity duration-700 ${
+          booted ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        {/* Top status bar */}
+        <div className="flex w-full max-w-5xl items-center justify-between text-[10px] uppercase tracking-[0.35em] text-orange-200/70">
+          <span className="flex items-center gap-2">
+            <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-orange-400 shadow-[0_0_10px_#ff6a1a]" />
+            SYS://BOOT_OK
+          </span>
+          <span>NET_LINK · STABLE</span>
+          <span>v1.0.26</span>
+        </div>
+        {/* Title block */}
+        <div className="flex flex-1 flex-col items-center justify-center pt-6 text-center">
+          <p
+            className="mb-4 text-xs uppercase tracking-[0.8em] text-orange-300/80"
+            style={{ fontFamily: "'Orbitron', sans-serif" }}
+          >
+            R &amp; Y · Industries Presents
+          </p>
+          {/* Glitch title */}
+          <h1
+            className="relative select-none text-5xl font-black uppercase leading-none sm:text-7xl md:text-8xl"
+            style={{
+              fontFamily: "'Orbitron', sans-serif",
+              letterSpacing: "0.08em",
+              color: "#fff5e6",
+              textShadow:
+                "0 0 12px #ff6a1a, 0 0 28px #ff3300, 0 0 60px rgba(255,60,0,0.55)",
+            }}
+            data-text="R3ALN3T.EXE"
+          >
+            <span
+              aria-hidden
+              className="absolute inset-0 animate-[glitchA_3s_infinite]"
+              style={{ color: "#00e5ff", mixBlendMode: "screen", opacity: 0.7 }}
+            >
+              R3ALN3T.EXE
+            </span>
+            <span
+              aria-hidden
+              className="absolute inset-0 animate-[glitchB_3.2s_infinite]"
+              style={{ color: "#ff2d6f", mixBlendMode: "screen", opacity: 0.7 }}
+            >
+              R3ALN3T.EXE
+            </span>
+            <span className="relative">R3ALN3T.EXE</span>
+          </h1>
+          <div className="mt-4 flex items-center gap-3 text-[10px] uppercase tracking-[0.5em] text-orange-200/70">
+            <span className="h-px w-12 bg-orange-400/60" />
+            ENTER THE NET
+            <span className="h-px w-12 bg-orange-400/60" />
+          </div>
+          {/* Menu */}
+          <nav className="mt-12 flex flex-col items-center gap-3">
+            {MENU_ITEMS.map((label, i) => {
+              const active = i === selected;
+              return (
+                <button
+                  key={label}
+                  onMouseEnter={() => setSelected(i)}
+                  onClick={() => {
+                    /* hook into game start later */
+                  }}
+                  className="group relative w-72 px-6 py-2 text-left transition-all"
+                  style={{ fontFamily: "'Orbitron', sans-serif" }}
+                >
+                  <span
+                    className="absolute inset-0 border transition-all"
+                    style={{
+                      borderColor: active ? "#ffb070" : "rgba(255,140,60,0.25)",
+                      backgroundColor: active
+                        ? "rgba(255,90,20,0.18)"
+                        : "rgba(20,8,4,0.4)",
+                      boxShadow: active
+                        ? "0 0 20px rgba(255,120,40,0.55), inset 0 0 18px rgba(255,90,20,0.25)"
+                        : "inset 0 0 8px rgba(255,90,20,0.08)",
+                      clipPath:
+                        "polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px))",
+                    }}
+                  />
+                  <span
+                    className="relative z-10 flex items-center gap-3 text-sm uppercase tracking-[0.4em]"
+                    style={{
+                      color: active ? "#ffeccf" : "rgba(255,200,160,0.55)",
+                      textShadow: active ? "0 0 10px #ff7a2a" : "none",
+                    }}
+                  >
+                    <span
+                      className="inline-block transition-all"
+                      style={{
+                        width: 10,
+                        color: "#ff8a3d",
+                        opacity: active ? 1 : 0,
+                        transform: active ? "translateX(0)" : "translateX(-6px)",
+                      }}
+                    >
+                      ▶
+                    </span>
+                    {label}
+                  </span>
+                </button>
+              );
+            })}
+          </nav>
+          <p
+            className="mt-10 text-[10px] uppercase tracking-[0.4em] text-orange-200/50"
+            style={{ animation: "blink 1.6s steps(2) infinite" }}
+          >
+            Press ENTER to jack in
+          </p>
+        </div>
+        {/* Footer */}
+        <footer className="flex w-full max-w-5xl flex-col items-center gap-1 pb-2 text-center">
+          <p
+            className="text-[10px] tracking-[0.3em] text-white/80"
+            style={{ fontFamily: "'Share Tech Mono', monospace" }}
+          >
+            © R&amp;Y INDUSTRIES 2026 · ALL RIGHTS RESERVED
+          </p>
+          <p className="text-[9px] tracking-[0.4em] text-white/30">
+            UNAUTHORIZED ACCESS TO THE NET IS A CLASS-IV VIOLATION
+          </p>
+        </footer>
+      </main>
+      {/* Keyframes */}
+      <style>{`
+        @keyframes gridScroll {
+          0% { background-position: 0 0, 0 0; }
+          100% { background-position: 0 60px, 0 0; }
+        }
+        @keyframes ember {
+          0% { transform: translateY(0) translateX(0); opacity: 0; }
+          10% { opacity: 0.9; }
+          100% { transform: translateY(-110vh) translateX(20px); opacity: 0; }
+        }
+        @keyframes glitchA {
+          0%, 92%, 100% { transform: translate(0,0); opacity: 0; }
+          93% { transform: translate(-2px,1px); opacity: 0.7; }
+          95% { transform: translate(2px,-1px); opacity: 0.7; }
+          97% { transform: translate(-1px,2px); opacity: 0.7; }
+        }
+        @keyframes glitchB {
+          0%, 88%, 100% { transform: translate(0,0); opacity: 0; }
+          89% { transform: translate(2px,-1px); opacity: 0.7; }
+          91% { transform: translate(-2px,1px); opacity: 0.7; }
+          93% { transform: translate(1px,2px); opacity: 0.7; }
+        }
+        @keyframes blink {
+          0%, 100% { opacity: 0.5; }
+          50% { opacity: 0.15; }
+        }
+      `}</style>
+    </div>
+  );
+}
+Built a cyberpunk start menu at / — animated perspective grid floor with rising embers, a glitching "R3ALN3T.EXE" title, an arrow-key-navigable menu (NEW GAME / CONTINUE / OPTIONS / EXIT), and the small white "© R&Y INDUSTRIES 2026 · ALL RIGHTS RESERVED" footer.
+
+
+Now with added All features 
+
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useState, useEffect, useReducer } from "react";
+
+// --- Types ---
+type GraphicsPreset = "Low" | "Medium" | "High" | "Extreme";
+type AntiAliasing = "Off" | "FXAA" | "TXAA" | "MSAA 2x" | "MSAA 4x";
+type TextureQuality = "Low" | "Medium" | "High" | "Ultra";
+type ShadowQuality = "Low" | "Medium" | "High" | "Ultra";
+type ReflectionQuality = "Off" | "Low" | "Medium" | "High";
+type AmbientOcclusion = "Off" | "Low" | "Medium" | "High";
+
+interface GraphicsSettings {
+  preset: GraphicsPreset;
+  resolution: { width: number; height: number };
+  textureQuality: TextureQuality;
+  shadowQuality: ShadowQuality;
+  antiAliasing: AntiAliasing;
+  reflectionQuality: ReflectionQuality;
+  ambientOcclusion: AmbientOcclusion;
+  vSync: boolean;
+  fpsLimit: number | "Unlimited";
+}
+
+interface SettingsState {
+  graphics: GraphicsSettings;
+  audio: {
+    masterVolume: number;
+    musicVolume: number;
+    sfxVolume: number;
+  };
+  controls: {
+    keybindings: Record<string, string>;
+    controllerLayout: string;
+    invertXAxis: boolean;
+    invertYAxis: boolean;
+  };
+}
+
+type SettingsAction =
+  | { type: "SET_GRAPHICS_PRESET"; payload: GraphicsPreset }
+  | { type: "SET_TEXTURE_QUALITY"; payload: TextureQuality }
+  | { type: "SET_SHADOW_QUALITY"; payload: ShadowQuality }
+  | { type: "SET_ANTI_ALIASING"; payload: AntiAliasing }
+  | { type: "SET_REFLECTION_QUALITY"; payload: ReflectionQuality }
+  | { type: "SET_AMBIENT_OCCLUSION"; payload: AmbientOcclusion }
+  | { type: "TOGGLE_VSYNC" }
+  | { type: "SET_FPS_LIMIT"; payload: number | "Unlimited" }
+  | { type: "REBIND_KEY"; payload: { action: string; key: string } }
+  | { type: "SET_MASTER_VOLUME"; payload: number }
+  | { type: "SET_MUSIC_VOLUME"; payload: number }
+  | { type: "SET_SFX_VOLUME"; payload: number }
+  | { type: "TOGGLE_INVERT_X_AXIS" }
+  | { type: "TOGGLE_INVERT_Y_AXIS" }
+  | { type: "LOAD_SETTINGS"; payload: SettingsState }
+  | { type: "SAVE_SETTINGS" };
+
+// --- Reducer ---
+const initialSettings: SettingsState = {
+  graphics: {
+    preset: "Medium",
+    resolution: { width: 1920, height: 1080 },
+    textureQuality: "Medium",
+    shadowQuality: "Medium",
+    antiAliasing: "FXAA",
+    reflectionQuality: "Medium",
+    ambientOcclusion: "Medium",
+    vSync: true,
+    fpsLimit: 60,
+  },
+  audio: {
+    masterVolume: 70,
+    musicVolume: 50,
+    sfxVolume: 80,
+  },
+  controls: {
+    keybindings: {
+      jump: "Space",
+      sprint: "Shift",
+      crouch: "Ctrl",
+      interact: "E",
+      primaryFire: "Mouse0",
+      secondaryFire: "Mouse2",
+    },
+    controllerLayout: "Default",
+    invertXAxis: false,
+    invertYAxis: false,
+  },
+};
+
+function settingsReducer(state: SettingsState, action: SettingsAction): SettingsState {
+  switch (action.type) {
+    case "SET_GRAPHICS_PRESET":
+      return {
+        ...state,
+        graphics: {
+          ...state.graphics,
+          preset: action.payload,
+          textureQuality: action.payload === "Low" ? "Low" : action.payload === "Medium" ? "Medium" : action.payload === "High" ? "High" : "Ultra",
+          shadowQuality: action.payload === "Low" ? "Low" : action.payload === "Medium" ? "Medium" : action.payload === "High" ? "High" : "Ultra",
+          antiAliasing: action.payload === "Low" ? "Off" : action.payload === "Medium" ? "FXAA" : action.payload === "High" ? "TXAA" : "MSAA 4x",
+          reflectionQuality: action.payload === "Low" ? "Off" : action.payload === "Medium" ? "Low" : action.payload === "High" ? "Medium" : "High",
+          ambientOcclusion: action.payload === "Low" ? "Off" : action.payload === "Medium" ? "Low" : action.payload === "High" ? "Medium" : "High",
+        },
+      };
+    case "SET_TEXTURE_QUALITY":
+      return { ...state, graphics: { ...state.graphics, textureQuality: action.payload } };
+    case "SET_SHADOW_QUALITY":
+      return { ...state, graphics: { ...state.graphics, shadowQuality: action.payload } };
+    case "SET_ANTI_ALIASING":
+      return { ...state, graphics: { ...state.graphics, antiAliasing: action.payload } };
+    case "SET_REFLECTION_QUALITY":
+      return { ...state, graphics: { ...state.graphics, reflectionQuality: action.payload } };
+    case "SET_AMBIENT_OCCLUSION":
+      return { ...state, graphics: { ...state.graphics, ambientOcclusion: action.payload } };
+    case "TOGGLE_VSYNC":
+      return { ...state, graphics: { ...state.graphics, vSync: !state.graphics.vSync } };
+    case "SET_FPS_LIMIT":
+      return { ...state, graphics: { ...state.graphics, fpsLimit: action.payload } };
+    case "REBIND_KEY":
+      return {
+        ...state,
+        controls: {
+          ...state.controls,
+          keybindings: { ...state.controls.keybindings, [action.payload.action]: action.payload.key },
+        },
+      };
+    case "SET_MASTER_VOLUME":
+      return { ...state, audio: { ...state.audio, masterVolume: action.payload } };
+    case "SET_MUSIC_VOLUME":
+      return { ...state, audio: { ...state.audio, musicVolume: action.payload } };
+    case "SET_SFX_VOLUME":
+      return { ...state, audio: { ...state.audio, sfxVolume: action.payload } };
+    case "TOGGLE_INVERT_X_AXIS":
+      return { ...state, controls: { ...state.controls, invertXAxis: !state.controls.invertXAxis } };
+    case "TOGGLE_INVERT_Y_AXIS":
+      return { ...state, controls: { ...state.controls, invertYAxis: !state.controls.invertYAxis } };
+    case "LOAD_SETTINGS":
+      return action.payload;
+    case "SAVE_SETTINGS":
+      localStorage.setItem("gameSettings", JSON.stringify(state));
+      return state;
+    default:
+      return state;
+  }
+}
+
+// --- Settings Menu Component ---
+export const Route = createFileRoute("/settings")({
+  component: SettingsMenu,
+});
+
+const SETTINGS_CATEGORIES = ["GRAPHICS", "AUDIO", "CONTROLS", "GAMEPLAY", "BACK"] as const;
+
+export default function SettingsMenu() {
+  const navigate = useNavigate();
+  const [selected, setSelected] = useState(0);
+  const [activeCategory, setActiveCategory] = useState<typeof SETTINGS_CATEGORIES[number] | null>(null);
+  const [settings, dispatch] = useReducer(settingsReducer, initialSettings);
+  const [isRebinding, setIsRebinding] = useState<string | null>(null);
+
+  // Load settings from localStorage on mount
+  useEffect(() => {
+    const savedSettings = localStorage.getItem("gameSettings");
+    if (savedSettings) {
+      try {
+        const parsedSettings = JSON.parse(savedSettings);
+        dispatch({ type: "LOAD_SETTINGS", payload: parsedSettings });
+      } catch (e) {
+        console.error("Failed to load settings:", e);
+      }
+    }
+  }, []);
+
+  // Save settings to localStorage whenever they change
+  useEffect(() => {
+    dispatch({ type: "SAVE_SETTINGS" });
+  }, [settings]);
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (isRebinding) {
+        e.preventDefault();
+        dispatch({ type: "REBIND_KEY", payload: { action: isRebinding, key: e.key } });
+        setIsRebinding(null);
+        return;
+      }
+
+      if (e.key === "ArrowDown" || e.key === "s") {
+        setSelected((s) => (s + 1) % SETTINGS_CATEGORIES.length);
+      } else if (e.key === "ArrowUp" || e.key === "w") {
+        setSelected((s) => (s - 1 + SETTINGS_CATEGORIES.length) % SETTINGS_CATEGORIES.length);
+      } else if (e.key === "Enter" || e.key === " ") {
+        const category = SETTINGS_CATEGORIES[selected];
+        if (category === "BACK") {
+          navigate({ to: "/" });
+        } else {
+          setActiveCategory(category);
+        }
+      } else if (e.key === "Escape") {
+        if (activeCategory) {
+          setActiveCategory(null);
+        } else {
+          navigate({ to: "/" });
+        }
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [selected, activeCategory, navigate, isRebinding]);
+
+  return (
+    <div
+      className="relative min-h-screen w-full overflow-hidden bg-black text-white"
+      style={{ fontFamily: "'Share Tech Mono', monospace" }}
+    >
+      {/* Background (reuse from index.tsx) */}
+      <div className="pointer-events-none absolute inset-0">
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(ellipse at center, rgba(40,10,60,0.6) 0%, rgba(0,0,0,1) 70%)",
+          }}
+        />
+        <div
+          className="absolute inset-x-0 bottom-0 h-[65%]"
+          style={{
+            perspective: "600px",
+            perspectiveOrigin: "50% 0%",
+          }}
+        >
+          <div
+            className="h-full w-full origin-top animate-[gridScroll_8s_linear_infinite]"
+            style={{
+              transform: "rotateX(60deg)",
+              backgroundImage:
+                "linear-gradient(rgba(255,90,40,0.55) 1px, transparent 1px), linear-gradient(90deg, rgba(255,140,60,0.45) 1px, transparent 1px)",
+              backgroundSize: "60px 60px",
+            }}
+          />
+        </div>
+        <div
+          className="absolute left-0 right-0"
+          style={{
+            top: "35%",
+            height: "2px",
+            background: "linear-gradient(90deg, transparent, #ff6a1a 20%, #ffd27a 50%, #ff6a1a 80%, transparent)",
+            boxShadow: "0 0 30px #ff6a1a, 0 0 80px #ff3300",
+          }}
+        />
+      </div>
+
+      {/* Keybinding Modal */}
+      {isRebinding && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+          style={{ fontFamily: "'Orbitron', sans-serif" }}
+        >
+          <div className="border border-orange-400/50 bg-black/80 p-8 text-center">
+            <h2 className="mb-4 text-xl uppercase tracking-[0.3em] text-orange-200">
+              Press a key to bind to <span className="text-orange-400">{isRebinding}</span>
+            </h2>
+            <button
+              onClick={() => setIsRebinding(null)}
+              className="mt-4 px-4 py-2 uppercase tracking-[0.2em] text-orange-200 hover:text-white"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Content */}
+      <main className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 py-10">
+        {/* Title */}
+        <h1
+          className="mb-12 text-4xl font-black uppercase tracking-[0.4em]"
+          style={{
+            fontFamily: "'Orbitron', sans-serif",
+            color: "#fff5e6",
+            textShadow: "0 0 12px #ff6a1a, 0 0 28px #ff3300",
+          }}
+        >
+          SETTINGS
+        </h1>
+
+        {/* Menu */}
+        {activeCategory ? (
+          <SettingsSubmenu
+            category={activeCategory}
+            onBack={() => setActiveCategory(null)}
+            settings={settings}
+            dispatch={dispatch}
+            isRebinding={isRebinding}
+            setIsRebinding={setIsRebinding}
+          />
+        ) : (
+          <nav className="flex flex-col items-center gap-3">
+            {SETTINGS_CATEGORIES.map((label, i) => {
+              const active = i === selected;
+              return (
+                <button
+                  key={label}
+                  onMouseEnter={() => setSelected(i)}
+                  onClick={() => {
+                    if (label === "BACK") {
+                      navigate({ to: "/" });
+                    } else {
+                      setActiveCategory(label);
+                    }
+                  }}
+                  className="group relative w-72 px-6 py-2 text-left transition-all"
+                  style={{ fontFamily: "'Orbitron', sans-serif" }}
+                >
+                  <span
+                    className="absolute inset-0 border transition-all"
+                    style={{
+                      borderColor: active ? "#ffb070" : "rgba(255,140,60,0.25)",
+                      backgroundColor: active ? "rgba(255,90,20,0.18)" : "rgba(20,8,4,0.4)",
+                      boxShadow: active
+                        ? "0 0 20px rgba(255,120,40,0.55), inset 0 0 18px rgba(255,90,20,0.25)"
+                        : "inset 0 0 8px rgba(255,90,20,0.08)",
+                      clipPath: "polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px))",
+                    }}
+                  />
+                  <span
+                    className="relative z-10 flex items-center gap-3 text-sm uppercase tracking-[0.4em]"
+                    style={{
+                      color: active ? "#ffeccf" : "rgba(255,200,160,0.55)",
+                      textShadow: active ? "0 0 10px #ff7a2a" : "none",
+                    }}
+                  >
+                    <span
+                      className="inline-block transition-all"
+                      style={{
+                        width: 10,
+                        color: "#ff8a3d",
+                        opacity: active ? 1 : 0,
+                        transform: active ? "translateX(0)" : "translateX(-6px)",
+                      }}
+                    >
+                      ▶
+                    </span>
+                    {label}
+                  </span>
+                </button>
+              );
+            })}
+          </nav>
+        )}
+      </main>
+    </div>
+  );
+}
+
+// --- Submenu for Graphics ---
+function GraphicsSubmenu({
+  onBack,
+  settings,
+  dispatch,
+}: {
+  onBack: () => void;
+  settings: SettingsState;
+  dispatch: React.Dispatch<SettingsAction>;
+}) {
+  const [selected, setSelected] = useState(0);
+  const GRAPHICS_OPTIONS = [
+    { label: "GRAPHICS PRESET", type: "preset" },
+    { label: "TEXTURE QUALITY", type: "texture" },
+    { label: "SHADOW QUALITY", type: "shadow" },
+    { label: "ANTI-ALIASING", type: "antiAliasing" },
+    { label: "REFLECTION QUALITY", type: "reflection" },
+    { label: "AMBIENT OCCLUSION", type: "ambientOcclusion" },
+    { label: "V-SYNC", type: "vSync" },
+    { label: "FPS LIMIT", type: "fpsLimit" },
+    { label: "BACK", type: "back" },
+  ] as const;
+
+  const getValue = (type: typeof GRAPHICS_OPTIONS[number]["type"]) => {
+    switch (type) {
+      case "preset": return settings.graphics.preset;
+      case "texture": return settings.graphics.textureQuality;
+      case "shadow": return settings.graphics.shadowQuality;
+      case "antiAliasing": return settings.graphics.antiAliasing;
+      case "reflection": return settings.graphics.reflectionQuality;
+      case "ambientOcclusion": return settings.graphics.ambientOcclusion;
+      case "vSync": return settings.graphics.vSync ? "ON" : "OFF";
+      case "fpsLimit": return settings.graphics.fpsLimit === "Unlimited" ? "Unlimited" : settings.graphics.fpsLimit;
+      default: return "";
+    }
+  };
+
+  const handleSelect = (type: typeof GRAPHICS_OPTIONS[number]["type"]) => {
+    switch (type) {
+      case "preset":
+        const presets: GraphicsPreset[] = ["Low", "Medium", "High", "Extreme"];
+        const currentIndex = presets.indexOf(settings.graphics.preset);
+        dispatch({ type: "SET_GRAPHICS_PRESET", payload: presets[(currentIndex + 1) % presets.length] });
+        break;
+      case "texture":
+        const textures: TextureQuality[] = ["Low", "Medium", "High", "Ultra"];
+        const currentTextureIndex = textures.indexOf(settings.graphics.textureQuality);
+        dispatch({ type: "SET_TEXTURE_QUALITY", payload: textures[(currentTextureIndex + 1) % textures.length] });
+        break;
+      case "shadow":
+        const shadows: ShadowQuality[] = ["Low", "Medium", "High", "Ultra"];
+        const currentShadowIndex = shadows.indexOf(settings.graphics.shadowQuality);
+        dispatch({ type: "SET_SHADOW_QUALITY", payload: shadows[(currentShadowIndex + 1) % shadows.length] });
+        break;
+      case "antiAliasing":
+        const antiAliasingOptions: AntiAliasing[] = ["Off", "FXAA", "TXAA", "MSAA 2x", "MSAA 4x"];
+        const currentAaIndex = antiAliasingOptions.indexOf(settings.graphics.antiAliasing);
+        dispatch({ type: "SET_ANTI_ALIASING", payload: antiAliasingOptions[(currentAaIndex + 1) % antiAliasingOptions.length] });
+        break;
+      case "reflection":
+        const reflections: ReflectionQuality[] = ["Off", "Low", "Medium", "High"];
+        const currentReflectionIndex = reflections.indexOf(settings.graphics.reflectionQuality);
+        dispatch({ type: "SET_REFLECTION_QUALITY", payload: reflections[(currentReflectionIndex + 1) % reflections.length] });
+        break;
+      case "ambientOcclusion":
+        const ambientOcclusions: AmbientOcclusion[] = ["Off", "Low", "Medium", "High"];
+        const currentAoIndex = ambientOcclusions.indexOf(settings.graphics.ambientOcclusion);
+        dispatch({ type: "SET_AMBIENT_OCCLUSION", payload: ambientOcclusions[(currentAoIndex + 1) % ambientOcclusions.length] });
+        break;
+      case "vSync":
+        dispatch({ type: "TOGGLE_VSYNC" });
+        break;
+      case "fpsLimit":
+        const fpsOptions: (number | "Unlimited")[] = [30, 60, 120, 144, 240, "Unlimited"];
+        const currentFpsIndex = fpsOptions.indexOf(settings.graphics.fpsLimit);
+        dispatch({ type: "SET_FPS_LIMIT", payload: fpsOptions[(currentFpsIndex + 1) % fpsOptions.length] });
+        break;
+      case "back":
+        onBack();
+        break;
+    }
+  };
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowDown" || e.key === "s") {
+        setSelected((s) => (s + 1) % GRAPHICS_OPTIONS.length);
+      } else if (e.key === "ArrowUp" || e.key === "w") {
+        setSelected((s) => (s - 1 + GRAPHICS_OPTIONS.length) % GRAPHICS_OPTIONS.length);
+      } else if (e.key === "Enter" || e.key === " ") {
+        handleSelect(GRAPHICS_OPTIONS[selected].type);
+      } else if (e.key === "Escape") {
+        onBack();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [selected, onBack, settings.graphics, dispatch]);
+
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <h2
+        className="mb-6 text-2xl font-bold uppercase tracking-[0.3em]"
+        style={{ fontFamily: "'Orbitron', sans-serif", color: "#ffb070" }}
+      >
+        GRAPHICS
+      </h2>
+      <nav className="flex flex-col items-center gap-3">
+        {GRAPHICS_OPTIONS.map((option, i) => {
+          const active = i === selected;
+          return (
+            <button
+              key={option.label}
+              onMouseEnter={() => setSelected(i)}
+              onClick={() => handleSelect(option.type)}
+              className="group relative w-72 px-6 py-2 text-left transition-all"
+              style={{ fontFamily: "'Orbitron', sans-serif" }}
+            >
+              <span
+                className="absolute inset-0 border transition-all"
+                style={{
+                  borderColor: active ? "#ffb070" : "rgba(255,140,60,0.25)",
+                  backgroundColor: active ? "rgba(255,90,20,0.18)" : "rgba(20,8,4,0.4)",
+                  boxShadow: active
+                    ? "0 0 20px rgba(255,120,40,0.55), inset 0 0 18px rgba(255,90,20,0.25)"
+                    : "inset 0 0 8px rgba(255,90,20,0.08)",
+                  clipPath: "polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px))",
+                }}
+              />
+              <span
+                className="relative z-10 flex items-center justify-between w-full gap-3 text-sm uppercase tracking-[0.4em]"
+                style={{
+                  color: active ? "#ffeccf" : "rgba(255,200,160,0.55)",
+                  textShadow: active ? "0 0 10px #ff7a2a" : "none",
+                }}
+              >
+                <span className="flex items-center gap-3">
+                  <span
+                    className="inline-block transition-all"
+                    style={{
+                      width: 10,
+                      color: "#ff8a3d",
+                      opacity: active ? 1 : 0,
+                      transform: active ? "translateX(0)" : "translateX(-6px)",
+                    }}
+                  >
+                    ▶
+                  </span>
+                  {option.label}
+                </span>
+                <span className="text-orange-200/70">{getValue(option.type)}</span>
+              </span>
+            </button>
+          );
+        })}
+      </nav>
+    </div>
+  );
+}
+
+// --- Submenu for Audio ---
+function AudioSubmenu({
+  onBack,
+  settings,
+  dispatch,
+}: {
+  onBack: () => void;
+  settings: SettingsState;
+  dispatch: React.Dispatch<SettingsAction>;
+}) {
+  const [selected, setSelected] = useState(0);
+  const AUDIO_OPTIONS = [
+    { label: "MASTER VOLUME", type: "masterVolume" },
+    { label: "MUSIC VOLUME", type: "musicVolume" },
+    { label: "SFX VOLUME", type: "sfxVolume" },
+    { label: "BACK", type: "back" },
+  ] as const;
+
+  const getVolume = (type: typeof AUDIO_OPTIONS[number]["type"]) => {
+    switch (type) {
+      case "masterVolume": return settings.audio.masterVolume;
+      case "musicVolume": return settings.audio.musicVolume;
+      case "sfxVolume": return settings.audio.sfxVolume;
+      default: return 0;
+    }
+  };
+
+  const handleVolumeChange = (type: typeof AUDIO_OPTIONS[number]["type"], value: number) => {
+    switch (type) {
+      case "masterVolume":
+        dispatch({ type: "SET_MASTER_VOLUME", payload: value });
+        break;
+      case "musicVolume":
+        dispatch({ type: "SET_MUSIC_VOLUME", payload: value });
+        break;
+      case "sfxVolume":
+        dispatch({ type: "SET_SFX_VOLUME", payload: value });
+        break;
+    }
+  };
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowDown" || e.key === "s") {
+        setSelected((s) => (s + 1) % AUDIO_OPTIONS.length);
+      } else if (e.key === "ArrowUp" || e.key === "w") {
+        setSelected((s) => (s - 1 + AUDIO_OPTIONS.length) % AUDIO_OPTIONS.length);
+      } else if (e.key === "Enter" || e.key === " ") {
+        if (AUDIO_OPTIONS[selected].type === "back") {
+          onBack();
+        }
+      } else if (e.key === "Escape") {
+        onBack();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [selected, onBack]);
+
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <h2
+        className="mb-6 text-2xl font-bold uppercase tracking-[0.3em]"
+        style={{ fontFamily: "'Orbitron', sans-serif", color: "#ffb070" }}
+      >
+        AUDIO
+      </h2>
+      <nav className="flex flex-col items-center gap-3 w-full max-w-md">
+        {AUDIO_OPTIONS.map((option, i) => {
+          const active = i === selected;
+          if (option.type === "back") {
+            return (
+              <button
+                key={option.label}
+                onMouseEnter={() => setSelected(i)}
+                onClick={onBack}
+                className="group relative w-72 px-6 py-2 text-left transition-all"
+                style={{ fontFamily: "'Orbitron', sans-serif" }}
+              >
+                <span
+                  className="absolute inset-0 border transition-all"
+                  style={{
+                    borderColor: active ? "#ffb070" : "rgba(255,140,60,0.25)",
+                    backgroundColor: active ? "rgba(255,90,20,0.18)" : "rgba(20,8,4,0.4)",
+                    boxShadow: active
+                      ? "0 0 20px rgba(255,120,40,0.55), inset 0 0 18px rgba(255,90,20,0.25)"
+                      : "inset 0 0 8px rgba(255,90,20,0.08)",
+                    clipPath: "polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px))",
+                  }}
+                />
+                <span
+                  className="relative z-10 flex items-center gap-3 text-sm uppercase tracking-[0.4em]"
+                  style={{
+                    color: active ? "#ffeccf" : "rgba(255,200,160,0.55)",
+                    textShadow: active ? "0 0 10px #ff7a2a" : "none",
+                  }}
+                >
+                  <span
+                    className="inline-block transition-all"
+                    style={{
+                      width: 10,
+                      color: "#ff8a3d",
+                      opacity: active ? 1 : 0,
+                      transform: active ? "translateX(0)" : "translateX(-6px)",
+                    }}
+                  >
+                    ▶
+                  </span>
+                  {option.label}
+                </span>
+              </button>
+            );
+          }
+          return (
+            <div
+              key={option.label}
+              className="group relative w-72 px-6 py-2 flex items-center justify-between"
+              style={{ fontFamily: "'Orbitron', sans-serif" }}
+            >
+              <span
+                className="absolute inset-0 border transition-all"
+                style={{
+                  borderColor: active ? "#ffb070" : "rgba(255,140,60,0.25)",
+                  backgroundColor: active ? "rgba(255,90,20,0.18)" : "rgba(20,8,4,0.4)",
+                  boxShadow: active
+                    ? "0 0 20px rgba(255,120,40,0.55), inset 0 0 18px rgba(255,90,20,0.25)"
+                    : "inset 0 0 8px rgba(255,90,20,0.08)",
+                  clipPath: "polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px))",
+                }}
+              />
+              <div className="relative z-10 flex items-center w-full gap-3">
+                <span
+                  className="flex items-center gap-3 text-sm uppercase tracking-[0.4em]"
+                  style={{
+                    color: active ? "#ffeccf" : "rgba(255,200,160,0.55)",
+                    textShadow: active ? "0 0 10px #ff7a2a" : "none",
+                  }}
+                >
+                  <span
+                    className="inline-block transition-all"
+                    style={{
+                      width: 10,
+                      color: "#ff8a3d",
+                      opacity: active ? 1 : 0,
+                      transform: active ? "translateX(0)" : "translateX(-6px)",
+                    }}
+                  >
+                    ▶
+                  </span>
+                  {option.label}
+                </span>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value={getVolume(option.type)}
+                  onChange={(e) => handleVolumeChange(option.type, Number(e.target.value))}
+                  className="w-32 h-1 bg-orange-400/30 rounded-lg appearance-none cursor-pointer accent-orange-400"
+                  style={{ WebkitAppearance: "none", thumb: "orange" }}
+                />
+                <span className="text-orange-200/70 w-8 text-right">{getVolume(option.type)}</span>
+              </div>
+            </div>
+          );
+        })}
+      </nav>
+    </div>
+  );
+}
+
+// --- Submenu for Controls (Keybindings) ---
+function ControlsSubmenu({
+  onBack,
+  settings,
+  dispatch,
+  isRebinding,
+  setIsRebinding,
+}: {
+  onBack: () => void;
+  settings: SettingsState;
+  dispatch: React.Dispatch<SettingsAction>;
+  isRebinding: string | null;
+  setIsRebinding: (action: string | null) => void;
+}) {
+  const [selected, setSelected] = useState(0);
+  const CONTROLS_OPTIONS = [
+    { label: "JUMP", action: "jump" },
+    { label: "SPRINT", action: "sprint" },
+    { label: "CROUCH", action: "crouch" },
+    { label: "INTERACT", action: "interact" },
+    { label: "PRIMARY FIRE", action: "primaryFire" },
+    { label: "SECONDARY FIRE", action: "secondaryFire" },
+    { label: "INVERT X AXIS", type: "toggle", action: "invertXAxis" },
+    { label: "INVERT Y AXIS", type: "toggle", action: "invertYAxis" },
+    { label: "BACK", type: "back" },
+  ] as const;
+
+  const handleSelect = (option: typeof CONTROLS_OPTIONS[number]) => {
+    if (option.type === "back") {
+      onBack();
+    } else if (option.type === "toggle") {
+      if (option.action === "invertXAxis") {
+        dispatch({ type: "TOGGLE_INVERT_X_AXIS" });
+      } else if (option.action === "invertYAxis") {
+        dispatch({ type: "TOGGLE_INVERT_Y_AXIS" });
+      }
+    } else {
+      setIsRebinding(option.action);
+    }
+  };
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (isRebinding) return;
+
+      if (e.key === "ArrowDown" || e.key === "s") {
+        setSelected((s) => (s + 1) % CONTROLS_OPTIONS.length);
+      } else if (e.key === "ArrowUp" || e.key === "w") {
+        setSelected((s) => (s - 1 + CONTROLS_OPTIONS.length) % CONTROLS_OPTIONS.length);
+      } else if (e.key === "Enter" || e.key === " ") {
+        handleSelect(CONTROLS_OPTIONS[selected]);
+      } else if (e.key === "Escape") {
+        if (isRebinding) {
+          setIsRebinding(null);
+        } else {
+          onBack();
+        }
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [selected, onBack, isRebinding, setIsRebinding, settings.controls, dispatch]);
+
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <h2
+        className="mb-6 text-2xl font-bold uppercase tracking-[0.3em]"
+        style={{ fontFamily: "'Orbitron', sans-serif", color: "#ffb070" }}
+      >
+        CONTROLS
+      </h2>
+      <nav className="flex flex-col items-center gap-3">
+        {CONTROLS_OPTIONS.map((option, i) => {
+          const active = i === selected;
+          const isToggle = option.type === "toggle";
+          const isBinding = !isToggle && !option.type;
+
+          return (
+            <button
+              key={option.label}
+              onMouseEnter={() => setSelected(i)}
+              onClick={() => handleSelect(option)}
+              className="group relative w-72 px-6 py-2 text-left transition-all"
+              style={{ fontFamily: "'Orbitron', sans-serif" }}
+            >
+              <span
+                className="absolute inset-0 border transition-all"
+                style={{
+                  borderColor: active ? "#ffb070" : "rgba(255,140,60,0.25)",
+                  backgroundColor: active ? "rgba(255,90,20,0.18)" : "rgba(20,8,4,0.4)",
+                  boxShadow: active
+                    ? "0 0 20px rgba(255,120,40,0.55), inset 0 0 18px rgba(255,90,20,0.25)"
+                    : "inset 0 0 8px rgba(255,90,20,0.08)",
+                  clipPath: "polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px))",
+                }}
+              />
+              <span
+                className="relative z-10 flex items-center justify-between w-full gap-3 text-sm uppercase tracking-[0.4em]"
+                style={{
+                  color: active ? "#ffeccf" : "rgba(255,200,160,0.55)",
+                  textShadow: active ? "0 0 10px #ff7a2a" : "none",
+                }}
+              >
+                <span className="flex items-center gap-3">
+                  <span
+                    className="inline-block transition-all"
+                    style={{
+                      width: 10,
+                      color: "#ff8a3d",
+                      opacity: active ? 1 : 0,
+                      transform: active ? "translateX(0)" : "translateX(-6px)",
+                    }}
+                  >
+                    ▶
+                  </span>
+                  {option.label}
+                </span>
+                {isBinding ? (
+                  <span className="text-orange-200/70">
+                    {isRebinding === option.action ? "PRESS A KEY" : settings.controls.keybindings[option.action]}
+                  </span>
+                ) : isToggle ? (
+                  <span className="text-orange-200/70">
+                    {option.action === "invertXAxis"
+                      ? settings.controls.invertXAxis
+                        ? "ON"
+                        : "OFF"
+                      : settings.controls.invertYAxis
+                      ? "ON"
+                      : "OFF"}
+                  </span>
+                ) : null}
+              </span>
+            </button>
+          );
+        })}
+      </nav>
+    </div>
+  );
+}
+
+// --- Submenu for Gameplay ---
+function GameplaySubmenu({ onBack }: { onBack: () => void }) {
+  const [selected, setSelected] = useState(0);
+  const GAMEPLAY_OPTIONS = ["QUICK SAVE", "TOGGLE TIPS", "CENSOR CONTENT", "BACK"] as const;
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowDown" || e.key === "s") {
+        setSelected((s) => (s + 1) % GAMEPLAY_OPTIONS.length);
+      } else if (e.key === "ArrowUp" || e.key === "w") {
+        setSelected((s) => (s - 1 + GAMEPLAY_OPTIONS.length) % GAMEPLAY_OPTIONS.length);
+      } else if (e.key === "Enter" || e.key === " ") {
+        if (GAMEPLAY_OPTIONS[selected] === "BACK") {
+          onBack();
+        }
+        // Add logic for gameplay options here
+      } else if (e.key === "Escape") {
+        onBack();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [selected, onBack]);
+
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <h2
+        className="mb-6 text-2xl font-bold uppercase tracking-[0.3em]"
+        style={{ fontFamily: "'Orbitron', sans-serif", color: "#ffb070" }}
+      >
+        GAMEPLAY
+      </h2>
+      <nav className="flex flex-col items-center gap-3">
+        {GAMEPLAY_OPTIONS.map((label, i) => {
+          const active = i === selected;
+          return (
+            <button
+              key={label}
+              onMouseEnter={() => setSelected(i)}
+              onClick={() => {
+                if (label === "BACK") {
+                  onBack();
+                }
+                // Add logic for gameplay options here
+              }}
+              className="group relative w-72 px-6 py-2 text-left transition-all"
+              style={{ fontFamily: "'Orbitron', sans-serif" }}
+            >
+              <span
+                className="absolute inset-0 border transition-all"
+                style={{
+                  borderColor: active ? "#ffb070" : "rgba(255,140,60,0.25)",
+                  backgroundColor: active ? "rgba(255,90,20,0.18)" : "rgba(20,8,4,0.4)",
+                  boxShadow: active
+                    ? "0 0 20px rgba(255,120,40,0.55), inset 0 0 18px rgba(255,90,20,0.25)"
+                    : "inset 0 0 8px rgba(255,90,20,0.08)",
+                  clipPath: "polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px))",
+                }}
+              />
+              <span
+                className="relative z-10 flex items-center gap-3 text-sm uppercase tracking-[0.4em]"
+                style={{
+                  color: active ? "#ffeccf" : "rgba(255,200,160,0.55)",
+                  textShadow: active ? "0 0 10px #ff7a2a" : "none",
+                }}
+              >
+                <span
+                  className="inline-block transition-all"
+                  style={{
+                    width: 10,
+                    color: "#ff8a3d",
+                    opacity: active ? 1 : 0,
+                    transform: active ? "translateX(0)" : "translateX(-6px)",
+                  }}
+                >
+                  ▶
+                </span>
+                {label}
+              </span>
+            </button>
+          );
+        })}
+      </nav>
+    </div>
+  );
+}
+
+// --- Settings Submenu Router ---
+function SettingsSubmenu({
+  category,
+  onBack,
+  settings,
+  dispatch,
+  isRebinding,
+  setIsRebinding,
+}: {
+  category: typeof SETTINGS_CATEGORIES[number];
+  onBack: () => void;
+  settings: SettingsState;
+  dispatch: React.Dispatch<SettingsAction>;
+  isRebinding: string | null;
+  setIsRebinding: (action: string | null) => void;
+}) {
+  switch (category) {
+    case "GRAPHICS":
+      return <GraphicsSubmenu onBack={onBack} settings={settings} dispatch={dispatch} />;
+    case "AUDIO":
+      return <AudioSubmenu onBack={onBack} settings={settings} dispatch={dispatch} />;
+    case "CONTROLS":
+      return (
+        <ControlsSubmenu
+          onBack={onBack}
+          settings={settings}
+          dispatch={dispatch}
+          isRebinding={isRebinding}
+          setIsRebinding={setIsRebinding}
+        />
+      );
+    case "GAMEPLAY":
+      return <GameplaySubmenu onBack={onBack} />;
+    default:
+      return null;
+  }
+}
+
+
+

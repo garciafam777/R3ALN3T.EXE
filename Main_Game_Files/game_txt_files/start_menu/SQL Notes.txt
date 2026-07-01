@@ -1,0 +1,67 @@
+SQL Notes
+
+SELECT - extracts data from a database
+UPDATE - updates data in a database
+DELETE - deletes data from a database
+INSERT INTO - inserts new data into a database
+CREATE DATABASE - creates a new database
+ALTER DATABASE - modifies a database
+CREATE TABLE - creates a new table
+ALTER TABLE - modifies a table
+DROP TABLE - deletes a table
+CREATE INDEX - creates an index (search key)
+DROP INDEX - deletes an index
+
+
+CREATE TABLE favorite_books (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT, 
+    rating REAL
+);
+
+INSERT INTO favorite_books (name) VALUES 
+    ('The Matian'),
+    ('Harry Potter'),
+    ('Lord of The Rings');
+
+
+CREATE TABLE movies (id INTEGER PRIMARY KEY, name TEXT, release_year INTEGER);
+INSERT INTO movies VALUES (1, "Avatar", 2009);
+INSERT INTO movies VALUES (2, "Titanic", 1997);
+INSERT INTO movies VALUES (3, "Star Wars: Episode IV - A New Hope", 1977);
+INSERT INTO movies VALUES (4, "Shrek 2", 2004);
+INSERT INTO movies VALUES (5, "The Lion King", 1994);
+INSERT INTO movies VALUES (6, "Disney's Up", 2009);
+ 
+ SELECT * FROM movies;
+ SELECT * FROM movies WHERE release_year >= 2000 ORDER BY release_year;
+
+CREATE TABLE todo_list (id INTEGER PRIMARY KEY, item TEXT, minutes INTEGER);
+INSERT INTO todo_list VALUES (1, "Wash the dishes", 15);
+INSERT INTO todo_list VALUES (2, "vacuuming", 20);
+INSERT INTO todo_list VALUES (3, "Learn some stuff on KA", 30);
+INSERT INTO todo_list VALUES (4, "Total_minutes", 65);
+
+SELECT SUM(minutes) FROM todo_list;
+
+Store
+
+CREATE TABLE pokemon_cards (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     name TEXT,
+     rarity TEXT,
+     type TEXT,
+     mint_condition INTEGER,
+     generation INTEGER,
+     release_date TEXT,
+     price REAL
+     );
+
+INSERT INTO pokemon_cards (name, rarity, type, mint_condition, generation, release_date, price) VALUES
+    ('Charizard Holo',         'Rare Holo',    'Fire',          1, 1, '1999-01-09', 349.99),
+    ('Blastoise Holo',         'Rare Holo',    'Water',         1, 1, '1999-01-09', 289.99),
+    ('Mewtwo EX',              'Ultra Rare',   'Psychic',       1, 1, '2012-08-15', 124.99),
+    ('Pikachu Illustrator',    'Secret Rare',  'Electric',      1, 1, '1998-01-01', 4999.99),
+    ('Lugia Neo Genesis',      'Rare Holo',    'Psychic/Flying',2, 2, '2000-12-16', 899.99);
+    
+SELECT * FROM pokemon_cards ORDER BY price; SELECT AVG(price) AS average_price FROM pokemon_cards;   

@@ -1,52 +1,116 @@
-# Unreal Engine Generated Folders
-Binaries/
-Build/
-DerivedDataCache/
-Intermediate/
-Saved/
-Script/
+# Godot Engine
+.godot/
+*.import
+export_presets.cfg
+*.gotot
 
-# Builds folder
-/Builds/
+# Unreal Engine - Generic ignores for nested projects
+**/Binaries/
+**/Build/
+**/Intermediate/
+**/DerivedDataCache/
+**/Saved/
+**/.vs/
+**/.vscode/
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
 
-# IDE / Compilation Artifacts
-*.VC.db
-*.opensdf
-*.opendb
-*.sdf
-*.sln
-*.suo
-*.xcodeproj
-*.xcworkspace
-*.obj
-*.exe
-*.dll
-*.dylib
-*.so
-*.a
-*.lib
+# Main UE5 project
+Project/R3ALN3T_UE5/Binaries/
+Project/R3ALN3T_UE5/Build/
+Project/R3ALN3T_UE5/Intermediate/
+Project/R3ALN3T_UE5/DerivedDataCache/
+Project/R3ALN3T_UE5/Saved/
+Project/R3ALN3T_UE5/.vs/
+Project/R3ALN3T_UE5/Plugins/*/Binaries/
+Project/R3ALN3T_UE5/Plugins/*/Intermediate/
 
-# OS Meta-files
+# Prototypes (legacy UE5 projects)
+Prototypes/R3ALN3TEXE/Binaries/
+Prototypes/R3ALN3TEXE/Build/
+Prototypes/R3ALN3TEXE/Intermediate/
+Prototypes/R3ALN3TEXE/DerivedDataCache/
+Prototypes/R3ALN3TEXE/Saved/
+Prototypes/R3ALN3TEXE/.vs/
+Prototypes/R3ALN3TEXE/.vscode/
+Prototypes/R3ALN3TEXE/*.sln
+Prototypes/R3ALN3TEXE/*.slnx
+Prototypes/R3ALN3TEXE/*.vcxproj
+
+Prototypes/R3ALN3T_EXE/Binaries/
+Prototypes/R3ALN3T_EXE/Build/
+Prototypes/R3ALN3T_EXE/Intermediate/
+Prototypes/R3ALN3T_EXE/DerivedDataCache/
+Prototypes/R3ALN3T_EXE/Saved/
+Prototypes/R3ALN3T_EXE/.vs/
+Prototypes/R3ALN3T_EXE/.vscode/
+Prototypes/R3ALN3T_EXE/*.sln
+Prototypes/R3ALN3T_EXE/*.slnx
+Prototypes/R3ALN3T_EXE/*.vcxproj
+
+# Godot prototype
+Prototypes/Godot/.godot/
+Prototypes/Godot/*.import
+Prototypes/Godot/export_presets.cfg
+
+# Cinematic (Intro)
+Cinematics/Intro/node_modules/
+Cinematics/Intro/dist/
+Cinematics/Intro/intro.mp4
+
+# Python / AI Backend
+Services/AI_Backend/__pycache__/
+Services/AI_Backend/*.pyc
+Services/AI_Backend/.venv/
+Services/AI_Backend/venv/
+
+# Card generation scripts
+Scripts/Card\ Creation/cards/__pycache__/
+Scripts/Card\ Creation/cards/generated_cards.csv
+Main_Game_Files/R3ALN3T.EXE_game_creation/scripts/Card\ Creation/cards/generated_cards.csv
+
+# Large generated data files (>100MB)
+**/generated_cards.csv
+**/characters.csv
+
+# System and editor files
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
+*.sln
+*.slnx
+*.suo
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.opendb
+*.VC.db-shm
+*.VC.db-wal
 
-# DCC Temp Files (Blender/Audacity)
-*.blend1
-*.blend2
-*.aup3-shm
-*.aup3-wal
+# Node/npm
+node_modules/
+package-lock.json
+yarn.lock
 
-# Hard Preservation Rules
-!Project/Config/
-!Project/Content/
-!Source/
-!Plugins/
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
 
-# Sandbox/Local Exclusions
-Project/Content/Developers/
-Project/Content/Collections/
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+Desktop.ini
+$RECYCLE.BIN/
+
+# Logs
+log.txt

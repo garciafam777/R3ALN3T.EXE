@@ -1,0 +1,69 @@
+=== intro_cinematic (Cinematic_Scene) ===
+
+INTRO_CINEMATIC_GITIGNORE
+  File: .gitignore (other)
+  Size: 243 bytes
+
+INTRO_CINEMATIC_README
+  File: README.md (text)
+  Size: 119 bytes, 3 lines, 116 chars
+  Preview: # Intro_Lifein6thGEAR
+
+INTRO_CINEMATIC_ESLINT_CONFIG
+  File: eslint.config.js (text)
+  Size: 767 bytes, 28 lines, 739 chars
+  Preview: import js from '@eslint/js';
+
+INTRO_CINEMATIC_INDEX
+  File: index.html (text)
+  Size: 963 bytes, 19 lines, 944 chars
+  Preview: <!doctype html>
+
+INTRO_CINEMATIC_INTRO
+  File: intro.mp4 (video)
+  Size: 466,585 bytes
+
+INTRO_CINEMATIC_PACKAGE_LOCK
+  File: package-lock.json (text)
+  Size: 161,850 bytes, 4427 lines, 157,423 chars
+  Preview: {
+
+INTRO_CINEMATIC_POSTCSS_CONFIG
+  File: postcss.config.js (text)
+  Size: 87 bytes, 6 lines, 81 chars
+  Preview: export default {
+
+INTRO_CINEMATIC_RECORD_INTRO_SCRUB
+  File: record-intro-scrub.js (text)
+  Size: 3,801 bytes, 96 lines, 3,705 chars
+  Preview: const { chromium } = require('playwright');
+
+INTRO_CINEMATIC_RENDER_TO_MP4
+  File: render-to-mp4.cjs (other)
+  Size: 4,386 bytes
+
+INTRO_CINEMATIC_TAILWIND_CONFIG
+  File: tailwind.config.js (text)
+  Size: 478 bytes, 21 lines, 457 chars
+  Preview: /** @type {import('tailwindcss').Config} */
+
+INTRO_CINEMATIC_TSCONFIG_APP
+  File: tsconfig.app.json (text)
+  Size: 576 bytes, 24 lines, 552 chars
+  Preview: {
+
+INTRO_CINEMATIC_TSCONFIG
+  File: tsconfig.json (text)
+  Size: 126 bytes, 7 lines, 119 chars
+  Preview: {
+
+INTRO_CINEMATIC_TSCONFIG_NODE
+  File: tsconfig.node.json (text)
+  Size: 501 bytes, 22 lines, 479 chars
+  Preview: {
+
+INTRO_CINEMATIC_VITE_CONFIG
+  File: vite.config.ts (text)
+  Size: 230 bytes, 10 lines, 220 chars
+  Preview: import { defineConfig } from 'vite';
+

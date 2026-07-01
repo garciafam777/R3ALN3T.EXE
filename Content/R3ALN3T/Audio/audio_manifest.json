@@ -1,0 +1,623 @@
+[
+  {
+    "TrackID": "ABYSS_WALKER_PULSE",
+    "DisplayName": "Abyss Walker Pulse",
+    "Category": "Exploration",
+    "Layer": "Hell",
+    "SoundWave": "/Game/R3ALN3T/Audio/Abyss Walker Pulse.Abyss Walker Pulse",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "ABYSSAL_BLOOM",
+    "DisplayName": "Abyssal Bloom",
+    "Category": "Exploration",
+    "Layer": "Hell",
+    "SoundWave": "/Game/R3ALN3T/Audio/Abyssal Bloom.Abyssal Bloom",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "ABYSSAL_CINDER",
+    "DisplayName": "Abyssal Cinder",
+    "Category": "Exploration",
+    "Layer": "Hell",
+    "SoundWave": "/Game/R3ALN3T/Audio/Abyssal Cinder.Abyssal Cinder",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "ABYSSAL_HUNGER_DARK_BATTLE",
+    "DisplayName": "Abyssal Hunger (Dark Battle)",
+    "Category": "Battle",
+    "Layer": "Hell",
+    "SoundWave": "/Game/R3ALN3T/Audio/Abyssal Hunger (Dark Battle).Abyssal Hunger (Dark Battle)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "CELESTIAL_IGNITION",
+    "DisplayName": "Celestial Ignition",
+    "Category": "Exploration",
+    "Layer": "Heaven",
+    "SoundWave": "/Game/R3ALN3T/Audio/Celestial Ignition.Celestial Ignition",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "CHRONICLES_OF_THE_CORE",
+    "DisplayName": "Chronicles of the Core",
+    "Category": "Exploration",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/Chronicles of the Core.Chronicles of the Core",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "CONCORD_BASTION",
+    "DisplayName": "Concord Bastion",
+    "Category": "Exploration",
+    "Layer": "Reality",
+    "SoundWave": "/Game/R3ALN3T/Audio/Concord Bastion.Concord Bastion",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "CRYSTAL_TEARS_AQUA_VARIATION",
+    "DisplayName": "Crystal Tears (Aqua Variation)",
+    "Category": "Theme",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/Crystal Tears (Aqua Variation).Crystal Tears (Aqua Variation)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "DATA_EXTRACTION",
+    "DisplayName": "Data Extraction",
+    "Category": "Exploration",
+    "Layer": "Cyberspace",
+    "SoundWave": "/Game/R3ALN3T/Audio/Data Extraction.Data Extraction",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "DATA_SURGE_DIGITAL_ANIME",
+    "DisplayName": "Data Surge (Digital Anime)",
+    "Category": "Theme",
+    "Layer": "Cyberspace",
+    "SoundWave": "/Game/R3ALN3T/Audio/Data Surge (Digital Anime).Data Surge (Digital Anime)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "DELETED_SECTOR",
+    "DisplayName": "Deleted Sector",
+    "Category": "Exploration",
+    "Layer": "Reality",
+    "SoundWave": "/Game/R3ALN3T/Audio/Deleted Sector.Deleted Sector",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "DIGITAL_DECAY",
+    "DisplayName": "Digital Decay",
+    "Category": "Exploration",
+    "Layer": "Cyberspace",
+    "SoundWave": "/Game/R3ALN3T/Audio/Digital Decay.Digital Decay",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "END_GAME_SONG",
+    "DisplayName": "END GAME Song",
+    "Category": "Exploration",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/END GAME Song.END GAME Song",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "ENTANGLED_ROOTS",
+    "DisplayName": "Entangled Roots",
+    "Category": "Exploration",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/Entangled Roots.Entangled Roots",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "ENTANGLED_THORN_WOOD_ANIME",
+    "DisplayName": "Entangled Thorn (Wood Anime)",
+    "Category": "Theme",
+    "Layer": "Hell",
+    "SoundWave": "/Game/R3ALN3T/Audio/Entangled Thorn (Wood Anime).Entangled Thorn (Wood Anime)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "EXPLOIT_LOOP",
+    "DisplayName": "Exploit Loop",
+    "Category": "Exploration",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/Exploit Loop.Exploit Loop",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "FACTORY_SECTOR_9",
+    "DisplayName": "Factory Sector 9",
+    "Category": "Exploration",
+    "Layer": "Reality",
+    "SoundWave": "/Game/R3ALN3T/Audio/Factory Sector 9.Factory Sector 9",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "FORTRESS_OF_SOLITUDE",
+    "DisplayName": "Fortress of Solitude",
+    "Category": "Exploration",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/Fortress of Solitude.Fortress of Solitude",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "FREE_GRID_CURRENT",
+    "DisplayName": "Free Grid Current",
+    "Category": "Exploration",
+    "Layer": "Reality",
+    "SoundWave": "/Game/R3ALN3T/Audio/Free Grid Current.Free Grid Current",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "IGNITION_SOUL_FIRE_ANIME",
+    "DisplayName": "Ignition Soul (Fire Anime)",
+    "Category": "Theme",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/Ignition Soul (Fire Anime).Ignition Soul (Fire Anime)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "INFERNAL_AWAKENING_FIRE_VARIATION",
+    "DisplayName": "Infernal Awakening (Fire Variation)",
+    "Category": "Theme",
+    "Layer": "Hell",
+    "SoundWave": "/Game/R3ALN3T/Audio/Infernal Awakening (Fire Variation).Infernal Awakening (Fire Variation)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "INFERNAL_OVERDRIVE_FIRE_ANIME",
+    "DisplayName": "Infernal Overdrive (Fire Anime)",
+    "Category": "Theme",
+    "Layer": "Hell",
+    "SoundWave": "/Game/R3ALN3T/Audio/Infernal Overdrive (Fire Anime).Infernal Overdrive (Fire Anime)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "INFERNAL_RECKONING",
+    "DisplayName": "Infernal Reckoning",
+    "Category": "Exploration",
+    "Layer": "Hell",
+    "SoundWave": "/Game/R3ALN3T/Audio/Infernal Reckoning.Infernal Reckoning",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "INFERNAL_RESONANCE_FIRE_ANIME",
+    "DisplayName": "Infernal Resonance (Fire Anime)",
+    "Category": "Theme",
+    "Layer": "Hell",
+    "SoundWave": "/Game/R3ALN3T/Audio/Infernal Resonance (Fire Anime).Infernal Resonance (Fire Anime)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "INFERNAL_VANGUARD",
+    "DisplayName": "Infernal Vanguard",
+    "Category": "Exploration",
+    "Layer": "Hell",
+    "SoundWave": "/Game/R3ALN3T/Audio/Infernal Vanguard.Infernal Vanguard",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "INFERNO_SIEGE_FIRE_BATTLE",
+    "DisplayName": "Inferno Siege (Fire Battle)",
+    "Category": "Battle",
+    "Layer": "Hell",
+    "SoundWave": "/Game/R3ALN3T/Audio/Inferno Siege (Fire Battle).Inferno Siege (Fire Battle)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "IRON_BASTION_METAL_ANIME",
+    "DisplayName": "Iron Bastion (Metal Anime)",
+    "Category": "Theme",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/Iron Bastion (Metal Anime).Iron Bastion (Metal Anime)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "IRON_ENDURANCE",
+    "DisplayName": "Iron Endurance",
+    "Category": "Exploration",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/Iron Endurance.Iron Endurance",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "IRON_FORTRESS_METAL_BATTLE",
+    "DisplayName": "Iron Fortress (Metal Battle)",
+    "Category": "Battle",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/Iron Fortress (Metal Battle).Iron Fortress (Metal Battle)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "KERNEL_PANIC_DIGITAL_VARIATION",
+    "DisplayName": "Kernel Panic (Digital Variation)",
+    "Category": "Theme",
+    "Layer": "Cyberspace",
+    "SoundWave": "/Game/R3ALN3T/Audio/Kernel Panic (Digital Variation).Kernel Panic (Digital Variation)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "LEGACY_OF_THE_ELEMENTS",
+    "DisplayName": "Legacy of the Elements",
+    "Category": "Exploration",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/Legacy of the Elements.Legacy of the Elements",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "LOGIC_BREACH_DIGITAL_BATTLE",
+    "DisplayName": "Logic Breach (Digital Battle)",
+    "Category": "Battle",
+    "Layer": "Cyberspace",
+    "SoundWave": "/Game/R3ALN3T/Audio/Logic Breach (Digital Battle).Logic Breach (Digital Battle)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "MONOLITH_PROTOCOL",
+    "DisplayName": "Monolith Protocol",
+    "Category": "Exploration",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/Monolith Protocol.Monolith Protocol",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "NEURAL_HEMISPHERE",
+    "DisplayName": "Neural Hemisphere",
+    "Category": "Exploration",
+    "Layer": "Cyberspace",
+    "SoundWave": "/Game/R3ALN3T/Audio/Neural Hemisphere.Neural Hemisphere",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "NEURAL_NETWORK_PROTOCOL_DARK_INDUSTRIAL_REMIX",
+    "DisplayName": "Neural Network Protocol (Dark Industrial Remix)",
+    "Category": "Theme",
+    "Layer": "Cyberspace",
+    "SoundWave": "/Game/R3ALN3T/Audio/Neural Network Protocol (Dark Industrial Remix).Neural Network Protocol (Dark Industrial Remix)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "NEURAL_NETWORK_PROTOCOL_ELECTRICAL_SURGE_EDIT",
+    "DisplayName": "Neural Network Protocol (Electrical Surge Edit)",
+    "Category": "Theme",
+    "Layer": "Cyberspace",
+    "SoundWave": "/Game/R3ALN3T/Audio/Neural Network Protocol (Electrical Surge Edit).Neural Network Protocol (Electrical Surge Edit)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "NEURAL_NETWORK_PROTOCOL_PURE_ORCHESTRAL_EDIT",
+    "DisplayName": "Neural Network Protocol (Pure Orchestral Edit)",
+    "Category": "Theme",
+    "Layer": "Cyberspace",
+    "SoundWave": "/Game/R3ALN3T/Audio/Neural Network Protocol (Pure Orchestral Edit).Neural Network Protocol (Pure Orchestral Edit)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "NEURAL_NETWORK_PROTOCOL_STATIC_INTERFERENCE_EDIT",
+    "DisplayName": "Neural Network Protocol (Static Interference Edit)",
+    "Category": "Theme",
+    "Layer": "Cyberspace",
+    "SoundWave": "/Game/R3ALN3T/Audio/Neural Network Protocol (Static Interference Edit).Neural Network Protocol (Static Interference Edit)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "NEURAL_NETWORK_PROTOCOL",
+    "DisplayName": "Neural Network Protocol",
+    "Category": "Exploration",
+    "Layer": "Cyberspace",
+    "SoundWave": "/Game/R3ALN3T/Audio/Neural Network Protocol.Neural Network Protocol",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "NEURAL_OVERLOAD",
+    "DisplayName": "Neural Overload",
+    "Category": "Exploration",
+    "Layer": "Cyberspace",
+    "SoundWave": "/Game/R3ALN3T/Audio/Neural Overload.Neural Overload",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "NEURAL_OVERRIDE",
+    "DisplayName": "Neural Override",
+    "Category": "Exploration",
+    "Layer": "Cyberspace",
+    "SoundWave": "/Game/R3ALN3T/Audio/Neural Override.Neural Override",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "NEURO_SYNC_DEPTH",
+    "DisplayName": "Neuro-Sync Depth",
+    "Category": "Exploration",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/Neuro-Sync Depth.Neuro-Sync Depth",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "OCEANIC_LEGEND",
+    "DisplayName": "Oceanic Legend",
+    "Category": "Exploration",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/Oceanic Legend.Oceanic Legend",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "PATH_OF_THE_VOYAGER",
+    "DisplayName": "Path of the Voyager",
+    "Category": "Exploration",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/Path of the Voyager.Path of the Voyager",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "SANCTUM_OF_LIGHT",
+    "DisplayName": "Sanctum of Light",
+    "Category": "Exploration",
+    "Layer": "Heaven",
+    "SoundWave": "/Game/R3ALN3T/Audio/Sanctum of Light.Sanctum of Light",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "SHADOW_HUNGER_DARK_VARIATION",
+    "DisplayName": "Shadow Hunger (Dark Variation)",
+    "Category": "Theme",
+    "Layer": "Hell",
+    "SoundWave": "/Game/R3ALN3T/Audio/Shadow Hunger (Dark Variation).Shadow Hunger (Dark Variation)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "SILICON_SHADOWS",
+    "DisplayName": "Silicon Shadows",
+    "Category": "Exploration",
+    "Layer": "Hell",
+    "SoundWave": "/Game/R3ALN3T/Audio/Silicon Shadows.Silicon Shadows",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "SILICON_VELOCITY",
+    "DisplayName": "Silicon Velocity",
+    "Category": "Exploration",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/Silicon Velocity.Silicon Velocity",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "SPATIAL_SINGULARITY",
+    "DisplayName": "Spatial Singularity",
+    "Category": "Exploration",
+    "Layer": "OuterSpace",
+    "SoundWave": "/Game/R3ALN3T/Audio/Spatial Singularity.Spatial Singularity",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "STATIC_PULSE",
+    "DisplayName": "Static Pulse",
+    "Category": "Exploration",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/Static Pulse.Static Pulse",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "SUBMERGED_MEMORY",
+    "DisplayName": "Submerged Memory",
+    "Category": "Exploration",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/Submerged Memory.Submerged Memory",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "SYNAPSE_ASCENSION",
+    "DisplayName": "Synapse Ascension",
+    "Category": "Exploration",
+    "Layer": "Cyberspace",
+    "SoundWave": "/Game/R3ALN3T/Audio/Synapse Ascension.Synapse Ascension",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "SYNAPSE_BURST_ELEC_ANIME",
+    "DisplayName": "Synapse Burst (Elec Anime)",
+    "Category": "Theme",
+    "Layer": "Cyberspace",
+    "SoundWave": "/Game/R3ALN3T/Audio/Synapse Burst (Elec Anime).Synapse Burst (Elec Anime)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "SYNAPSE_SHOCK",
+    "DisplayName": "Synapse Shock",
+    "Category": "Exploration",
+    "Layer": "Cyberspace",
+    "SoundWave": "/Game/R3ALN3T/Audio/Synapse Shock.Synapse Shock",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "SYSTEM_LOGIC",
+    "DisplayName": "System Logic",
+    "Category": "Exploration",
+    "Layer": "Cyberspace",
+    "SoundWave": "/Game/R3ALN3T/Audio/System Logic.System Logic",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "THE_ARCHITECT_S_CODE",
+    "DisplayName": "The Architect's Code",
+    "Category": "Exploration",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/The Architect's Code.The Architect's Code",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "THE_DEEP_HUNGER",
+    "DisplayName": "The Deep Hunger",
+    "Category": "Exploration",
+    "Layer": "Hell",
+    "SoundWave": "/Game/R3ALN3T/Audio/The Deep Hunger.The Deep Hunger",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "THORNED_KINGDOM",
+    "DisplayName": "Thorned Kingdom",
+    "Category": "Exploration",
+    "Layer": "Hell",
+    "SoundWave": "/Game/R3ALN3T/Audio/Thorned Kingdom.Thorned Kingdom",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "THORNED_REQUIEM_WOOD_VARIATION",
+    "DisplayName": "Thorned Requiem (Wood Variation)",
+    "Category": "Theme",
+    "Layer": "Hell",
+    "SoundWave": "/Game/R3ALN3T/Audio/Thorned Requiem (Wood Variation).Thorned Requiem (Wood Variation)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "TIDAL_ONSLAUGHT_AQUA_BATTLE",
+    "DisplayName": "Tidal Onslaught (Aqua Battle)",
+    "Category": "Battle",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/Tidal Onslaught (Aqua Battle).Tidal Onslaught (Aqua Battle)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "TIDES_OF_GRIEF",
+    "DisplayName": "Tides of Grief",
+    "Category": "Exploration",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/Tides of Grief.Tides of Grief",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "UNSTOPPABLE_SPIRIT",
+    "DisplayName": "Unstoppable Spirit",
+    "Category": "Exploration",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/Unstoppable Spirit.Unstoppable Spirit",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "VENOMOUS_THICKET_WOOD_BATTLE",
+    "DisplayName": "Venomous Thicket (Wood Battle)",
+    "Category": "Battle",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/Venomous Thicket (Wood Battle).Venomous Thicket (Wood Battle)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "VOID_COLLAPSE_NULL_BATTLE",
+    "DisplayName": "Void Collapse (Null Battle)",
+    "Category": "Battle",
+    "Layer": "Hell",
+    "SoundWave": "/Game/R3ALN3T/Audio/Void Collapse (Null Battle).Void Collapse (Null Battle)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "VOID_ECHO_NULL_ANIME",
+    "DisplayName": "Void Echo (Null Anime)",
+    "Category": "Theme",
+    "Layer": "Hell",
+    "SoundWave": "/Game/R3ALN3T/Audio/Void Echo (Null Anime).Void Echo (Null Anime)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "VOID_RUNNER",
+    "DisplayName": "Void Runner",
+    "Category": "Exploration",
+    "Layer": "Hell",
+    "SoundWave": "/Game/R3ALN3T/Audio/Void Runner.Void Runner",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "VOLT_SURGE_ELEC_VARIATION",
+    "DisplayName": "Volt Surge (Elec Variation)",
+    "Category": "Theme",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/Volt Surge (Elec Variation).Volt Surge (Elec Variation)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "WANDERER_S_SILENCE",
+    "DisplayName": "Wanderer's Silence",
+    "Category": "Exploration",
+    "Layer": "None",
+    "SoundWave": "/Game/R3ALN3T/Audio/Wanderer's Silence.Wanderer's Silence",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  },
+  {
+    "TrackID": "ZERO_POINT_NULL_VARIATION",
+    "DisplayName": "Zero Point (Null Variation)",
+    "Category": "Theme",
+    "Layer": "Hell",
+    "SoundWave": "/Game/R3ALN3T/Audio/Zero Point (Null Variation).Zero Point (Null Variation)",
+    "VolumeScale": 1.0,
+    "CrossfadeDuration": 2.0
+  }
+]

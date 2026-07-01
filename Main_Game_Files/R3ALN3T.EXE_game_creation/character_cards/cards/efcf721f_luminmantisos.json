@@ -1,0 +1,25 @@
+{
+  "id": "efcf721f",
+  "name": "Luminmantisos the Radiant",
+  "short_name": "Luminmantisos",
+  "tier": "KAPPA",
+  "element": "Water",
+  "type": "Angelic",
+  "faction": "Celestial Order",
+  "stats": {
+    "hp": 95,
+    "atk": 21,
+    "rapid": 25,
+    "charge": 20,
+    "def": 23
+  },
+  "programs": [
+    "Tidal Barrier",
+    "Tidal Break",
+    "Tidal Wall"
+  ],
+  "description": "A KAPPA-tier Water-aligned Angelic of the Celestial Order.",
+  "color_primary": "#afae97",
+  "color_accent": "#db3bb5",
+  "generated": "2026-06-30T02:11:13.258430"
+}

@@ -7,7 +7,7 @@
 class AMythosGameMode;
 
 UCLASS()
-class R3ALN3T_EXE_API AMythosHUD : public AHUD
+class R3ALN3T_UE5_API AMythosHUD : public AHUD
 {
 	GENERATED_BODY()
 

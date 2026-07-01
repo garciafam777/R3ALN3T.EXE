@@ -1,0 +1,25 @@
+{
+  "id": "a4c85b50",
+  "name": "Aethshadeox the Echo Lord",
+  "short_name": "Aethshadeox",
+  "tier": "PHI",
+  "element": "Ice",
+  "type": "Mechanical",
+  "faction": "Celestial Order",
+  "stats": {
+    "hp": 13,
+    "atk": 5,
+    "rapid": 2,
+    "charge": 5,
+    "def": 3
+  },
+  "programs": [
+    "Cryo Field",
+    "Cryo Break",
+    "Cryo Shift"
+  ],
+  "description": "A PHI-tier Ice-aligned Mechanical of the Celestial Order.",
+  "color_primary": "#eaa409",
+  "color_accent": "#6cac3d",
+  "generated": "2026-06-30T02:11:13.258499"
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="280" viewBox="0 0 180 280">
+  <rect width="180" height="280" fill="#0A1520"/>
+  <rect x="45" y="35" width="90" height="95" rx="14" fill="#FF00FF" opacity="0.85"/>
+  <rect x="55" y="125" width="70" height="105" rx="10" fill="#8B00FF" opacity="0.7"/>
+  <text x="90" y="260" text-anchor="middle" fill="#8899AA" font-family="sans-serif" font-size="10">SystemAdmin</text>
+</svg>

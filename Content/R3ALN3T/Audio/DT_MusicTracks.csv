@@ -1,0 +1,70 @@
+TrackID,DisplayName,Category,Layer,SoundWave,VolumeScale,CrossfadeDuration
+ABYSS_WALKER_PULSE,Abyss Walker Pulse,Exploration,Hell,/Game/R3ALN3T/Audio/Abyss Walker Pulse.Abyss Walker Pulse,1.0,2.0
+ABYSSAL_BLOOM,Abyssal Bloom,Exploration,Hell,/Game/R3ALN3T/Audio/Abyssal Bloom.Abyssal Bloom,1.0,2.0
+ABYSSAL_CINDER,Abyssal Cinder,Exploration,Hell,/Game/R3ALN3T/Audio/Abyssal Cinder.Abyssal Cinder,1.0,2.0
+ABYSSAL_HUNGER_DARK_BATTLE,Abyssal Hunger (Dark Battle),Battle,Hell,/Game/R3ALN3T/Audio/Abyssal Hunger (Dark Battle).Abyssal Hunger (Dark Battle),1.0,2.0
+CELESTIAL_IGNITION,Celestial Ignition,Exploration,Heaven,/Game/R3ALN3T/Audio/Celestial Ignition.Celestial Ignition,1.0,2.0
+CHRONICLES_OF_THE_CORE,Chronicles of the Core,Exploration,None,/Game/R3ALN3T/Audio/Chronicles of the Core.Chronicles of the Core,1.0,2.0
+CONCORD_BASTION,Concord Bastion,Exploration,Reality,/Game/R3ALN3T/Audio/Concord Bastion.Concord Bastion,1.0,2.0
+CRYSTAL_TEARS_AQUA_VARIATION,Crystal Tears (Aqua Variation),Theme,None,/Game/R3ALN3T/Audio/Crystal Tears (Aqua Variation).Crystal Tears (Aqua Variation),1.0,2.0
+DATA_EXTRACTION,Data Extraction,Exploration,Cyberspace,/Game/R3ALN3T/Audio/Data Extraction.Data Extraction,1.0,2.0
+DATA_SURGE_DIGITAL_ANIME,Data Surge (Digital Anime),Theme,Cyberspace,/Game/R3ALN3T/Audio/Data Surge (Digital Anime).Data Surge (Digital Anime),1.0,2.0
+DELETED_SECTOR,Deleted Sector,Exploration,Reality,/Game/R3ALN3T/Audio/Deleted Sector.Deleted Sector,1.0,2.0
+DIGITAL_DECAY,Digital Decay,Exploration,Cyberspace,/Game/R3ALN3T/Audio/Digital Decay.Digital Decay,1.0,2.0
+END_GAME_SONG,END GAME Song,Exploration,None,/Game/R3ALN3T/Audio/END GAME Song.END GAME Song,1.0,2.0
+ENTANGLED_ROOTS,Entangled Roots,Exploration,None,/Game/R3ALN3T/Audio/Entangled Roots.Entangled Roots,1.0,2.0
+ENTANGLED_THORN_WOOD_ANIME,Entangled Thorn (Wood Anime),Theme,Hell,/Game/R3ALN3T/Audio/Entangled Thorn (Wood Anime).Entangled Thorn (Wood Anime),1.0,2.0
+EXPLOIT_LOOP,Exploit Loop,Exploration,None,/Game/R3ALN3T/Audio/Exploit Loop.Exploit Loop,1.0,2.0
+FACTORY_SECTOR_9,Factory Sector 9,Exploration,Reality,/Game/R3ALN3T/Audio/Factory Sector 9.Factory Sector 9,1.0,2.0
+FORTRESS_OF_SOLITUDE,Fortress of Solitude,Exploration,None,/Game/R3ALN3T/Audio/Fortress of Solitude.Fortress of Solitude,1.0,2.0
+FREE_GRID_CURRENT,Free Grid Current,Exploration,Reality,/Game/R3ALN3T/Audio/Free Grid Current.Free Grid Current,1.0,2.0
+IGNITION_SOUL_FIRE_ANIME,Ignition Soul (Fire Anime),Theme,None,/Game/R3ALN3T/Audio/Ignition Soul (Fire Anime).Ignition Soul (Fire Anime),1.0,2.0
+INFERNAL_AWAKENING_FIRE_VARIATION,Infernal Awakening (Fire Variation),Theme,Hell,/Game/R3ALN3T/Audio/Infernal Awakening (Fire Variation).Infernal Awakening (Fire Variation),1.0,2.0
+INFERNAL_OVERDRIVE_FIRE_ANIME,Infernal Overdrive (Fire Anime),Theme,Hell,/Game/R3ALN3T/Audio/Infernal Overdrive (Fire Anime).Infernal Overdrive (Fire Anime),1.0,2.0
+INFERNAL_RECKONING,Infernal Reckoning,Exploration,Hell,/Game/R3ALN3T/Audio/Infernal Reckoning.Infernal Reckoning,1.0,2.0
+INFERNAL_RESONANCE_FIRE_ANIME,Infernal Resonance (Fire Anime),Theme,Hell,/Game/R3ALN3T/Audio/Infernal Resonance (Fire Anime).Infernal Resonance (Fire Anime),1.0,2.0
+INFERNAL_VANGUARD,Infernal Vanguard,Exploration,Hell,/Game/R3ALN3T/Audio/Infernal Vanguard.Infernal Vanguard,1.0,2.0
+INFERNO_SIEGE_FIRE_BATTLE,Inferno Siege (Fire Battle),Battle,Hell,/Game/R3ALN3T/Audio/Inferno Siege (Fire Battle).Inferno Siege (Fire Battle),1.0,2.0
+IRON_BASTION_METAL_ANIME,Iron Bastion (Metal Anime),Theme,None,/Game/R3ALN3T/Audio/Iron Bastion (Metal Anime).Iron Bastion (Metal Anime),1.0,2.0
+IRON_ENDURANCE,Iron Endurance,Exploration,None,/Game/R3ALN3T/Audio/Iron Endurance.Iron Endurance,1.0,2.0
+IRON_FORTRESS_METAL_BATTLE,Iron Fortress (Metal Battle),Battle,None,/Game/R3ALN3T/Audio/Iron Fortress (Metal Battle).Iron Fortress (Metal Battle),1.0,2.0
+KERNEL_PANIC_DIGITAL_VARIATION,Kernel Panic (Digital Variation),Theme,Cyberspace,/Game/R3ALN3T/Audio/Kernel Panic (Digital Variation).Kernel Panic (Digital Variation),1.0,2.0
+LEGACY_OF_THE_ELEMENTS,Legacy of the Elements,Exploration,None,/Game/R3ALN3T/Audio/Legacy of the Elements.Legacy of the Elements,1.0,2.0
+LOGIC_BREACH_DIGITAL_BATTLE,Logic Breach (Digital Battle),Battle,Cyberspace,/Game/R3ALN3T/Audio/Logic Breach (Digital Battle).Logic Breach (Digital Battle),1.0,2.0
+MONOLITH_PROTOCOL,Monolith Protocol,Exploration,None,/Game/R3ALN3T/Audio/Monolith Protocol.Monolith Protocol,1.0,2.0
+NEURAL_HEMISPHERE,Neural Hemisphere,Exploration,Cyberspace,/Game/R3ALN3T/Audio/Neural Hemisphere.Neural Hemisphere,1.0,2.0
+NEURAL_NETWORK_PROTOCOL_DARK_INDUSTRIAL_REMIX,Neural Network Protocol (Dark Industrial Remix),Theme,Cyberspace,/Game/R3ALN3T/Audio/Neural Network Protocol (Dark Industrial Remix).Neural Network Protocol (Dark Industrial Remix),1.0,2.0
+NEURAL_NETWORK_PROTOCOL_ELECTRICAL_SURGE_EDIT,Neural Network Protocol (Electrical Surge Edit),Theme,Cyberspace,/Game/R3ALN3T/Audio/Neural Network Protocol (Electrical Surge Edit).Neural Network Protocol (Electrical Surge Edit),1.0,2.0
+NEURAL_NETWORK_PROTOCOL_PURE_ORCHESTRAL_EDIT,Neural Network Protocol (Pure Orchestral Edit),Theme,Cyberspace,/Game/R3ALN3T/Audio/Neural Network Protocol (Pure Orchestral Edit).Neural Network Protocol (Pure Orchestral Edit),1.0,2.0
+NEURAL_NETWORK_PROTOCOL_STATIC_INTERFERENCE_EDIT,Neural Network Protocol (Static Interference Edit),Theme,Cyberspace,/Game/R3ALN3T/Audio/Neural Network Protocol (Static Interference Edit).Neural Network Protocol (Static Interference Edit),1.0,2.0
+NEURAL_NETWORK_PROTOCOL,Neural Network Protocol,Exploration,Cyberspace,/Game/R3ALN3T/Audio/Neural Network Protocol.Neural Network Protocol,1.0,2.0
+NEURAL_OVERLOAD,Neural Overload,Exploration,Cyberspace,/Game/R3ALN3T/Audio/Neural Overload.Neural Overload,1.0,2.0
+NEURAL_OVERRIDE,Neural Override,Exploration,Cyberspace,/Game/R3ALN3T/Audio/Neural Override.Neural Override,1.0,2.0
+NEURO_SYNC_DEPTH,Neuro-Sync Depth,Exploration,None,/Game/R3ALN3T/Audio/Neuro-Sync Depth.Neuro-Sync Depth,1.0,2.0
+OCEANIC_LEGEND,Oceanic Legend,Exploration,None,/Game/R3ALN3T/Audio/Oceanic Legend.Oceanic Legend,1.0,2.0
+PATH_OF_THE_VOYAGER,Path of the Voyager,Exploration,None,/Game/R3ALN3T/Audio/Path of the Voyager.Path of the Voyager,1.0,2.0
+SANCTUM_OF_LIGHT,Sanctum of Light,Exploration,Heaven,/Game/R3ALN3T/Audio/Sanctum of Light.Sanctum of Light,1.0,2.0
+SHADOW_HUNGER_DARK_VARIATION,Shadow Hunger (Dark Variation),Theme,Hell,/Game/R3ALN3T/Audio/Shadow Hunger (Dark Variation).Shadow Hunger (Dark Variation),1.0,2.0
+SILICON_SHADOWS,Silicon Shadows,Exploration,Hell,/Game/R3ALN3T/Audio/Silicon Shadows.Silicon Shadows,1.0,2.0
+SILICON_VELOCITY,Silicon Velocity,Exploration,None,/Game/R3ALN3T/Audio/Silicon Velocity.Silicon Velocity,1.0,2.0
+SPATIAL_SINGULARITY,Spatial Singularity,Exploration,OuterSpace,/Game/R3ALN3T/Audio/Spatial Singularity.Spatial Singularity,1.0,2.0
+STATIC_PULSE,Static Pulse,Exploration,None,/Game/R3ALN3T/Audio/Static Pulse.Static Pulse,1.0,2.0
+SUBMERGED_MEMORY,Submerged Memory,Exploration,None,/Game/R3ALN3T/Audio/Submerged Memory.Submerged Memory,1.0,2.0
+SYNAPSE_ASCENSION,Synapse Ascension,Exploration,Cyberspace,/Game/R3ALN3T/Audio/Synapse Ascension.Synapse Ascension,1.0,2.0
+SYNAPSE_BURST_ELEC_ANIME,Synapse Burst (Elec Anime),Theme,Cyberspace,/Game/R3ALN3T/Audio/Synapse Burst (Elec Anime).Synapse Burst (Elec Anime),1.0,2.0
+SYNAPSE_SHOCK,Synapse Shock,Exploration,Cyberspace,/Game/R3ALN3T/Audio/Synapse Shock.Synapse Shock,1.0,2.0
+SYSTEM_LOGIC,System Logic,Exploration,Cyberspace,/Game/R3ALN3T/Audio/System Logic.System Logic,1.0,2.0
+THE_ARCHITECT_S_CODE,The Architect's Code,Exploration,None,/Game/R3ALN3T/Audio/The Architect's Code.The Architect's Code,1.0,2.0
+THE_DEEP_HUNGER,The Deep Hunger,Exploration,Hell,/Game/R3ALN3T/Audio/The Deep Hunger.The Deep Hunger,1.0,2.0
+THORNED_KINGDOM,Thorned Kingdom,Exploration,Hell,/Game/R3ALN3T/Audio/Thorned Kingdom.Thorned Kingdom,1.0,2.0
+THORNED_REQUIEM_WOOD_VARIATION,Thorned Requiem (Wood Variation),Theme,Hell,/Game/R3ALN3T/Audio/Thorned Requiem (Wood Variation).Thorned Requiem (Wood Variation),1.0,2.0
+TIDAL_ONSLAUGHT_AQUA_BATTLE,Tidal Onslaught (Aqua Battle),Battle,None,/Game/R3ALN3T/Audio/Tidal Onslaught (Aqua Battle).Tidal Onslaught (Aqua Battle),1.0,2.0
+TIDES_OF_GRIEF,Tides of Grief,Exploration,None,/Game/R3ALN3T/Audio/Tides of Grief.Tides of Grief,1.0,2.0
+UNSTOPPABLE_SPIRIT,Unstoppable Spirit,Exploration,None,/Game/R3ALN3T/Audio/Unstoppable Spirit.Unstoppable Spirit,1.0,2.0
+VENOMOUS_THICKET_WOOD_BATTLE,Venomous Thicket (Wood Battle),Battle,None,/Game/R3ALN3T/Audio/Venomous Thicket (Wood Battle).Venomous Thicket (Wood Battle),1.0,2.0
+VOID_COLLAPSE_NULL_BATTLE,Void Collapse (Null Battle),Battle,Hell,/Game/R3ALN3T/Audio/Void Collapse (Null Battle).Void Collapse (Null Battle),1.0,2.0
+VOID_ECHO_NULL_ANIME,Void Echo (Null Anime),Theme,Hell,/Game/R3ALN3T/Audio/Void Echo (Null Anime).Void Echo (Null Anime),1.0,2.0
+VOID_RUNNER,Void Runner,Exploration,Hell,/Game/R3ALN3T/Audio/Void Runner.Void Runner,1.0,2.0
+VOLT_SURGE_ELEC_VARIATION,Volt Surge (Elec Variation),Theme,None,/Game/R3ALN3T/Audio/Volt Surge (Elec Variation).Volt Surge (Elec Variation),1.0,2.0
+WANDERER_S_SILENCE,Wanderer's Silence,Exploration,None,/Game/R3ALN3T/Audio/Wanderer's Silence.Wanderer's Silence,1.0,2.0
+ZERO_POINT_NULL_VARIATION,Zero Point (Null Variation),Theme,Hell,/Game/R3ALN3T/Audio/Zero Point (Null Variation).Zero Point (Null Variation),1.0,2.0

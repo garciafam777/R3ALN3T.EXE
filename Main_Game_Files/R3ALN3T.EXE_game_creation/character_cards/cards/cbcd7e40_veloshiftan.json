@@ -1,0 +1,25 @@
+{
+  "id": "cbcd7e40",
+  "name": "Veloshiftan the Soul Forge",
+  "short_name": "Veloshiftan",
+  "tier": "OMEGA",
+  "element": "Water",
+  "type": "Mechanical",
+  "faction": "Celestial Order",
+  "stats": {
+    "hp": 1864,
+    "atk": 265,
+    "rapid": 150,
+    "charge": 225,
+    "def": 157
+  },
+  "programs": [
+    "Tidal Break",
+    "Tidal Lance",
+    "Tidal Wave"
+  ],
+  "description": "A OMEGA-tier Water-aligned Mechanical of the Celestial Order.",
+  "color_primary": "#6a592c",
+  "color_accent": "#59ba06",
+  "generated": "2026-06-30T02:11:13.258273"
+}

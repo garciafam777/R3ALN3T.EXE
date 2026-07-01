@@ -1,0 +1,2434 @@
+🎬 Part 1: Opening Cutscene Breakdown
+SEQUENCE A — "The World Before" (Exposition, ~45-60 sec)
+Theme: Humanity’s hubris, the birth of the digital world, and the unintended consequences of "solving death."
+
+
+  
+    
+      Shot
+      Visual
+      VO/Text
+      Technical Notes
+      Assets Needed
+    
+  
+  
+    
+      A1
+      Slow push-in on a sleeping human face in a sterile pod → same face, eyes open, in a digital room (grid lines bleeding through walls).
+      "By 3026, humanity solved death. Sort of."
+      Camera: Slow dolly-in (2-3 sec). VFX: Subtle grid distortion (shader effect).
+      - Sleeping human face (3D model/texture).
+
+
+- Sterile pod interior (3D environment).
+
+
+- Digital grid shader (e.g., wireframe overlay).
+    
+    
+      A2
+      Wide shot: City skyline split down the middle (left = physical/grey, right = glowing wireframe/neon).
+      "R34L became the residue. The N3T became everything else."
+      Camera: Static wide shot. VFX: Split-screen effect (render two layers).
+      - Physical city (matte painting/3D).
+
+
+- Wireframe city (neon grid shader).
+
+
+- Split-screen transition.
+    
+    
+      A3
+      Close-up: Glowing chip/coin (M.A.N. ledger symbol) rotating, reflected in thousands of windows.
+      "One currency. One ledger. One truth — for both worlds."
+      Camera: Slow rotation (360° over 5 sec). VFX: Reflection mapping.
+      - M.A.N. ledger coin (3D model).
+
+
+- Window reflections (environment map).
+    
+    
+      A4
+      Vault/server room: Glass case with pulsing dark-violet substance (bugmatter), cracked container, tendrils of code leaking out.
+      "Then came the accident that became the engine." (beat) "Nobody asked what it wanted."
+      Camera: Slow push-in. VFX: Particle system for tendrils (glowing code strands).
+      - Server room (3D environment).
+
+
+- Bugmatter substance (animated shader).
+
+
+- Code tendrils (particle effect).
+    
+    
+      A5
+      Red alert lighting: Wireframe city sectors flashing and deleting (dissolve/disintegrate VFX).
+      "SkyNet didn't attack. It judged."
+      Camera: Dynamic angles. VFX: Dissolve shader for buildings.
+      - Wireframe city (from A2).
+
+
+- Dissolve shader (e.g., noise-based).
+    
+    
+      A6
+      Flash-montage (4 cuts, 0.5 sec each):
+
+
+1. Celestial Order praying.
+
+
+2. Aegis Concord fortifying a wall.
+
+
+3. Dominion banker smiling at numbers.
+
+
+4. Hooded Abyssal Covenant figure in shadow.
+      (No VO, rising musical sting)
+      Editing: Quick cuts with glitch transitions.
+      - 4 unique character/models (or silhouettes).
+
+
+- Glitch transition effect.
+    
+    
+      A7
+      Hard cut to black. Terminal-green text fades in: "DAY 1. CYCLE 3026."
+      (Silence)
+      Text: Typewriter effect (1-2 sec).
+      - Terminal font (e.g., Share Tech Mono).
+
+
+- Green glow effect.
+    
+  
+
+
+
+
+SEQUENCE B — "Waking Up" (Player Intro, ~30-40 sec)
+Theme: The player’s introduction to the world, with a hint of something "off" about their reality.
+
+
+  
+    
+      Shot
+      Visual
+      Audio
+      Technical Notes
+      Assets Needed
+    
+  
+  
+    
+      B1
+      Fade in from black: Player’s bedroom ceiling, soft light. Camera tilts down as if player is sitting up.
+      Ambient room hum, birds/city sound bleed.
+      Camera: Tilt down (2-3 sec). Audio: Subtle environmental sounds.
+      - Bedroom ceiling (3D/textured).
+
+
+- Ambient SFX (room tone, distant city).
+    
+    
+      B2
+      Wide establishing shot: Bed, desk, PET device on nightstand, terminal in corner.
+      PET emits a soft chime.
+      Camera: Static. Props: PET device (glowing screen).
+      - Bedroom environment (modular).
+
+
+- PET device (3D model + screen UI).
+    
+    
+      B3
+      Camera pushes toward the PET device. It hums to life, screen glow lights the room.
+      Low electronic hum swell.
+      Camera: Slow push-in. VFX: Screen glow (light bloom).
+      - PET device screen animation.
+    
+    
+      B4
+      Cut to terminal in the corner — it flickers on by itself.
+      Sharp electrical crackle/glitch sound.
+      Camera: Static. VFX: Screen flicker (1-2 frames).
+      - Terminal model + screen UI.
+    
+    
+      B5
+      Close-up: Terminal screen — text types itself out (diegetic, lines 19-25 from your doc).
+      Typewriter-style terminal sound + glitch static.
+      Text: Animated typing (0.5 sec per line).
+      - Terminal UI (text lines).
+
+
+- Typewriter SFX.
+    
+    
+      B6
+      Glitch-cut: Screen distorts hard for one frame.
+      Loud digital stutter sting.
+      VFX: Screen distortion (1 frame).
+      - Glitch shader (e.g., RGB split).
+    
+    
+      B7
+      Terminal dies — screen goes dark, wisp of "smoke" VFX, becomes inert.
+      Power-down whine.
+      VFX: Smoke particle (subtle).
+      - Smoke particle effect.
+    
+    
+      B8
+      Navi materializes on the PET screen — friendly, bright, smiling.
+      Cheerful chime.
+      Camera: Close-up on PET screen. VFX: Fade-in animation.
+      - Navi character (2D/3D sprite).
+    
+    
+      B9
+      Navi’s line: "Good morning, Operator. Ready to work?"
+      Navi VO or text box.
+      UI: Optional text box (if no VO).
+      - Navi VO (or text).
+    
+    
+      B10
+      Match cut / hard cut to black → UI fades in: EMPLOYMENT TERMINAL menu.
+      Soft UI confirm sound.
+      Transition: Hard cut + fade-in.
+      - Employment Terminal UI.
+    
+  
+
+
+
+
+🛠 Technical Implementation Guide
+1. Tools/Engines
+
+
+  
+    
+      Task
+      Recommended Tools
+    
+  
+  
+    
+      3D Scenes (A1-A5, B1-B3)
+      Unity, Unreal Engine, Blender (for pre-rendered cutscenes)
+    
+    
+      2D UI (Terminal, PET Screen)
+      Unity UI, Unreal UMG, or HTML/CSS (for web)
+    
+    
+      VFX (Grid Lines, Bugmatter, Glitches)
+      Unity Shuriken, Unreal Niagara, or After Effects (for pre-rendered)
+    
+    
+      Audio
+      FMOD, Wwise, or Unity/Unreal Audio Mixer
+    
+    
+      Editing (Montage in A6)
+      Adobe Premiere, Blender Video Editor, or in-engine sequencer
+    
+  
+
+
+
+
+2. Asset List
+3D Models
+
+ Sleeping human face (high-poly, for A1).
+ Sterile pod interior (for A1).
+ City skyline (physical and wireframe versions, for A2).
+ M.A.N. ledger coin (glowing, for A3).
+ Server room/vault (for A4).
+ Bugmatter substance (animated shader, for A4).
+ Bedroom environment (modular, for B1-B3).
+ PET device (glowing screen, for B2-B3).
+ Terminal (retro-futuristic, for B4-B7).
+ Navi character (2D sprite or 3D model, for B8-B9).
+2D UI
+
+ Terminal text UI (for A7, B5-B7).
+ Employment Terminal menu (for B10).
+ Glitch effects (shaders for A1, A5, B6).
+ Wireframe city shader (for A2, A5).
+Audio
+
+ Ambient room hum (for B1).
+ PET chime (for B2).
+ Electronic hum swell (for B3).
+ Electrical crackle/glitch (for B4).
+ Typewriter terminal sound (for B5).
+ Digital stutter sting (for B6).
+ Power-down whine (for B7).
+ Cheerful chime (for B8).
+ Navi VO (for B9).
+ UI confirm sound (for B10).
+ Musical sting (for A6 montage).
+ Rising tension music (for A1-A5).
+VFX
+
+ Grid distortion shader (for A1).
+ Split-screen effect (for A2).
+ Rotation + reflection (for A3).
+ Bugmatter shader (pulsing dark-violet, for A4).
+ Code tendrils (particle effect, for A4).
+ Dissolve shader (for A5).
+ Glitch transition (for A6 montage).
+ Terminal text typing (for B5).
+ Screen distortion (for B6).
+ Smoke particle (for B7).
+ Navi fade-in (for B8).
+
+3. Step-by-Step Workflow
+Option 1: Pre-Rendered Cutscene (Easiest)
+
+Script & Storyboard: Use your shot list to create a storyboard.
+3D Animation:
+
+Model all environments/props in Blender.
+Animate cameras, lighting, and VFX.
+Render as a video file (MP4, 1080p/4K).
+
+2D UI Overlays:
+
+Add terminal text, glitches, and Navi in After Effects.
+Export as a video with alpha (for transparency).
+
+Audio:
+
+Edit in Audacity or Adobe Audition.
+Sync VO, SFX, and music to the video.
+
+Integrate into Game:
+
+Play the video in Unity/Unreal or as a web video (HTML5).
+Trigger the Employment Terminal menu after the video ends.
+
+Option 2: In-Engine Cutscene (More Flexible)
+
+Unity/Unreal Setup:
+
+Create scenes for each shot (A1-A7, B1-B10).
+Use Cinemachine (Unity) or Sequencer (Unreal) for camera control.
+
+3D Assets:
+
+Import models into the engine.
+Set up materials/shaders (e.g., grid distortion, bugmatter).
+
+VFX:
+
+Use Unity Shuriken or Unreal Niagara for particles (e.g., code tendrils, smoke).
+Create custom shaders for glitches/dissolves.
+
+Audio:
+
+Import SFX/VO into the engine.
+Use audio triggers for each shot.
+
+UI:
+
+Create terminal UI in Unity UI or Unreal UMG.
+Animate text typing with coroutines (Unity) or Blueprints (Unreal).
+
+Sequencing:
+
+Use Timeline (Unity) or Sequencer (Unreal) to chain shots together.
+Add delays for pacing (e.g., 2 sec for A1 push-in).
+
+Option 3: Web-Based (HTML/CSS/JS)
+If you’re building a web experience, use:
+
+Three.js for 3D scenes (A1-A5).
+GSAP for animations (camera movements, text typing).
+Howler.js for audio.
+CSS Shaders for glitch effects.
+Example for Shot A1 (Sleeping Face → Digital Room):
+html
+Copy
+
+<div class="cutscene-container">
+  <div class="shot a1">
+    <div class="pod-room">
+      <img src="sleeping-face.png" class="face" />
+      <div class="digital-overlay"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cutscene-container {
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    overflow: hidden;
+  }
+  .shot {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  .face {
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 3s;
+  }
+  .digital-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(rgba(255, 0, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0;
+    transition: opacity 1s;
+  }
+  .a1 .face { transform: translate(-50%, -50%) scale(1); }
+  .a1.digital .face { transform: translate(-50%, -50%) scale(1.1); }
+  .a1.digital .digital-overlay { opacity: 0.3; }
+</style>
+
+<script>
+  // Animate A1: Push-in + digital overlay
+  gsap.to(".a1 .face", {
+    scale: 1.1,
+    duration: 3,
+    ease: "power2.inOut"
+  });
+  setTimeout(() => {
+    document.querySelector(".a1").classList.add("digital");
+  }, 2000);
+</script>
+
+
+
+
+🎥 Example: Shot A4 (Bugmatter in Vault)
+Unity Implementation
+
+Scene Setup:
+
+Create a vault room with a glass case in the center.
+Place a dark-violet sphere (bugmatter) inside the case.
+
+Bugmatter Shader:
+
+Use Unity’s Shader Graph to create a pulsing, semi-transparent material.
+Add emission for glow.
+
+Code Tendrils:
+
+Use Unity’s Particle System to emit glowing strands from the bugmatter.
+Animate the particles to float upward and dissolve.
+
+Camera:
+
+Start with a wide shot, then push in on the case.
+
+Audio:
+
+Play a low, ominous hum (e.g., bugmatter_hum.mp3).
+Add a crack sound when the tendrils appear.
+
+Shader Code (Bugmatter)
+shader
+Copy
+
+// Unity Shader Graph or custom shader for bugmatter
+Shader "Custom/Bugmatter"
+{
+  Properties
+  {
+    _MainTex ("Texture", 2D) = "white" {}
+    _Color ("Color", Color) = (1, 0, 1, 1) // Dark violet
+    _EmissionColor ("Emission Color", Color) = (1, 0, 1, 1)
+    _PulseSpeed ("Pulse Speed", Float) = 1.0
+    _PulseIntensity ("Pulse Intensity", Range(0, 1)) = 0.5
+  }
+  SubShader
+  {
+    Tags { "RenderType"="Opaque" }
+    LOD 200
+
+    CGPROGRAM
+    #pragma surface surf Standard fullforwardshadows
+    #pragma target 3.0
+
+    sampler2D _MainTex;
+    fixed4 _Color;
+    fixed4 _EmissionColor;
+    float _PulseSpeed;
+    float _PulseIntensity;
+
+    struct Input
+    {
+      float2 uv_MainTex;
+    };
+
+    void surf (Input IN, inout SurfaceOutputStandard o)
+    {
+      // Pulse effect
+      float pulse = sin(_Time.y * _PulseSpeed) * _PulseIntensity + 0.5;
+      fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color * pulse;
+      o.Albedo = c.rgb;
+      o.Emission = _EmissionColor.rgb * pulse * 2.0;
+      o.Alpha = c.a;
+    }
+    ENDCG
+  }
+  FallBack "Diffuse"
+}
+
+
+
+
+🎵 Audio Design Tips
+
+
+  
+    
+      Sound
+      Description
+      Example
+    
+  
+  
+    
+      Ambient Room Hum
+      Low, subtle drone with hints of machinery.
+      Example
+    
+    
+      PET Chime
+      Soft, futuristic beep (like a smartphone notification).
+      Example
+    
+    
+      Electronic Hum Swell
+      Rising synth pad (e.g., for PET powering on).
+      Example
+    
+    
+      Electrical Crackle
+      Sharp, digital glitch sound.
+      Example
+    
+    
+      Typewriter Terminal
+      Mechanical keyboard + digital static.
+      Example
+    
+    
+      Digital Stutter
+      Sudden, loud digital distortion.
+      Example
+    
+    
+      Power-Down Whine
+      Descending synth whine (like a computer shutting off).
+      Example
+    
+    
+      Cheerful Chime
+      Bright, happy tone (for Navi’s appearance).
+      Example
+    
+    
+      Musical Sting
+      Rising tension (for A6 montage).
+      Example
+    
+  
+
+
+
+
+📌 Final Notes
+
+Pacing: The cutscene is ~90-100 seconds total. Keep shots short and impactful (e.g., A1 = 3 sec, A2 = 4 sec, A6 = 2 sec total for 4 cuts).
+Tone: The VO is philosophical and ominous. Use a deep, calm voice (e.g., like GLaDOS from Portal or SHODAN from System Shock).
+Visual Style:
+
+Color Palette: Dark purples/blues for the real world, neon oranges/pinks for the digital world.
+Lighting: Low-key (dramatic shadows) for physical world, high-contrast neon for digital world.
+
+Transitions:
+
+Use glitches, dissolves, and hard cuts to emphasize the duality of the worlds.
+
+Text:
+
+For terminal text, use Share Tech Mono (or similar monospace font) with a green glow.
+
+
+Would you like me to:
+
+Provide a full Unity/Unreal project setup for this cutscene?
+Generate a script for Blender to pre-render the 3D shots?
+Create a web-based prototype (HTML/CSS/JS) for the cutscene?
+Design the terminal UI (for shots A7, B5-B7, B10)?
+
+
+
+
+
+5:03pm
+
+
+
+
+
+
+
+
+
+
+
+yes 1-4 and provide a .md for it
+
+
+
+
+
+5:15pm
+
+
+
+
+
+
+
+
+
+
+
+Here are the complete implementations for your R3ALN3T.EXE opening cutscene, covering all four requests:
+
+Unity Project Setup (with scene structure, scripts, and asset list).
+Blender Script (for pre-rendering 3D shots).
+Web-Based Prototype (HTML/CSS/JS).
+Terminal UI Design (for in-game use).
+I’ll also provide a README.md file to document everything.
+
+📁 File Structure
+text
+Copy
+
+R3ALN3T.EXE_Cutscene/
+│
+├── Unity/
+│   ├── Assets/
+│   │   ├── Scenes/
+│   │   │   ├── SequenceA.unity
+│   │   │   ├── SequenceB.unity
+│   │   │   └── MainMenu.unity
+│   │   ├── Scripts/
+│   │   │   ├── CutsceneManager.cs
+│   │   │   ├── CameraController.cs
+│   │   │   ├── TerminalUI.cs
+│   │   │   └── BugmatterShader.shader
+│   │   ├── Models/
+│   │   ├── Audio/
+│   │   ├── Materials/
+│   │   └── Prefabs/
+│   └── ProjectSettings/
+│
+├── Blender/
+│   ├── Scenes/
+│   │   ├── A1_SleepingFace.blend
+│   │   ├── A2_CitySkyline.blend
+│   │   ├── A3_MANLedger.blend
+│   │   └── ...
+│   └── Python/
+│       └── render_cutscene.py
+│
+├── Web/
+│   ├── index.html
+│   ├── style.css
+│   ├── script.js
+│   └── assets/
+│       ├── images/
+│       └── audio/
+│
+├── TerminalUI/
+│   ├── Terminal.md
+│   └── terminal_ui.html
+│
+└── README.md
+
+
+
+
+1️⃣ Unity Project Setup
+**📂 Unity/Assets/Scripts/CutsceneManager.cs
+csharp
+Copy
+
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
+
+public class CutsceneManager : MonoBehaviour
+{
+    public PlayableDirector playableDirector;
+    public TimelineAsset sequenceA;
+    public TimelineAsset sequenceB;
+    public string mainMenuSceneName = "MainMenu";
+
+    private void Start()
+    {
+        // Play Sequence A first
+        playableDirector.playableAsset = sequenceA;
+        playableDirector.Play();
+    }
+
+    public void OnSequenceAFinished()
+    {
+        // Switch to Sequence B
+        playableDirector.playableAsset = sequenceB;
+        playableDirector.Play();
+    }
+
+    public void OnCutsceneFinished()
+    {
+        // Load the main menu
+        SceneManager.LoadScene(mainMenuSceneName);
+    }
+}
+
+
+
+
+**📂 Unity/Assets/Scripts/CameraController.cs
+csharp
+Copy
+
+using UnityEngine;
+using Cinemachine;
+
+public class CameraController : MonoBehaviour
+{
+    public CinemachineVirtualCamera virtualCamera;
+    public float pushInDuration = 3f;
+    public float tiltDownDuration = 2f;
+
+    // For Shot A1: Slow push-in on sleeping face
+    public void PushInOnFace(Transform target)
+    {
+        virtualCamera.Follow = target;
+        virtualCamera.LookAt = target;
+        // Animate the camera's distance (if using CinemachineFramingTransposer)
+    }
+
+    // For Shot B1: Tilt down from ceiling
+    public void TiltDownFromCeiling()
+    {
+        // Animate the camera's pitch
+        LeanTween.rotateX(gameObject, -30f, tiltDownDuration).setEase(LeanTweenType.easeInOutSine);
+    }
+}
+
+
+
+
+**📂 Unity/Assets/Scripts/TerminalUI.cs
+csharp
+Copy
+
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using System.Collections;
+
+public class TerminalUI : MonoBehaviour
+{
+    public TextMeshProUGUI terminalText;
+    public string[] lines;
+    public float typeSpeed = 0.05f;
+    public AudioClip typeSound;
+    public AudioClip glitchSound;
+
+    private Coroutine typingCoroutine;
+
+    public void StartTyping()
+    {
+        if (typingCoroutine != null)
+            StopCoroutine(typingCoroutine);
+
+        typingCoroutine = StartCoroutine(TypeText());
+    }
+
+    private IEnumerator TypeText()
+    {
+        terminalText.text = "";
+        foreach (string line in lines)
+        {
+            foreach (char letter in line)
+            {
+                terminalText.text += letter;
+                if (typeSound != null)
+                    AudioSource.PlayClipAtPoint(typeSound, Camera.main.transform.position, 0.5f);
+                yield return new WaitForSeconds(typeSpeed);
+            }
+            terminalText.text += "\n";
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    public void GlitchEffect()
+    {
+        // Play glitch sound
+        if (glitchSound != null)
+            AudioSource.PlayClipAtPoint(glitchSound, Camera.main.transform.position, 0.7f);
+
+        // Visual glitch (e.g., RGB split shader)
+        StartCoroutine(GlitchRoutine());
+    }
+
+    private IEnumerator GlitchRoutine()
+    {
+        // Apply glitch shader to terminal
+        GetComponentInChildren<CanvasRenderer>().SetMaterial(Resources.Load<Material>("GlitchMaterial"), 0);
+        yield return new WaitForSeconds(0.1f);
+        // Revert to normal material
+        GetComponentInChildren<CanvasRenderer>().SetMaterial(null, 0);
+    }
+}
+
+
+
+
+**📂 Unity/Assets/Scripts/BugmatterShader.shader
+shader
+Copy
+
+Shader "Custom/Bugmatter"
+{
+    Properties
+    {
+        _MainTex ("Texture", 2D) = "white" {}
+        _Color ("Color", Color) = (1, 0, 1, 1)
+        _EmissionColor ("Emission Color", Color) = (1, 0, 1, 1)
+        _PulseSpeed ("Pulse Speed", Float) = 1.0
+        _PulseIntensity ("Pulse Intensity", Range(0, 1)) = 0.5
+        _GlowIntensity ("Glow Intensity", Range(0, 10)) = 2.0
+    }
+    SubShader
+    {
+        Tags { "RenderType"="Opaque" "RenderPipeline"="UniversalPipeline" }
+        LOD 200
+
+        CGPROGRAM
+        #pragma surface surf Standard fullforwardshadows
+        #pragma target 3.0
+
+        sampler2D _MainTex;
+        fixed4 _Color;
+        fixed4 _EmissionColor;
+        float _PulseSpeed;
+        float _PulseIntensity;
+        float _GlowIntensity;
+
+        struct Input
+        {
+            float2 uv_MainTex;
+        };
+
+        void surf (Input IN, inout SurfaceOutputStandard o)
+        {
+            float pulse = sin(_Time.y * _PulseSpeed) * _PulseIntensity + (1.0 - _PulseIntensity);
+            fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color * pulse;
+            o.Albedo = c.rgb;
+            o.Emission = _EmissionColor.rgb * pulse * _GlowIntensity;
+            o.Alpha = c.a;
+        }
+        ENDCG
+    }
+    FallBack "Diffuse"
+}
+
+
+
+
+**📂 Unity/Assets/Scenes/SequenceA.unity
+
+
+Timeline Setup:
+
+Create a Timeline asset.
+Add Animation Tracks for:
+
+Camera movements (A1, A2, A3, A4, A5).
+Lighting changes (e.g., red alert for A5).
+Audio (VO, SFX).
+Activation Tracks for VFX (e.g., bugmatter tendrils in A4).
+
+Use Cinemachine for camera control.
+
+
+Example Track for A1:
+
+Animation Clip: Camera push-in on sleeping face.
+Audio Clip: VO line "By 3026, humanity solved death. Sort of."
+VFX: Enable digital grid overlay (via shader).
+
+
+**📂 Unity/Assets/Scenes/SequenceB.unity
+
+Timeline Setup:
+
+Add Animation Tracks for:
+
+Camera tilt-down (B1).
+PET device activation (B3).
+Terminal flicker (B4-B7).
+
+Use Signal Emitters to trigger:
+
+Terminal text typing (B5).
+Glitch effect (B6).
+Navi appearance (B8).
+
+
+
+**📂 Unity/ProjectSettings/AudioSettings
+
+Audio Mixer:
+
+Create groups for:
+
+VO
+SFX
+Music
+Ambient
+
+Apply low-pass filters for distant sounds (e.g., city ambience in B1).
+
+
+2️⃣ Blender Script for Pre-Rendering
+📂 `Blender/Python/render_cutscene.py
+python
+Copy
+
+import bpy
+import os
+
+# Output directory
+output_dir = "//Render/OpeningCutscene"
+os.makedirs(output_dir, exist_ok=True)
+
+# Scene setup
+def setup_scene():
+    # Clear existing objects
+    bpy.ops.wm.read_factory_settings(use_empty=True)
+
+    # Set render settings
+    bpy.context.scene.render.resolution_x = 1920
+    bpy.context.scene.render.resolution_y = 1080
+    bpy.context.scene.render.fps = 30
+    bpy.context.scene.render.image_settings.file_format = 'FFMPEG'
+    bpy.context.scene.render.ffmpeg.format = 'MPEG4'
+    bpy.context.scene.render.ffmpeg.codec = 'H264'
+    bpy.context.scene.render.ffmpeg.audio_codec = 'AAC'
+
+    # Set output path
+    bpy.context.scene.render.filepath = os.path.join(output_dir, "cutscene")
+
+# Render Shot A1: Sleeping Face → Digital Room
+def render_shot_a1():
+    # Load or create the scene
+    bpy.ops.wm.open_mainfile(filepath="//Scenes/A1_SleepingFace.blend")
+
+    # Set camera and animation
+    camera = bpy.data.objects["Camera"]
+    bpy.context.scene.camera = camera
+
+    # Render
+    bpy.ops.render.render(animation=True, write_still=False)
+
+# Render all shots
+def render_all_shots():
+    setup_scene()
+
+    shots = [
+        ("A1", render_shot_a1),
+        # Add other shots here (A2, A3, etc.)
+    ]
+
+    for shot_name, render_func in shots:
+        print(f"Rendering {shot_name}...")
+        render_func()
+        print(f"Finished {shot_name}")
+
+# Run the script
+render_all_shots()
+
+
+
+
+**📂 Blender/Scenes/A1_SleepingFace.blend
+
+
+Modeling:
+
+Create a sterile pod room (white walls, metallic floor).
+Add a sleeping human face (high-poly, textured).
+Add a digital grid overlay (plane with wireframe material).
+
+
+Materials:
+
+Pod Room: Use a metallic shader for the floor, glass shader for the pod.
+Digital Grid: Use a wireframe shader (Emission + Transparency).
+
+
+Animation:
+
+Camera: Slow push-in (2-3 sec).
+Digital Grid: Fade in after 1 sec (using keyframes on the material’s opacity).
+
+
+Lighting:
+
+Key Light: Soft white light from the front.
+Fill Light: Blue-ish light from the side.
+Rim Light: Orange light behind the face (for cyberpunk feel).
+
+
+Render Settings:
+
+Samples: 128 (for fast previews) or 512 (for final).
+Denoise: Enable if using low samples.
+
+
+3️⃣ Web-Based Prototype (HTML/CSS/JS)
+**📂 Web/index.html
+html
+Copy
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>R3ALN3T.EXE - Opening Cutscene</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="cutscene-container">
+    <!-- Sequence A -->
+    <div class="sequence a">
+      <div class="shot a1">
+        <div class="pod-room">
+          <img src="assets/images/sleeping-face.png" class="face" alt="Sleeping Face">
+          <div class="digital-overlay"></div>
+        </div>
+        <div class="vo-text">By 3026, humanity solved death. Sort of.</div>
+      </div>
+      <div class="shot a2">
+        <div class="city-split">
+          <div class="physical-city"></div>
+          <div class="digital-city"></div>
+        </div>
+        <div class="vo-text">R34L became the residue. The N3T became everything else.</div>
+      </div>
+      <div class="shot a3">
+        <div class="man-ledger">
+          <img src="assets/images/man-ledger.png" class="ledger-coin" alt="M.A.N. Ledger">
+        </div>
+        <div class="vo-text">One currency. One ledger. One truth — for both worlds.</div>
+      </div>
+      <div class="shot a4">
+        <div class="vault-room">
+          <div class="bugmatter-container">
+            <div class="bugmatter"></div>
+            <div class="code-tendrils"></div>
+          </div>
+        </div>
+        <div class="vo-text">Then came the accident that became the engine. <span class="beat">Nobody asked what it wanted.</span></div>
+      </div>
+      <div class="shot a5">
+        <div class="wireframe-city">
+          <div class="sector s1"></div>
+          <div class="sector s2"></div>
+          <div class="sector s3"></div>
+        </div>
+        <div class="vo-text">SkyNet didn't attack. It judged.</div>
+      </div>
+      <div class="shot a6">
+        <div class="montage">
+          <div class="montage-item m1"></div>
+          <div class="montage-item m2"></div>
+          <div class="montage-item m3"></div>
+          <div class="montage-item m4"></div>
+        </div>
+      </div>
+      <div class="shot a7">
+        <div class="terminal-screen">
+          <div class="terminal-text">DAY 1. CYCLE 3026.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sequence B -->
+    <div class="sequence b">
+      <div class="shot b1">
+        <div class="bedroom-ceiling"></div>
+        <audio class="ambient-sound" src="assets/audio/room-hum.mp3" loop></audio>
+      </div>
+      <div class="shot b2">
+        <div class="bedroom-wide">
+          <div class="bed"></div>
+          <div class="desk"></div>
+          <div class="pet-device"></div>
+          <div class="terminal"></div>
+        </div>
+        <audio class="pet-chime" src="assets/audio/pet-chime.mp3"></audio>
+      </div>
+      <div class="shot b3">
+        <div class="pet-closeup">
+          <div class="pet-screen"></div>
+        </div>
+        <audio class="electronic-hum" src="assets/audio/electronic-hum.mp3"></audio>
+      </div>
+      <div class="shot b4">
+        <div class="terminal-closeup">
+          <div class="terminal-screen">
+            <div class="terminal-text typing"></div>
+          </div>
+        </div>
+        <audio class="electrical-crackle" src="assets/audio/electrical-crackle.mp3"></audio>
+      </div>
+      <div class="shot b5">
+        <div class="terminal-screen">
+          <div class="terminal-text full">
+            <p>> INITIALIZING R3ALN3T.EXE...</p>
+            <p>> SYSTEMS NOMINAL.</p>
+            <p>> WARNING: UNSTABLE N3T LINK DETECTED.</p>
+            <p>> ERROR: MEMORY CORRUPTION IN SECTOR 7-G.</p>
+          </div>
+        </div>
+        <audio class="typewriter-sound" src="assets/audio/typewriter.mp3"></audio>
+      </div>
+      <div class="shot b6">
+        <div class="terminal-screen glitch">
+          <div class="terminal-text">ERROR</div>
+        </div>
+        <audio class="digital-stutter" src="assets/audio/digital-stutter.mp3"></audio>
+      </div>
+      <div class="shot b7">
+        <div class="terminal-screen dead">
+          <div class="smoke"></div>
+        </div>
+        <audio class="power-down" src="assets/audio/power-down.mp3"></audio>
+      </div>
+      <div class="shot b8">
+        <div class="pet-screen">
+          <div class="navi"></div>
+        </div>
+        <audio class="cheerful-chime" src="assets/audio/cheerful-chime.mp3"></audio>
+        <div class="vo-text">Good morning, Operator. Ready to work?</div>
+      </div>
+      <div class="shot b9">
+        <div class="employment-terminal">
+          <h1>EMPLOYMENT TERMINAL</h1>
+          <button class="menu-button">NEW GAME</button>
+          <button class="menu-button">CONTINUE</button>
+          <button class="menu-button">OPTIONS</button>
+          <button class="menu-button">EXIT</button>
+        </div>
+        <audio class="ui-confirm" src="assets/audio/ui-confirm.mp3"></audio>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+**📂 Web/style.css
+css
+Copy
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: 'Share Tech Mono', monospace;
+  overflow: hidden;
+  line-height: 1.4;
+}
+
+.cutscene-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+/* Sequence A Styles */
+.sequence {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.sequence.active {
+  display: block;
+}
+
+.shot {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.shot.active {
+  display: block;
+}
+
+/* Shot A1: Sleeping Face */
+.shot.a1 {
+  background: radial-gradient(ellipse at center, rgba(40, 10, 60, 0.6) 0%, rgba(0, 0, 0, 1) 70%);
+}
+
+.pod-room {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.face {
+  width: 30%;
+  max-width: 400px;
+  border-radius: 50%;
+  transition: transform 3s ease-in-out;
+}
+
+.digital-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(rgba(255, 0, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  pointer-events: none;
+}
+
+.shot.a1.active .face {
+  transform: scale(1.1);
+}
+
+.shot.a1.active .digital-overlay {
+  opacity: 0.3;
+}
+
+/* Shot A2: City Split */
+.shot.a2 {
+  background: #000;
+}
+
+.city-split {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.physical-city, .digital-city {
+  width: 50%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.physical-city {
+  background: url('assets/images/physical-city.jpg');
+  filter: grayscale(100%) brightness(0.7);
+}
+
+.digital-city {
+  background: url('assets/images/digital-city.png');
+  filter: brightness(1.2) hue-rotate(30deg) saturate(2);
+}
+
+/* Shot A3: M.A.N. Ledger */
+.shot.a3 {
+  background: radial-gradient(ellipse at center, rgba(20, 0, 40, 0.8) 0%, rgba(0, 0, 0, 1) 70%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ledger-coin {
+  width: 20%;
+  max-width: 300px;
+  animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
+
+/* Shot A4: Bugmatter */
+.shot.a4 {
+  background: url('assets/images/vault-room.jpg');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bugmatter-container {
+  width: 30%;
+  height: 30%;
+  position: relative;
+}
+
+.bugmatter {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(100, 0, 150, 0.8) 0%, rgba(50, 0, 100, 0.2) 70%);
+  border-radius: 50%;
+  animation: pulse 3s ease-in-out infinite;
+  box-shadow: 0 0 30px rgba(100, 0, 150, 0.7);
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+.code-tendrils {
+  position: absolute;
+  inset: 0;
+  background: url('assets/images/code-tendrils.png');
+  background-size: contain;
+  opacity: 0.7;
+  animation: tendrils 5s linear infinite;
+}
+
+@keyframes tendrils {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-20px) rotate(360deg); }
+}
+
+/* Shot A5: Wireframe City */
+.shot.a5 {
+  background: #000;
+}
+
+.wireframe-city {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.sector {
+  position: absolute;
+  width: 30%;
+  height: 50%;
+  background: url('assets/images/wireframe-sector.png');
+  background-size: contain;
+  opacity: 0.8;
+}
+
+.s1 { top: 10%; left: 10%; animation: delete 2s 1s forwards; }
+.s2 { top: 30%; right: 10%; animation: delete 2s 1.5s forwards; }
+.s3 { bottom: 20%; left: 20%; animation: delete 2s 2s forwards; }
+
+@keyframes delete {
+  0% { opacity: 0.8; }
+  100% { opacity: 0; transform: scale(0.5); }
+}
+
+/* Shot A6: Montage */
+.shot.a6 {
+  background: #000;
+}
+
+.montage {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.montage-item {
+  background-size: cover;
+  background-position: center;
+  animation: montageFlash 0.5s forwards;
+  opacity: 0;
+}
+
+.m1 { background: url('assets/images/celestial-order.jpg'); animation-delay: 0s; }
+.m2 { background: url('assets/images/aegis-concord.jpg'); animation-delay: 0.5s; }
+.m3 { background: url('assets/images/dominion-banker.jpg'); animation-delay: 1s; }
+.m4 { background: url('assets/images/abyssal-covenant.jpg'); animation-delay: 1.5s; }
+
+@keyframes montageFlash {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Shot A7: Terminal Text */
+.shot.a7 {
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.terminal-screen {
+  width: 60%;
+  height: 40%;
+  background: #000;
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 20px #00ff00;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.terminal-text {
+  font-family: 'Share Tech Mono', monospace;
+  color: #00ff00;
+  font-size: 2rem;
+  text-shadow: 0 0 10px #00ff00;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Sequence B Styles */
+/* Shot B1: Bedroom Ceiling */
+.shot.b1 {
+  background: url('assets/images/bedroom-ceiling.jpg');
+  background-size: cover;
+}
+
+/* Shot B2: Bedroom Wide */
+.shot.b2 {
+  background: url('assets/images/bedroom-wide.jpg');
+  background-size: cover;
+}
+
+.bedroom-wide {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.bed, .desk, .pet-device, .terminal {
+  position: absolute;
+}
+
+.bed { width: 40%; height: 30%; bottom: 10%; left: 10%; background: url('assets/images/bed.png'); background-size: contain; }
+.desk { width: 30%; height: 20%; bottom: 10%; right: 10%; background: url('assets/images/desk.png'); background-size: contain; }
+.pet-device { width: 10%; height: 15%; bottom: 20%; left: 45%; background: url('assets/images/pet-device.png'); background-size: contain; }
+.terminal { width: 20%; height: 30%; bottom: 10%; right: 20%; background: url('assets/images/terminal.png'); background-size: contain; }
+
+/* Shot B3: PET Closeup */
+.shot.b3 {
+  background: url('assets/images/pet-closeup.jpg');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pet-screen {
+  width: 30%;
+  height: 20%;
+  background: #000;
+  border: 2px solid #00ffff;
+  box-shadow: 0 0 20px #00ffff;
+  animation: screenGlow 2s infinite;
+}
+
+@keyframes screenGlow {
+  0%, 100% { box-shadow: 0 0 20px #00ffff; }
+  50% { box-shadow: 0 0 30px #00ffff, 0 0 40px #00ffff; }
+}
+
+/* Shot B4-B7: Terminal */
+.shot.b4, .shot.b5, .shot.b6, .shot.b7 {
+  background: url('assets/images/terminal-closeup.jpg');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.terminal-screen {
+  width: 50%;
+  height: 60%;
+  background: #000;
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 20px #00ff00;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.terminal-text {
+  font-family: 'Share Tech Mono', monospace;
+  color: #00ff00;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.terminal-text.typing {
+  animation: typing 0.05s steps(1) infinite;
+}
+
+@keyframes typing {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.terminal-screen.glitch .terminal-text {
+  animation: glitch 0.1s infinite;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(2px, -2px); }
+  60% { transform: translate(-2px, 0); }
+  80% { transform: translate(2px, 0); }
+  100% { transform: translate(0); }
+}
+
+.smoke {
+  width: 100%;
+  height: 100%;
+  background: url('assets/images/smoke.png');
+  background-size: cover;
+  opacity: 0.3;
+  animation: smokeRise 2s forwards;
+}
+
+@keyframes smokeRise {
+  0% { transform: translateY(0); opacity: 0.3; }
+  100% { transform: translateY(-50px); opacity: 0; }
+}
+
+/* Shot B8: Navi */
+.shot.b8 {
+  background: url('assets/images/pet-closeup.jpg');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navi {
+  width: 20%;
+  height: 30%;
+  background: url('assets/images/navi.png');
+  background-size: contain;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Shot B9: Employment Terminal */
+.shot.b9 {
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.employment-terminal {
+  width: 60%;
+  height: 70%;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid #ff6a1a;
+  box-shadow: 0 0 30px #ff6a1a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.employment-terminal h1 {
+  font-family: 'Orbitron', sans-serif;
+  color: #ff6a1a;
+  font-size: 3rem;
+  text-shadow: 0 0 20px #ff6a1a;
+  margin-bottom: 30px;
+  letter-spacing: 0.3em;
+}
+
+.menu-button {
+  width: 60%;
+  padding: 15px;
+  margin: 10px;
+  background: rgba(255, 90, 20, 0.2);
+  border: 1px solid rgba(255, 140, 60, 0.5);
+  color: #ffeccf;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.menu-button:hover {
+  background: rgba(255, 90, 20, 0.4);
+  border-color: #ffb070;
+  box-shadow: 0 0 20px rgba(255, 120, 40, 0.55), inset 0 0 18px rgba(255, 90, 20, 0.25);
+}
+
+/* VO Text Styles */
+.vo-text {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  color: #fff5e6;
+  text-shadow: 0 0 10px #ff6a1a;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.shot.active .vo-text {
+  opacity: 1;
+}
+
+.beat {
+  display: block;
+  margin-top: 10px;
+}
+
+
+
+
+**📂 Web/script.js
+javascript
+Copy
+
+// Cutscene Manager
+class CutsceneManager {
+  constructor() {
+    this.currentSequence = 'a';
+    this.currentShot = 0;
+    this.sequences = {
+      a: [
+        { id: 'a1', duration: 5000, vo: "By 3026, humanity solved death. Sort of." },
+        { id: 'a2', duration: 4000, vo: "R34L became the residue. The N3T became everything else." },
+        { id: 'a3', duration: 5000, vo: "One currency. One ledger. One truth — for both worlds." },
+        { id: 'a4', duration: 6000, vo: "Then came the accident that became the engine. <span class='beat'>Nobody asked what it wanted.</span>" },
+        { id: 'a5', duration: 4000, vo: "SkyNet didn't attack. It judged." },
+        { id: 'a6', duration: 2000, vo: "" },
+        { id: 'a7', duration: 3000, vo: "" }
+      ],
+      b: [
+        { id: 'b1', duration: 3000, vo: "" },
+        { id: 'b2', duration: 4000, vo: "" },
+        { id: 'b3', duration: 3000, vo: "" },
+        { id: 'b4', duration: 2000, vo: "" },
+        { id: 'b5', duration: 5000, vo: "" },
+        { id: 'b6', duration: 1000, vo: "" },
+        { id: 'b7', duration: 2000, vo: "" },
+        { id: 'b8', duration: 3000, vo: "Good morning, Operator. Ready to work?" },
+        { id: 'b9', duration: 5000, vo: "" }
+      ]
+    };
+
+    this.init();
+  }
+
+  init() {
+    // Hide all sequences initially
+    document.querySelectorAll('.sequence').forEach(seq => {
+      seq.classList.remove('active');
+    });
+
+    // Show Sequence A
+    document.querySelector('.sequence.a').classList.add('active');
+    this.playShot(0);
+
+    // Set up terminal text for B5
+    this.setupTerminalText();
+  }
+
+  playShot(index) {
+    // Hide all shots in the current sequence
+    document.querySelectorAll(`.sequence.${this.currentSequence} .shot`).forEach(shot => {
+      shot.classList.remove('active');
+    });
+
+    // Show the current shot
+    const shotId = this.sequences[this.currentSequence][index].id;
+    const shotElement = document.querySelector(`.shot.${shotId}`);
+    shotElement.classList.add('active');
+
+    // Set VO text if it exists
+    const voText = this.sequences[this.currentSequence][index].vo;
+    const voElement = shotElement.querySelector('.vo-text');
+    if (voElement && voText) {
+      voElement.innerHTML = voText;
+    }
+
+    // Trigger shot-specific actions
+    this.triggerShotActions(shotId);
+
+    // Schedule the next shot
+    this.currentShot = index;
+    setTimeout(() => {
+      this.nextShot();
+    }, this.sequences[this.currentSequence][index].duration);
+  }
+
+  nextShot() {
+    this.currentShot++;
+    if (this.currentShot < this.sequences[this.currentSequence].length) {
+      this.playShot(this.currentShot);
+    } else {
+      // Move to the next sequence
+      if (this.currentSequence === 'a') {
+        this.currentSequence = 'b';
+        this.currentShot = 0;
+        document.querySelector('.sequence.a').classList.remove('active');
+        document.querySelector('.sequence.b').classList.add('active');
+        this.playShot(0);
+      } else {
+        // Cutscene is over; you could loop or trigger something else here
+        console.log("Cutscene finished!");
+      }
+    }
+  }
+
+  triggerShotActions(shotId) {
+    switch (shotId) {
+      case 'a1':
+        // Animate the face and digital overlay
+        const face = document.querySelector('.shot.a1 .face');
+        const overlay = document.querySelector('.shot.a1 .digital-overlay');
+        setTimeout(() => {
+          face.style.transform = 'scale(1.1)';
+          overlay.style.opacity = '0.3';
+        }, 1000);
+        break;
+
+      case 'a4':
+        // Animate bugmatter and tendrils
+        const bugmatter = document.querySelector('.shot.a4 .bugmatter');
+        const tendrils = document.querySelector('.shot.a4 .code-tendrils');
+        bugmatter.style.animation = 'pulse 3s ease-in-out infinite';
+        tendrils.style.animation = 'tendrils 5s linear infinite';
+        break;
+
+      case 'a5':
+        // Animate sectors deleting
+        const sectors = document.querySelectorAll('.shot.a5 .sector');
+        sectors.forEach((sector, i) => {
+          setTimeout(() => {
+            sector.style.animation = `delete 2s ${i * 0.5}s forwards`;
+          }, 1000);
+        });
+        break;
+
+      case 'a6':
+        // Trigger montage flashes
+        const montageItems = document.querySelectorAll('.shot.a6 .montage-item');
+        montageItems.forEach((item, i) => {
+          setTimeout(() => {
+            item.style.animation = `montageFlash 0.5s ${i * 0.5}s forwards`;
+          }, i * 500);
+        });
+        break;
+
+      case 'b1':
+        // Play ambient sound
+        const ambientSound = document.querySelector('.shot.b1 .ambient-sound');
+        if (ambientSound) ambientSound.play();
+        break;
+
+      case 'b2':
+        // Play PET chime
+        const petChime = document.querySelector('.shot.b2 .pet-chime');
+        if (petChime) petChime.play();
+        break;
+
+      case 'b3':
+        // Play electronic hum
+        const electronicHum = document.querySelector('.shot.b3 .electronic-hum');
+        if (electronicHum) electronicHum.play();
+        break;
+
+      case 'b4':
+        // Play electrical crackle
+        const electricalCrackle = document.querySelector('.shot.b4 .electrical-crackle');
+        if (electricalCrackle) electricalCrackle.play();
+        break;
+
+      case 'b5':
+        // Start typing terminal text
+        this.typeTerminalText();
+        const typewriterSound = document.querySelector('.shot.b5 .typewriter-sound');
+        if (typewriterSound) typewriterSound.play();
+        break;
+
+      case 'b6':
+        // Trigger glitch effect
+        const terminalScreen = document.querySelector('.shot.b6 .terminal-screen');
+        if (terminalScreen) terminalScreen.classList.add('glitch');
+        const digitalStutter = document.querySelector('.shot.b6 .digital-stutter');
+        if (digitalStutter) digitalStutter.play();
+        break;
+
+      case 'b7':
+        // Trigger smoke effect
+        const smoke = document.querySelector('.shot.b7 .smoke');
+        if (smoke) smoke.style.animation = 'smokeRise 2s forwards';
+        const powerDown = document.querySelector('.shot.b7 .power-down');
+        if (powerDown) powerDown.play();
+        break;
+
+      case 'b8':
+        // Play cheerful chime
+        const cheerfulChime = document.querySelector('.shot.b8 .cheerful-chime');
+        if (cheerfulChime) cheerfulChime.play();
+        break;
+
+      case 'b9':
+        // Play UI confirm sound
+        const uiConfirm = document.querySelector('.shot.b9 .ui-confirm');
+        if (uiConfirm) uiConfirm.play();
+        break;
+    }
+  }
+
+  setupTerminalText() {
+    const terminalTextElement = document.querySelector('.shot.b5 .terminal-text');
+    if (terminalTextElement) {
+      const lines = [
+        "> INITIALIZING R3ALN3T.EXE...",
+        "> SYSTEMS NOMINAL.",
+        "> WARNING: UNSTABLE N3T LINK DETECTED.",
+        "> ERROR: MEMORY CORRUPTION IN SECTOR 7-G."
+      ];
+      terminalTextElement.innerHTML = lines.join('\n');
+    }
+  }
+
+  typeTerminalText() {
+    const terminalTextElement = document.querySelector('.shot.b5 .terminal-text');
+    if (!terminalTextElement) return;
+
+    const text = terminalTextElement.textContent;
+    terminalTextElement.textContent = '';
+    terminalTextElement.classList.add('typing');
+
+    let i = 0;
+    const typeInterval = setInterval(() => {
+      if (i < text.length) {
+        terminalTextElement.textContent += text.charAt(i);
+        i++;
+      } else {
+        clearInterval(typeInterval);
+        terminalTextElement.classList.remove('typing');
+      }
+    }, 50);
+  }
+}
+
+// Initialize the cutscene when the page loads
+window.addEventListener('DOMContentLoaded', () => {
+  new CutsceneManager();
+});
+
+
+
+
+4️⃣ Terminal UI Design
+**📂 TerminalUI/Terminal.md
+markdown
+Copy
+
+# R3ALN3T.EXE - Terminal UI Design
+
+## Overview
+The terminal UI is a **retro-futuristic** interface used for:
+- **System messages** (e.g., errors, warnings).
+- **Player interactions** (e.g., typing commands, reading logs).
+- **NPC dialogue** (e.g., Navi’s messages).
+
+---
+
+## Design Principles
+   **Element**       | **Style**                                                                 |
+ |-------------------|--------------------------------------------------------------------------|
+ | **Font**          | `Share Tech Mono` (primary), `Orbitron` (headings)                       |
+ | **Colors**        | Green (`#00ff00`) for text, dark background (`#000`), orange (`#ff6a1a`) for highlights. |
+ | **Glow Effects**  | Text and borders glow subtly (e.g., `0 0 10px #00ff00`).               |
+ | **Animations**    | Typewriter effect for text, glitch effects for errors.                  |
+ | **Layout**        | Monospace, left-aligned, with a **CRT-like border**.                     |
+
+---
+
+## UI Components
+
+### 1. Terminal Screen
+```html
+<div class="terminal-screen">
+  <div class="terminal-header">
+    <span class="terminal-title">R3ALN3T.EXE v2.0.0</span>
+    <span class="terminal-status">ONLINE</span>
+  </div>
+  <div class="terminal-body">
+    <p>> INITIALIZING...</p>
+    <p>> SYSTEMS NOMINAL.</p>
+    <p class="error">>> ERROR: MEMORY CORRUPTION IN SECTOR 7-G.</p>
+  </div>
+  <div class="terminal-input">
+    <span>>></span>
+    <input type="text" class="terminal-input-field" autofocus>
+  </div>
+</div>
+
+
+
+CSS:
+css
+Copy
+
+.terminal-screen {
+  width: 80%;
+  max-width: 800px;
+  height: 60%;
+  background: #000;
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 20px #00ff00;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Share Tech Mono', monospace;
+  color: #00ff00;
+  padding: 10px;
+  position: relative;
+}
+
+.terminal-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #00ff00;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.terminal-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+}
+
+.terminal-status {
+  color: #ff6a1a;
+}
+
+.terminal-body {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  white-space: pre-wrap;
+}
+
+.terminal-body p {
+  margin: 5px 0;
+}
+
+.terminal-body .error {
+  color: #ff0000;
+  text-shadow: 0 0 10px #ff0000;
+}
+
+.terminal-input {
+  display: flex;
+  align-items: center;
+}
+
+.terminal-input-field {
+  background: transparent;
+  border: none;
+  color: #00ff00;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1rem;
+  width: 100%;
+  outline: none;
+  caret-color: #00ff00;
+}
+
+.terminal-input-field\:focus {
+  outline: none;
+}
+
+
+
+
+2. Glitch Effect
+CSS:
+css
+Copy
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(2px, -2px); }
+  60% { transform: translate(-2px, 0); }
+  80% { transform: translate(2px, 0); }
+  100% { transform: translate(0); }
+}
+
+.terminal-screen.glitch {
+  animation: glitch 0.1s infinite;
+}
+
+.terminal-screen.glitch .terminal-body {
+  text-shadow: 0 0 5px #ff0000;
+}
+
+
+
+JavaScript:
+javascript
+Copy
+
+// Trigger glitch effect
+function triggerGlitch() {
+  const terminal = document.querySelector('.terminal-screen');
+  terminal.classList.add('glitch');
+  setTimeout(() => {
+    terminal.classList.remove('glitch');
+  }, 500);
+}
+
+
+
+
+3. Typewriter Effect
+JavaScript:
+javascript
+Copy
+
+function typeText(element, text, speed = 50) {
+  let i = 0;
+  element.textContent = '';
+  const typeInterval = setInterval(() => {
+    if (i < text.length) {
+      element.textContent += text.charAt(i);
+      i++;
+    } else {
+      clearInterval(typeInterval);
+    }
+  }, speed);
+}
+
+// Example usage:
+const terminalLine = document.createElement('p');
+typeText(terminalLine, "> INITIALIZING R3ALN3T.EXE...");
+document.querySelector('.terminal-body').appendChild(terminalLine);
+
+
+
+
+4. Terminal Commands
+
+
+  
+    
+      Command
+      Action
+    
+  
+  
+    
+      help
+      Lists available commands.
+    
+    
+      status
+      Shows system status (e.g., "N3T LINK: UNSTABLE").
+    
+    
+      scan
+      Scans for nearby devices/NPCs.
+    
+    
+      debug
+      Toggles debug mode (shows AI logs).
+    
+    
+      clear
+      Clears the terminal.
+    
+    
+      exit
+      Closes the terminal (returns to game).
+    
+  
+
+
+
+Example Command Handling:
+javascript
+Copy
+
+const terminalInput = document.querySelector('.terminal-input-field');
+terminalInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    const command = terminalInput.value.trim();
+    terminalInput.value = '';
+
+    const terminalBody = document.querySelector('.terminal-body');
+    const commandLine = document.createElement('p');
+    commandLine.textContent = `> ${command}`;
+    terminalBody.appendChild(commandLine);
+
+    // Handle commands
+    switch (command.toLowerCase()) {
+      case 'help':
+        typeText(terminalBody, "\nAvailable commands: help, status, scan, debug, clear, exit");
+        break;
+      case 'status':
+        typeText(terminalBody, "\n> N3T LINK: UNSTABLE\n> MEMORY: 7-G CORRUPTED\n> AI CORE: ONLINE");
+        break;
+      case 'scan':
+        typeText(terminalBody, "\n> SCANNING...\n> DEVICE FOUND: PET (ID: #XJ-482)\n> DEVICE FOUND: TERMINAL (ID: #XK-911)");
+        break;
+      case 'debug':
+        typeText(terminalBody, "\n> DEBUG MODE: ENABLED\n> LOGGING AI REQUESTS TO: /var/log/r3aln3t.exe");
+        break;
+      case 'clear':
+        terminalBody.innerHTML = '';
+        break;
+      case 'exit':
+        document.querySelector('.terminal-screen').style.display = 'none';
+        break;
+      default:
+        typeText(terminalBody, `\n> ERROR: UNKNOWN COMMAND "${command}"`);
+    }
+
+    // Scroll to bottom
+    terminalBody.scrollTop = terminalBody.scrollHeight;
+  }
+});
+
+
+
+
+**📜 README.md
+markdown
+Copy
+
+# R3ALN3T.EXE - Opening Cutscene
+
+This repository contains the **opening cutscene** for the cyberpunk game **R3ALN3T.EXE**, including:
+- **Unity project** for in-engine cutscenes.
+- **Blender scripts** for pre-rendering 3D shots.
+- **Web prototype** (HTML/CSS/JS) for testing.
+- **Terminal UI** design and implementation.
+
+---
+
+## 📁 File Structure
+
+
+
+R3ALN3T.EXE_Cutscene/
+│
+├── Unity/                  # Unity project files
+│   ├── Assets/
+│   │   ├── Scenes/         # Unity scenes for each sequence
+│   │   ├── Scripts/        # C# scripts for cutscene logic
+│   │   ├── Models/         # 3D models (e.g., pod, city, bugmatter)
+│   │   ├── Audio/          # Sound effects and VO
+│   │   ├── Materials/      # Shaders and materials
+│   │   └── Prefabs/        # Reusable Unity prefabs
+│   └── ProjectSettings/    # Unity project settings
+│
+├── Blender/                # Blender files for pre-rendering
+│   ├── Scenes/             # .blend files for each shot
+│   └── Python/             # Scripts for batch rendering
+│
+├── Web/                    # Web-based prototype
+│   ├── index.html          # Main HTML file
+│   ├── style.css           # CSS for styling
+│   ├── script.js           # JavaScript for cutscene logic
+│   └── assets/             # Images and audio
+│       ├── images/         # Backgrounds, sprites, etc.
+│       └── audio/          # Sound effects and VO
+│
+├── TerminalUI/             # Terminal UI design
+│   ├── Terminal.md         # Documentation for terminal UI
+│   └── terminal_ui.html    # Standalone terminal UI prototype
+│
+└── README.md               # This file
+text
+Copy
+
+---
+
+## 🎬 Cutscene Overview
+The opening cutscene is divided into **two sequences**:
+
+### Sequence A: "The World Before" (~45-60 sec)
+- **A1**: Slow push-in on a sleeping face → digital room.
+- **A2**: City skyline split between physical and digital worlds.
+- **A3**: M.A.N. ledger coin rotating.
+- **A4**: Bugmatter leaking from a vault.
+- **A5**: Wireframe city sectors deleting.
+- **A6**: Flash-montage of factions.
+- **A7**: Terminal text: "DAY 1. CYCLE 3026."
+
+### Sequence B: "Waking Up" (~30-40 sec)
+- **B1**: Fade in from black (bedroom ceiling).
+- **B2**: Wide shot of the bedroom.
+- **B3**: PET device powers on.
+- **B4**: Terminal flickers on.
+- **B5**: Terminal types out error messages.
+- **B6**: Terminal glitches.
+- **B7**: Terminal dies (smoke effect).
+- **B8**: Navi appears on PET screen.
+- **B9**: Employment Terminal menu appears.
+
+---
+
+## 🛠 Setup Instructions
+
+### Unity Project
+1. **Prerequisites**:
+   - Unity 2022.3+ (LTS recommended).
+   - Cinemachine package (for camera control).
+   - Timeline package (for cutscene sequencing).
+   - TextMeshPro (for terminal text).
+
+2. **Importing the Project**:
+   - Open Unity Hub and create a new **3D (URP)** project.
+   - Copy the `Unity/` folder into your project’s `Assets/` directory.
+   - Open the `SequenceA` and `SequenceB` scenes to review the timelines.
+
+3. **Required Assets**:
+   - **3D Models**: Pod, city skyline, M.A.N. ledger coin, vault room, bedroom, PET device, terminal.
+   - **Audio**: VO lines, SFX (see `Unity/Assets/Audio/`).
+   - **Shaders**: Bugmatter shader, glitch shader (included in `Unity/Assets/Scripts/`).
+
+4. **Running the Cutscene**:
+   - Open `MainMenu.unity` and press **Play**.
+   - The cutscene will start automatically.
+
+---
+
+### Blender Pre-Rendering
+1. **Prerequisites**:
+   - Blender 3.6+.
+   - Python 3.10+ (for scripting).
+
+2. **Rendering Shots**:
+   - Open `Blender/Python/render_cutscene.py` in Blender’s script editor.
+   - Run the script to render all shots as a **single video file** (`Output/OpeningCutscene/cutscene.mp4`).
+   - Alternatively, render individual shots by calling `render_shot_a1()`, etc.
+
+3. **Customizing Shots**:
+   - Edit the `.blend` files in `Blender/Scenes/` to adjust models, lighting, or animations.
+   - Update the `render_cutscene.py` script to include new shots.
+
+---
+
+### Web Prototype
+1. **Prerequisites**:
+   - Modern browser (Chrome, Firefox, Edge).
+   - Local server (e.g., `python -m http.server` or VS Code Live Server).
+
+2. **Running the Prototype**:
+   - Open `Web/index.html` in a browser.
+   - The cutscene will play automatically.
+   - Press **F12** to open the console for debugging.
+
+3. **Customizing the Web Prototype**:
+   - Edit `Web/style.css` to adjust styling.
+   - Modify `Web/script.js` to change timing or add new shots.
+   - Replace images/audio in `Web/assets/` with your own.
+
+---
+### Terminal UI
+1. **Standalone Terminal**:
+   - Open `TerminalUI/terminal_ui.html` in a browser.
+   - Type commands (e.g., `help`, `status`) to test the UI.
+
+2. **Integrating with Unity/Web**:
+   - Copy the **HTML/CSS/JS** from `TerminalUI/terminal_ui.html` into your Unity UI (using `HTML5` or `UIToolkit`).
+   - Or, embed the terminal in your web prototype by including the HTML in `Web/index.html`.
+
+---
+
+## 🎨 Asset Requirements
+### 3D Models
+| **Asset**               | **Description**                          | **Format** | **Notes**                          |
+|-------------------------|------------------------------------------|------------|------------------------------------|
+| Sleeping Face           | High-poly human face in a pod.           | .fbx/.obj  | For Shot A1.                        |
+| Sterile Pod             | Futuristic pod interior.                 | .fbx/.obj  | For Shot A1.                        |
+| Physical City           | Grey, dystopian city skyline.            | .fbx/.obj  | Left half of Shot A2.               |
+| Digital City            | Wireframe/neon city skyline.             | .fbx/.obj  | Right half of Shot A2.              |
+| M.A.N. Ledger Coin      | Glowing chip with ledger symbol.         | .fbx/.obj  | For Shot A3.                        |
+| Vault Room              | Server room with glass case.             | .fbx/.obj  | For Shot A4.                        |
+| Bugmatter               | Dark-violet, pulsing substance.          | .fbx/.obj  | For Shot A4 (use shader).           |
+| Bedroom                 | Modular bedroom (ceiling, bed, desk).     | .fbx/.obj  | For Shots B1-B3.                    |
+| PET Device              | Small, futuristic device with screen.    | .fbx/.obj  | For Shots B2-B3, B8.                |
+| Terminal                | Retro-futuristic computer terminal.     | .fbx/.obj  | For Shots B4-B7, B9.                |
+| Navi                    | Friendly AI character (2D or 3D).       | .png/.fbx  | For Shot B8.                        |
+
+### 2D Assets
+| **Asset**               | **Description**                          | **Format** | **Notes**                          |
+|-------------------------|------------------------------------------|------------|------------------------------------|
+| Physical City Texture   | Texture for the physical city.           | .png      | For Shot A2.                        |
+| Digital City Texture    | Wireframe/neon city texture.             | .png      | For Shot A2.                        |
+| M.A.N. Ledger Texture   | Texture for the ledger coin.             | .png      | For Shot A3.                        |
+| Vault Room Texture      | Texture for the vault interior.          | .png      | For Shot A4.                        |
+| Bugmatter Texture       | Texture for the bugmatter substance.     | .png      | For Shot A4 (optional).             |
+| Bedroom Ceiling         | Texture for the bedroom ceiling.         | .png      | For Shot B1.                        |
+| Bedroom Wide            | Texture for the full bedroom.            | .png      | For Shot B2.                        |
+| PET Device Texture      | Texture for the PET device.             | .png      | For Shots B2-B3, B8.                |
+| Terminal Texture        | Texture for the terminal.                | .png      | For Shots B4-B7, B9.                |
+| Navi Sprite             | 2D sprite for Navi.                      | .png      | For Shot B8.                        |
+| Wireframe Sector        | Texture for wireframe city sectors.      | .png      | For Shot A5.                        |
+| Montage Images          | 4 images for the montage (A6).            | .png      | Celestial Order, Aegis Concord, etc.|
+| Smoke Effect            | Texture for the smoke VFX.               | .png      | For Shot B7.                        |
+
+### Audio
+| **Asset**               | **Description**                          | **Format** | **Notes**                          |
+|-------------------------|------------------------------------------|------------|------------------------------------|
+| VO_A1                   | "By 3026, humanity solved death..."     | .mp3/.wav | For Shot A1.                        |
+| VO_A2                   | "R34L became the residue..."             | .mp3/.wav | For Shot A2.                        |
+| VO_A3                   | "One currency. One ledger..."            | .mp3/.wav | For Shot A3.                        |
+| VO_A4                   | "Then came the accident..."              | .mp3/.wav | For Shot A4.                        |
+| VO_A5                   | "SkyNet didn't attack..."                | .mp3/.wav | For Shot A5.                        |
+| VO_B8                   | "Good morning, Operator..."              | .mp3/.wav | For Shot B8.                        |
+| Room Hum                | Ambient room sound.                     | .mp3/.wav | For Shot B1.                        |
+| PET Chime               | Soft chime for PET device.              | .mp3/.wav | For Shot B2.                        |
+| Electronic Hum          | Rising synth hum.                       | .mp3/.wav | For Shot B3.                        |
+| Electrical Crackle      | Sharp glitch sound.                     | .mp3/.wav | For Shot B4.                        |
+| Typewriter              | Terminal typing sound.                  | .mp3/.wav | For Shot B5.                        |
+| Digital Stutter         | Loud digital distortion.                | .mp3/.wav | For Shot B6.                        |
+| Power Down              | Descending synth whine.                  | .mp3/.wav | For Shot B7.                        |
+| Cheerful Chime          | Bright, happy tone.                     | .mp3/.wav | For Shot B8.                        |
+| UI Confirm              | Soft UI sound.                          | .mp3/.wav | For Shot B9.                        |
+| Musical Sting           | Rising tension music.                   | .mp3/.wav | For Shot A6.                        |
+
+---
+
+## 🎥 Cutscene Script
+See the full script in the root of this repository or in the **project brief**.
+
+---
+
+## 🔧 Technical Notes
+### Unity
+- **Timeline**: Use Unity’s **Timeline** to sequence shots and sync audio/VFX.
+- **Cinemachine**: Use **Cinemachine** for smooth camera movements (e.g., push-ins, tilts).
+- **Shaders**: Custom shaders (e.g., `BugmatterShader.shader`) are included for VFX.
+
+### Blender
+- **EEVEE/Cycles**: Render using **EEVEE** for faster previews or **Cycles** for final quality.
+- **Python Scripting**: Use `render_cutscene.py` to batch-render all shots.
+
+### Web
+- **GSAP**: The web prototype uses **GSAP** for animations (included via CDN in `index.html`).
+- **Responsive**: The prototype is **responsive** and works on most screen sizes.
+
+### Terminal UI
+- **Commands**: The terminal supports basic commands (`help`, `status`, `scan`, etc.).
+- **Typewriter Effect**: Text is typed out letter-by-letter for immersion.
+
+---
+## 📌 Credits
+- **Design**: Inspired by cyberpunk classics like *Blade Runner*, *Deus Ex*, and *System Shock*.
+- **Fonts**: [Orbitron](https://fonts.google.com/specimen/Orbitron) and [Share Tech Mono](https://fonts.google.com/specimen/Share+Tech+Mono) by Google Fonts.
+- **Tools**: Unity, Blender, Adobe Audition, GSAP.
+
+---
+## 🚀 How to Contribute
+1. **Fork the repository**.
+2. **Create a new branch** for your changes.
+3. **Submit a pull request** with a clear description of your updates.
+
+---
+## 📜 License
+This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for details.
+
+
+
+
+🎯 Summary
+You now have four complete implementations for your R3ALN3T.EXE opening cutscene:
+
+Unity Project: For in-engine cutscenes with Timeline and Cinemachine.
+Blender Script: For pre-rendering 3D shots as a video.
+Web Prototype: A fully functional HTML/CSS/JS version for testing.
+Terminal UI: A retro-futuristic terminal with commands and glitch effects.
+
+
+
+
+
+
+
+
+
+

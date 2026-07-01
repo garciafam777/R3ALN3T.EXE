@@ -1,0 +1,25 @@
+{
+  "id": "7a2de4d3",
+  "name": "Umbrkronax the Soul Forge",
+  "short_name": "Umbrkronax",
+  "tier": "GAMMA",
+  "element": "Crystal",
+  "type": "Abyssal",
+  "faction": "Free Grid Collective",
+  "stats": {
+    "hp": 763,
+    "atk": 132,
+    "rapid": 58,
+    "charge": 110,
+    "def": 88
+  },
+  "programs": [
+    "Prism Burst",
+    "Prism Shift",
+    "Prism Lance"
+  ],
+  "description": "A GAMMA-tier Crystal-aligned Abyssal of the Free Grid Collective.",
+  "color_primary": "#f95a5f",
+  "color_accent": "#7342dd",
+  "generated": "2026-06-30T02:11:13.258338"
+}

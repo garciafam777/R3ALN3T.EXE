@@ -22,7 +22,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnGridMoveComplete, FGridCoord, Old
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSideSwitchAttack, FGridCoord, TargetCoord);
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
-class R3ALN3T_EXE_API UGridMoverComponent : public UActorComponent
+class R3ALN3T_UE5_API UGridMoverComponent : public UActorComponent
 {
 	GENERATED_BODY()
 

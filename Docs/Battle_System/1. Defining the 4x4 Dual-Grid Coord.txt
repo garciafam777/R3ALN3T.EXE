@@ -1,0 +1,122 @@
+1. Defining the 4x4 Dual-Grid CoordinatesInstead of standard free movement, combat locks your active NetP into a rigid tile-coordinate system ($4 \times 4$ red vs $4 \times 4$ blue). We must track tile ownership so that regular players (or your disguised admin avatars) cannot illegally cross into enemy lines unless a specific bypass skill or chip is active.Source/Public/Gameplay/Battle/BattleGridTypes.hC++#pragma once
+
+#include "CoreMinimal.h"
+#include "BattleGridTypes.generated.h"
+
+UENUM(BlueprintType)
+enum class ETileSide : uint8
+{
+    PlayerSide   UMETA(DisplayName = "Player Territory (Purple)"),
+    EnemySide    UMETA(DisplayName = "Enemy Territory (Teal/Grey)")
+};
+
+USTRUCT(BlueprintType)
+struct FGridCoordinate
+{
+    GENERATED_BODY()
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Battle Grid")
+    int32 X; // Range 0 to 3
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Battle Grid")
+    int32 Y; // Range 0 to 3
+
+    FGridCoordinate() : X(0), Y(0) {}
+    FGridCoordinate(int32 InX, int32 InY) : X(InX), Y(InY) {}
+
+    bool operator==(const FGridCoordinate& Other) const
+    {
+        return X == Other.X && Y == Other.Y;
+    }
+};
+2. The Battle Grid ManagerThis system manages spatial logic, rendering line-traces to highlight tiles under your NetP, and monitoring the Custom Gauge state machine seen in gemini-2.5-flash-image_make_a_more_futuristic_version_of_MMBN_battle_stage_instead_of_3x3_make_it_4x4_w-0.jpg.Source/Public/Gameplay/Battle/BattleGridManager.hC++#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "Gameplay/Battle/BattleGridTypes.h"
+#include "BattleGridManager.generated.h"
+
+UCLASS()
+class REALNET_API ABattleGridManager : public AActor
+{
+    GENERATED_BODY()
+    
+public:    
+    ABattleGridManager();
+
+protected:
+    virtual void BeginPlay() override;
+    virtual void Tick(float DeltaTime) override;
+
+private:
+    // Dimensions matched directly to your blueprint design
+    const int32 MaxRows = 4;
+    const int32 MaxCols = 4;
+
+    UPROPERTY(VisibleAnywhere, Category = "Battle Mechanics")
+    float CustomGaugePercentage;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Battle Mechanics")
+    float CustomGaugeFillRate; // Rate per second
+
+public:    
+    // Validates tile space changes when inputs (Z: Move) are fired
+    UFUNCTION(BlueprintCallable, Category = "Battle Mechanics")
+    bool RequestTileMove(ETileSide CurrentSide, FGridCoordinate CurrentPos, FGridCoordinate TargetPos, FVector& OutWorldLocation);
+
+    UFUNCTION(BlueprintPure, Category = "Battle Mechanics")
+    float GetCustomGaugePercentage() const { return CustomGaugePercentage; }
+
+    UFUNCTION(BlueprintCallable, Category = "Battle Mechanics")
+    void ResetCustomGauge() { CustomGaugePercentage = 0.0f; }
+};
+Source/Private/Gameplay/Battle/BattleGridManager.cppC++#include "Gameplay/Battle/BattleGridManager.h"
+
+ABattleGridManager::ABattleGridManager()
+{
+    PrimaryActorTick.bCanEverTick = true;
+    CustomGaugePercentage = 0.0f;
+    CustomGaugeFillRate = 20.0f; // Takes 5 seconds to hit 100% Custom state
+}
+
+void ABattleGridManager::BeginPlay()
+{
+    Super::BeginPlay();
+}
+
+void ABattleGridManager::Tick(float DeltaTime)
+{
+    Super::Tick(DeltaTime);
+
+    // Charge the interface gauge over real-time frames
+    if (CustomGaugePercentage < 100.0f)
+    {
+        CustomGaugePercentage = FMath::Clamp(CustomGaugePercentage + (CustomGaugeFillRate * DeltaTime), 0.0f, 100.0f);
+    }
+}
+
+bool ABattleGridManager::RequestTileMove(ETileSide CurrentSide, FGridCoordinate CurrentPos, FGridCoordinate TargetPos, FVector& OutWorldLocation)
+{
+    // Bound checking for the 4x4 sector array
+    if (TargetPos.X < 0 || TargetPos.X >= MaxCols || TargetPos.Y < 0 || TargetPos.Y >= MaxRows)
+    {
+        return false;
+    }
+
+    // Unless you use your MCADMIN privileges to break the field rules, 
+    // baseline NetP units cannot hop onto the opposing faction's side natively.
+    // X dimensions are local to the respective 4x4 fields.
+    
+    // Grid spacing allocation calculations (Assuming 200 units per holographic panel tile)
+    float TileSpacing = 200.0f;
+    float SideOffset = (CurrentSide == ETileSide::EnemySide) ? 900.0f : 0.0f; // Distinct split gap
+
+    OutWorldLocation = FVector(TargetPos.X * TileSpacing + SideOffset, TargetPos.Y * TileSpacing, 0.0f);
+    return true;
+}
+3. Shading & Visual Adjustments for 4K High-Fidelity CombatTo make this look like a dark, premium alternative to classic grid games, use these material updates for the level mesh properties:Holographic Scanlines: The $4 \times 4$ floor tiles should not be flat colored panels. Use an emissive material layer with a sharp Panner Node running a micro-grid scanline over a metallic texture base (Metallic = 0.9, Roughness = 0.15). This mimics the purple/neon-teal glow visible in your asset capture.Volumetric Aura Spawning: When Trinity Ascendant or other NetPs initiate a Buster or Skill action, tie particle ribbon spawns directly to the skeletal mesh sockets. Under dynamic isometric lighting, these will cast bright colored shadows across your dark 4K terrain.4. State Sync LoggingI am assigning this combat field layout directly to your development pipeline file tracker. Update your root .ai_state.json parameters before initializing the project build compilation via Pinokio:JSON  "active_assignments": {
+    "Gemini": {
+      "focus": "4x4 Dual-Field Combat Grid Logic and Custom Gauge thread synchronization",
+      "working_directory": "Source/Private/Gameplay/Battle/"
+    }
+  }

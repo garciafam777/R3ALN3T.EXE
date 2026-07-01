@@ -1,0 +1,58 @@
+{
+  "info": {
+    "name": "R3ALN3T.EXE Telemetry API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://127.0.0.1:8080/",
+          "host": ["127.0.0.1"],
+          "port": "8080",
+          "path": [""]
+        }
+      }
+    },
+    {
+      "name": "Report Position",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"entity_id\": \"NETP_0001\",\n  \"x\": 1250.0,\n  \"y\": -340.0,\n  \"z\": 0.0,\n  \"layer\": 3,\n  \"timestamp\": 1234.56\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8080/api/position",
+          "host": ["127.0.0.1"],
+          "port": "8080",
+          "path": ["api", "position"]
+        }
+      }
+    },
+    {
+      "name": "Report Batch",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[\n  {\n    \"entity_id\": \"NETP_0001\",\n    \"x\": 100.0,\n    \"y\": 200.0,\n    \"z\": 0.0,\n    \"layer\": 3,\n    \"timestamp\": 1000.0\n  },\n  {\n    \"entity_id\": \"NETP_0002\",\n    \"x\": -500.0,\n    \"y\": 750.0,\n    \"z\": -100000.0,\n    \"layer\": 5,\n    \"timestamp\": 1000.5\n  }\n]"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8080/api/position/batch",
+          "host": ["127.0.0.1"],
+          "port": "8080",
+          "path": ["api", "position", "batch"]
+        }
+      }
+    }
+  ]
+}

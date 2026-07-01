@@ -118,7 +118,7 @@ void AMythosGameMode::ChooseElementByIndex(int32 Index)
 {
 	if (Run.Screen != EMythosScreen::ElementSelect || !ElementNames.IsValidIndex(Index)) return;
 	Run.Element = static_cast<EMythosElement>(Index);
-	Run.AstraBond = 1;
+	Run.NetPBond = 1;
 	Run.Screen = EMythosScreen::Work;
 	Run.Objective = TEXT("Run shifts until Day 3 exposes the first lie.");
 	AddLog(FString::Printf(TEXT("Navi element linked: %s."), *ElementNames[Index]));
@@ -160,7 +160,7 @@ void AMythosGameMode::ChooseStoryOption(int32 Index)
 	const FMythosChoiceData& Choice = Node.Choices[Index];
 	Run.Z += Choice.ZDelta;
 	Run.Corruption = FMath::Clamp(Run.Corruption + Choice.CorruptionDelta, 0, 10);
-	Run.NaviBond = FMath::Clamp(Run.NaviBond + Choice.BondDelta + (Run.Element == EMythosElement::Signal ? 1 : 0), 0, 10);
+	Run.NetPBond = FMath::Clamp(Run.NetPBond + Choice.BondDelta + (Run.Element == EMythosElement::Signal ? 1 : 0), 0, 10);
 	ApplyFaction(Choice.Faction, 3);
 	AddInventory(Choice.ItemReward);
 	AddLog(FString::Printf(TEXT("%s: %s"), *Choice.Label, *Choice.Description));
@@ -244,7 +244,7 @@ void AMythosGameMode::ResolveBattleAction(EMythosBattleAction Action)
 void AMythosGameMode::CompleteBattle()
 {
 	Run.Z += 120;
-	Run.NaviBond = FMath::Clamp(Run.NaviBond + 1, 0, 10);
+	Run.NetPBond = FMath::Clamp(Run.NetPBond + 1, 0, 10);
 	Run.Rank = FMath::Clamp(Run.Rank + 1, 0, 4);
 	Run.Day += ActiveStoryNode == 0 ? 4 : 30;
 	ApplyElementPerkAfterDay();
@@ -410,11 +410,11 @@ int32 AMythosGameMode::SuggestEndingIndex() const
 {
 	const int32 SteelKeys = Run.Inventory.FilterByPredicate([](const FString& Item) { return Item.StartsWith(TEXT("STEELKEY")); }).Num();
 	const EMythosFaction Top = GetTopFaction();
-	if (SteelKeys >= 2 && Run.NaviBond >= 7) return 5;
+	if (SteelKeys >= 2 && Run.NetPBond >= 7) return 5;
 	if (IsFactionSpreadBalanced() && Run.Corruption >= 2 && Run.Corruption <= 4) return 4;
 	if (Run.Corruption >= 7 || Top == EMythosFaction::AbyssalCovenant) return 3;
 	if (Run.Z >= 1400 || Top == EMythosFaction::N3TDominion) return 2;
-	if (Top == EMythosFaction::AegisConcord && Run.NaviBond <= 4) return 1;
+	if (Top == EMythosFaction::AegisConcord && Run.NetPBond <= 4) return 1;
 	if (Top == EMythosFaction::CelestialOrder && Run.Corruption <= 3) return 0;
 	return 4;
 }

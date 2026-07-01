@@ -1,0 +1,77 @@
+1. Dialogue Architecture Overview
+Hybrid System (Static + Dynamic)
+
+Static Templates — Pre-written lines for consistency and story.
+Dynamic Generation — Local LLM (Ollama) for variation and context awareness.
+Cached Responses — Frequently used lines are pre-generated and stored for speed.
+
+Core Components
+
+DialogueManager (Godot singleton)
+Personality Database (netp_profiles.json)
+Context Provider (location, relationship, quest state, time, player actions)
+TTS Engine (local text-to-speech)
+
+2. Personality Profile System (Scales to 1000+ NetP’s)
+Each NetP has a lightweight JSON profile:
+JSON{
+  "id": "lex_001",
+  "name": "LEX",
+  "gender": "Male",
+  "age": 32,
+  "personality": {
+    "core_traits": ["Confident", "Strategic", "Sarcastic", "Ambitious"],
+    "speech_style": "Polished corporate with dry humor",
+    "vocabulary_level": "High",
+    "emotional_range": "Medium"
+  },
+  "voice": {
+    "preset": "deep_male_professional",
+    "pitch": 0.95,
+    "speed": 1.05,
+    "accent": "neutral"
+  },
+  "relationships": {
+    "player": 65,
+    "akai": 40
+  },
+  "current_location": "lex_villa",
+  "knowledge_tags": ["tech", "luxury", "strategy"]
+}
+Generation Rule:
+
+Base line + Personality filter + Context → LLM rewrites (or cached version).
+
+3. Dialogue Flow Example
+Player approaches LEX in his villa:
+textBase Template: "Good to see you again."
+Context: Player helped with security task yesterday + High relationship
+LLM Output: "Ah, my most reliable ally returns. That security patch you suggested yesterday is working flawlessly. What can I do for you today?"
+Voice Delivery:
+
+TTS speaks the line with LEX’s voice preset.
+Subtle lip-sync animation on NetP model.
+
+4. Voice Chat Implementation
+Layered Voice System
+
+AI Voice (Default)
+Local TTS with personality-specific voices.
+Emotion detection (basic: happy, neutral, angry) adjusts tone.
+
+Player Voice Chat (Multiplayer)
+Real-time voice between players.
+Optional AI modulation (make your voice sound like your NetP).
+Safety: Push-to-talk, proximity voice (only hear nearby NetP/players), mute options.
+
+
+Technical Recommendation
+
+Godot + WebRTC for voice chat.
+Piper TTS or Coqui for high-quality local voices.
+
+Safety & Moderation
+
+Profanity filter on AI-generated lines.
+Report system for player voice chat abuse.
+Admin tools to mute or restrict players.

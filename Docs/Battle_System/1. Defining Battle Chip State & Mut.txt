@@ -1,0 +1,183 @@
+1. Defining Battle Chip State & MutationsWe'll establish an Enum for chip classes and a main Structure that tracks volatile performance variables (Purity, Damage Modifiers, and Added Status Traits) unique to that specific instance of the card.Source/Public/Gameplay/Battle/BattleChipTypes.hC++#pragma once
+
+#include "CoreMinimal.h"
+#include "BattleChipTypes.generated.h"
+
+UENUM(BlueprintType)
+enum class EChipClass : uint8
+{
+    Standard   UMETA(DisplayName = "Standard Code"),
+    Mega       UMETA(DisplayName = "Mega Directive"),
+    Giga       UMETA(DisplayName = "Giga Override"),
+    Admin      UMETA(DisplayName = "MCADMIN System Access Call")
+};
+
+USTRUCT(BlueprintType)
+struct FDynamicBattleChipData
+{
+    GENERATED_BODY()
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chip Matrix")
+    FString ChipName;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chip Matrix")
+    EChipClass ChipTier;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chip Matrix")
+    int32 BaseDamage;
+
+    // Mutated modifiers rolled dynamically when drawn into the active hand
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chip Mutation")
+    float DamageMultiplier;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chip Mutation")
+    float InstabilityGlitchChance; // Higher chance triggers backfire/reduced accuracy
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chip Mutation")
+    FString CustomModifierTag; // e.g., "PIERCE", "STUN", "REGEN"
+
+    FDynamicBattleChipData()
+        : ChipName(TEXT("Buster_Bolt")), ChipTier(EChipClass::Standard), BaseDamage(40)
+        , DamageMultiplier(1.0f), InstabilityGlitchChance(0.0f), CustomModifierTag(TEXT("NONE")) {}
+};
+2. The Folder Tracker & Draw EngineThis subsystem tracks your master deck (Folder) of 30 chips. When the Custom phase activates, it pulls a randomized hand into the queue, applying the structural mutation math on the fly.Source/Public/Gameplay/Battle/BattleFolderManager.hC++#pragma once
+
+#include "CoreMinimal.h"
+#include "Components/ActorComponent.h"
+#include "Gameplay/Battle/BattleChipTypes.h"
+#include "BattleFolderManager.generated.h"
+
+UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+class REALNET_API UBattleFolderManager : public UActorComponent
+{
+    GENERATED_BODY()
+
+public:    
+    UBattleFolderManager();
+
+protected:
+    virtual void BeginPlay() override;
+
+private:
+    // The player's full compiled deck configuration
+    UPROPERTY(EditDefaultsOnly, Category = "Deck Architecture")
+    TArray<FDynamicBattleChipData> MasterFolder;
+
+    // Active volatile chips currently available on the screen selection UI
+    UPROPERTY(VisibleAnywhere, Category = "Deck Architecture")
+    TArray<FDynamicBattleChipData> CurrentActiveHand;
+
+    // Mutates chip properties dynamically during the draw loop
+    void ApplyDataMutation(FDynamicBattleChipData& TargetChip);
+
+public:    
+    // Called by the BattleGridManager when the Custom Gauge hits 100%
+    UFUNCTION(BlueprintCallable, Category = "Combat Draw Logic")
+    void DrawNewCombatPhaseHand(int32 HandSize = 5);
+
+    UFUNCTION(BlueprintCallable, Category = "Combat Draw Logic")
+    bool ExecuteChipActivation(int32 HandIndex, FDynamicBattleChipData& OutUsedChipData);
+
+    UFUNCTION(BlueprintPure, Category = "Combat Draw Logic")
+    TArray<FDynamicBattleChipData> GetCurrentHand() const { return CurrentActiveHand; }
+};
+3. Dynamic Roll & Backdoor Injection LogicSource/Private/Gameplay/Battle/BattleFolderManager.cppC++#include "Gameplay/Battle/BattleFolderManager.h"
+#include "Kismet/KismetMathLibrary.h"
+
+UBattleFolderManager::UBattleFolderManager()
+{
+    PrimaryActorTick.bCanEverTick = false;
+}
+
+void UBattleFolderManager::BeginPlay()
+{
+    Super::BeginPlay();
+
+    // Mocking a baseline starter deck setup inside the master folder array
+    for (int32 i = 0; i < 30; i++)
+    {
+        FDynamicBattleChipData DefaultChip;
+        if (i % 10 == 0) {
+            DefaultChip.ChipName = TEXT("Sword_Matrix");
+            DefaultChip.BaseDamage = 80;
+        } else if (i == 29) {
+            // A hidden placeholder card that scales with admin privileges
+            DefaultChip.ChipName = TEXT("MCADMIN_Purge_Protocol");
+            DefaultChip.ChipTier = EChipClass::Admin;
+            DefaultChip.BaseDamage = 9999;
+        }
+        MasterFolder.Add(DefaultChip);
+    }
+}
+
+void UBattleFolderManager::ApplyDataMutation(FDynamicBattleChipData& TargetChip)
+{
+    // If you are piloting one of your disguised NetP hulls, bypass negative mutations completely
+    if (TargetChip.ChipTier == EChipClass::Admin)
+    {
+        TargetChip.DamageMultiplier = 2.5f;
+        TargetChip.InstabilityGlitchChance = 0.0f;
+        TargetChip.CustomModifierTag = TEXT("DIRECT_CORE_ERASE");
+        return;
+    }
+
+    // Standard Player/NetP calculations: roll variance based on background algorithm noise
+    float Roll = UKismetMathLibrary::RandomFloatInRange(0.0f, 1.0f);
+    
+    if (Roll > 0.85f) // 15% Chance of a positive data surge
+    {
+        TargetChip.DamageMultiplier = UKismetMathLibrary::RandomFloatInRange(1.1f, 1.35f);
+        TargetChip.CustomModifierTag = TEXT("OVERCHARGED");
+    }
+    else if (Roll < 0.10f) // 10% Chance of drawing corrupted code fragment
+    {
+        TargetChip.DamageMultiplier = UKismetMathLibrary::RandomFloatInRange(0.7f, 0.9f);
+        TargetChip.InstabilityGlitchChance = UKismetMathLibrary::RandomFloatInRange(0.15f, 0.4f);
+        TargetChip.CustomModifierTag = TEXT("LOGIC_BLEED");
+    }
+    else
+    {
+        TargetChip.DamageMultiplier = 1.0f;
+        TargetChip.InstabilityGlitchChance = 0.05f; // Baseline global interference
+        TargetChip.CustomModifierTag = TEXT("STABLE");
+    }
+}
+
+void UBattleFolderManager::DrawNewCombatPhaseHand(int32 HandSize)
+{
+    CurrentActiveHand.Empty();
+    
+    if (MasterFolder.Num() == 0) return;
+
+    // Draw up to max hand size, shuffling indexes dynamically
+    for (int32 i = 0; i < HandSize; i++)
+    {
+        int32 RandomIndex = UKismetMathLibrary::RandomInteger(MasterFolder.Num());
+        FDynamicBattleChipData PickedChip = MasterFolder[RandomIndex];
+        
+        // Mutate the stats of the chip instances right as they hit your glove queue
+        ApplyDataMutation(PickedChip);
+        
+        CurrentActiveHand.Add(PickedChip);
+    }
+    
+    UE_LOG(LogTemp, Log, TEXT("[Combat Hub] New customized Battle Chips compiled into the active hand array."));
+}
+
+bool UBattleFolderManager::ExecuteChipActivation(int32 HandIndex, FDynamicBattleChipData& OutUsedChipData)
+{
+    if (!CurrentActiveHand.IsValidIndex(HandIndex)) return false;
+
+    OutUsedChipData = CurrentActiveHand[HandIndex];
+    
+    // Remove from active selection hand once processed by the grid execution pipeline
+    CurrentActiveHand.RemoveAt(HandIndex);
+    return true;
+}
+4. Keeping Pinokio in SyncWith these dynamic folder scripts written to your file path, open your local .ai_state.json file at the directory root to ensure your multi-LLM setup tracks the state handoff cleanly:JSON  "active_assignments": {
+    "Gemini": {
+      "focus": "Dynamic Battle Chip mutation systems, randomized deck draw algorithms, and thread-safe data serialization",
+      "working_directory": "Source/Private/Gameplay/Battle/"
+    }
+  }
+When you hit build, the $4 \times 4$ isometric battlefield setup will now actively shuffle, roll, and mutate data parameters every single round.

@@ -10,7 +10,7 @@
 #include "ChipFolderComponent.generated.h"
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
-class R3ALN3T_EXE_API UChipFolderComponent : public UActorComponent
+class R3ALN3T_UE5_API UChipFolderComponent : public UActorComponent
 {
 	GENERATED_BODY()
 

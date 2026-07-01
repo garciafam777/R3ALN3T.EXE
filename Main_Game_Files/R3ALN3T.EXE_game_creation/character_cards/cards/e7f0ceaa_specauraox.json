@@ -1,0 +1,25 @@
+{
+  "id": "e7f0ceaa",
+  "name": "Specauraox the Dusk Reaper",
+  "short_name": "Specauraox",
+  "tier": "THETA",
+  "element": "Water",
+  "type": "Tank",
+  "faction": "Aegis Concord",
+  "stats": {
+    "hp": 208,
+    "atk": 29,
+    "rapid": 36,
+    "charge": 28,
+    "def": 26
+  },
+  "programs": [
+    "Tidal Pulse",
+    "Tidal Break",
+    "Tidal Burst"
+  ],
+  "description": "A THETA-tier Water-aligned Tank of the Aegis Concord.",
+  "color_primary": "#dd6852",
+  "color_accent": "#fb7fc1",
+  "generated": "2026-06-30T02:11:13.258378"
+}

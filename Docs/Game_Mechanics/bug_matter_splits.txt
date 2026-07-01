@@ -1,0 +1,49 @@
+1. The Sublimation Tuner (The Rig Driver / Heavy Tech)
+This career focuses on large-scale, brute-force industrial processing. Tuners don't sit in labs; they use vehicles like the Ridgeback-Class Rig or the Stratus-6 as mobile, roaring refineries.
+
+The Bugmatter Loop: They collect raw industrial scrap and run it through modified engine manifolds or unshielded induction rails, forcing heavy Crust-Matter to sublime out of the exhaust wake.
+
+Gameplay Integration: * High-Volume Logistics: They accept high-risk hauling contracts, using the weight of their armored, Bugmatter-clad rigs to plow through blockades.
+
+Hardware Fabricator: They convert Crust-Matter into heavy, physical components—like armored plating, anti-scan shielding, and high-density server rack enclosures for local networks.
+
+Risk Factor: Managing the literal heat. Pushing the engine too hard to synthesize high-grade matter risks cooking the cargo or blowing a thruster manifold mid-transit.
+
+2. The Logic Splicer (The Software Architect)
+Splicers treat Bugmatter as raw computational clay. They work entirely in the clean zones, using precise software exploits to force data to condense into material objects.
+
+The Bugmatter Loop: They write infinite, recursive C++ loops and intentionally execute un-compiled, high-dimensional arrays to trigger local memory sub-system failures, harvesting pristine Soot-Matter directly from server heatsinks.
+
+Gameplay Integration:
+
+Firmware Optimization: Splicers use Soot-Matter to physically coat local processing nodes, massively boosting calculation speeds and data throughput for their networks.
+
+Exploit Development: They specialize in forging physical "glitch keys" or injection drives that can bypass high-level corporate security grids by overloading physical lock mechanisms with corrupted logic.
+
+Risk Factor: Code instability. A poorly optimized script can corrupt the very hardware they are using to synthesize the matter, forcing local system restores.
+
+3. The Navi-Cultivator (The Bio-Tech Netrunner)
+Cultivators occupy the eerie space where digital intelligence meets biological form. They use rogue NetNavi data streams as genetic blueprints to grow living computer systems.
+
+The Bugmatter Loop: They capture anomalous NetNavi code vectors from the deep Net and pipe them into conductive synthetic gel matrices, growing glowing, semi-fluid Vessel-Matter.
+
+Gameplay Integration:
+
+Organic Hardware Engineering: They grow custom, living processing units that don't rely on standard silicon. These organic components can adapt to network attacks in real-time.
+
+Navi Modification: They use Vessel-Matter to physically graft upgrades onto their digital NetNavi characters, unlocking hidden sub-routines and higher-dimensional processing traits.
+
+Risk Factor: Sentient bleed. If the NetNavi code used to seed the culture is too unstable, the resulting Vessel-Matter can attempt to rewrite the local terminal's host operating system to escape.
+
+4. The Grid Scavenger (The Street Operator)
+Scavengers are the survivalists of the lower sectors. They don't have corporate labs or expensive rigs; they rely on the waste of the upper city to survive.
+
+The Bugmatter Loop: They set up passive induction nets and static collectors under corporate sky-bridges, scraping toxic Sludge-Matter out of the atmospheric runoff and corporate data vents.
+
+Gameplay Integration:
+
+Improvised Chemistry: They filter volatile Sludge-Matter into cheap, hyper-combustible fuel variants for low-tier thrusters or use it as a crude, black-market coating that masks vehicle signatures from automated patrol grids.
+
+Underground Trade: They act as the foundational suppliers of raw material to the other careers, trading bulk unrefined sludge for high-tier hardware or optimized software tools.
+
+Risk Factor: High environmental toxicity. Handling unrefined atmospheric runoff without proper shielding or filtration slowly degrades physical gear and causes local system glitches.

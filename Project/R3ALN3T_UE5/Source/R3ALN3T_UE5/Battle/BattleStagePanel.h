@@ -13,7 +13,7 @@ class UStaticMeshComponent;
 class UMaterialInstanceDynamic;
 
 UCLASS()
-class R3ALN3T_EXE_API ABattleStagePanel : public AActor
+class R3ALN3T_UE5_API ABattleStagePanel : public AActor
 {
 	GENERATED_BODY()
 

@@ -1,0 +1,1653 @@
+🔧 Interactive Elements for R3ALN3T.EXE (C++/Unreal Engine)
+Here’s how to implement interactive elements in your C++/Unreal Engine project, respecting your global architecture lock and forbidden zones.
+
+📌 Key Constraints & Guidelines
+
+
+Do NOT modify:
+
+Source/Public/NetNavi.h
+Source/Private/NetNavi.cpp
+(Locked by Claude for gameplay mechanics and NetNavi logic.)
+
+
+Focus Areas for Interactive Elements:
+
+Gemini: High-dimensional data arrays & core engine optimization (Source/Private/Core/Memory/).
+Mistral: Procedural generation scripts & local tool automation (Plugins/Developer/AIAutomation/).
+Claude: C++ gameplay mechanics & NetNavi logic (Source/Private/Gameplay/).
+
+
+Allowed Work Directories:
+
+Source/Private/Core/Memory/ (Gemini)
+Source/Private/Gameplay/ (Claude)
+Plugins/Developer/AIAutomation/ (Mistral)
+
+
+🎮 1. Interactive Terminal System (C++/Unreal)
+Concept
+A retro-futuristic terminal that players can interact with to:
+
+Type commands (e.g., scan, hack, debug).
+Unlock lore or trigger events.
+Integrate with NetNavi (without modifying locked files).
+
+📂 Source/Private/Gameplay/TerminalSystem.h
+(Claude’s domain: Gameplay mechanics)
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "TerminalSystem.generated.h"
+
+UCLASS()
+class R3ALN3T_API ATerminalSystem : public AActor
+{
+    GENERATED_BODY()
+
+public:
+    ATerminalSystem();
+
+    // Called to initialize the terminal
+    UFUNCTION(BlueprintCallable, Category = "Terminal")
+    void InitializeTerminal();
+
+    // Called to process a command
+    UFUNCTION(BlueprintCallable, Category = "Terminal")
+    void ProcessCommand(const FString& Command);
+
+    // Called to display text in the terminal
+    UFUNCTION(BlueprintCallable, Category = "Terminal")
+    void DisplayText(const FString& Text, bool bIsError = false);
+
+    // Called to clear the terminal
+    UFUNCTION(BlueprintCallable, Category = "Terminal")
+    void ClearTerminal();
+
+    // Called to trigger a glitch effect
+    UFUNCTION(BlueprintCallable, Category = "Terminal")
+    void TriggerGlitchEffect();
+
+protected:
+    virtual void BeginPlay() override;
+
+private:
+    // Current text displayed in the terminal
+    UPROPERTY()
+    FString CurrentText;
+
+    // Maximum number of lines in the terminal
+    UPROPERTY(EditAnywhere, Category = "Terminal")
+    int32 MaxLines = 20;
+
+    // Whether debug mode is enabled
+    UPROPERTY()
+    bool bDebugMode = false;
+
+    // Map of commands to their responses
+    UPROPERTY()
+    TMap<FString, FString> CommandResponses;
+
+    // Initialize command responses
+    void InitializeCommandResponses();
+
+    // Add a line of text to the terminal
+    void AddLine(const FString& Line, bool bIsError = false);
+};
+
+
+
+
+📂 Source/Private/Gameplay/TerminalSystem.cpp
+(Claude’s domain: Gameplay mechanics)
+cpp
+Copy
+
+#include "TerminalSystem.h"
+#include "Engine/World.h"
+#include "Kismet/GameplayStatics.h"
+#include "NetNavi.h" // Include but DO NOT MODIFY
+
+ATerminalSystem::ATerminalSystem()
+{
+    PrimaryActorTick.bCanEverTick = false;
+    InitializeCommandResponses();
+}
+
+void ATerminalSystem::BeginPlay()
+{
+    Super::BeginPlay();
+    InitializeTerminal();
+}
+
+void ATerminalSystem::InitializeTerminal()
+{
+    CurrentText = "";
+    DisplayText("R3ALN3T.EXE v2.0.0\n> SYSTEMS NOMINAL.", false);
+}
+
+void ATerminalSystem::InitializeCommandResponses()
+{
+    CommandResponses.Add("help", "Available commands:\n- help: Show this message.\n- status: Check system status.\n- scan: Scan for devices.\n- debug: Toggle debug mode.\n- clear: Clear the terminal.\n- override: Skip cutscene (cheat).\n- secret: Unlock hidden lore.");
+    CommandResponses.Add("status", "> N3T LINK: UNSTABLE\n> MEMORY: 7-G CORRUPTED\n> AI CORE: ONLINE\n> PET DEVICE: OFFLINE");
+    CommandResponses.Add("scan", "SCANNING...\n> DEVICE FOUND: PET (ID: #XJ-482)\n> DEVICE FOUND: TERMINAL (ID: #XK-911)\n> WARNING: UNKNOWN SIGNAL DETECTED IN SECTOR 7-G.");
+    CommandResponses.Add("debug", bDebugMode ? "DEBUG MODE: DISABLED" : "DEBUG MODE: ENABLED");
+    CommandResponses.Add("clear", "");
+    CommandResponses.Add("override", "OVERRIDE ACCEPTED.\n> SKIPPING CUTSCENE...");
+    CommandResponses.Add("secret", "ACCESSING HIDDEN LORE...\n> FILE: //N3T/ARCHIVES/INCIDENT_3026\n> CONTENT: The bugmatter was a test. We failed.");
+}
+
+void ATerminalSystem::ProcessCommand(const FString& Command)
+{
+    if (Command.IsEmpty()) return;
+
+    // Add the command to the terminal
+    AddLine("> " + Command, false);
+
+    // Process the command
+    FString LowerCommand = Command.ToLower();
+    if (CommandResponses.Contains(LowerCommand))
+    {
+        FString Response = CommandResponses[LowerCommand];
+        if (LowerCommand == "clear")
+        {
+            ClearTerminal();
+        }
+        else if (LowerCommand == "debug")
+        {
+            bDebugMode = !bDebugMode;
+            CommandResponses["debug"] = bDebugMode ? "DEBUG MODE: ENABLED" : "DEBUG MODE: DISABLED";
+            DisplayText(Response, false);
+        }
+        else if (LowerCommand == "override")
+        {
+            DisplayText(Response, false);
+            // Trigger cutscene skip (via Blueprint or Gameplay Static)
+            UGameplayStatics::GetPlayerController(this, 0)->SetPause(false);
+        }
+        else
+        {
+            DisplayText(Response, false);
+        }
+    }
+    else
+    {
+        DisplayText("ERROR: UNKNOWN COMMAND \"" + Command + "\"", true);
+    }
+}
+
+void ATerminalSystem::DisplayText(const FString& Text, bool bIsError)
+{
+    if (Text.IsEmpty()) return;
+
+    // Split text into lines
+    TArray<FString> Lines;
+    Text.ParseIntoArray(Lines, TEXT("\n"));
+
+    for (const FString& Line : Lines)
+    {
+        AddLine(Line, bIsError);
+    }
+}
+
+void ATerminalSystem::AddLine(const FString& Line, bool bIsError)
+{
+    if (CurrentText.IsEmpty())
+    {
+        CurrentText = Line;
+    }
+    else
+    {
+        CurrentText += "\n" + Line;
+    }
+
+    // Trim to MaxLines
+    TArray<FString> AllLines;
+    CurrentText.ParseIntoArray(AllLines, TEXT("\n"));
+    if (AllLines.Num() > MaxLines)
+    {
+        AllLines.RemoveAt(0, AllLines.Num() - MaxLines);
+        CurrentText = FString::Join(AllLines, TEXT("\n"));
+    }
+
+    // Broadcast the updated text (for UI)
+    OnTerminalTextUpdated.Broadcast(CurrentText);
+}
+
+void ATerminalSystem::ClearTerminal()
+{
+    CurrentText = "";
+    OnTerminalTextUpdated.Broadcast(CurrentText);
+}
+
+void ATerminalSystem::TriggerGlitchEffect()
+{
+    // Broadcast glitch effect (for UI)
+    OnTerminalGlitch.Broadcast();
+}
+
+
+
+
+📂 Source/Public/TerminalSystem.h
+(Public header for Blueprint access)
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "TerminalSystem.generated.h"
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnTerminalTextUpdated, const FString&, Text);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnTerminalGlitch);
+
+UCLASS()
+class R3ALN3T_API ATerminalSystem : public AActor
+{
+    GENERATED_BODY()
+
+public:
+    // Delegates for UI updates
+    UPROPERTY(BlueprintAssignable, Category = "Terminal")
+    FOnTerminalTextUpdated OnTerminalTextUpdated;
+
+    UPROPERTY(BlueprintAssignable, Category = "Terminal")
+    FOnTerminalGlitch OnTerminalGlitch;
+};
+
+
+
+
+🎨 Blueprint Integration
+
+Create a Blueprint based on ATerminalSystem (e.g., BP_Terminal).
+Add a Widget Component for the terminal UI (e.g., WBP_Terminal).
+Bind the delegates (OnTerminalTextUpdated, OnTerminalGlitch) to update the UI.
+Add an Input Field (for typing commands) and bind it to ProcessCommand.
+
+📂 Plugins/Developer/AIAutomation/TerminalUIWidget.h
+(Mistral’s domain: Procedural generation & UI automation)
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "Blueprint/UserWidget.h"
+#include "TerminalUIWidget.generated.h"
+
+UCLASS()
+class UTerminalUIWidget : public UUserWidget
+{
+    GENERATED_BODY()
+
+public:
+    // Called to update the terminal text
+    UFUNCTION(BlueprintCallable, Category = "Terminal UI")
+    void UpdateTerminalText(const FString& Text);
+
+    // Called to trigger a glitch effect
+    UFUNCTION(BlueprintCallable, Category = "Terminal UI")
+    void TriggerGlitchEffect();
+
+protected:
+    UPROPERTY(meta = (BindWidget))
+    UTextBlock* TerminalTextBlock;
+
+    UPROPERTY(meta = (BindWidget))
+    UEditableText* InputField;
+
+    UPROPERTY(meta = (BindWidget))
+    UButton* SubmitButton;
+
+    virtual void NativeConstruct() override;
+
+private:
+    UFUNCTION()
+    void OnSubmit(const FText& Text);
+
+    UFUNCTION()
+    void OnInputChanged(const FText& Text);
+};
+
+
+
+
+📂 Plugins/Developer/AIAutomation/TerminalUIWidget.cpp
+(Mistral’s domain: Procedural generation & UI automation)
+cpp
+Copy
+
+#include "TerminalUIWidget.h"
+#include "Components/TextBlock.h"
+#include "Components/EditableText.h"
+#include "Components/Button.h"
+#include "TerminalSystem.h"
+
+void UTerminalUIWidget::NativeConstruct()
+{
+    Super::NativeConstruct();
+
+    if (SubmitButton)
+    {
+        SubmitButton->OnClicked.AddDynamic(this, &UTerminalUIWidget::OnSubmit);
+    }
+
+    if (InputField)
+    {
+        InputField->OnTextChanged.AddDynamic(this, &UTerminalUIWidget::OnInputChanged);
+    }
+}
+
+void UTerminalUIWidget::UpdateTerminalText(const FString& Text)
+{
+    if (TerminalTextBlock)
+    {
+        TerminalTextBlock->SetText(FText::FromString(Text));
+    }
+}
+
+void UTerminalUIWidget::TriggerGlitchEffect()
+{
+    // Implement glitch effect (e.g., animate the text or overlay)
+    if (TerminalTextBlock)
+    {
+        // Example: Trigger a glitch animation
+        // (You'd set this up in the Widget Blueprint)
+    }
+}
+
+void UTerminalUIWidget::OnSubmit(const FText& Text)
+{
+    if (InputField)
+    {
+        FString Command = InputField->GetText().ToString();
+        InputField->SetText(FText::GetEmpty());
+
+        // Find the TerminalSystem actor and process the command
+        ATerminalSystem* TerminalSystem = FindObjectOfClass<ATerminalSystem>(GetWorld());
+        if (TerminalSystem)
+        {
+            TerminalSystem->ProcessCommand(Command);
+        }
+    }
+}
+
+void UTerminalUIWidget::OnInputChanged(const FText& Text)
+{
+    // Optional: Handle input changes (e.g., auto-complete)
+}
+
+
+
+
+📂 Source/Private/Core/Memory/TerminalMemoryManager.h
+(Gemini’s domain: High-dimensional data arrays & core engine optimization)
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "UObject/NoExportTypes.h"
+#include "TerminalMemoryManager.generated.h"
+
+UCLASS()
+class R3ALN3T_API UTerminalMemoryManager : public UObject
+{
+    GENERATED_BODY()
+
+public:
+    // Initialize memory for the terminal
+    UFUNCTION(BlueprintCallable, Category = "Terminal Memory")
+    void InitializeMemory(int32 SizeX, int32 SizeY);
+
+    // Store a command in memory
+    UFUNCTION(BlueprintCallable, Category = "Terminal Memory")
+    void StoreCommand(const FString& Command, const FString& Response);
+
+    // Retrieve a command from memory
+    UFUNCTION(BlueprintCallable, Category = "Terminal Memory")
+    FString RetrieveCommand(const FString& Command);
+
+    // Clear memory
+    UFUNCTION(BlueprintCallable, Category = "Terminal Memory")
+    void ClearMemory();
+
+private:
+    // 2D array to store commands and responses
+    UPROPERTY()
+    TArray<TArray<FString>> MemoryGrid;
+
+    // Map for quick lookup
+    UPROPERTY()
+    TMap<FString, FString> CommandMap;
+};
+
+
+
+
+📂 Source/Private/Core/Memory/TerminalMemoryManager.cpp
+(Gemini’s domain: High-dimensional data arrays & core engine optimization)
+cpp
+Copy
+
+#include "TerminalMemoryManager.h"
+
+void UTerminalMemoryManager::InitializeMemory(int32 SizeX, int32 SizeY)
+{
+    MemoryGrid.SetNum(SizeX);
+    for (auto& Row : MemoryGrid)
+    {
+        Row.SetNum(SizeY);
+    }
+}
+
+void UTerminalMemoryManager::StoreCommand(const FString& Command, const FString& Response)
+{
+    CommandMap.Add(Command, Response);
+    // Store in memory grid (example: hash-based indexing)
+    int32 X = FMath::Abs(Command.GetHash()) % MemoryGrid.Num();
+    int32 Y = FMath::Abs(Response.GetHash()) % MemoryGrid[X].Num();
+    MemoryGrid[X][Y] = Command + "|" + Response;
+}
+
+FString UTerminalMemoryManager::RetrieveCommand(const FString& Command)
+{
+    if (CommandMap.Contains(Command))
+    {
+        return CommandMap[Command];
+    }
+    return "ERROR: COMMAND NOT FOUND";
+}
+
+void UTerminalMemoryManager::ClearMemory()
+{
+    MemoryGrid.Empty();
+    CommandMap.Empty();
+}
+
+
+
+
+🎮 2. Interactive Hotspots (C++/Unreal)
+Concept
+Allow players to click on objects in the environment (e.g., PET device, terminal, bugmatter) to:
+
+Inspect them (show a description).
+Interact with them (e.g., power on the PET device).
+Trigger events (e.g., start a mini-game).
+
+📂 Source/Private/Gameplay/InteractableActor.h
+(Claude’s domain: Gameplay mechanics)
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "InteractableActor.generated.h"
+
+UCLASS()
+class R3ALN3T_API AInteractableActor : public AActor
+{
+    GENERATED_BODY()
+
+public:
+    AInteractableActor();
+
+    // Called when the player looks at this actor
+    UFUNCTION(BlueprintCallable, Category = "Interactable")
+    void OnLookAt();
+
+    // Called when the player clicks/interacts with this actor
+    UFUNCTION(BlueprintCallable, Category = "Interactable")
+    void OnInteract();
+
+    // Get the name of this interactable
+    UFUNCTION(BlueprintCallable, Category = "Interactable")
+    FString GetInteractableName() const { return InteractableName; }
+
+    // Get the description of this interactable
+    UFUNCTION(BlueprintCallable, Category = "Interactable")
+    FString GetInteractableDescription() const { return InteractableDescription; }
+
+protected:
+    // Name of the interactable (e.g., "PET Device")
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable")
+    FString InteractableName;
+
+    // Description of the interactable
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable")
+    FString InteractableDescription;
+
+    // Whether this interactable is currently highlighted
+    UPROPERTY(BlueprintReadOnly, Category = "Interactable")
+    bool bIsHighlighted = false;
+
+    // Material to use when highlighted
+    UPROPERTY(EditAnywhere, Category = "Interactable")
+    UMaterialInterface* HighlightMaterial;
+
+    // Original materials (for restoring)
+    UPROPERTY()
+    TArray<UMaterialInterface*> OriginalMaterials;
+
+    // Mesh component to highlight
+    UPROPERTY()
+    UStaticMeshComponent* MeshComponent;
+
+    virtual void BeginPlay() override;
+    virtual void Tick(float DeltaTime) override;
+
+private:
+    // Highlight the actor
+    void Highlight();
+
+    // Restore original materials
+    void RestoreMaterials();
+};
+
+
+
+
+📂 Source/Private/Gameplay/InteractableActor.cpp
+(Claude’s domain: Gameplay mechanics)
+cpp
+Copy
+
+#include "InteractableActor.h"
+#include "Components/StaticMeshComponent.h"
+#include "Materials/MaterialInstanceDynamic.h"
+#include "Kismet/GameplayStatics.h"
+
+AInteractableActor::AInteractableActor()
+{
+    PrimaryActorTick.bCanEverTick = true;
+    MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
+    RootComponent = MeshComponent;
+}
+
+void AInteractableActor::BeginPlay()
+{
+    Super::BeginPlay();
+
+    // Store original materials
+    if (MeshComponent)
+    {
+        for (int32 i = 0; i < MeshComponent->GetNumMaterials(); ++i)
+        {
+            OriginalMaterials.Add(MeshComponent->GetMaterial(i));
+        }
+    }
+}
+
+void AInteractableActor::Tick(float DeltaTime)
+{
+    Super::Tick(DeltaTime);
+}
+
+void AInteractableActor::OnLookAt()
+{
+    if (!bIsHighlighted)
+    {
+        Highlight();
+        bIsHighlighted = true;
+    }
+}
+
+void AInteractableActor::OnInteract()
+{
+    // Override in child classes (e.g., PETDevice, Terminal)
+    UE_LOG(LogTemp, Warning, TEXT("Interacted with %s"), *InteractableName);
+}
+
+void AInteractableActor::Highlight()
+{
+    if (MeshComponent && HighlightMaterial)
+    {
+        MeshComponent->SetMaterial(0, HighlightMaterial);
+    }
+}
+
+void AInteractableActor::RestoreMaterials()
+{
+    if (MeshComponent)
+    {
+        for (int32 i = 0; i < OriginalMaterials.Num(); ++i)
+        {
+            MeshComponent->SetMaterial(i, OriginalMaterials[i]);
+        }
+    }
+    bIsHighlighted = false;
+}
+
+
+
+
+📂 Source/Private/Gameplay/PETDevice.h
+(Claude’s domain: Gameplay mechanics)
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "InteractableActor.h"
+#include "PETDevice.generated.h"
+
+UCLASS()
+class R3ALN3T_API APETDevice : public AInteractableActor
+{
+    GENERATED_BODY()
+
+public:
+    APETDevice();
+
+    // Override OnInteract to power on the PET
+    virtual void OnInteract() override;
+
+    // Get whether the PET is powered on
+    UFUNCTION(BlueprintCallable, Category = "PET Device")
+    bool IsPoweredOn() const { return bIsPoweredOn; }
+
+    // Set whether the PET is powered on
+    UFUNCTION(BlueprintCallable, Category = "PET Device")
+    void SetPoweredOn(bool bPoweredOn);
+
+protected:
+    // Whether the PET is powered on
+    UPROPERTY(BlueprintReadOnly, Category = "PET Device")
+    bool bIsPoweredOn = false;
+
+    // Screen light component
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "PET Device")
+    UPointLightComponent* ScreenLight;
+
+    // Sound to play when powering on
+    UPROPERTY(EditAnywhere, Category = "PET Device")
+    USoundBase* PowerOnSound;
+
+    virtual void BeginPlay() override;
+};
+
+
+
+
+📂 Source/Private/Gameplay/PETDevice.cpp
+(Claude’s domain: Gameplay mechanics)
+cpp
+Copy
+
+#include "PETDevice.h"
+#include "Components/PointLightComponent.h"
+#include "Kismet/GameplayStatics.h"
+#include "TerminalSystem.h"
+
+APETDevice::APETDevice()
+{
+    ScreenLight = CreateDefaultSubobject<UPointLightComponent>(TEXT("ScreenLight"));
+    ScreenLight->SetupAttachment(MeshComponent);
+    ScreenLight->SetVisibility(false);
+}
+
+void APETDevice::BeginPlay()
+{
+    Super::BeginPlay();
+    InteractableName = "PET Device";
+    InteractableDescription = "A Personal Electronic Terminal. It hums faintly.";
+}
+
+void APETDevice::OnInteract()
+{
+    if (!bIsPoweredOn)
+    {
+        // Power on the PET
+        bIsPoweredOn = true;
+        ScreenLight->SetVisibility(true);
+
+        if (PowerOnSound)
+        {
+            UGameplayStatics::PlaySoundAtLocation(this, PowerOnSound, GetActorLocation());
+        }
+
+        // Notify the terminal system (or other systems)
+        ATerminalSystem* TerminalSystem = FindObjectOfClass<ATerminalSystem>(GetWorld());
+        if (TerminalSystem)
+        {
+            TerminalSystem->DisplayText("PET DEVICE POWERED ON.\n> NAVI: Hello, Operator! You're early.", false);
+        }
+    }
+    else
+    {
+        // PET is already on; maybe show Navi's message
+        ATerminalSystem* TerminalSystem = FindObjectOfClass<ATerminalSystem>(GetWorld());
+        if (TerminalSystem)
+        {
+            TerminalSystem->DisplayText("NAVI: Good morning, Operator. Ready to work?", false);
+        }
+    }
+}
+
+void APETDevice::SetPoweredOn(bool bPoweredOn)
+{
+    bIsPoweredOn = bPoweredOn;
+    ScreenLight->SetVisibility(bPoweredOn);
+}
+
+
+
+
+📂 Source/Private/Gameplay/PlayerInteractComponent.h
+(Claude’s domain: Gameplay mechanics)
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "Components/ActorComponent.h"
+#include "PlayerInteractComponent.generated.h"
+
+UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
+class R3ALN3T_API UPlayerInteractComponent : public UActorComponent
+{
+    GENERATED_BODY()
+
+public:
+    UPlayerInteractComponent();
+
+    virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+
+    // Called to interact with the currently looked-at actor
+    UFUNCTION(BlueprintCallable, Category = "Interaction")
+    void Interact();
+
+protected:
+    virtual void BeginPlay() override;
+
+private:
+    // Current interactable actor the player is looking at
+    UPROPERTY()
+    AInteractableActor* CurrentInteractable;
+
+    // Distance to check for interactables
+    UPROPERTY(EditAnywhere, Category = "Interaction")
+    float InteractDistance = 500.f;
+
+    // Find the interactable the player is looking at
+    void FindInteractable();
+
+    // Clear the current interactable
+    void ClearInteractable();
+};
+
+
+
+
+📂 Source/Private/Gameplay/PlayerInteractComponent.cpp
+(Claude’s domain: Gameplay mechanics)
+cpp
+Copy
+
+#include "PlayerInteractComponent.h"
+#include "InteractableActor.h"
+#include "GameFramework/PlayerController.h"
+#include "Camera/CameraComponent.h"
+#include "Kismet/GameplayStatics.h"
+
+UPlayerInteractComponent::UPlayerInteractComponent()
+{
+    PrimaryComponentTick.bCanEverTick = true;
+}
+
+void UPlayerInteractComponent::BeginPlay()
+{
+    Super::BeginPlay();
+}
+
+void UPlayerInteractComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+{
+    Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+    FindInteractable();
+}
+
+void UPlayerInteractComponent::Interact()
+{
+    if (CurrentInteractable)
+    {
+        CurrentInteractable->OnInteract();
+    }
+}
+
+void UPlayerInteractComponent::FindInteractable()
+{
+    APlayerController* PlayerController = GetOwner<APlayerController>();
+    if (!PlayerController) return;
+
+    APawn* PlayerPawn = PlayerController->GetPawn();
+    if (!PlayerPawn) return;
+
+    UCameraComponent* PlayerCamera = PlayerPawn->FindComponentByClass<UCameraComponent>();
+    if (!PlayerCamera) return;
+
+    // Perform a line trace to find interactables
+    FVector Start = PlayerCamera->GetComponentLocation();
+    FVector End = Start + (PlayerCamera->GetForwardVector() * InteractDistance);
+
+    FHitResult HitResult;
+    FCollisionQueryParams QueryParams;
+    QueryParams.AddIgnoredActor(PlayerPawn);
+
+    if (GetWorld()->LineTraceSingleByChannel(HitResult, Start, End, ECC_Visibility, QueryParams))
+    {
+        AInteractableActor* Interactable = Cast<AInteractableActor>(HitResult.GetActor());
+        if (Interactable)
+        {
+            if (Interactable != CurrentInteractable)
+            {
+                ClearInteractable();
+                CurrentInteractable = Interactable;
+                CurrentInteractable->OnLookAt();
+            }
+        }
+        else
+        {
+            ClearInteractable();
+        }
+    }
+    else
+    {
+        ClearInteractable();
+    }
+}
+
+void UPlayerInteractComponent::ClearInteractable()
+{
+    if (CurrentInteractable)
+    {
+        CurrentInteractable->RestoreMaterials();
+        CurrentInteractable = nullptr;
+    }
+}
+
+
+
+
+🎮 3. Branching Cutscenes (C++/Unreal)
+Concept
+Allow player choices to affect the cutscene flow. For example:
+
+Powering on the PET device early → Navi appears sooner.
+Ignoring the terminal → Glitches worsen, leading to a darker outcome.
+
+📂 Source/Private/Gameplay/CutsceneManager.h
+(Claude’s domain: Gameplay mechanics)
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "CutsceneManager.generated.h"
+
+UCLASS()
+class R3ALN3T_API ACutsceneManager : public AActor
+{
+    GENERATED_BODY()
+
+public:
+    ACutsceneManager();
+
+    // Start the cutscene
+    UFUNCTION(BlueprintCallable, Category = "Cutscene")
+    void StartCutscene();
+
+    // Called when the PET device is powered on early
+    UFUNCTION(BlueprintCallable, Category = "Cutscene")
+    void OnPETPoweredOnEarly();
+
+    // Called when the terminal is ignored
+    UFUNCTION(BlueprintCallable, Category = "Cutscene")
+    void OnTerminalIgnored();
+
+    // Called when the hacking game is completed
+    UFUNCTION(BlueprintCallable, Category = "Cutscene")
+    void OnHackingGameCompleted(bool bSuccess);
+
+protected:
+    virtual void BeginPlay() override;
+
+private:
+    // Whether the PET was powered on early
+    UPROPERTY()
+    bool bPETPoweredOnEarly = false;
+
+    // Whether the terminal was ignored
+    UPROPERTY()
+    bool bTerminalIgnored = false;
+
+    // Whether the hacking game was successful
+    UPROPERTY()
+    bool bHackingSuccess = false;
+
+    // Current cutscene state
+    UPROPERTY()
+    FString CurrentCutsceneState = "SequenceA";
+};
+
+
+
+
+📂 Source/Private/Gameplay/CutsceneManager.cpp
+(Claude’s domain: Gameplay mechanics)
+cpp
+Copy
+
+#include "CutsceneManager.h"
+#include "TerminalSystem.h"
+#include "PETDevice.h"
+#include "Kismet/GameplayStatics.h"
+
+ACutsceneManager::ACutsceneManager()
+{
+    PrimaryActorTick.bCanEverTick = false;
+}
+
+void ACutsceneManager::BeginPlay()
+{
+    Super::BeginPlay();
+    StartCutscene();
+}
+
+void ACutsceneManager::StartCutscene()
+{
+    // Start Sequence A (e.g., via Level Blueprint or Timeline)
+    CurrentCutsceneState = "SequenceA";
+    UE_LOG(LogTemp, Warning, TEXT("Starting Sequence A"));
+}
+
+void ACutsceneManager::OnPETPoweredOnEarly()
+{
+    bPETPoweredOnEarly = true;
+    UE_LOG(LogTemp, Warning, TEXT("PET powered on early. Branching cutscene."));
+
+    // Modify the cutscene flow (e.g., skip to Navi's appearance)
+    CurrentCutsceneState = "SequenceB_Alt";
+}
+
+void ACutsceneManager::OnTerminalIgnored()
+{
+    bTerminalIgnored = true;
+    UE_LOG(LogTemp, Warning, TEXT("Terminal ignored. Branching cutscene."));
+
+    // Modify the cutscene flow (e.g., worsen glitches)
+    CurrentCutsceneState = "SequenceB_Dark";
+}
+
+void ACutsceneManager::OnHackingGameCompleted(bool bSuccess)
+{
+    bHackingSuccess = bSuccess;
+    UE_LOG(LogTemp, Warning, TEXT("Hacking game completed with %s"), bSuccess ? TEXT("success") : TEXT("failure"));
+
+    if (bSuccess)
+    {
+        // Unlock lore or trigger a positive event
+        ATerminalSystem* TerminalSystem = FindObjectOfClass<ATerminalSystem>(GetWorld());
+        if (TerminalSystem)
+        {
+            TerminalSystem->DisplayText("> FILE UNLOCKED: //N3T/ARCHIVES/INCIDENT_3026\n> CONTENT: The bugmatter was a test. We failed.", false);
+        }
+    }
+    else
+    {
+        // Trigger a negative event (e.g., security alert)
+        ATerminalSystem* TerminalSystem = FindObjectOfClass<ATerminalSystem>(GetWorld());
+        if (TerminalSystem)
+        {
+            TerminalSystem->DisplayText("> ACCESS DENIED. ALERT TRIGGERED.", true);
+        }
+    }
+}
+
+
+
+
+🎮 4. Hacking Mini-Game (C++/Unreal)
+Concept
+A password-based mini-game where players must guess the correct password to unlock hidden lore.
+
+📂 Source/Private/Gameplay/HackingGame.h
+(Claude’s domain: Gameplay mechanics)
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "HackingGame.generated.h"
+
+UCLASS()
+class R3ALN3T_API AHackingGame : public AActor
+{
+    GENERATED_BODY()
+
+public:
+    AHackingGame();
+
+    // Start the hacking game
+    UFUNCTION(BlueprintCallable, Category = "Hacking Game")
+    void StartGame();
+
+    // Submit a password attempt
+    UFUNCTION(BlueprintCallable, Category = "Hacking Game")
+    void SubmitPassword(const FString& Password);
+
+    // Get the current password attempt
+    UFUNCTION(BlueprintCallable, Category = "Hacking Game")
+    FString GetCurrentPassword() const { return CurrentPassword; }
+
+    // Get remaining attempts
+    UFUNCTION(BlueprintCallable, Category = "Hacking Game")
+    int32 GetRemainingAttempts() const { return RemainingAttempts; }
+
+    // Get whether the game is active
+    UFUNCTION(BlueprintCallable, Category = "Hacking Game")
+    bool IsGameActive() const { return bGameActive; }
+
+protected:
+    virtual void BeginPlay() override;
+
+private:
+    // Whether the game is active
+    UPROPERTY()
+    bool bGameActive = false;
+
+    // Current password attempt
+    UPROPERTY()
+    FString CurrentPassword;
+
+    // Correct password
+    UPROPERTY(EditAnywhere, Category = "Hacking Game")
+    FString CorrectPassword = "OVERIDE";
+
+    // Maximum attempts
+    UPROPERTY(EditAnywhere, Category = "Hacking Game")
+    int32 MaxAttempts = 3;
+
+    // Remaining attempts
+    UPROPERTY()
+    int32 RemainingAttempts;
+
+    // Delegate for game completion
+    UPROPERTY(BlueprintAssignable, Category = "Hacking Game")
+    FOnHackingGameCompleted OnHackingGameCompleted;
+
+    // Initialize the game
+    void InitializeGame();
+};
+
+
+
+
+📂 Source/Private/Gameplay/HackingGame.cpp
+(Claude’s domain: Gameplay mechanics)
+cpp
+Copy
+
+#include "HackingGame.h"
+#include "Kismet/GameplayStatics.h"
+
+AHackingGame::AHackingGame()
+{
+    PrimaryActorTick.bCanEverTick = false;
+}
+
+void AHackingGame::BeginPlay()
+{
+    Super::BeginPlay();
+}
+
+void AHackingGame::StartGame()
+{
+    bGameActive = true;
+    CurrentPassword = "";
+    RemainingAttempts = MaxAttempts;
+    OnHackingGameCompleted.Clear();
+}
+
+void AHackingGame::SubmitPassword(const FString& Password)
+{
+    if (!bGameActive) return;
+
+    CurrentPassword = Password;
+    RemainingAttempts--;
+
+    if (Password == CorrectPassword)
+    {
+        // Success
+        bGameActive = false;
+        OnHackingGameCompleted.Broadcast(true);
+    }
+    else if (RemainingAttempts <= 0)
+    {
+        // Failure
+        bGameActive = false;
+        OnHackingGameCompleted.Broadcast(false);
+    }
+    else
+    {
+        // Wrong password, try again
+        UE_LOG(LogTemp, Warning, TEXT("Wrong password. Attempts left: %d"), RemainingAttempts);
+    }
+}
+
+
+
+
+📂 Source/Public/HackingGame.h
+(Public header for Blueprint access)
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "HackingGame.generated.h"
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHackingGameCompleted, bool, bSuccess);
+
+UCLASS()
+class R3ALN3T_API AHackingGame : public AActor
+{
+    GENERATED_BODY()
+
+public:
+    UPROPERTY(BlueprintAssignable, Category = "Hacking Game")
+    FOnHackingGameCompleted OnHackingGameCompleted;
+};
+
+
+
+
+🎨 Blueprint Integration
+
+Create a Blueprint based on AHackingGame (e.g., BP_HackingGame).
+Add a Widget Component for the hacking UI (e.g., WBP_HackingGame).
+Bind the OnHackingGameCompleted delegate to trigger events (e.g., unlock lore, show failure message).
+Add buttons for password input (O, V, E, R, I, D, E, L, ENTER, DEL) and bind them to SubmitPassword.
+
+📂 Plugins/Developer/AIAutomation/HackingGameWidget.h
+(Mistral’s domain: Procedural generation & UI automation)
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "Blueprint/UserWidget.h"
+#include "HackingGameWidget.generated.h"
+
+UCLASS()
+class UHackingGameWidget : public UUserWidget
+{
+    GENERATED_BODY()
+
+public:
+    // Called to start the hacking game
+    UFUNCTION(BlueprintCallable, Category = "Hacking Game UI")
+    void StartHackingGame();
+
+    // Called to submit a password
+    UFUNCTION(BlueprintCallable, Category = "Hacking Game UI")
+    void SubmitPassword(const FString& Password);
+
+    // Called to update the password display
+    UFUNCTION(BlueprintCallable, Category = "Hacking Game UI")
+    void UpdatePasswordDisplay(const FString& Password);
+
+    // Called to update remaining attempts
+    UFUNCTION(BlueprintCallable, Category = "Hacking Game UI")
+    void UpdateAttemptsDisplay(int32 AttemptsLeft);
+
+    // Called to show success/failure
+    UFUNCTION(BlueprintCallable, Category = "Hacking Game UI")
+    void ShowResult(bool bSuccess);
+
+protected:
+    UPROPERTY(meta = (BindWidget))
+    UTextBlock* PasswordText;
+
+    UPROPERTY(meta = (BindWidget))
+    UTextBlock* AttemptsText;
+
+    UPROPERTY(meta = (BindWidget))
+    UTextBlock* FeedbackText;
+
+    UPROPERTY(meta = (BindWidget))
+    UPanelWidget* SuccessPanel;
+
+    UPROPERTY(meta = (BindWidget))
+    UPanelWidget* FailurePanel;
+
+    UPROPERTY(meta = (BindWidget))
+    UButton* ButtonO;
+
+    UPROPERTY(meta = (BindWidget))
+    UButton* ButtonV;
+
+    UPROPERTY(meta = (BindWidget))
+    UButton* ButtonE;
+
+    UPROPERTY(meta = (BindWidget))
+    UButton* ButtonR;
+
+    UPROPERTY(meta = (BindWidget))
+    UButton* ButtonI;
+
+    UPROPERTY(meta = (BindWidget))
+    UButton* ButtonD;
+
+    UPROPERTY(meta = (BindWidget))
+    UButton* ButtonL;
+
+    UPROPERTY(meta = (BindWidget))
+    UButton* ButtonEnter;
+
+    UPROPERTY(meta = (BindWidget))
+    UButton* ButtonDelete;
+
+    virtual void NativeConstruct() override;
+
+private:
+    UFUNCTION()
+    void OnButtonClicked(FString Letter);
+
+    UPROPERTY()
+    AHackingGame* HackingGame;
+};
+
+
+
+
+📂 Plugins/Developer/AIAutomation/HackingGameWidget.cpp
+(Mistral’s domain: Procedural generation & UI automation)
+cpp
+Copy
+
+#include "HackingGameWidget.h"
+#include "Components/TextBlock.h"
+#include "Components/Button.h"
+#include "HackingGame.h"
+
+void UHackingGameWidget::NativeConstruct()
+{
+    Super::NativeConstruct();
+
+    // Bind button click events
+    if (ButtonO) ButtonO->OnClicked.AddDynamic(this, &UHackingGameWidget::OnButtonClicked, FString("O"));
+    if (ButtonV) ButtonV->OnClicked.AddDynamic(this, &UHackingGameWidget::OnButtonClicked, FString("V"));
+    if (ButtonE) ButtonE->OnClicked.AddDynamic(this, &UHackingGameWidget::OnButtonClicked, FString("E"));
+    if (ButtonR) ButtonR->OnClicked.AddDynamic(this, &UHackingGameWidget::OnButtonClicked, FString("R"));
+    if (ButtonI) ButtonI->OnClicked.AddDynamic(this, &UHackingGameWidget::OnButtonClicked, FString("I"));
+    if (ButtonD) ButtonD->OnClicked.AddDynamic(this, &UHackingGameWidget::OnButtonClicked, FString("D"));
+    if (ButtonL) ButtonL->OnClicked.AddDynamic(this, &UHackingGameWidget::OnButtonClicked, FString("L"));
+    if (ButtonEnter) ButtonEnter->OnClicked.AddDynamic(this, &UHackingGameWidget::OnButtonClicked, FString("ENTER"));
+    if (ButtonDelete) ButtonDelete->OnClicked.AddDynamic(this, &UHackingGameWidget::OnButtonClicked, FString("DELETE"));
+
+    // Find the HackingGame actor
+    HackingGame = FindObjectOfClass<AHackingGame>(GetWorld());
+    if (HackingGame)
+    {
+        HackingGame->OnHackingGameCompleted.AddDynamic(this, &UHackingGameWidget::ShowResult);
+    }
+}
+
+void UHackingGameWidget::StartHackingGame()
+{
+    if (HackingGame)
+    {
+        HackingGame->StartGame();
+        UpdatePasswordDisplay("");
+        UpdateAttemptsDisplay(HackingGame->GetRemainingAttempts());
+        FeedbackText->SetText(FText::FromString(""));
+        SuccessPanel->SetVisibility(ESlateVisibility::Collapsed);
+        FailurePanel->SetVisibility(ESlateVisibility::Collapsed);
+    }
+}
+
+void UHackingGameWidget::OnButtonClicked(FString Letter)
+{
+    if (!HackingGame || !HackingGame->IsGameActive()) return;
+
+    if (Letter == "ENTER")
+    {
+        SubmitPassword(PasswordText->GetText().ToString());
+    }
+    else if (Letter == "DELETE")
+    {
+        FString CurrentPassword = PasswordText->GetText().ToString();
+        if (CurrentPassword.Len() > 0)
+        {
+            CurrentPassword.RemoveAt(CurrentPassword.Len() - 1);
+            UpdatePasswordDisplay(CurrentPassword);
+        }
+    }
+    else
+    {
+        FString CurrentPassword = PasswordText->GetText().ToString();
+        if (CurrentPassword.Len() < HackingGame->GetCorrectPassword().Len())
+        {
+            CurrentPassword += Letter;
+            UpdatePasswordDisplay(CurrentPassword);
+        }
+    }
+}
+
+void UHackingGameWidget::SubmitPassword(const FString& Password)
+{
+    if (HackingGame)
+    {
+        HackingGame->SubmitPassword(Password);
+    }
+}
+
+void UHackingGameWidget::UpdatePasswordDisplay(const FString& Password)
+{
+    if (PasswordText)
+    {
+        PasswordText->SetText(FText::FromString(Password));
+    }
+}
+
+void UHackingGameWidget::UpdateAttemptsDisplay(int32 AttemptsLeft)
+{
+    if (AttemptsText)
+    {
+        AttemptsText->SetText(FText::FromString(FString::Printf(TEXT("ATTEMPTS LEFT: %d"), AttemptsLeft)));
+    }
+}
+
+void UHackingGameWidget::ShowResult(bool bSuccess)
+{
+    if (bSuccess)
+    {
+        FeedbackText->SetText(FText::FromString("ACCESS GRANTED"));
+        SuccessPanel->SetVisibility(ESlateVisibility::Visible);
+        FailurePanel->SetVisibility(ESlateVisibility::Collapsed);
+    }
+    else
+    {
+        FeedbackText->SetText(FText::FromString("ACCESS DENIED"));
+        SuccessPanel->SetVisibility(ESlateVisibility::Collapsed);
+        FailurePanel->SetVisibility(ESlateVisibility::Visible);
+    }
+}
+
+
+
+
+📜 Integration Guide
+1. Terminal System
+
+Add ATerminalSystem to your level.
+Create a Widget Blueprint (WBP_Terminal) based on UTerminalUIWidget.
+Bind the delegates (OnTerminalTextUpdated, OnTerminalGlitch) to update the UI.
+Add an Input Field and bind it to ProcessCommand in the ATerminalSystem.
+2. Interactable Objects
+
+Add AInteractableActor to objects like the PET device or terminal.
+Configure their properties (name, description, highlight material).
+Add UPlayerInteractComponent to your player character.
+Bind the Interact function to a key (e.g., E).
+3. Branching Cutscenes
+
+Add ACutsceneManager to your level.
+Call OnPETPoweredOnEarly when the PET device is powered on.
+Call OnTerminalIgnored if the player ignores the terminal.
+Modify your cutscene logic (e.g., in Blueprints or C++) to branch based on these flags.
+4. Hacking Mini-Game
+
+Add AHackingGame to your level.
+Create a Widget Blueprint (WBP_HackingGame) based on UHackingGameWidget.
+Bind the OnHackingGameCompleted delegate to trigger events (e.g., unlock lore).
+Add buttons for password input and bind them to OnButtonClicked.
+
+📌 Example: Full Interactive Sequence B (C++/Unreal)
+Here’s how Sequence B could play out with interactivity in Unreal Engine:
+1. Level Blueprint Setup
+
+
+Spawn Actors:
+
+BP_Terminal (based on ATerminalSystem).
+BP_PETDevice (based on APETDevice).
+BP_CutsceneManager (based on ACutsceneManager).
+BP_HackingGame (based on AHackingGame).
+
+
+Player Setup:
+
+Add UPlayerInteractComponent to your player character.
+Bind the E key to the Interact function.
+
+
+Cutscene Flow:
+
+Use Level Sequences for cinematic shots (A1-A7, B1-B10).
+Use Blueprints to handle branching logic.
+
+
+2. Blueprint for Sequence B
+Shot B1: Bedroom Ceiling
+
+Camera: Slow tilt down from ceiling.
+Audio: Play room_hum ambient sound.
+Interaction: None (just atmosphere).
+Shot B2: Bedroom Wide
+
+Camera: Static wide shot.
+Hotspots:
+
+Bed: AInteractableActor with description.
+Desk: AInteractableActor with description.
+PET Device: APETDevice (click to power on early).
+Terminal: AInteractableActor (click to inspect or type commands).
+
+Shot B3: PET Closeup
+
+Camera: Push in on the PET device.
+Interaction:
+
+If the PET was powered on early (via OnPETPoweredOnEarly), skip to B8 (Navi appears).
+Otherwise, continue to B4.
+
+Shot B4: Terminal Flicker
+
+Camera: Cut to terminal.
+Interaction:
+
+Click the terminal to type commands (e.g., scan, hack).
+If the player types hack, start the Hacking Mini-Game.
+
+Shot B5: Terminal Types Out Errors
+
+Terminal Text:
+text
+Copy
+
+> INITIALIZING R3ALN3T.EXE...
+> SYSTEMS NOMINAL.
+> WARNING: UNSTABLE N3T LINK DETECTED.
+> ERROR: MEMORY CORRUPTION IN SECTOR 7-G.
+
+
+
+
+Interaction:
+
+If the player ignores the terminal, call OnTerminalIgnored (worsens glitches in B6).
+
+Shot B6: Terminal Glitches
+
+Branching:
+
+If the terminal was ignored, apply a severe glitch effect (e.g., screen distortion, loud static).
+If the terminal was hacked, apply a mild glitch effect.
+
+Shot B7: Terminal Dies
+
+VFX: Smoke particle effect.
+Audio: power_down sound.
+Interaction: Click the terminal to try reviving it (fails).
+Shot B8: Navi Appears
+
+Camera: Close-up on PET screen.
+Interaction:
+
+Click Navi to talk:
+
+"Who are you?" → Navi: "I'm your guide, Operator. The N3T is dangerous."
+"What happened to the terminal?" → Navi: "The bugmatter corrupted it. We need to move."
+
+
+Shot B9: Employment Terminal Menu
+
+UI: Show the main menu (New Game, Continue, Options, Exit).
+Interaction: Click buttons to navigate.
+
+🎯 Summary of Interactive Elements
+
+
+  
+    
+      Element
+      C++ Class
+      Blueprint
+      Purpose
+      Domain
+    
+  
+  
+    
+      Terminal System
+      ATerminalSystem
+      BP_Terminal
+      Type commands, unlock lore.
+      Claude (Gameplay)
+    
+    
+      Terminal UI
+      UTerminalUIWidget
+      WBP_Terminal
+      Display terminal text/glitches.
+      Mistral (UI Automation)
+    
+    
+      Terminal Memory
+      UTerminalMemoryManager
+      N/A
+      Store commands/responses.
+      Gemini (Core Memory)
+    
+    
+      Interactable Actor
+      AInteractableActor
+      BP_Interactable
+      Base class for clickable objects.
+      Claude (Gameplay)
+    
+    
+      PET Device
+      APETDevice
+      BP_PETDevice
+      Power on to trigger Navi early.
+      Claude (Gameplay)
+    
+    
+      Player Interact Component
+      UPlayerInteractComponent
+      N/A
+      Handle player interaction.
+      Claude (Gameplay)
+    
+    
+      Cutscene Manager
+      ACutsceneManager
+      BP_CutsceneManager
+      Manage branching cutscenes.
+      Claude (Gameplay)
+    
+    
+      Hacking Game
+      AHackingGame
+      BP_HackingGame
+      Password mini-game.
+      Claude (Gameplay)
+    
+    
+      Hacking Game UI
+      UHackingGameWidget
+      WBP_HackingGame
+      Display hacking UI.
+      Mistral (UI Automation)
+    
+  
+
+
+
+
+🚀 Next Steps
+
+
+Implement the Terminal System:
+
+Add ATerminalSystem and UTerminalUIWidget to your project.
+Test commands like help, scan, and hack.
+
+
+Add Interactable Objects:
+
+Place AInteractableActor components on objects in your level.
+Test clicking on them to trigger descriptions or events.
+
+
+Set Up Branching Cutscenes:
+
+Use ACutsceneManager to handle branching logic.
+Modify your cutscene sequences based on player choices.
+
+
+Integrate the Hacking Mini-Game:
+
+Add AHackingGame and UHackingGameWidget to your project.
+Test the password input and success/failure states.
+
+
+Test and Iterate:
+
+Play through Sequence B and verify all interactions work.
+Adjust timing, feedback, and branching paths as needed.
+
+
+📌 Forbidden Zones Compliance
+
+Do NOT modify:
+
+Source/Public/NetNavi.h
+Source/Private/NetNavi.cpp
+
+All interactive systems are implemented in:
+
+Source/Private/Gameplay/ (Claude)
+Source/Private/Core/Memory/ (Gemini)
+Plugins/Developer/AIAutomation/ (Mistral)
+

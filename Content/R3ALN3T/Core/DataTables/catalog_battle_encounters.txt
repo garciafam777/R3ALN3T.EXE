@@ -1,0 +1,158 @@
+=== battle_encounters (Battle_Lore) ===
+
+BATTLE_ENCOUNTERS_BATTLE_SPACE_DRAFT02
+  File: Battle_space (Draft02).png (image)
+  Size: 1,489,574 bytes
+
+BATTLE_ENCOUNTERS_BATTLE_SPACE
+  File: Battle_space.png (image)
+  Size: 1,471,844 bytes
+
+BATTLE_ENCOUNTERS_CHATGPT_IMAGE_JUN_24_2026_01_13_57_AM
+  File: ChatGPT Image Jun 24, 2026, 01_13_57 AM.png (image)
+  Size: 3,147,799 bytes
+
+BATTLE_ENCOUNTERS_CHATGPT_IMAGE_JUN_24_2026_01_24_03_AM
+  File: ChatGPT Image Jun 24, 2026, 01_24_03 AM.png (image)
+  Size: 2,345,293 bytes
+
+BATTLE_ENCOUNTERS_CHATGPT_IMAGE_JUN_24_2026_01_27_33_AM
+  File: ChatGPT Image Jun 24, 2026, 01_27_33 AM.png (image)
+  Size: 2,444,372 bytes
+
+BATTLE_ENCOUNTERS_CYBERPAUSEMENU_1
+  File: CyberPauseMenu (1).png (image)
+  Size: 7,693,045 bytes
+
+BATTLE_ENCOUNTERS_CYBERPAUSEMENU_2
+  File: CyberPauseMenu (2).png (image)
+  Size: 7,013,381 bytes
+
+BATTLE_ENCOUNTERS_CYBERPAUSEMENU_3
+  File: CyberPauseMenu (3).png (image)
+  Size: 6,498,838 bytes
+
+BATTLE_ENCOUNTERS_CYBERPAUSEMENU
+  File: CyberPauseMenu.png (image)
+  Size: 8,416,894 bytes
+
+BATTLE_ENCOUNTERS_ELEVENLABS_IMAGE_GPT_IMAGE_2_MAKE_A_MORE_FUT_202
+  File: ElevenLabs_image_gpt-image-2_make a more fut_2026-06-29T02_23_23.png (image)
+  Size: 1,376,260 bytes
+
+BATTLE_ENCOUNTERS_ELEVENLABS_IMAGE_GPT_IMAGE_2_MAKE_A_MORE_FUT_202
+  File: ElevenLabs_image_gpt-image-2_make a more fut_2026-06-29T02_23_25.png (image)
+  Size: 1,359,625 bytes
+
+BATTLE_ENCOUNTERS_ELEVENLABS_IMAGE_GPT_IMAGE_2_MAKE_A_MORE_FUT_202
+  File: ElevenLabs_image_gpt-image-2_make a more fut_2026-06-29T02_23_30.png (image)
+  Size: 1,568,741 bytes
+
+BATTLE_ENCOUNTERS_ELEVENLABS_IMAGE_GPT_IMAGE_2_MAKE_A_MORE_FUT_202
+  File: ElevenLabs_image_gpt-image-2_make a more fut_2026-06-29T02_23_47.png (image)
+  Size: 1,459,716 bytes
+
+BATTLE_ENCOUNTERS_ELEVENLABS_IMAGE_GPT_IMAGE_2_MAKE_A_MORE_FUT_202
+  File: ElevenLabs_image_gpt-image-2_make a more fut_2026-06-29T02_28_00.png (image)
+  Size: 1,516,753 bytes
+
+BATTLE_ENCOUNTERS_ELEVENLABS_IMAGE_GPT_IMAGE_2_MAKE_A_MORE_FUT_202
+  File: ElevenLabs_image_gpt-image-2_make a more fut_2026-06-29T02_28_18.png (image)
+  Size: 1,578,051 bytes
+
+BATTLE_ENCOUNTERS_ETERNITY
+  File: Eternity.png (image)
+  Size: 2,420,883 bytes
+
+BATTLE_ENCOUNTERS_GIT_UE_INTEGRATION_CUTSHEET
+  File: Git_UE_Integration_CutSheet.md (text)
+  Size: 8,954 bytes, 88 lines, 8,880 chars
+  Preview: # R3ALN3T.EXE — Git + Unreal C++ Integration Cut Sheet
+
+BATTLE_ENCOUNTERS_MMBN_MENU
+  File: MMBN Menu.jpg (image)
+  Size: 63,569 bytes
+
+BATTLE_ENCOUNTERS_TRINITY
+  File: Trinity.png (image)
+  Size: 2,289,927 bytes
+
+BATTLE_ENCOUNTERS_TYRANNY
+  File: Tyranny.png (image)
+  Size: 2,345,293 bytes
+
+BATTLE_ENCOUNTERS_BATTLE_SPACE_DAMAGE_RECIEVED
+  File: battle_space(damage_recieved).png (image)
+  Size: 1,602,775 bytes
+
+BATTLE_ENCOUNTERS_BATTLE_SPACE_SAMPLE_ATTACK
+  File: battle_space(sample_attack).png (image)
+  Size: 1,558,798 bytes
+
+BATTLE_ENCOUNTERS_BATTLE_SPACE_SAMPLE_ATTACK_CROSS_ENEMY_LINES
+  File: battle_space(sample_attack_cross_enemy_lines).png (image)
+  Size: 1,540,423 bytes
+
+BATTLE_ENCOUNTERS_BATTLE_SPACE_SAMPLE_ATTACK_SPECIAL_ATTACK
+  File: battle_space(sample_attack_special_attack).png (image)
+  Size: 1,652,956 bytes
+
+BATTLE_ENCOUNTERS_BATTLE_SPACE_SAMPLE_FLAME_DEMON_BATTLE_CARDS
+  File: battle_space(sample_flame_demon_battle_cards).png (image)
+  Size: 1,593,139 bytes
+
+BATTLE_ENCOUNTERS_BATTLE_SPACE_SAMPLE_FLAME_DEMON_SPECIAL_ATTACK
+  File: battle_space(sample_flame_demon_special_attack).png (image)
+  Size: 1,580,878 bytes
+
+BATTLE_ENCOUNTERS_BATTLE_SPACE_SAMPLE_FLAME_DEMON_STAGE_FIRE_BY_EL
+  File: battle_space(sample_flame_demon_stage_fire_by_element).png (image)
+  Size: 1,582,721 bytes
+
+BATTLE_ENCOUNTERS_BATTLE_SPACE_SAMPLE_HEAL
+  File: battle_space(sample_heal).png (image)
+  Size: 1,508,160 bytes
+
+BATTLE_ENCOUNTERS_CHARACTER_SPRITES
+  File: character_sprites.png (image)
+  Size: 45,465 bytes
+
+BATTLE_ENCOUNTERS_CHARACTER_SPRITES_2
+  File: character_sprites_2.png (image)
+  Size: 61,375 bytes
+
+BATTLE_ENCOUNTERS_DAVINCI_CREATE_A_MENU_SETTINGS_UI_FOR_A_VIDEO_GA
+  File: davinci_create_a_menu_settings_ui_for_a_video_game_that_is (1).png (image)
+  Size: 2,729,004 bytes
+
+BATTLE_ENCOUNTERS_DAVINCI_CREATE_A_MENU_SETTINGS_UI_FOR_A_VIDEO_GA
+  File: davinci_create_a_menu_settings_ui_for_a_video_game_that_is.png (image)
+  Size: 1,539,787 bytes
+
+BATTLE_ENCOUNTERS_DEEPSEEK_PYTHON_20260625_20AFBE
+  File: deepseek_python_20260625_20afbe.py (text)
+  Size: 93,358 bytes, 582 lines, 93,352 chars
+  Preview: import csv
+
+BATTLE_ENCOUNTERS_DEEPSEEK_PYTHON_20260625_4984A7
+  File: deepseek_python_20260625_4984a7.py (text)
+  Size: 627 bytes, 5 lines, 627 chars
+  Preview: # Background/extras with minimal but distinct descriptors
+
+BATTLE_ENCOUNTERS_DEEPSEEK_PYTHON_20260625_DBFB6B
+  File: deepseek_python_20260625_dbfb6b.py (text)
+  Size: 2,114 bytes, 16 lines, 2,114 chars
+  Preview: # Bikini Bottom residents (expand existing entries)
+
+BATTLE_ENCOUNTERS_GEMINI_2_5_FLASH_IMAGE_MAKE_A_MORE_FUTURISTIC_VE
+  File: gemini-2.5-flash-image_make_a_more_futuristic_version_of_MMBN_battle_stage_instead_of_3x3_make_it_4x4_w-0.jpg (image)
+  Size: 241,686 bytes
+
+BATTLE_ENCOUNTERS_IMAGE_1
+  File: image-1.png (image)
+  Size: 152,630 bytes
+
+BATTLE_ENCOUNTERS_IMAGE_2
+  File: image-2.png (image)
+  Size: 162,773 bytes
+

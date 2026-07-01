@@ -7,7 +7,7 @@
 #include "MythosGameMode.generated.h"
 
 UCLASS()
-class R3ALN3T_EXE_API AMythosGameMode : public AGameModeBase
+class R3ALN3T_UE5_API AMythosGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 

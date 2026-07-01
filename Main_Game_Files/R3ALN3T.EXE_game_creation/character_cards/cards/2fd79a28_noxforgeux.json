@@ -1,0 +1,25 @@
+{
+  "id": "2fd79a28",
+  "name": "Noxforgeux the Echo Lord",
+  "short_name": "Noxforgeux",
+  "tier": "UPSILON",
+  "element": "Void",
+  "type": "Controller",
+  "faction": "Abyssal Covenant",
+  "stats": {
+    "hp": 32,
+    "atk": 5,
+    "rapid": 1,
+    "charge": 4,
+    "def": 3
+  },
+  "programs": [
+    "Null Shift",
+    "Null Wall",
+    "Null Break"
+  ],
+  "description": "A UPSILON-tier Void-aligned Controller of the Abyssal Covenant.",
+  "color_primary": "#3f7f25",
+  "color_accent": "#9b0e86",
+  "generated": "2026-06-30T02:11:13.258579"
+}

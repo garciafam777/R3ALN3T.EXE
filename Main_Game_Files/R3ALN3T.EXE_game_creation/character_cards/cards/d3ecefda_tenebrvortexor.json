@@ -1,0 +1,25 @@
+{
+  "id": "d3ecefda",
+  "name": "Tenebrvortexor the Radiant",
+  "short_name": "Tenebrvortexor",
+  "tier": "GAMMA",
+  "element": "Fire",
+  "type": "Celestial",
+  "faction": "Undernet Syndicate",
+  "stats": {
+    "hp": 729,
+    "atk": 103,
+    "rapid": 64,
+    "charge": 113,
+    "def": 74
+  },
+  "programs": [
+    "Inferno Wave",
+    "Inferno Strike",
+    "Inferno Lance"
+  ],
+  "description": "A GAMMA-tier Fire-aligned Celestial of the Undernet Syndicate.",
+  "color_primary": "#92b757",
+  "color_accent": "#34d097",
+  "generated": "2026-06-30T02:11:13.258323"
+}

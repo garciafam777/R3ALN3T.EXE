@@ -1,0 +1,12 @@
+=== start_menu (UI_Scene) ===
+
+START_MENU_SQL_NOTES
+  File: SQL Notes.txt (text)
+  Size: 2,460 bytes, 67 lines, 2,393 chars
+  Preview: SQL Notes
+
+START_MENU_GAME_START_MENU
+  File: game_start_menu.txt (text)
+  Size: 50,143 bytes, 1272 lines, 48,847 chars
+  Preview: I need to create a game start menu as a new React route for the app, so let me review the current project structure firs
+

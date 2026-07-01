@@ -1,0 +1,25 @@
+{
+  "id": "1bfca4be",
+  "name": "Xenforgeith the Flux Sage",
+  "short_name": "Xenforgeith",
+  "tier": "LAMBDA",
+  "element": "Wind",
+  "type": "Mechanical",
+  "faction": "Aegis Concord",
+  "stats": {
+    "hp": 112,
+    "atk": 31,
+    "rapid": 14,
+    "charge": 27,
+    "def": 18
+  },
+  "programs": [
+    "Cyclone Pulse",
+    "Cyclone Barrier",
+    "Cyclone Shift"
+  ],
+  "description": "A LAMBDA-tier Wind-aligned Mechanical of the Aegis Concord.",
+  "color_primary": "#3ebb6e",
+  "color_accent": "#96436b",
+  "generated": "2026-06-30T02:11:13.258447"
+}

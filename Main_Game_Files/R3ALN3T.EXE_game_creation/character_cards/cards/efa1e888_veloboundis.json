@@ -1,0 +1,25 @@
+{
+  "id": "efa1e888",
+  "name": "Veloboundis the Echo Lord",
+  "short_name": "Veloboundis",
+  "tier": "CHI",
+  "element": "Ice",
+  "type": "Assassin",
+  "faction": "Free Grid Collective",
+  "stats": {
+    "hp": 16,
+    "atk": 2,
+    "rapid": 1,
+    "charge": 2,
+    "def": 3
+  },
+  "programs": [
+    "Cryo Barrier",
+    "Cryo Break",
+    "Cryo Strike"
+  ],
+  "description": "A CHI-tier Ice-aligned Assassin of the Free Grid Collective.",
+  "color_primary": "#bbd3b4",
+  "color_accent": "#62c775",
+  "generated": "2026-06-30T02:11:13.258553"
+}

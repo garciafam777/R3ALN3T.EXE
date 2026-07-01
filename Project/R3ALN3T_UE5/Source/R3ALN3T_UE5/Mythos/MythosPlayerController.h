@@ -5,7 +5,7 @@
 #include "MythosPlayerController.generated.h"
 
 UCLASS()
-class R3ALN3T_EXE_API AMythosPlayerController : public APlayerController
+class R3ALN3T_UE5_API AMythosPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 

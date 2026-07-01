@@ -1,0 +1,25 @@
+{
+  "id": "aec4b61b",
+  "name": "Neoboundius the Storm Herald",
+  "short_name": "Neoboundius",
+  "tier": "ETA",
+  "element": "Crystal",
+  "type": "Abyssal",
+  "faction": "Undernet Syndicate",
+  "stats": {
+    "hp": 222,
+    "atk": 36,
+    "rapid": 39,
+    "charge": 34,
+    "def": 30
+  },
+  "programs": [
+    "Prism Wall",
+    "Prism Field",
+    "Prism Barrier"
+  ],
+  "description": "A ETA-tier Crystal-aligned Abyssal of the Undernet Syndicate.",
+  "color_primary": "#d94db8",
+  "color_accent": "#58619b",
+  "generated": "2026-06-30T02:11:13.258369"
+}

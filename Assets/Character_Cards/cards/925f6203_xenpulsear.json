@@ -1,0 +1,25 @@
+{
+  "id": "925f6203",
+  "name": "Xenpulsear the Grid Breaker",
+  "short_name": "Xenpulsear",
+  "tier": "IOTA",
+  "element": "Poison",
+  "type": "Celestial",
+  "faction": "Celestial Order",
+  "stats": {
+    "hp": 133,
+    "atk": 38,
+    "rapid": 24,
+    "charge": 21,
+    "def": 32
+  },
+  "programs": [
+    "Toxin Shift",
+    "Toxin Pulse",
+    "Toxin Wall"
+  ],
+  "description": "A IOTA-tier Poison-aligned Celestial of the Celestial Order.",
+  "color_primary": "#00bf30",
+  "color_accent": "#ecbcaf",
+  "generated": "2026-06-30T02:11:13.258351"
+}

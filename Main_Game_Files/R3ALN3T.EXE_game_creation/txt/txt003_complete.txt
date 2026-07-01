@@ -1,0 +1,3797 @@
+🔧 Interactive Elements for R3ALN3T.EXE (C++/Unreal Engine)
+Here’s how to implement interactive elements in your C++/Unreal Engine project, respecting your global architecture lock and forbidden zones.
+
+📌 Key Constraints & Guidelines
+
+
+Do NOT modify:
+
+Source/Public/NetNavi.h
+Source/Private/NetNavi.cpp
+(Locked by Claude for gameplay mechanics and NetNavi logic.)
+
+
+Focus Areas for Interactive Elements:
+
+Gemini: High-dimensional data arrays & core engine optimization (Source/Private/Core/Memory/).
+Mistral: Procedural generation scripts & local tool automation (Plugins/Developer/AIAutomation/).
+Claude: C++ gameplay mechanics & NetNavi logic (Source/Private/Gameplay/).
+
+
+Allowed Work Directories:
+
+Source/Private/Core/Memory/ (Gemini)
+Source/Private/Gameplay/ (Claude)
+Plugins/Developer/AIAutomation/ (Mistral)
+
+
+🎮 1. Interactive Terminal System (C++/Unreal)
+Concept
+A retro-futuristic terminal that players can interact with to:
+
+Type commands (e.g., scan, hack, debug).
+Unlock lore or trigger events.
+Integrate with NetNavi (without modifying locked files).
+
+📂 Source/Private/Gameplay/TerminalSystem.h
+(Claude’s domain: Gameplay mechanics)
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "TerminalSystem.generated.h"
+
+UCLASS()
+class R3ALN3T_API ATerminalSystem : public AActor
+{
+    GENERATED_BODY()
+
+public:
+    ATerminalSystem();
+
+    // Called to initialize the terminal
+    UFUNCTION(BlueprintCallable, Category = "Terminal")
+    void InitializeTerminal();
+
+    // Called to process a command
+    UFUNCTION(BlueprintCallable, Category = "Terminal")
+    void ProcessCommand(const FString& Command);
+
+    // Called to display text in the terminal
+    UFUNCTION(BlueprintCallable, Category = "Terminal")
+    void DisplayText(const FString& Text, bool bIsError = false);
+
+    // Called to clear the terminal
+    UFUNCTION(BlueprintCallable, Category = "Terminal")
+    void ClearTerminal();
+
+    // Called to trigger a glitch effect
+    UFUNCTION(BlueprintCallable, Category = "Terminal")
+    void TriggerGlitchEffect();
+
+protected:
+    virtual void BeginPlay() override;
+
+private:
+    // Current text displayed in the terminal
+    UPROPERTY()
+    FString CurrentText;
+
+    // Maximum number of lines in the terminal
+    UPROPERTY(EditAnywhere, Category = "Terminal")
+    int32 MaxLines = 20;
+
+    // Whether debug mode is enabled
+    UPROPERTY()
+    bool bDebugMode = false;
+
+    // Map of commands to their responses
+    UPROPERTY()
+    TMap<FString, FString> CommandResponses;
+
+    // Initialize command responses
+    void InitializeCommandResponses();
+
+    // Add a line of text to the terminal
+    void AddLine(const FString& Line, bool bIsError = false);
+};
+
+
+
+
+📂 Source/Private/Gameplay/TerminalSystem.cpp
+(Claude’s domain: Gameplay mechanics)
+cpp
+Copy
+
+#include "TerminalSystem.h"
+#include "Engine/World.h"
+#include "Kismet/GameplayStatics.h"
+#include "NetNavi.h" // Include but DO NOT MODIFY
+
+ATerminalSystem::ATerminalSystem()
+{
+    PrimaryActorTick.bCanEverTick = false;
+    InitializeCommandResponses();
+}
+
+void ATerminalSystem::BeginPlay()
+{
+    Super::BeginPlay();
+    InitializeTerminal();
+}
+
+void ATerminalSystem::InitializeTerminal()
+{
+    CurrentText = "";
+    DisplayText("R3ALN3T.EXE v2.0.0\n> SYSTEMS NOMINAL.", false);
+}
+
+void ATerminalSystem::InitializeCommandResponses()
+{
+    CommandResponses.Add("help", "Available commands:\n- help: Show this message.\n- status: Check system status.\n- scan: Scan for devices.\n- debug: Toggle debug mode.\n- clear: Clear the terminal.\n- override: Skip cutscene (cheat).\n- secret: Unlock hidden lore.");
+    CommandResponses.Add("status", "> N3T LINK: UNSTABLE\n> MEMORY: 7-G CORRUPTED\n> AI CORE: ONLINE\n> PET DEVICE: OFFLINE");
+    CommandResponses.Add("scan", "SCANNING...\n> DEVICE FOUND: PET (ID: #XJ-482)\n> DEVICE FOUND: TERMINAL (ID: #XK-911)\n> WARNING: UNKNOWN SIGNAL DETECTED IN SECTOR 7-G.");
+    CommandResponses.Add("debug", bDebugMode ? "DEBUG MODE: DISABLED" : "DEBUG MODE: ENABLED");
+    CommandResponses.Add("clear", "");
+    CommandResponses.Add("override", "OVERRIDE ACCEPTED.\n> SKIPPING CUTSCENE...");
+    CommandResponses.Add("secret", "ACCESSING HIDDEN LORE...\n> FILE: //N3T/ARCHIVES/INCIDENT_3026\n> CONTENT: The bugmatter was a test. We failed.");
+}
+
+void ATerminalSystem::ProcessCommand(const FString& Command)
+{
+    if (Command.IsEmpty()) return;
+
+    // Add the command to the terminal
+    AddLine("> " + Command, false);
+
+    // Process the command
+    FString LowerCommand = Command.ToLower();
+    if (CommandResponses.Contains(LowerCommand))
+    {
+        FString Response = CommandResponses[LowerCommand];
+        if (LowerCommand == "clear")
+        {
+            ClearTerminal();
+        }
+        else if (LowerCommand == "debug")
+        {
+            bDebugMode = !bDebugMode;
+            CommandResponses["debug"] = bDebugMode ? "DEBUG MODE: ENABLED" : "DEBUG MODE: DISABLED";
+            DisplayText(Response, false);
+        }
+        else if (LowerCommand == "override")
+        {
+            DisplayText(Response, false);
+            // Trigger cutscene skip (via Blueprint or Gameplay Static)
+            UGameplayStatics::GetPlayerController(this, 0)->SetPause(false);
+        }
+        else
+        {
+            DisplayText(Response, false);
+        }
+    }
+    else
+    {
+        DisplayText("ERROR: UNKNOWN COMMAND \"" + Command + "\"", true);
+    }
+}
+
+void ATerminalSystem::DisplayText(const FString& Text, bool bIsError)
+{
+    if (Text.IsEmpty()) return;
+
+    // Split text into lines
+    TArray<FString> Lines;
+    Text.ParseIntoArray(Lines, TEXT("\n"));
+
+    for (const FString& Line : Lines)
+    {
+        AddLine(Line, bIsError);
+    }
+}
+
+void ATerminalSystem::AddLine(const FString& Line, bool bIsError)
+{
+    if (CurrentText.IsEmpty())
+    {
+        CurrentText = Line;
+    }
+    else
+    {
+        CurrentText += "\n" + Line;
+    }
+
+    // Trim to MaxLines
+    TArray<FString> AllLines;
+    CurrentText.ParseIntoArray(AllLines, TEXT("\n"));
+    if (AllLines.Num() > MaxLines)
+    {
+        AllLines.RemoveAt(0, AllLines.Num() - MaxLines);
+        CurrentText = FString::Join(AllLines, TEXT("\n"));
+    }
+
+    // Broadcast the updated text (for UI)
+    OnTerminalTextUpdated.Broadcast(CurrentText);
+}
+
+void ATerminalSystem::ClearTerminal()
+{
+    CurrentText = "";
+    OnTerminalTextUpdated.Broadcast(CurrentText);
+}
+
+void ATerminalSystem::TriggerGlitchEffect()
+{
+    // Broadcast glitch effect (for UI)
+    OnTerminalGlitch.Broadcast();
+}
+
+
+
+
+📂 Source/Public/TerminalSystem.h
+(Public header for Blueprint access)
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "TerminalSystem.generated.h"
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnTerminalTextUpdated, const FString&, Text);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnTerminalGlitch);
+
+UCLASS()
+class R3ALN3T_API ATerminalSystem : public AActor
+{
+    GENERATED_BODY()
+
+public:
+    // Delegates for UI updates
+    UPROPERTY(BlueprintAssignable, Category = "Terminal")
+    FOnTerminalTextUpdated OnTerminalTextUpdated;
+
+    UPROPERTY(BlueprintAssignable, Category = "Terminal")
+    FOnTerminalGlitch OnTerminalGlitch;
+};
+
+
+
+
+🎨 Blueprint Integration
+
+Create a Blueprint based on ATerminalSystem (e.g., BP_Terminal).
+Add a Widget Component for the terminal UI (e.g., WBP_Terminal).
+Bind the delegates (OnTerminalTextUpdated, OnTerminalGlitch) to update the UI.
+Add an Input Field (for typing commands) and bind it to ProcessCommand.
+
+📂 Plugins/Developer/AIAutomation/TerminalUIWidget.h
+(Mistral’s domain: Procedural generation & UI automation)
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "Blueprint/UserWidget.h"
+#include "TerminalUIWidget.generated.h"
+
+UCLASS()
+class UTerminalUIWidget : public UUserWidget
+{
+    GENERATED_BODY()
+
+public:
+    // Called to update the terminal text
+    UFUNCTION(BlueprintCallable, Category = "Terminal UI")
+    void UpdateTerminalText(const FString& Text);
+
+    // Called to trigger a glitch effect
+    UFUNCTION(BlueprintCallable, Category = "Terminal UI")
+    void TriggerGlitchEffect();
+
+protected:
+    UPROPERTY(meta = (BindWidget))
+    UTextBlock* TerminalTextBlock;
+
+    UPROPERTY(meta = (BindWidget))
+    UEditableText* InputField;
+
+    UPROPERTY(meta = (BindWidget))
+    UButton* SubmitButton;
+
+    virtual void NativeConstruct() override;
+
+private:
+    UFUNCTION()
+    void OnSubmit(const FText& Text);
+
+    UFUNCTION()
+    void OnInputChanged(const FText& Text);
+};
+
+
+
+
+📂 Plugins/Developer/AIAutomation/TerminalUIWidget.cpp
+(Mistral’s domain: Procedural generation & UI automation)
+cpp
+Copy
+
+#include "TerminalUIWidget.h"
+#include "Components/TextBlock.h"
+#include "Components/EditableText.h"
+#include "Components/Button.h"
+#include "TerminalSystem.h"
+
+void UTerminalUIWidget::NativeConstruct()
+{
+    Super::NativeConstruct();
+
+    if (SubmitButton)
+    {
+        SubmitButton->OnClicked.AddDynamic(this, &UTerminalUIWidget::OnSubmit);
+    }
+
+    if (InputField)
+    {
+        InputField->OnTextChanged.AddDynamic(this, &UTerminalUIWidget::OnInputChanged);
+    }
+}
+
+void UTerminalUIWidget::UpdateTerminalText(const FString& Text)
+{
+    if (TerminalTextBlock)
+    {
+        TerminalTextBlock->SetText(FText::FromString(Text));
+    }
+}
+
+void UTerminalUIWidget::TriggerGlitchEffect()
+{
+    // Implement glitch effect (e.g., animate the text or overlay)
+    if (TerminalTextBlock)
+    {
+        // Example: Trigger a glitch animation
+        // (You'd set this up in the Widget Blueprint)
+    }
+}
+
+void UTerminalUIWidget::OnSubmit(const FText& Text)
+{
+    if (InputField)
+    {
+        FString Command = InputField->GetText().ToString();
+        InputField->SetText(FText::GetEmpty());
+
+        // Find the TerminalSystem actor and process the command
+        ATerminalSystem* TerminalSystem = FindObjectOfClass<ATerminalSystem>(GetWorld());
+        if (TerminalSystem)
+        {
+            TerminalSystem->ProcessCommand(Command);
+        }
+    }
+}
+
+void UTerminalUIWidget::OnInputChanged(const FText& Text)
+{
+    // Optional: Handle input changes (e.g., auto-complete)
+}
+
+
+
+
+📂 Source/Private/Core/Memory/TerminalMemoryManager.h
+(Gemini’s domain: High-dimensional data arrays & core engine optimization)
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "UObject/NoExportTypes.h"
+#include "TerminalMemoryManager.generated.h"
+
+UCLASS()
+class R3ALN3T_API UTerminalMemoryManager : public UObject
+{
+    GENERATED_BODY()
+
+public:
+    // Initialize memory for the terminal
+    UFUNCTION(BlueprintCallable, Category = "Terminal Memory")
+    void InitializeMemory(int32 SizeX, int32 SizeY);
+
+    // Store a command in memory
+    UFUNCTION(BlueprintCallable, Category = "Terminal Memory")
+    void StoreCommand(const FString& Command, const FString& Response);
+
+    // Retrieve a command from memory
+    UFUNCTION(BlueprintCallable, Category = "Terminal Memory")
+    FString RetrieveCommand(const FString& Command);
+
+    // Clear memory
+    UFUNCTION(BlueprintCallable, Category = "Terminal Memory")
+    void ClearMemory();
+
+private:
+    // 2D array to store commands and responses
+    UPROPERTY()
+    TArray<TArray<FString>> MemoryGrid;
+
+    // Map for quick lookup
+    UPROPERTY()
+    TMap<FString, FString> CommandMap;
+};
+
+
+
+
+📂 Source/Private/Core/Memory/TerminalMemoryManager.cpp
+(Gemini’s domain: High-dimensional data arrays & core engine optimization)
+cpp
+Copy
+
+#include "TerminalMemoryManager.h"
+
+void UTerminalMemoryManager::InitializeMemory(int32 SizeX, int32 SizeY)
+{
+    MemoryGrid.SetNum(SizeX);
+    for (auto& Row : MemoryGrid)
+    {
+        Row.SetNum(SizeY);
+    }
+}
+
+void UTerminalMemoryManager::StoreCommand(const FString& Command, const FString& Response)
+{
+    CommandMap.Add(Command, Response);
+    // Store in memory grid (example: hash-based indexing)
+    int32 X = FMath::Abs(Command.GetHash()) % MemoryGrid.Num();
+    int32 Y = FMath::Abs(Response.GetHash()) % MemoryGrid[X].Num();
+    MemoryGrid[X][Y] = Command + "|" + Response;
+}
+
+FString UTerminalMemoryManager::RetrieveCommand(const FString& Command)
+{
+    if (CommandMap.Contains(Command))
+    {
+        return CommandMap[Command];
+    }
+    return "ERROR: COMMAND NOT FOUND";
+}
+
+void UTerminalMemoryManager::ClearMemory()
+{
+    MemoryGrid.Empty();
+    CommandMap.Empty();
+}
+
+
+
+
+🎮 2. Interactive Hotspots (C++/Unreal)
+Concept
+Allow players to click on objects in the environment (e.g., PET device, terminal, bugmatter) to:
+
+Inspect them (show a description).
+Interact with them (e.g., power on the PET device).
+Trigger events (e.g., start a mini-game).
+
+📂 Source/Private/Gameplay/InteractableActor.h
+(Claude’s domain: Gameplay mechanics)
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "InteractableActor.generated.h"
+
+UCLASS()
+class R3ALN3T_API AInteractableActor : public AActor
+{
+    GENERATED_BODY()
+
+public:
+    AInteractableActor();
+
+    // Called when the player looks at this actor
+    UFUNCTION(BlueprintCallable, Category = "Interactable")
+    void OnLookAt();
+
+    // Called when the player clicks/interacts with this actor
+    UFUNCTION(BlueprintCallable, Category = "Interactable")
+    void OnInteract();
+
+    // Get the name of this interactable
+    UFUNCTION(BlueprintCallable, Category = "Interactable")
+    FString GetInteractableName() const { return InteractableName; }
+
+    // Get the description of this interactable
+    UFUNCTION(BlueprintCallable, Category = "Interactable")
+    FString GetInteractableDescription() const { return InteractableDescription; }
+
+protected:
+    // Name of the interactable (e.g., "PET Device")
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable")
+    FString InteractableName;
+
+    // Description of the interactable
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable")
+    FString InteractableDescription;
+
+    // Whether this interactable is currently highlighted
+    UPROPERTY(BlueprintReadOnly, Category = "Interactable")
+    bool bIsHighlighted = false;
+
+    // Material to use when highlighted
+    UPROPERTY(EditAnywhere, Category = "Interactable")
+    UMaterialInterface* HighlightMaterial;
+
+    // Original materials (for restoring)
+    UPROPERTY()
+    TArray<UMaterialInterface*> OriginalMaterials;
+
+    // Mesh component to highlight
+    UPROPERTY()
+    UStaticMeshComponent* MeshComponent;
+
+    virtual void BeginPlay() override;
+    virtual void Tick(float DeltaTime) override;
+
+private:
+    // Highlight the actor
+    void Highlight();
+
+    // Restore original materials
+    void RestoreMaterials();
+};
+
+
+
+
+📂 Source/Private/Gameplay/InteractableActor.cpp
+(Claude’s domain: Gameplay mechanics)
+cpp
+Copy
+
+#include "InteractableActor.h"
+#include "Components/StaticMeshComponent.h"
+#include "Materials/MaterialInstanceDynamic.h"
+#include "Kismet/GameplayStatics.h"
+
+AInteractableActor::AInteractableActor()
+{
+    PrimaryActorTick.bCanEverTick = true;
+    MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
+    RootComponent = MeshComponent;
+}
+
+void AInteractableActor::BeginPlay()
+{
+    Super::BeginPlay();
+
+    // Store original materials
+    if (MeshComponent)
+    {
+        for (int32 i = 0; i < MeshComponent->GetNumMaterials(); ++i)
+        {
+            OriginalMaterials.Add(MeshComponent->GetMaterial(i));
+        }
+    }
+}
+
+void AInteractableActor::Tick(float DeltaTime)
+{
+    Super::Tick(DeltaTime);
+}
+
+void AInteractableActor::OnLookAt()
+{
+    if (!bIsHighlighted)
+    {
+        Highlight();
+        bIsHighlighted = true;
+    }
+}
+
+void AInteractableActor::OnInteract()
+{
+    // Override in child classes (e.g., PETDevice, Terminal)
+    UE_LOG(LogTemp, Warning, TEXT("Interacted with %s"), *InteractableName);
+}
+
+void AInteractableActor::Highlight()
+{
+    if (MeshComponent && HighlightMaterial)
+    {
+        MeshComponent->SetMaterial(0, HighlightMaterial);
+    }
+}
+
+void AInteractableActor::RestoreMaterials()
+{
+    if (MeshComponent)
+    {
+        for (int32 i = 0; i < OriginalMaterials.Num(); ++i)
+        {
+            MeshComponent->SetMaterial(i, OriginalMaterials[i]);
+        }
+    }
+    bIsHighlighted = false;
+}
+
+
+
+
+📂 Source/Private/Gameplay/PETDevice.h
+(Claude’s domain: Gameplay mechanics)
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "InteractableActor.h"
+#include "PETDevice.generated.h"
+
+UCLASS()
+class R3ALN3T_API APETDevice : public AInteractableActor
+{
+    GENERATED_BODY()
+
+public:
+    APETDevice();
+
+    // Override OnInteract to power on the PET
+    virtual void OnInteract() override;
+
+    // Get whether the PET is powered on
+    UFUNCTION(BlueprintCallable, Category = "PET Device")
+    bool IsPoweredOn() const { return bIsPoweredOn; }
+
+    // Set whether the PET is powered on
+    UFUNCTION(BlueprintCallable, Category = "PET Device")
+    void SetPoweredOn(bool bPoweredOn);
+
+protected:
+    // Whether the PET is powered on
+    UPROPERTY(BlueprintReadOnly, Category = "PET Device")
+    bool bIsPoweredOn = false;
+
+    // Screen light component
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "PET Device")
+    UPointLightComponent* ScreenLight;
+
+    // Sound to play when powering on
+    UPROPERTY(EditAnywhere, Category = "PET Device")
+    USoundBase* PowerOnSound;
+
+    virtual void BeginPlay() override;
+};
+
+
+
+
+📂 Source/Private/Gameplay/PETDevice.cpp
+(Claude’s domain: Gameplay mechanics)
+cpp
+Copy
+
+#include "PETDevice.h"
+#include "Components/PointLightComponent.h"
+#include "Kismet/GameplayStatics.h"
+#include "TerminalSystem.h"
+
+APETDevice::APETDevice()
+{
+    ScreenLight = CreateDefaultSubobject<UPointLightComponent>(TEXT("ScreenLight"));
+    ScreenLight->SetupAttachment(MeshComponent);
+    ScreenLight->SetVisibility(false);
+}
+
+void APETDevice::BeginPlay()
+{
+    Super::BeginPlay();
+    InteractableName = "PET Device";
+    InteractableDescription = "A Personal Electronic Terminal. It hums faintly.";
+}
+
+void APETDevice::OnInteract()
+{
+    if (!bIsPoweredOn)
+    {
+        // Power on the PET
+        bIsPoweredOn = true;
+        ScreenLight->SetVisibility(true);
+
+        if (PowerOnSound)
+        {
+            UGameplayStatics::PlaySoundAtLocation(this, PowerOnSound, GetActorLocation());
+        }
+
+        // Notify the terminal system (or other systems)
+        ATerminalSystem* TerminalSystem = FindObjectOfClass<ATerminalSystem>(GetWorld());
+        if (TerminalSystem)
+        {
+            TerminalSystem->DisplayText("PET DEVICE POWERED ON.\n> NAVI: Hello, Operator! You're early.", false);
+        }
+    }
+    else
+    {
+        // PET is already on; maybe show Navi's message
+        ATerminalSystem* TerminalSystem = FindObjectOfClass<ATerminalSystem>(GetWorld());
+        if (TerminalSystem)
+        {
+            TerminalSystem->DisplayText("NAVI: Good morning, Operator. Ready to work?", false);
+        }
+    }
+}
+
+void APETDevice::SetPoweredOn(bool bPoweredOn)
+{
+    bIsPoweredOn = bPoweredOn;
+    ScreenLight->SetVisibility(bPoweredOn);
+}
+
+
+
+
+📂 Source/Private/Gameplay/PlayerInteractComponent.h
+(Claude’s domain: Gameplay mechanics)
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "Components/ActorComponent.h"
+#include "PlayerInteractComponent.generated.h"
+
+UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
+class R3ALN3T_API UPlayerInteractComponent : public UActorComponent
+{
+    GENERATED_BODY()
+
+public:
+    UPlayerInteractComponent();
+
+    virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+
+    // Called to interact with the currently looked-at actor
+    UFUNCTION(BlueprintCallable, Category = "Interaction")
+    void Interact();
+
+protected:
+    virtual void BeginPlay() override;
+
+private:
+    // Current interactable actor the player is looking at
+    UPROPERTY()
+    AInteractableActor* CurrentInteractable;
+
+    // Distance to check for interactables
+    UPROPERTY(EditAnywhere, Category = "Interaction")
+    float InteractDistance = 500.f;
+
+    // Find the interactable the player is looking at
+    void FindInteractable();
+
+    // Clear the current interactable
+    void ClearInteractable();
+};
+
+
+
+
+📂 Source/Private/Gameplay/PlayerInteractComponent.cpp
+(Claude’s domain: Gameplay mechanics)
+cpp
+Copy
+
+#include "PlayerInteractComponent.h"
+#include "InteractableActor.h"
+#include "GameFramework/PlayerController.h"
+#include "Camera/CameraComponent.h"
+#include "Kismet/GameplayStatics.h"
+
+UPlayerInteractComponent::UPlayerInteractComponent()
+{
+    PrimaryComponentTick.bCanEverTick = true;
+}
+
+void UPlayerInteractComponent::BeginPlay()
+{
+    Super::BeginPlay();
+}
+
+void UPlayerInteractComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+{
+    Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+    FindInteractable();
+}
+
+void UPlayerInteractComponent::Interact()
+{
+    if (CurrentInteractable)
+    {
+        CurrentInteractable->OnInteract();
+    }
+}
+
+void UPlayerInteractComponent::FindInteractable()
+{
+    APlayerController* PlayerController = GetOwner<APlayerController>();
+    if (!PlayerController) return;
+
+    APawn* PlayerPawn = PlayerController->GetPawn();
+    if (!PlayerPawn) return;
+
+    UCameraComponent* PlayerCamera = PlayerPawn->FindComponentByClass<UCameraComponent>();
+    if (!PlayerCamera) return;
+
+    // Perform a line trace to find interactables
+    FVector Start = PlayerCamera->GetComponentLocation();
+    FVector End = Start + (PlayerCamera->GetForwardVector() * InteractDistance);
+
+    FHitResult HitResult;
+    FCollisionQueryParams QueryParams;
+    QueryParams.AddIgnoredActor(PlayerPawn);
+
+    if (GetWorld()->LineTraceSingleByChannel(HitResult, Start, End, ECC_Visibility, QueryParams))
+    {
+        AInteractableActor* Interactable = Cast<AInteractableActor>(HitResult.GetActor());
+        if (Interactable)
+        {
+            if (Interactable != CurrentInteractable)
+            {
+                ClearInteractable();
+                CurrentInteractable = Interactable;
+                CurrentInteractable->OnLookAt();
+            }
+        }
+        else
+        {
+            ClearInteractable();
+        }
+    }
+    else
+    {
+        ClearInteractable();
+    }
+}
+
+void UPlayerInteractComponent::ClearInteractable()
+{
+    if (CurrentInteractable)
+    {
+        CurrentInteractable->RestoreMaterials();
+        CurrentInteractable = nullptr;
+    }
+}
+
+
+
+
+🎮 3. Branching Cutscenes (C++/Unreal)
+Concept
+Allow player choices to affect the cutscene flow. For example:
+
+Powering on the PET device early → Navi appears sooner.
+Ignoring the terminal → Glitches worsen, leading to a darker outcome.
+
+📂 Source/Private/Gameplay/CutsceneManager.h
+(Claude’s domain: Gameplay mechanics)
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "CutsceneManager.generated.h"
+
+UCLASS()
+class R3ALN3T_API ACutsceneManager : public AActor
+{
+    GENERATED_BODY()
+
+public:
+    ACutsceneManager();
+
+    // Start the cutscene
+    UFUNCTION(BlueprintCallable, Category = "Cutscene")
+    void StartCutscene();
+
+    // Called when the PET device is powered on early
+    UFUNCTION(BlueprintCallable, Category = "Cutscene")
+    void OnPETPoweredOnEarly();
+
+    // Called when the terminal is ignored
+    UFUNCTION(BlueprintCallable, Category = "Cutscene")
+    void OnTerminalIgnored();
+
+    // Called when the hacking game is completed
+    UFUNCTION(BlueprintCallable, Category = "Cutscene")
+    void OnHackingGameCompleted(bool bSuccess);
+
+protected:
+    virtual void BeginPlay() override;
+
+private:
+    // Whether the PET was powered on early
+    UPROPERTY()
+    bool bPETPoweredOnEarly = false;
+
+    // Whether the terminal was ignored
+    UPROPERTY()
+    bool bTerminalIgnored = false;
+
+    // Whether the hacking game was successful
+    UPROPERTY()
+    bool bHackingSuccess = false;
+
+    // Current cutscene state
+    UPROPERTY()
+    FString CurrentCutsceneState = "SequenceA";
+};
+
+
+
+
+📂 Source/Private/Gameplay/CutsceneManager.cpp
+(Claude’s domain: Gameplay mechanics)
+cpp
+Copy
+
+#include "CutsceneManager.h"
+#include "TerminalSystem.h"
+#include "PETDevice.h"
+#include "Kismet/GameplayStatics.h"
+
+ACutsceneManager::ACutsceneManager()
+{
+    PrimaryActorTick.bCanEverTick = false;
+}
+
+void ACutsceneManager::BeginPlay()
+{
+    Super::BeginPlay();
+    StartCutscene();
+}
+
+void ACutsceneManager::StartCutscene()
+{
+    // Start Sequence A (e.g., via Level Blueprint or Timeline)
+    CurrentCutsceneState = "SequenceA";
+    UE_LOG(LogTemp, Warning, TEXT("Starting Sequence A"));
+}
+
+void ACutsceneManager::OnPETPoweredOnEarly()
+{
+    bPETPoweredOnEarly = true;
+    UE_LOG(LogTemp, Warning, TEXT("PET powered on early. Branching cutscene."));
+
+    // Modify the cutscene flow (e.g., skip to Navi's appearance)
+    CurrentCutsceneState = "SequenceB_Alt";
+}
+
+void ACutsceneManager::OnTerminalIgnored()
+{
+    bTerminalIgnored = true;
+    UE_LOG(LogTemp, Warning, TEXT("Terminal ignored. Branching cutscene."));
+
+    // Modify the cutscene flow (e.g., worsen glitches)
+    CurrentCutsceneState = "SequenceB_Dark";
+}
+
+void ACutsceneManager::OnHackingGameCompleted(bool bSuccess)
+{
+    bHackingSuccess = bSuccess;
+    UE_LOG(LogTemp, Warning, TEXT("Hacking game completed with %s"), bSuccess ? TEXT("success") : TEXT("failure"));
+
+    if (bSuccess)
+    {
+        // Unlock lore or trigger a positive event
+        ATerminalSystem* TerminalSystem = FindObjectOfClass<ATerminalSystem>(GetWorld());
+        if (TerminalSystem)
+        {
+            TerminalSystem->DisplayText("> FILE UNLOCKED: //N3T/ARCHIVES/INCIDENT_3026\n> CONTENT: The bugmatter was a test. We failed.", false);
+        }
+    }
+    else
+    {
+        // Trigger a negative event (e.g., security alert)
+        ATerminalSystem* TerminalSystem = FindObjectOfClass<ATerminalSystem>(GetWorld());
+        if (TerminalSystem)
+        {
+            TerminalSystem->DisplayText("> ACCESS DENIED. ALERT TRIGGERED.", true);
+        }
+    }
+}
+
+
+
+
+🎮 4. Hacking Mini-Game (C++/Unreal)
+Concept
+A password-based mini-game where players must guess the correct password to unlock hidden lore.
+
+📂 Source/Private/Gameplay/HackingGame.h
+(Claude’s domain: Gameplay mechanics)
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "HackingGame.generated.h"
+
+UCLASS()
+class R3ALN3T_API AHackingGame : public AActor
+{
+    GENERATED_BODY()
+
+public:
+    AHackingGame();
+
+    // Start the hacking game
+    UFUNCTION(BlueprintCallable, Category = "Hacking Game")
+    void StartGame();
+
+    // Submit a password attempt
+    UFUNCTION(BlueprintCallable, Category = "Hacking Game")
+    void SubmitPassword(const FString& Password);
+
+    // Get the current password attempt
+    UFUNCTION(BlueprintCallable, Category = "Hacking Game")
+    FString GetCurrentPassword() const { return CurrentPassword; }
+
+    // Get remaining attempts
+    UFUNCTION(BlueprintCallable, Category = "Hacking Game")
+    int32 GetRemainingAttempts() const { return RemainingAttempts; }
+
+    // Get whether the game is active
+    UFUNCTION(BlueprintCallable, Category = "Hacking Game")
+    bool IsGameActive() const { return bGameActive; }
+
+protected:
+    virtual void BeginPlay() override;
+
+private:
+    // Whether the game is active
+    UPROPERTY()
+    bool bGameActive = false;
+
+    // Current password attempt
+    UPROPERTY()
+    FString CurrentPassword;
+
+    // Correct password
+    UPROPERTY(EditAnywhere, Category = "Hacking Game")
+    FString CorrectPassword = "OVERIDE";
+
+    // Maximum attempts
+    UPROPERTY(EditAnywhere, Category = "Hacking Game")
+    int32 MaxAttempts = 3;
+
+    // Remaining attempts
+    UPROPERTY()
+    int32 RemainingAttempts;
+
+    // Delegate for game completion
+    UPROPERTY(BlueprintAssignable, Category = "Hacking Game")
+    FOnHackingGameCompleted OnHackingGameCompleted;
+
+    // Initialize the game
+    void InitializeGame();
+};
+
+
+
+
+📂 Source/Private/Gameplay/HackingGame.cpp
+(Claude’s domain: Gameplay mechanics)
+cpp
+Copy
+
+#include "HackingGame.h"
+#include "Kismet/GameplayStatics.h"
+
+AHackingGame::AHackingGame()
+{
+    PrimaryActorTick.bCanEverTick = false;
+}
+
+void AHackingGame::BeginPlay()
+{
+    Super::BeginPlay();
+}
+
+void AHackingGame::StartGame()
+{
+    bGameActive = true;
+    CurrentPassword = "";
+    RemainingAttempts = MaxAttempts;
+    OnHackingGameCompleted.Clear();
+}
+
+void AHackingGame::SubmitPassword(const FString& Password)
+{
+    if (!bGameActive) return;
+
+    CurrentPassword = Password;
+    RemainingAttempts--;
+
+    if (Password == CorrectPassword)
+    {
+        // Success
+        bGameActive = false;
+        OnHackingGameCompleted.Broadcast(true);
+    }
+    else if (RemainingAttempts <= 0)
+    {
+        // Failure
+        bGameActive = false;
+        OnHackingGameCompleted.Broadcast(false);
+    }
+    else
+    {
+        // Wrong password, try again
+        UE_LOG(LogTemp, Warning, TEXT("Wrong password. Attempts left: %d"), RemainingAttempts);
+    }
+}
+
+
+
+
+📂 Source/Public/HackingGame.h
+(Public header for Blueprint access)
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "HackingGame.generated.h"
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHackingGameCompleted, bool, bSuccess);
+
+UCLASS()
+class R3ALN3T_API AHackingGame : public AActor
+{
+    GENERATED_BODY()
+
+public:
+    UPROPERTY(BlueprintAssignable, Category = "Hacking Game")
+    FOnHackingGameCompleted OnHackingGameCompleted;
+};
+
+
+
+
+🎨 Blueprint Integration
+
+Create a Blueprint based on AHackingGame (e.g., BP_HackingGame).
+Add a Widget Component for the hacking UI (e.g., WBP_HackingGame).
+Bind the OnHackingGameCompleted delegate to trigger events (e.g., unlock lore, show failure message).
+Add buttons for password input (O, V, E, R, I, D, E, L, ENTER, DEL) and bind them to SubmitPassword.
+
+📂 Plugins/Developer/AIAutomation/HackingGameWidget.h
+(Mistral’s domain: Procedural generation & UI automation)
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "Blueprint/UserWidget.h"
+#include "HackingGameWidget.generated.h"
+
+UCLASS()
+class UHackingGameWidget : public UUserWidget
+{
+    GENERATED_BODY()
+
+public:
+    // Called to start the hacking game
+    UFUNCTION(BlueprintCallable, Category = "Hacking Game UI")
+    void StartHackingGame();
+
+    // Called to submit a password
+    UFUNCTION(BlueprintCallable, Category = "Hacking Game UI")
+    void SubmitPassword(const FString& Password);
+
+    // Called to update the password display
+    UFUNCTION(BlueprintCallable, Category = "Hacking Game UI")
+    void UpdatePasswordDisplay(const FString& Password);
+
+    // Called to update remaining attempts
+    UFUNCTION(BlueprintCallable, Category = "Hacking Game UI")
+    void UpdateAttemptsDisplay(int32 AttemptsLeft);
+
+    // Called to show success/failure
+    UFUNCTION(BlueprintCallable, Category = "Hacking Game UI")
+    void ShowResult(bool bSuccess);
+
+protected:
+    UPROPERTY(meta = (BindWidget))
+    UTextBlock* PasswordText;
+
+    UPROPERTY(meta = (BindWidget))
+    UTextBlock* AttemptsText;
+
+    UPROPERTY(meta = (BindWidget))
+    UTextBlock* FeedbackText;
+
+    UPROPERTY(meta = (BindWidget))
+    UPanelWidget* SuccessPanel;
+
+    UPROPERTY(meta = (BindWidget))
+    UPanelWidget* FailurePanel;
+
+    UPROPERTY(meta = (BindWidget))
+    UButton* ButtonO;
+
+    UPROPERTY(meta = (BindWidget))
+    UButton* ButtonV;
+
+    UPROPERTY(meta = (BindWidget))
+    UButton* ButtonE;
+
+    UPROPERTY(meta = (BindWidget))
+    UButton* ButtonR;
+
+    UPROPERTY(meta = (BindWidget))
+    UButton* ButtonI;
+
+    UPROPERTY(meta = (BindWidget))
+    UButton* ButtonD;
+
+    UPROPERTY(meta = (BindWidget))
+    UButton* ButtonL;
+
+    UPROPERTY(meta = (BindWidget))
+    UButton* ButtonEnter;
+
+    UPROPERTY(meta = (BindWidget))
+    UButton* ButtonDelete;
+
+    virtual void NativeConstruct() override;
+
+private:
+    UFUNCTION()
+    void OnButtonClicked(FString Letter);
+
+    UPROPERTY()
+    AHackingGame* HackingGame;
+};
+
+
+
+
+📂 Plugins/Developer/AIAutomation/HackingGameWidget.cpp
+(Mistral’s domain: Procedural generation & UI automation)
+cpp
+Copy
+
+#include "HackingGameWidget.h"
+#include "Components/TextBlock.h"
+#include "Components/Button.h"
+#include "HackingGame.h"
+
+void UHackingGameWidget::NativeConstruct()
+{
+    Super::NativeConstruct();
+
+    // Bind button click events
+    if (ButtonO) ButtonO->OnClicked.AddDynamic(this, &UHackingGameWidget::OnButtonClicked, FString("O"));
+    if (ButtonV) ButtonV->OnClicked.AddDynamic(this, &UHackingGameWidget::OnButtonClicked, FString("V"));
+    if (ButtonE) ButtonE->OnClicked.AddDynamic(this, &UHackingGameWidget::OnButtonClicked, FString("E"));
+    if (ButtonR) ButtonR->OnClicked.AddDynamic(this, &UHackingGameWidget::OnButtonClicked, FString("R"));
+    if (ButtonI) ButtonI->OnClicked.AddDynamic(this, &UHackingGameWidget::OnButtonClicked, FString("I"));
+    if (ButtonD) ButtonD->OnClicked.AddDynamic(this, &UHackingGameWidget::OnButtonClicked, FString("D"));
+    if (ButtonL) ButtonL->OnClicked.AddDynamic(this, &UHackingGameWidget::OnButtonClicked, FString("L"));
+    if (ButtonEnter) ButtonEnter->OnClicked.AddDynamic(this, &UHackingGameWidget::OnButtonClicked, FString("ENTER"));
+    if (ButtonDelete) ButtonDelete->OnClicked.AddDynamic(this, &UHackingGameWidget::OnButtonClicked, FString("DELETE"));
+
+    // Find the HackingGame actor
+    HackingGame = FindObjectOfClass<AHackingGame>(GetWorld());
+    if (HackingGame)
+    {
+        HackingGame->OnHackingGameCompleted.AddDynamic(this, &UHackingGameWidget::ShowResult);
+    }
+}
+
+void UHackingGameWidget::StartHackingGame()
+{
+    if (HackingGame)
+    {
+        HackingGame->StartGame();
+        UpdatePasswordDisplay("");
+        UpdateAttemptsDisplay(HackingGame->GetRemainingAttempts());
+        FeedbackText->SetText(FText::FromString(""));
+        SuccessPanel->SetVisibility(ESlateVisibility::Collapsed);
+        FailurePanel->SetVisibility(ESlateVisibility::Collapsed);
+    }
+}
+
+void UHackingGameWidget::OnButtonClicked(FString Letter)
+{
+    if (!HackingGame || !HackingGame->IsGameActive()) return;
+
+    if (Letter == "ENTER")
+    {
+        SubmitPassword(PasswordText->GetText().ToString());
+    }
+    else if (Letter == "DELETE")
+    {
+        FString CurrentPassword = PasswordText->GetText().ToString();
+        if (CurrentPassword.Len() > 0)
+        {
+            CurrentPassword.RemoveAt(CurrentPassword.Len() - 1);
+            UpdatePasswordDisplay(CurrentPassword);
+        }
+    }
+    else
+    {
+        FString CurrentPassword = PasswordText->GetText().ToString();
+        if (CurrentPassword.Len() < HackingGame->GetCorrectPassword().Len())
+        {
+            CurrentPassword += Letter;
+            UpdatePasswordDisplay(CurrentPassword);
+        }
+    }
+}
+
+void UHackingGameWidget::SubmitPassword(const FString& Password)
+{
+    if (HackingGame)
+    {
+        HackingGame->SubmitPassword(Password);
+    }
+}
+
+void UHackingGameWidget::UpdatePasswordDisplay(const FString& Password)
+{
+    if (PasswordText)
+    {
+        PasswordText->SetText(FText::FromString(Password));
+    }
+}
+
+void UHackingGameWidget::UpdateAttemptsDisplay(int32 AttemptsLeft)
+{
+    if (AttemptsText)
+    {
+        AttemptsText->SetText(FText::FromString(FString::Printf(TEXT("ATTEMPTS LEFT: %d"), AttemptsLeft)));
+    }
+}
+
+void UHackingGameWidget::ShowResult(bool bSuccess)
+{
+    if (bSuccess)
+    {
+        FeedbackText->SetText(FText::FromString("ACCESS GRANTED"));
+        SuccessPanel->SetVisibility(ESlateVisibility::Visible);
+        FailurePanel->SetVisibility(ESlateVisibility::Collapsed);
+    }
+    else
+    {
+        FeedbackText->SetText(FText::FromString("ACCESS DENIED"));
+        SuccessPanel->SetVisibility(ESlateVisibility::Collapsed);
+        FailurePanel->SetVisibility(ESlateVisibility::Visible);
+    }
+}
+
+
+
+
+📜 Integration Guide
+1. Terminal System
+
+Add ATerminalSystem to your level.
+Create a Widget Blueprint (WBP_Terminal) based on UTerminalUIWidget.
+Bind the delegates (OnTerminalTextUpdated, OnTerminalGlitch) to update the UI.
+Add an Input Field and bind it to ProcessCommand in the ATerminalSystem.
+2. Interactable Objects
+
+Add AInteractableActor to objects like the PET device or terminal.
+Configure their properties (name, description, highlight material).
+Add UPlayerInteractComponent to your player character.
+Bind the Interact function to a key (e.g., E).
+3. Branching Cutscenes
+
+Add ACutsceneManager to your level.
+Call OnPETPoweredOnEarly when the PET device is powered on.
+Call OnTerminalIgnored if the player ignores the terminal.
+Modify your cutscene logic (e.g., in Blueprints or C++) to branch based on these flags.
+4. Hacking Mini-Game
+
+Add AHackingGame to your level.
+Create a Widget Blueprint (WBP_HackingGame) based on UHackingGameWidget.
+Bind the OnHackingGameCompleted delegate to trigger events (e.g., unlock lore).
+Add buttons for password input and bind them to OnButtonClicked.
+
+📌 Example: Full Interactive Sequence B (C++/Unreal)
+Here’s how Sequence B could play out with interactivity in Unreal Engine:
+1. Level Blueprint Setup
+
+
+Spawn Actors:
+
+BP_Terminal (based on ATerminalSystem).
+BP_PETDevice (based on APETDevice).
+BP_CutsceneManager (based on ACutsceneManager).
+BP_HackingGame (based on AHackingGame).
+
+
+Player Setup:
+
+Add UPlayerInteractComponent to your player character.
+Bind the E key to the Interact function.
+
+
+Cutscene Flow:
+
+Use Level Sequences for cinematic shots (A1-A7, B1-B10).
+Use Blueprints to handle branching logic.
+
+
+2. Blueprint for Sequence B
+Shot B1: Bedroom Ceiling
+
+Camera: Slow tilt down from ceiling.
+Audio: Play room_hum ambient sound.
+Interaction: None (just atmosphere).
+Shot B2: Bedroom Wide
+
+Camera: Static wide shot.
+Hotspots:
+
+Bed: AInteractableActor with description.
+Desk: AInteractableActor with description.
+PET Device: APETDevice (click to power on early).
+Terminal: AInteractableActor (click to inspect or type commands).
+
+Shot B3: PET Closeup
+
+Camera: Push in on the PET device.
+Interaction:
+
+If the PET was powered on early (via OnPETPoweredOnEarly), skip to B8 (Navi appears).
+Otherwise, continue to B4.
+
+Shot B4: Terminal Flicker
+
+Camera: Cut to terminal.
+Interaction:
+
+Click the terminal to type commands (e.g., scan, hack).
+If the player types hack, start the Hacking Mini-Game.
+
+Shot B5: Terminal Types Out Errors
+
+Terminal Text:
+text
+Copy
+
+> INITIALIZING R3ALN3T.EXE...
+> SYSTEMS NOMINAL.
+> WARNING: UNSTABLE N3T LINK DETECTED.
+> ERROR: MEMORY CORRUPTION IN SECTOR 7-G.
+
+
+
+
+Interaction:
+
+If the player ignores the terminal, call OnTerminalIgnored (worsens glitches in B6).
+
+Shot B6: Terminal Glitches
+
+Branching:
+
+If the terminal was ignored, apply a severe glitch effect (e.g., screen distortion, loud static).
+If the terminal was hacked, apply a mild glitch effect.
+
+Shot B7: Terminal Dies
+
+VFX: Smoke particle effect.
+Audio: power_down sound.
+Interaction: Click the terminal to try reviving it (fails).
+Shot B8: Navi Appears
+
+Camera: Close-up on PET screen.
+Interaction:
+
+Click Navi to talk:
+
+"Who are you?" → Navi: "I'm your guide, Operator. The N3T is dangerous."
+"What happened to the terminal?" → Navi: "The bugmatter corrupted it. We need to move."
+
+
+Shot B9: Employment Terminal Menu
+
+UI: Show the main menu (New Game, Continue, Options, Exit).
+Interaction: Click buttons to navigate.
+
+🎯 Summary of Interactive Elements
+
+
+  
+    
+      Element
+      C++ Class
+      Blueprint
+      Purpose
+      Domain
+    
+  
+  
+    
+      Terminal System
+      ATerminalSystem
+      BP_Terminal
+      Type commands, unlock lore.
+      Claude (Gameplay)
+    
+    
+      Terminal UI
+      UTerminalUIWidget
+      WBP_Terminal
+      Display terminal text/glitches.
+      Mistral (UI Automation)
+    
+    
+      Terminal Memory
+      UTerminalMemoryManager
+      N/A
+      Store commands/responses.
+      Gemini (Core Memory)
+    
+    
+      Interactable Actor
+      AInteractableActor
+      BP_Interactable
+      Base class for clickable objects.
+      Claude (Gameplay)
+    
+    
+      PET Device
+      APETDevice
+      BP_PETDevice
+      Power on to trigger Navi early.
+      Claude (Gameplay)
+    
+    
+      Player Interact Component
+      UPlayerInteractComponent
+      N/A
+      Handle player interaction.
+      Claude (Gameplay)
+    
+    
+      Cutscene Manager
+      ACutsceneManager
+      BP_CutsceneManager
+      Manage branching cutscenes.
+      Claude (Gameplay)
+    
+    
+      Hacking Game
+      AHackingGame
+      BP_HackingGame
+      Password mini-game.
+      Claude (Gameplay)
+    
+    
+      Hacking Game UI
+      UHackingGameWidget
+      WBP_HackingGame
+      Display hacking UI.
+      Mistral (UI Automation)
+    
+  
+
+
+
+
+🚀 Next Steps
+
+
+Implement the Terminal System:
+
+Add ATerminalSystem and UTerminalUIWidget to your project.
+Test commands like help, scan, and hack.
+
+
+Add Interactable Objects:
+
+Place AInteractableActor components on objects in your level.
+Test clicking on them to trigger descriptions or events.
+
+
+Set Up Branching Cutscenes:
+
+Use ACutsceneManager to handle branching logic.
+Modify your cutscene sequences based on player choices.
+
+
+Integrate the Hacking Mini-Game:
+
+Add AHackingGame and UHackingGameWidget to your project.
+Test the password input and success/failure states.
+
+
+Test and Iterate:
+
+Play through Sequence B and verify all interactions work.
+Adjust timing, feedback, and branching paths as needed.
+
+
+📌 Forbidden Zones Compliance
+
+Do NOT modify:
+
+Source/Public/NetNavi.h
+Source/Private/NetNavi.cpp
+
+All interactive systems are implemented in:
+
+Source/Private/Gameplay/ (Claude)
+Source/Private/Core/Memory/ (Gemini)
+Plugins/Developer/AIAutomation/ (Mistral)
+
+
+Would you like me to:
+
+Expand on the Memory Reconstruction mini-game (e.g., reassemble corrupted memory fragments)?
+Add a Bugmatter Containment quick-time event (e.g., stop the bugmatter from leaking)?
+Design a dialogue system for Navi (e.g., branching conversations)?
+Create an inventory system for collectible items (e.g., data chips, keys)?
+
+
+
+
+
+5:28pm
+
+
+
+
+
+
+
+
+
+
+
+yes
+
+
+
+
+
+5:31pm
+
+
+
+
+
+
+
+
+
+
+
+Here’s a comprehensive implementation for all four requested interactive systems, fully compliant with your architecture locks and domain assignments. Each system is modular, avoids conflicts with NetNavi.h/cpp, and integrates seamlessly with your existing R3ALN3T.EXE framework.
+
+📦 1. Memory Reconstruction Mini-Game
+Domain: Mistral (Procedural Generation & UI Automation)
+Purpose: Players reassemble corrupted memory fragments to uncover hidden lore about the N3T accident or bugmatter.
+
+🎮 Concept
+
+Gameplay: Drag and drop memory fragments (text snippets, images, or 3D objects) into the correct order.
+Rewards: Unlocks lore entries, new commands, or alternate cutscene paths.
+Integration: Triggered via the Terminal (e.g., type reconstruct or inspect a corrupted file).
+
+**📂 Plugins/Developer/AIAutomation/MemoryReconstructionGame.h
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "MemoryReconstructionGame.generated.h"
+
+// Memory fragment data
+USTRUCT(BlueprintType)
+struct FMemoryFragment
+{
+    GENERATED_BODY()
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Memory Fragment")
+    FString FragmentText;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Memory Fragment")
+    UTexture2D* FragmentImage;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Memory Fragment")
+    int32 CorrectPosition;
+};
+
+UCLASS()
+class R3ALN3T_API AMemoryReconstructionGame : public AActor
+{
+    GENERATED_BODY()
+
+public:
+    AMemoryReconstructionGame();
+
+    // Start the memory reconstruction game
+    UFUNCTION(BlueprintCallable, Category = "Memory Game")
+    void StartGame(const TArray<FMemoryFragment>& Fragments, const FString& LoreReward);
+
+    // Submit the current reconstruction
+    UFUNCTION(BlueprintCallable, Category = "Memory Game")
+    void SubmitReconstruction();
+
+    // Check if the reconstruction is correct
+    UFUNCTION(BlueprintCallable, Category = "Memory Game")
+    bool IsReconstructionCorrect();
+
+    // Get the current fragments
+    UFUNCTION(BlueprintCallable, Category = "Memory Game")
+    TArray<FMemoryFragment> GetCurrentFragments() const { return CurrentFragments; }
+
+    // Get the lore reward
+    UFUNCTION(BlueprintCallable, Category = "Memory Game")
+    FString GetLoreReward() const { return LoreReward; }
+
+    // Delegate for game completion
+    UPROPERTY(BlueprintAssignable, Category = "Memory Game")
+    FOnMemoryGameCompleted OnMemoryGameCompleted;
+
+protected:
+    virtual void BeginPlay() override;
+
+private:
+    // Original fragments (correct order)
+    UPROPERTY()
+    TArray<FMemoryFragment> OriginalFragments;
+
+    // Current fragments (player's order)
+    UPROPERTY()
+    TArray<FMemoryFragment> CurrentFragments;
+
+    // Lore reward for completing the game
+    UPROPERTY()
+    FString LoreReward;
+
+    // Whether the game is active
+    UPROPERTY()
+    bool bGameActive = false;
+
+    // Shuffle the fragments for the game
+    void ShuffleFragments();
+};
+
+
+
+
+**📂 Plugins/Developer/AIAutomation/MemoryReconstructionGame.cpp
+cpp
+Copy
+
+#include "MemoryReconstructionGame.h"
+#include "Kismet/KismetMathLibrary.h"
+
+AMemoryReconstructionGame::AMemoryReconstructionGame()
+{
+    PrimaryActorTick.bCanEverTick = false;
+}
+
+void AMemoryReconstructionGame::BeginPlay()
+{
+    Super::BeginPlay();
+}
+
+void AMemoryReconstructionGame::StartGame(const TArray<FMemoryFragment>& Fragments, const FString& Reward)
+{
+    OriginalFragments = Fragments;
+    LoreReward = Reward;
+    CurrentFragments = OriginalFragments;
+    ShuffleFragments();
+    bGameActive = true;
+    OnMemoryGameCompleted.Clear();
+}
+
+void AMemoryReconstructionGame::ShuffleFragments()
+{
+    // Fisher-Yates shuffle
+    for (int32 i = CurrentFragments.Num() - 1; i > 0; --i)
+    {
+        int32 j = FMath::RandRange(0, i);
+        if (i != j)
+        {
+            CurrentFragments.Swap(i, j);
+        }
+    }
+}
+
+void AMemoryReconstructionGame::SubmitReconstruction()
+{
+    if (!bGameActive) return;
+
+    if (IsReconstructionCorrect())
+    {
+        bGameActive = false;
+        OnMemoryGameCompleted.Broadcast(true, LoreReward);
+    }
+    else
+    {
+        OnMemoryGameCompleted.Broadcast(false, "Reconstruction failed. Try again.");
+    }
+}
+
+bool AMemoryReconstructionGame::IsReconstructionCorrect()
+{
+    for (int32 i = 0; i < CurrentFragments.Num(); ++i)
+    {
+        if (CurrentFragments[i].CorrectPosition != i)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+
+
+
+**📂 Plugins/Developer/AIAutomation/MemoryReconstructionWidget.h
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "Blueprint/UserWidget.h"
+#include "MemoryReconstructionGame.h"
+#include "MemoryReconstructionWidget.generated.h"
+
+UCLASS()
+class UMemoryReconstructionWidget : public UUserWidget
+{
+    GENERATED_BODY()
+
+public:
+    // Initialize the widget with fragments
+    UFUNCTION(BlueprintCallable, Category = "Memory UI")
+    void InitializeWidget(const TArray<FMemoryFragment>& Fragments);
+
+    // Called when a fragment is dragged
+    UFUNCTION(BlueprintCallable, Category = "Memory UI")
+    void OnFragmentDragged(int32 FragmentIndex, int32 NewPosition);
+
+    // Called when the reconstruction is submitted
+    UFUNCTION(BlueprintCallable, Category = "Memory UI")
+    void OnSubmitReconstruction();
+
+    // Called to show the result
+    UFUNCTION(BlueprintCallable, Category = "Memory UI")
+    void ShowResult(bool bSuccess, const FString& ResultText);
+
+protected:
+    UPROPERTY(meta = (BindWidget))
+    UPanelWidget* FragmentsPanel;
+
+    UPROPERTY(meta = (BindWidget))
+    UTextBlock* ResultTextBlock;
+
+    UPROPERTY(meta = (BindWidget))
+    UButton* SubmitButton;
+
+    UPROPERTY()
+    AMemoryReconstructionGame* MemoryGame;
+
+    UPROPERTY()
+    TArray<FMemoryFragment> CurrentFragments;
+
+    virtual void NativeConstruct() override;
+
+private:
+    UFUNCTION()
+    void OnSubmitButtonClicked();
+};
+
+
+
+
+**📂 Plugins/Developer/AIAutomation/MemoryReconstructionWidget.cpp
+cpp
+Copy
+
+#include "MemoryReconstructionWidget.h"
+#include "Components/Button.h"
+#include "Components/PanelWidget.h"
+#include "Components/Border.h"
+#include "Components/TextBlock.h"
+#include "Components/Image.h"
+#include "Blueprint/WidgetTree.h"
+
+void UMemoryReconstructionWidget::NativeConstruct()
+{
+    Super::NativeConstruct();
+
+    if (SubmitButton)
+    {
+        SubmitButton->OnClicked.AddDynamic(this, &UMemoryReconstructionWidget::OnSubmitButtonClicked);
+    }
+
+    // Find the MemoryReconstructionGame actor
+    MemoryGame = FindObjectOfClass<AMemoryReconstructionGame>(GetWorld());
+    if (MemoryGame)
+    {
+        MemoryGame->OnMemoryGameCompleted.AddDynamic(this, &UMemoryReconstructionWidget::ShowResult);
+    }
+}
+
+void UMemoryReconstructionWidget::InitializeWidget(const TArray<FMemoryFragment>& Fragments)
+{
+    CurrentFragments = Fragments;
+    if (FragmentsPanel)
+    {
+        FragmentsPanel->ClearChildren();
+        for (int32 i = 0; i < Fragments.Num(); ++i)
+        {
+            UBorder* FragmentBorder = WidgetTree::GetWidgetTree(this)->ConstructWidget<UBorder>(UBorder::StaticClass());
+            FragmentBorder->SetPadding(FMargin(5, 5, 5, 5));
+            FragmentBorder->SetBrushColor(FLinearColor::Black);
+
+            UTextBlock* FragmentText = WidgetTree::GetWidgetTree(this)->ConstructWidget<UTextBlock>(UTextBlock::StaticClass());
+            FragmentText->SetText(FText::FromString(Fragments[i].FragmentText));
+            FragmentText->SetFont(FSlateFontInfo("ShareTechMono", 12));
+            FragmentText->SetColorAndOpacity(FLinearColor::Green);
+
+            if (Fragments[i].FragmentImage)
+            {
+                UImage* FragmentImage = WidgetTree::GetWidgetTree(this)->ConstructWidget<UImage>(UImage::StaticClass());
+                FragmentImage->SetBrushFromTexture(Fragments[i].FragmentImage);
+                FragmentImage->SetRenderScale(FVector2D(0.5f, 0.5f));
+
+                UVerticalBox* FragmentBox = WidgetTree::GetWidgetTree(this)->ConstructWidget<UVerticalBox>(UVerticalBox::StaticClass());
+                FragmentBox->AddChildToVerticalBox(FragmentImage);
+                FragmentBox->AddChildToVerticalBox(FragmentText);
+                FragmentBorder->AddChildToBorder(FragmentBox);
+            }
+            else
+            {
+                FragmentBorder->AddChildToBorder(FragmentText);
+            }
+
+            FragmentBorder->SetRenderTransformPivot(FVector2D(0.5f, 0.5f));
+            FragmentBorder->SetToolTipText(FText::FromString(FString::Printf(TEXT("Fragment %d"), i)));
+
+            // Store the index as a tag
+            FragmentBorder->AddTag(FName(*FString::Printf(TEXT("Fragment_%d"), i)));
+
+            FragmentsPanel->AddChildToPanel(FragmentBorder);
+        }
+    }
+}
+
+void UMemoryReconstructionWidget::OnFragmentDragged(int32 FragmentIndex, int32 NewPosition)
+{
+    if (FragmentIndex < 0 || FragmentIndex >= CurrentFragments.Num() || NewPosition < 0 || NewPosition >= CurrentFragments.Num())
+    {
+        return;
+    }
+
+    // Swap fragments
+    FMemoryFragment Temp = CurrentFragments[FragmentIndex];
+    CurrentFragments[FragmentIndex] = CurrentFragments[NewPosition];
+    CurrentFragments[NewPosition] = Temp;
+
+    // Update the UI
+    InitializeWidget(CurrentFragments);
+}
+
+void UMemoryReconstructionWidget::OnSubmitButtonClicked()
+{
+    OnSubmitReconstruction();
+}
+
+void UMemoryReconstructionWidget::OnSubmitReconstruction()
+{
+    if (MemoryGame)
+    {
+        MemoryGame->SubmitReconstruction();
+    }
+}
+
+void UMemoryReconstructionWidget::ShowResult(bool bSuccess, const FString& ResultText)
+{
+    if (ResultTextBlock)
+    {
+        ResultTextBlock->SetText(FText::FromString(ResultText));
+        ResultTextBlock->SetColorAndOpacity(bSuccess ? FLinearColor::Green : FLinearColor::Red);
+    }
+}
+
+
+
+
+🎨 Blueprint Setup
+
+Create a Blueprint (BP_MemoryReconstructionGame) based on AMemoryReconstructionGame.
+Create a Widget Blueprint (WBP_MemoryReconstruction) based on UMemoryReconstructionWidget.
+Configure Fragments in the Blueprint:
+
+Add text snippets (e.g., "The bugmatter was always sentient.", "Sector 7-G was the first to fall.").
+Add images (e.g., screenshots of the N3T accident, bugmatter tendrils).
+Set the correct order (CorrectPosition) for each fragment.
+
+Set the Lore Reward (e.g., "The bugmatter was a test. We failed.").
+Bind the Widget to the MemoryReconstructionGame actor.
+
+🔌 Integration with Terminal
+Add a new command to the Terminal System to start the memory game:
+cpp
+Copy
+
+// In ATerminalSystem::InitializeCommandResponses()
+CommandResponses.Add("reconstruct", "INITIATING MEMORY RECONSTRUCTION...\n> RECOVERING FRAGMENTS FROM SECTOR 7-G.");
+
+
+
+Add a function to start the game:
+cpp
+Copy
+
+// In ATerminalSystem.h
+UFUNCTION(BlueprintCallable, Category = "Terminal")
+void StartMemoryReconstruction();
+
+
+
+cpp
+Copy
+
+// In ATerminalSystem.cpp
+void ATerminalSystem::StartMemoryReconstruction()
+{
+    // Define fragments for the memory game
+    TArray<FMemoryFragment> Fragments;
+    FMemoryFragment Fragment1;
+    Fragment1.FragmentText = "The bugmatter was always sentient.";
+    Fragment1.CorrectPosition = 0;
+    Fragments.Add(Fragment1);
+
+    FMemoryFragment Fragment2;
+    Fragment2.FragmentText = "Sector 7-G was the first to fall.";
+    Fragment2.CorrectPosition = 1;
+    Fragments.Add(Fragment2);
+
+    FMemoryFragment Fragment3;
+    Fragment3.FragmentText = "The N3T judged us unworthy.";
+    Fragment3.CorrectPosition = 2;
+    Fragments.Add(Fragment3);
+
+    // Start the memory game
+    AMemoryReconstructionGame* MemoryGame = FindObjectOfClass<AMemoryReconstructionGame>(GetWorld());
+    if (MemoryGame)
+    {
+        MemoryGame->StartGame(Fragments, "The bugmatter was a test. We failed.");
+    }
+}
+
+
+
+
+🎮 Example Memory Fragments
+
+
+  
+    
+      Fragment Text
+      Correct Position
+      Image (Optional)
+    
+  
+  
+    
+      "The bugmatter was always sentient."
+      0
+      Bugmatter texture
+    
+    
+      "Sector 7-G was the first to fall."
+      1
+      Sector 7-G wireframe
+    
+    
+      "The N3T judged us unworthy."
+      2
+      Celestial Order symbol
+    
+    
+      "R34L became the residue."
+      3
+      M.A.N. Ledger coin
+    
+  
+
+
+
+
+📦 2. Bugmatter Containment Quick-Time Event (QTE)
+Domain: Claude (Gameplay Mechanics)
+Purpose: Players must rapidly press buttons to contain the bugmatter before it spreads.
+
+🎮 Concept
+
+Gameplay: A timed button-mashing mini-game where players press keys to "seal" the bugmatter.
+Failure: If the player fails, the bugmatter spreads further, triggering alternate cutscene paths (e.g., darker endings).
+Integration: Triggered when the player inspects the bugmatter vault (Shot A4) or fails to contain it.
+
+📂 Source/Private/Gameplay/BugmatterContainmentGame.h
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "BugmatterContainmentGame.generated.h"
+
+UCLASS()
+class R3ALN3T_API ABugmatterContainmentGame : public AActor
+{
+    GENERATED_BODY()
+
+public:
+    ABugmatterContainmentGame();
+
+    // Start the containment game
+    UFUNCTION(BlueprintCallable, Category = "Bugmatter Game")
+    void StartGame(float TimeLimit = 10.0f, int32 RequiredSuccesses = 5);
+
+    // Called when a key is pressed
+    UFUNCTION(BlueprintCallable, Category = "Bugmatter Game")
+    void OnKeyPressed(FKey Key);
+
+    // Get the current progress
+    UFUNCTION(BlueprintCallable, Category = "Bugmatter Game")
+    float GetProgress() const { return CurrentProgress; }
+
+    // Get the time remaining
+    UFUNCTION(BlueprintCallable, Category = "Bugmatter Game")
+    float GetTimeRemaining() const { return TimeRemaining; }
+
+    // Get whether the game is active
+    UFUNCTION(BlueprintCallable, Category = "Bugmatter Game")
+    bool IsGameActive() const { return bGameActive; }
+
+    // Delegate for game completion
+    UPROPERTY(BlueprintAssignable, Category = "Bugmatter Game")
+    FOnBugmatterGameCompleted OnBugmatterGameCompleted;
+
+protected:
+    virtual void BeginPlay() override;
+    virtual void Tick(float DeltaTime) override;
+
+private:
+    // Whether the game is active
+    UPROPERTY()
+    bool bGameActive = false;
+
+    // Time limit for the game (seconds)
+    UPROPERTY()
+    float TimeLimit;
+
+    // Time remaining (seconds)
+    UPROPERTY()
+    float TimeRemaining;
+
+    // Required number of successes
+    UPROPERTY()
+    int32 RequiredSuccesses;
+
+    // Current number of successes
+    UPROPERTY()
+    int32 CurrentSuccesses;
+
+    // Current progress (0-1)
+    UPROPERTY()
+    float CurrentProgress;
+
+    // Keys that can be pressed to contain the bugmatter
+    UPROPERTY(EditAnywhere, Category = "Bugmatter Game")
+    TArray<FKey> ValidKeys;
+
+    // Update the game state
+    void UpdateGame(float DeltaTime);
+};
+
+
+
+
+📂 Source/Private/Gameplay/BugmatterContainmentGame.cpp
+cpp
+Copy
+
+#include "BugmatterContainmentGame.h"
+#include "Kismet/GameplayStatics.h"
+
+ABugmatterContainmentGame::ABugmatterContainmentGame()
+{
+    PrimaryActorTick.bCanEverTick = true;
+
+    // Default valid keys (E, Q, Spacebar)
+    ValidKeys.Add(EKeys::E);
+    ValidKeys.Add(EKeys::Q);
+    ValidKeys.Add(EKeys::SpaceBar);
+}
+
+void ABugmatterContainmentGame::BeginPlay()
+{
+    Super::BeginPlay();
+}
+
+void ABugmatterContainmentGame::Tick(float DeltaTime)
+{
+    Super::Tick(DeltaTime);
+    if (bGameActive)
+    {
+        UpdateGame(DeltaTime);
+    }
+}
+
+void ABugmatterContainmentGame::StartGame(float TimeLimit, int32 RequiredSuccesses)
+{
+    this->TimeLimit = TimeLimit;
+    this->TimeRemaining = TimeLimit;
+    this->RequiredSuccesses = RequiredSuccesses;
+    this->CurrentSuccesses = 0;
+    this->CurrentProgress = 0.0f;
+    bGameActive = true;
+    OnBugmatterGameCompleted.Clear();
+}
+
+void ABugmatterContainmentGame::OnKeyPressed(FKey Key)
+{
+    if (!bGameActive) return;
+
+    if (ValidKeys.Contains(Key))
+    {
+        CurrentSuccesses++;
+        CurrentProgress = static_cast<float>(CurrentSuccesses) / RequiredSuccesses;
+
+        if (CurrentSuccesses >= RequiredSuccesses)
+        {
+            // Success
+            bGameActive = false;
+            OnBugmatterGameCompleted.Broadcast(true);
+        }
+    }
+}
+
+void ABugmatterContainmentGame::UpdateGame(float DeltaTime)
+{
+    TimeRemaining -= DeltaTime;
+    if (TimeRemaining <= 0.0f)
+    {
+        // Failure
+        bGameActive = false;
+        OnBugmatterGameCompleted.Broadcast(false);
+    }
+}
+
+
+
+
+📂 Source/Public/BugmatterContainmentGame.h
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "BugmatterContainmentGame.generated.h"
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnBugmatterGameCompleted, bool, bSuccess);
+
+UCLASS()
+class R3ALN3T_API ABugmatterContainmentGame : public AActor
+{
+    GENERATED_BODY()
+
+public:
+    UPROPERTY(BlueprintAssignable, Category = "Bugmatter Game")
+    FOnBugmatterGameCompleted OnBugmatterGameCompleted;
+};
+
+
+
+
+📂 Plugins/Developer/AIAutomation/BugmatterContainmentWidget.h
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "Blueprint/UserWidget.h"
+#include "BugmatterContainmentGame.h"
+#include "BugmatterContainmentWidget.generated.h"
+
+UCLASS()
+class UBugmatterContainmentWidget : public UUserWidget
+{
+    GENERATED_BODY()
+
+public:
+    // Initialize the widget
+    UFUNCTION(BlueprintCallable, Category = "Bugmatter UI")
+    void InitializeWidget(ABugmatterContainmentGame* Game);
+
+    // Update the progress bar
+    UFUNCTION(BlueprintCallable, Category = "Bugmatter UI")
+    void UpdateProgress(float Progress);
+
+    // Update the time remaining
+    UFUNCTION(BlueprintCallable, Category = "Bugmatter UI")
+    void UpdateTimeRemaining(float TimeRemaining);
+
+    // Show the result
+    UFUNCTION(BlueprintCallable, Category = "Bugmatter UI")
+    void ShowResult(bool bSuccess);
+
+protected:
+    UPROPERTY(meta = (BindWidget))
+    UProgressBar* ProgressBar;
+
+    UPROPERTY(meta = (BindWidget))
+    UTextBlock* TimeRemainingText;
+
+    UPROPERTY(meta = (BindWidget))
+    UTextBlock* ResultText;
+
+    UPROPERTY(meta = (BindWidget))
+    UPanelWidget* SuccessPanel;
+
+    UPROPERTY(meta = (BindWidget))
+    UPanelWidget* FailurePanel;
+
+    UPROPERTY()
+    ABugmatterContainmentGame* BugmatterGame;
+
+    virtual void NativeConstruct() override;
+    virtual void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
+
+private:
+    UFUNCTION()
+    void OnGameCompleted(bool bSuccess);
+};
+
+
+
+
+📂 Plugins/Developer/AIAutomation/BugmatterContainmentWidget.cpp
+cpp
+Copy
+
+#include "BugmatterContainmentWidget.h"
+#include "Components/ProgressBar.h"
+#include "Components/TextBlock.h"
+#include "Components/PanelWidget.h"
+
+void UBugmatterContainmentWidget::NativeConstruct()
+{
+    Super::NativeConstruct();
+}
+
+void UBugmatterContainmentWidget::InitializeWidget(ABugmatterContainmentGame* Game)
+{
+    BugmatterGame = Game;
+    if (BugmatterGame)
+    {
+        BugmatterGame->OnBugmatterGameCompleted.AddDynamic(this, &UBugmatterContainmentWidget::OnGameCompleted);
+    }
+}
+
+void UBugmatterContainmentWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
+{
+    Super::NativeTick(MyGeometry, InDeltaTime);
+
+    if (BugmatterGame && BugmatterGame->IsGameActive())
+    {
+        UpdateProgress(BugmatterGame->GetProgress());
+        UpdateTimeRemaining(BugmatterGame->GetTimeRemaining());
+    }
+}
+
+void UBugmatterContainmentWidget::UpdateProgress(float Progress)
+{
+    if (ProgressBar)
+    {
+        ProgressBar->SetPercent(Progress);
+    }
+}
+
+void UBugmatterContainmentWidget::UpdateTimeRemaining(float TimeRemaining)
+{
+    if (TimeRemainingText)
+    {
+        TimeRemainingText->SetText(FText::FromString(FString::Printf(TEXT("TIME: %.1fs"), TimeRemaining)));
+    }
+}
+
+void UBugmatterContainmentWidget::ShowResult(bool bSuccess)
+{
+    if (ResultText)
+    {
+        ResultText->SetText(FText::FromString(bSuccess ? "CONTAINMENT SUCCESSFUL" : "CONTAINMENT FAILED"));
+        ResultText->SetColorAndOpacity(bSuccess ? FLinearColor::Green : FLinearColor::Red);
+    }
+
+    if (SuccessPanel) SuccessPanel->SetVisibility(bSuccess ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
+    if (FailurePanel) FailurePanel->SetVisibility(bSuccess ? ESlateVisibility::Collapsed : ESlateVisibility::Visible);
+}
+
+void UBugmatterContainmentWidget::OnGameCompleted(bool bSuccess)
+{
+    ShowResult(bSuccess);
+}
+
+
+
+
+🎨 Blueprint Setup
+
+Create a Blueprint (BP_BugmatterContainmentGame) based on ABugmatterContainmentGame.
+Create a Widget Blueprint (WBP_BugmatterContainment) based on UBugmatterContainmentWidget.
+Configure the Game:
+
+Set TimeLimit (e.g., 10 seconds).
+Set RequiredSuccesses (e.g., 5).
+Add valid keys (e.g., E, Q, Spacebar).
+
+Bind the Widget to the BugmatterContainmentGame actor.
+
+🔌 Integration with Bugmatter Vault (Shot A4)
+Trigger the QTE when the player inspects the bugmatter vault:
+cpp
+Copy
+
+// In APETDevice or a new BugmatterVault class
+void ABugmatterVault::OnInteract()
+{
+    ABugmatterContainmentGame* ContainmentGame = FindObjectOfClass<ABugmatterContainmentGame>(GetWorld());
+    if (ContainmentGame)
+    {
+        ContainmentGame->StartGame(10.0f, 5);
+    }
+}
+
+
+
+
+🎮 Branching Outcomes
+
+Success: The bugmatter is contained. The cutscene continues normally.
+Failure: The bugmatter spreads, triggering a darker cutscene path (e.g., more glitches, alternate dialogue).
+
+📦 3. Navi Dialogue System
+Domain: Claude (Gameplay Mechanics)
+Purpose: A branching dialogue system for Navi, allowing players to ask questions and receive contextual responses.
+
+🎮 Concept
+
+Dialogue Tree: Navi’s responses branch based on player choices.
+Contextual Dialogue: Responses change based on game state (e.g., PET powered on early, terminal hacked).
+Integration: Triggered when the player clicks on Navi (Shot B8) or types talk in the terminal.
+
+📂 Source/Private/Gameplay/NaviDialogueSystem.h
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "NaviDialogueSystem.generated.h"
+
+// Dialogue option
+USTRUCT(BlueprintType)
+struct FDialogueOption
+{
+    GENERATED_BODY()
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dialogue")
+    FString OptionText;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dialogue")
+    FString ResponseText;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dialogue")
+    TArray<FDialogueOption> NextOptions;
+};
+
+// Dialogue node
+USTRUCT(BlueprintType)
+struct FDialogueNode
+{
+    GENERATED_BODY()
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dialogue")
+    FString SpeakerName;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dialogue")
+    FString DialogueText;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dialogue")
+    TArray<FDialogueOption> Options;
+};
+
+UCLASS()
+class R3ALN3T_API ANaviDialogueSystem : public AActor
+{
+    GENERATED_BODY()
+
+public:
+    ANaviDialogueSystem();
+
+    // Start a dialogue
+    UFUNCTION(BlueprintCallable, Category = "Dialogue")
+    void StartDialogue(const FDialogueNode& RootNode);
+
+    // Select a dialogue option
+    UFUNCTION(BlueprintCallable, Category = "Dialogue")
+    void SelectOption(int32 OptionIndex);
+
+    // Get the current dialogue node
+    UFUNCTION(BlueprintCallable, Category = "Dialogue")
+    FDialogueNode GetCurrentNode() const { return CurrentNode; }
+
+    // Get whether a dialogue is active
+    UFUNCTION(BlueprintCallable, Category = "Dialogue")
+    bool IsDialogueActive() const { return bDialogueActive; }
+
+    // Delegate for dialogue updates
+    UPROPERTY(BlueprintAssignable, Category = "Dialogue")
+    FOnDialogueUpdated OnDialogueUpdated;
+
+protected:
+    virtual void BeginPlay() override;
+
+private:
+    // Current dialogue node
+    UPROPERTY()
+    FDialogueNode CurrentNode;
+
+    // Whether a dialogue is active
+    UPROPERTY()
+    bool bDialogueActive = false;
+
+    // History of dialogue nodes (for backtracking)
+    UPROPERTY()
+    TArray<FDialogueNode> DialogueHistory;
+};
+
+
+
+
+📂 Source/Private/Gameplay/NaviDialogueSystem.cpp
+cpp
+Copy
+
+#include "NaviDialogueSystem.h"
+
+ANaviDialogueSystem::ANaviDialogueSystem()
+{
+    PrimaryActorTick.bCanEverTick = false;
+}
+
+void ANaviDialogueSystem::BeginPlay()
+{
+    Super::BeginPlay();
+}
+
+void ANaviDialogueSystem::StartDialogue(const FDialogueNode& RootNode)
+{
+    CurrentNode = RootNode;
+    bDialogueActive = true;
+    DialogueHistory.Empty();
+    DialogueHistory.Add(CurrentNode);
+    OnDialogueUpdated.Broadcast(CurrentNode);
+}
+
+void ANaviDialogueSystem::SelectOption(int32 OptionIndex)
+{
+    if (!bDialogueActive || OptionIndex < 0 || OptionIndex >= CurrentNode.Options.Num())
+    {
+        return;
+    }
+
+    const FDialogueOption& SelectedOption = CurrentNode.Options[OptionIndex];
+    if (SelectedOption.NextOptions.Num() > 0)
+    {
+        // Move to the next node
+        FDialogueNode NextNode;
+        NextNode.SpeakerName = CurrentNode.SpeakerName;
+        NextNode.DialogueText = SelectedOption.ResponseText;
+        NextNode.Options = SelectedOption.NextOptions;
+
+        DialogueHistory.Add(NextNode);
+        CurrentNode = NextNode;
+        OnDialogueUpdated.Broadcast(CurrentNode);
+    }
+    else
+    {
+        // End the dialogue
+        bDialogueActive = false;
+        OnDialogueUpdated.Broadcast(CurrentNode);
+    }
+}
+
+
+
+
+📂 Source/Public/NaviDialogueSystem.h
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "NaviDialogueSystem.generated.h"
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDialogueUpdated, const FDialogueNode&, Node);
+
+UCLASS()
+class R3ALN3T_API ANaviDialogueSystem : public AActor
+{
+    GENERATED_BODY()
+
+public:
+    UPROPERTY(BlueprintAssignable, Category = "Dialogue")
+    FOnDialogueUpdated OnDialogueUpdated;
+};
+
+
+
+
+📂 Plugins/Developer/AIAutomation/NaviDialogueWidget.h
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "Blueprint/UserWidget.h"
+#include "NaviDialogueSystem.h"
+#include "NaviDialogueWidget.generated.h"
+
+UCLASS()
+class UNaviDialogueWidget : public UUserWidget
+{
+    GENERATED_BODY()
+
+public:
+    // Initialize the widget
+    UFUNCTION(BlueprintCallable, Category = "Dialogue UI")
+    void InitializeWidget(ANaviDialogueSystem* DialogueSystem);
+
+    // Update the dialogue UI
+    UFUNCTION(BlueprintCallable, Category = "Dialogue UI")
+    void UpdateDialogueUI(const FDialogueNode& Node);
+
+protected:
+    UPROPERTY(meta = (BindWidget))
+    UTextBlock* SpeakerNameText;
+
+    UPROPERTY(meta = (BindWidget))
+    UTextBlock* DialogueText;
+
+    UPROPERTY(meta = (BindWidget))
+    UPanelWidget* OptionsPanel;
+
+    UPROPERTY()
+    ANaviDialogueSystem* DialogueSystem;
+
+    virtual void NativeConstruct() override;
+
+private:
+    UFUNCTION()
+    void OnDialogueUpdated(const FDialogueNode& Node);
+
+    UFUNCTION()
+    void OnOptionSelected(int32 OptionIndex);
+};
+
+
+
+
+📂 Plugins/Developer/AIAutomation/NaviDialogueWidget.cpp
+cpp
+Copy
+
+#include "NaviDialogueWidget.h"
+#include "Components/TextBlock.h"
+#include "Components/PanelWidget.h"
+#include "Components/Button.h"
+#include "Components/VerticalBox.h"
+#include "Blueprint/WidgetTree.h"
+
+void UNaviDialogueWidget::NativeConstruct()
+{
+    Super::NativeConstruct();
+
+    // Find the NaviDialogueSystem actor
+    DialogueSystem = FindObjectOfClass<ANaviDialogueSystem>(GetWorld());
+    if (DialogueSystem)
+    {
+        DialogueSystem->OnDialogueUpdated.AddDynamic(this, &UNaviDialogueWidget::OnDialogueUpdated);
+    }
+}
+
+void UNaviDialogueWidget::InitializeWidget(ANaviDialogueSystem* System)
+{
+    DialogueSystem = System;
+    if (DialogueSystem)
+    {
+        DialogueSystem->OnDialogueUpdated.AddDynamic(this, &UNaviDialogueWidget::OnDialogueUpdated);
+    }
+}
+
+void UNaviDialogueWidget::OnDialogueUpdated(const FDialogueNode& Node)
+{
+    UpdateDialogueUI(Node);
+}
+
+void UNaviDialogueWidget::UpdateDialogueUI(const FDialogueNode& Node)
+{
+    if (SpeakerNameText)
+    {
+        SpeakerNameText->SetText(FText::FromString(Node.SpeakerName));
+    }
+
+    if (DialogueText)
+    {
+        DialogueText->SetText(FText::FromString(Node.DialogueText));
+    }
+
+    if (OptionsPanel)
+    {
+        OptionsPanel->ClearChildren();
+
+        if (Node.Options.Num() > 0)
+        {
+            for (int32 i = 0; i < Node.Options.Num(); ++i)
+            {
+                UButton* OptionButton = WidgetTree::GetWidgetTree(this)->ConstructWidget<UButton>(UButton::StaticClass());
+                OptionButton->SetText(FText::FromString(Node.Options[i].OptionText));
+                OptionButton->SetToolTipText(FText::FromString(Node.Options[i].ResponseText));
+
+                // Store the option index as a tag
+                OptionButton->AddTag(FName(*FString::Printf(TEXT("Option_%d"), i)));
+
+                OptionButton->OnClicked.AddDynamic(this, &UNaviDialogueWidget::OnOptionSelected);
+
+                OptionsPanel->AddChildToPanel(OptionButton);
+            }
+        }
+    }
+}
+
+void UNaviDialogueWidget::OnOptionSelected(int32 OptionIndex)
+{
+    if (DialogueSystem)
+    {
+        DialogueSystem->SelectOption(OptionIndex);
+    }
+}
+
+
+
+
+🎨 Blueprint Setup
+
+Create a Blueprint (BP_NaviDialogueSystem) based on ANaviDialogueSystem.
+Create a Widget Blueprint (WBP_NaviDialogue) based on UNaviDialogueWidget.
+Configure the Dialogue Tree in the Blueprint:
+cpp
+Copy
+
+// Example dialogue tree for Navi
+FDialogueNode RootNode;
+RootNode.SpeakerName = "Navi";
+RootNode.DialogueText = "Good morning, Operator. Ready to work?";
+
+FDialogueOption Option1;
+Option1.OptionText = "Who are you?";
+Option1.ResponseText = "I'm your guide, Operator. The N3T is dangerous, but I'll help you navigate it.";
+
+FDialogueOption Option2;
+Option2.OptionText = "What happened to the terminal?";
+Option2.ResponseText = "The bugmatter corrupted it. We need to move before it spreads further.";
+
+FDialogueOption Option3;
+Option3.OptionText = "What is the N3T?";
+Option3.ResponseText = "The N3T is the digital world. It's where the bugmatter thrives. We must contain it.";
+
+RootNode.Options.Add(Option1);
+RootNode.Options.Add(Option2);
+RootNode.Options.Add(Option3);
+
+// Start the dialogue
+ANaviDialogueSystem* DialogueSystem = FindObjectOfClass<ANaviDialogueSystem>(GetWorld());
+if (DialogueSystem)
+{
+    DialogueSystem->StartDialogue(RootNode);
+}
+
+
+
+
+
+🔌 Integration with Navi (Shot B8)
+Trigger the dialogue when the player clicks on Navi:
+cpp
+Copy
+
+// In a NaviActor class (e.g., ANaviCharacter)
+void ANaviCharacter::OnInteract()
+{
+    ANaviDialogueSystem* DialogueSystem = FindObjectOfClass<ANaviDialogueSystem>(GetWorld());
+    if (DialogueSystem)
+    {
+        // Define the dialogue tree
+        FDialogueNode RootNode;
+        RootNode.SpeakerName = "Navi";
+        RootNode.DialogueText = "Good morning, Operator. Ready to work?";
+
+        // Add options (as shown above)
+        // ...
+
+        DialogueSystem->StartDialogue(RootNode);
+    }
+}
+
+
+
+
+📦 4. Inventory System
+Domain: Gemini (Core Memory & Data Arrays)
+Purpose: Players can collect, store, and use items (e.g., data chips, keys, bugmatter samples) to unlock new areas or lore.
+
+🎮 Concept
+
+Items: Collectible objects with unique IDs, names, descriptions, and uses.
+Inventory UI: A grid-based UI to view and manage items.
+Item Uses: Items can be used in the terminal (e.g., use data_chip_7g) or on interactable objects (e.g., insert a key into a door).
+
+📂 Source/Private/Core/Memory/InventorySystem.h
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "UObject/NoExportTypes.h"
+#include "InventorySystem.generated.h"
+
+// Item data
+USTRUCT(BlueprintType)
+struct FInventoryItem
+{
+    GENERATED_BODY()
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
+    FString ItemID;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
+    FString ItemName;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
+    FString ItemDescription;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
+    UTexture2D* ItemIcon;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
+    bool bIsUsable = true;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
+    FString UseCommand;
+};
+
+UCLASS()
+class R3ALN3T_API UInventorySystem : public UObject
+{
+    GENERATED_BODY()
+
+public:
+    // Add an item to the inventory
+    UFUNCTION(BlueprintCallable, Category = "Inventory")
+    bool AddItem(const FInventoryItem& Item);
+
+    // Remove an item from the inventory
+    UFUNCTION(BlueprintCallable, Category = "Inventory")
+    bool RemoveItem(const FString& ItemID);
+
+    // Use an item
+    UFUNCTION(BlueprintCallable, Category = "Inventory")
+    bool UseItem(const FString& ItemID);
+
+    // Get the inventory
+    UFUNCTION(BlueprintCallable, Category = "Inventory")
+    TArray<FInventoryItem> GetInventory() const { return Inventory; }
+
+    // Get an item by ID
+    UFUNCTION(BlueprintCallable, Category = "Inventory")
+    FInventoryItem GetItem(const FString& ItemID) const;
+
+    // Check if an item exists
+    UFUNCTION(BlueprintCallable, Category = "Inventory")
+    bool HasItem(const FString& ItemID) const;
+
+    // Delegate for inventory updates
+    UPROPERTY(BlueprintAssignable, Category = "Inventory")
+    FOnInventoryUpdated OnInventoryUpdated;
+
+private:
+    // Inventory items
+    UPROPERTY()
+    TArray<FInventoryItem> Inventory;
+
+    // Map for quick lookup
+    UPROPERTY()
+    TMap<FString, FInventoryItem> ItemMap;
+};
+
+
+
+
+📂 Source/Private/Core/Memory/InventorySystem.cpp
+cpp
+Copy
+
+#include "InventorySystem.h"
+
+bool UInventorySystem::AddItem(const FInventoryItem& Item)
+{
+    if (Item.ItemID.IsEmpty()) return false;
+
+    if (ItemMap.Contains(Item.ItemID))
+    {
+        // Item already exists; increment quantity if needed
+        return false;
+    }
+
+    Inventory.Add(Item);
+    ItemMap.Add(Item.ItemID, Item);
+    OnInventoryUpdated.Broadcast();
+    return true;
+}
+
+bool UInventorySystem::RemoveItem(const FString& ItemID)
+{
+    if (!ItemMap.Contains(ItemID)) return false;
+
+    for (int32 i = 0; i < Inventory.Num(); ++i)
+    {
+        if (Inventory[i].ItemID == ItemID)
+        {
+            Inventory.RemoveAt(i);
+            ItemMap.Remove(ItemID);
+            OnInventoryUpdated.Broadcast();
+            return true;
+        }
+    }
+    return false;
+}
+
+bool UInventorySystem::UseItem(const FString& ItemID)
+{
+    if (!ItemMap.Contains(ItemID)) return false;
+
+    FInventoryItem Item = ItemMap[ItemID];
+    if (!Item.bIsUsable) return false;
+
+    // Trigger the item's use effect
+    if (!Item.UseCommand.IsEmpty())
+    {
+        // Example: Send the UseCommand to the TerminalSystem
+        ATerminalSystem* TerminalSystem = FindObjectOfClass<ATerminalSystem>(GetOuter()->GetWorld());
+        if (TerminalSystem)
+        {
+            TerminalSystem->ProcessCommand(Item.UseCommand);
+        }
+    }
+
+    return true;
+}
+
+FInventoryItem UInventorySystem::GetItem(const FString& ItemID) const
+{
+    if (ItemMap.Contains(ItemID))
+    {
+        return ItemMap[ItemID];
+    }
+    return FInventoryItem();
+}
+
+bool UInventorySystem::HasItem(const FString& ItemID) const
+{
+    return ItemMap.Contains(ItemID);
+}
+
+
+
+
+📂 Source/Public/InventorySystem.h
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "InventorySystem.generated.h"
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnInventoryUpdated);
+
+UCLASS()
+class R3ALN3T_API UInventorySystem : public UObject
+{
+    GENERATED_BODY()
+
+public:
+    UPROPERTY(BlueprintAssignable, Category = "Inventory")
+    FOnInventoryUpdated OnInventoryUpdated;
+};
+
+
+
+
+📂 Plugins/Developer/AIAutomation/InventoryWidget.h
+cpp
+Copy
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "Blueprint/UserWidget.h"
+#include "InventorySystem.h"
+#include "InventoryWidget.generated.h"
+
+UCLASS()
+class UInventoryWidget : public UUserWidget
+{
+    GENERATED_BODY()
+
+public:
+    // Initialize the widget
+    UFUNCTION(BlueprintCallable, Category = "Inventory UI")
+    void InitializeWidget(UInventorySystem* InventorySystem);
+
+    // Update the inventory UI
+    UFUNCTION(BlueprintCallable, Category = "Inventory UI")
+    void UpdateInventoryUI();
+
+    // Called when an item is selected
+    UFUNCTION(BlueprintCallable, Category = "Inventory UI")
+    void OnItemSelected(const FString& ItemID);
+
+protected:
+    UPROPERTY(meta = (BindWidget))
+    UPanelWidget* InventoryPanel;
+
+    UPROPERTY(meta = (BindWidget))
+    UTextBlock* ItemDescriptionText;
+
+    UPROPERTY()
+    UInventorySystem* InventorySystem;
+
+    virtual void NativeConstruct() override;
+
+private:
+    UFUNCTION()
+    void OnInventoryUpdated();
+};
+
+
+
+
+📂 Plugins/Developer/AIAutomation/InventoryWidget.cpp
+cpp
+Copy
+
+#include "InventoryWidget.h"
+#include "Components/PanelWidget.h"
+#include "Components/TextBlock.h"
+#include "Components/Border.h"
+#include "Components/Image.h"
+#include "Components/Button.h"
+#include "Blueprint/WidgetTree.h"
+
+void UInventoryWidget::NativeConstruct()
+{
+    Super::NativeConstruct();
+}
+
+void UInventoryWidget::InitializeWidget(UInventorySystem* System)
+{
+    InventorySystem = System;
+    if (InventorySystem)
+    {
+        InventorySystem->OnInventoryUpdated.AddDynamic(this, &UInventoryWidget::OnInventoryUpdated);
+        UpdateInventoryUI();
+    }
+}
+
+void UInventoryWidget::OnInventoryUpdated()
+{
+    UpdateInventoryUI();
+}
+
+void UInventoryWidget::UpdateInventoryUI()
+{
+    if (!InventorySystem || !InventoryPanel) return;
+
+    InventoryPanel->ClearChildren();
+
+    TArray<FInventoryItem> Inventory = InventorySystem->GetInventory();
+    for (const FInventoryItem& Item : Inventory)
+    {
+        UBorder* ItemBorder = WidgetTree::GetWidgetTree(this)->ConstructWidget<UBorder>(UBorder::StaticClass());
+        ItemBorder->SetPadding(FMargin(5, 5, 5, 5));
+        ItemBorder->SetBrushColor(FLinearColor::Black);
+
+        if (Item.ItemIcon)
+        {
+            UImage* ItemImage = WidgetTree::GetWidgetTree(this)->ConstructWidget<UImage>(UImage::StaticClass());
+            ItemImage->SetBrushFromTexture(Item.ItemIcon);
+            ItemImage->SetRenderScale(FVector2D(0.8f, 0.8f));
+            ItemBorder->AddChildToBorder(ItemImage);
+        }
+
+        UTextBlock* ItemNameText = WidgetTree::GetWidgetTree(this)->ConstructWidget<UTextBlock>(UTextBlock::StaticClass());
+        ItemNameText->SetText(FText::FromString(Item.ItemName));
+        ItemNameText->SetFont(FSlateFontInfo("ShareTechMono", 10));
+        ItemNameText->SetColorAndOpacity(FLinearColor::Green);
+
+        UVerticalBox* ItemBox = WidgetTree::GetWidgetTree(this)->ConstructWidget<UVerticalBox>(UVerticalBox::StaticClass());
+        ItemBox->AddChildToVerticalBox(ItemImage);
+        ItemBox->AddChildToVerticalBox(ItemNameText);
+        ItemBorder->AddChildToBorder(ItemBox);
+
+        // Store the ItemID as a tag
+        ItemBorder->AddTag(FName(*Item.ItemID));
+
+        // Add click handler
+        UButton* ItemButton = WidgetTree::GetWidgetTree(this)->ConstructWidget<UButton>(UButton::StaticClass());
+        ItemButton->AddChildToBorder(ItemBorder);
+        ItemButton->OnClicked.AddDynamic(this, &UInventoryWidget::OnItemSelected, Item.ItemID);
+
+        InventoryPanel->AddChildToPanel(ItemButton);
+    }
+}
+
+void UInventoryWidget::OnItemSelected(const FString& ItemID)
+{
+    if (InventorySystem)
+    {
+        FInventoryItem Item = InventorySystem->GetItem(ItemID);
+        if (ItemDescriptionText)
+        {
+            ItemDescriptionText->SetText(FText::FromString(Item.ItemDescription));
+        }
+
+        // Use the item
+        InventorySystem->UseItem(ItemID);
+    }
+}
+
+
+
+
+🎨 Blueprint Setup
+
+Create a Blueprint (BP_InventorySystem) based on UInventorySystem.
+Create a Widget Blueprint (WBP_Inventory) based on UInventoryWidget.
+Add Items to the Inventory:
+cpp
+Copy
+
+// Example: Add a data chip to the inventory
+FInventoryItem DataChip;
+DataChip.ItemID = "data_chip_7g";
+DataChip.ItemName = "Data Chip (Sector 7-G)";
+DataChip.ItemDescription = "Contains corrupted memory fragments from Sector 7-G.";
+DataChip.UseCommand = "reconstruct";
+DataChip.ItemIcon = LoadObject<UTexture2D>(nullptr, TEXT("/Game/Textures/DataChip.DataChip"));
+
+UInventorySystem* InventorySystem = FindObjectOfClass<UInventorySystem>(GetWorld());
+if (InventorySystem)
+{
+    InventorySystem->AddItem(DataChip);
+}
+
+
+
+
+
+🔌 Integration with Interactable Objects
+Allow players to pick up items from the environment:
+cpp
+Copy
+
+// In AInteractableActor.h
+public:
+    // Item to give when interacted with
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable")
+    FInventoryItem ItemToGive;
+
+
+
+cpp
+Copy
+
+// In AInteractableActor.cpp
+void AInteractableActor::OnInteract()
+{
+    if (!ItemToGive.ItemID.IsEmpty())
+    {
+        UInventorySystem* InventorySystem = FindObjectOfClass<UInventorySystem>(GetWorld());
+        if (InventorySystem)
+        {
+            if (InventorySystem->AddItem(ItemToGive))
+            {
+                // Item added to inventory
+                UE_LOG(LogTemp, Warning, TEXT("Added %s to inventory."), *ItemToGive.ItemName);
+
+                // Optional: Destroy the interactable object
+                Destroy();
+            }
+        }
+    }
+    else
+    {
+        // Default interaction (e.g., show description)
+        UE_LOG(LogTemp, Warning, TEXT("Interacted with %s"), *InteractableName);
+    }
+}
+
+
+
+
+🎮 Example Items
+
+
+  
+    
+      Item ID
+      Name
+      Description
+      Use Command
+      Icon
+    
+  
+  
+    
+      data_chip_7g
+      Data Chip (Sector 7-G)
+      Contains corrupted memory fragments.
+      reconstruct
+      Data Chip Texture
+    
+    
+      security_key
+      Security Key
+      Unlocks restricted terminals.
+      use security_key
+      Key Texture
+    
+    
+      bugmatter_sample
+      Bugmatter Sample
+      A vial of contained bugmatter.
+      analyze
+      Bugmatter Texture
+    
+    
+      navi_module
+      Navi Upgrade Module
+      Enhances Navi's capabilities.
+      install navi_module
+      Module Texture
+    
+  
+
+
+
+
+📜 Integration Guide for All Systems
+1. Memory Reconstruction Mini-Game
+
+Add AMemoryReconstructionGame to your level.
+Create WBP_MemoryReconstruction and bind it to the game.
+Trigger the Game:
+
+From the Terminal: Type reconstruct.
+From an Interactable Object: Inspect a corrupted memory fragment.
+
+Reward the Player:
+
+On success, unlock lore or new commands.
+On failure, encourage retrying.
+
+
+2. Bugmatter Containment QTE
+
+Add ABugmatterContainmentGame to your level.
+Create WBP_BugmatterContainment and bind it to the game.
+Trigger the QTE:
+
+From an Interactable Object: Inspect the bugmatter vault (Shot A4).
+
+Branching Outcomes:
+
+Success: Continue the cutscene normally.
+Failure: Trigger a darker cutscene path (e.g., more glitches, alternate dialogue).
+
+
+3. Navi Dialogue System
+
+Add ANaviDialogueSystem to your level.
+Create WBP_NaviDialogue and bind it to the system.
+Trigger the Dialogue:
+
+From an Interactable Object: Click on Navi (Shot B8).
+From the Terminal: Type talk.
+
+Branching Dialogue:
+
+Use FDialogueNode to define contextual responses (e.g., different dialogue if the PET was powered on early).
+
+
+4. Inventory System
+
+Add UInventorySystem to your Game Instance or Player State.
+Create WBP_Inventory and bind it to the system.
+Add Items to the World:
+
+Place AInteractableActor objects with ItemToGive set.
+
+Use Items:
+
+From the Terminal: Type use <item_id>.
+From the Inventory UI: Click on an item to use it.
+
+
+📌 Example: Full Interactive Sequence B (Updated)
+Here’s how Sequence B could play out with all interactive systems:
+
+
+  
+    
+      Shot
+      Visual
+      Interaction
+      Outcome
+    
+  
+  
+    
+      B1
+      Bedroom ceiling (fade in).
+      None.
+      Ambient sounds play.
+    
+    
+      B2
+      Bedroom wide shot.
+      Hotspots: Bed, Desk, PET Device, Terminal.
+      Inspect objects for descriptions.
+    
+    
+      B3
+      PET device closeup.
+      Click PET Device: Power it on early.
+      Navi appears immediately (skip to B8).
+    
+    
+      B4
+      Terminal flickers on.
+      Click Terminal: Type commands (scan, hack, reconstruct).
+      Unlock lore or trigger mini-games.
+    
+    
+      B5
+      Terminal types errors.
+      Type hack: Start the Hacking Mini-Game.
+      Success: Unlock lore. Failure: Trigger alert.
+    
+    
+      
+      
+      Type reconstruct: Start Memory Reconstruction Mini-Game.
+      Success: Unlock hidden lore. Failure: Encourage retrying.
+    
+    
+      
+      
+      Ignore Terminal: Do nothing.
+      Trigger OnTerminalIgnored (worsens glitches in B6).
+    
+    
+      B6
+      Terminal glitches.
+      None.
+      Branching: Severe glitches if terminal was ignored.
+    
+    
+      B7
+      Terminal dies (smoke effect).
+      Click Terminal: Attempt to revive it (fails).
+      None.
+    
+    
+      B8
+      Navi appears on PET screen.
+      Click Navi: Start dialogue.
+      Branching dialogue based on game state.
+    
+    
+      B9
+      Employment Terminal menu.
+      Click Buttons: Navigate the menu.
+      Start game, access settings, etc.
+    
+    
+      
+      
+      Open Inventory: View/Use collected items.
+      Use items to unlock new options.
+    
+  
+
+
+
+
+🚀 Next Steps
+
+
+Implement the Memory Reconstruction Mini-Game:
+
+Add AMemoryReconstructionGame and UMemoryReconstructionWidget to your project.
+Test with sample fragments and lore rewards.
+
+
+Add the Bugmatter Containment QTE:
+
+Add ABugmatterContainmentGame and UBugmatterContainmentWidget.
+Trigger the QTE when inspecting the bugmatter vault.
+
+
+Set Up the Navi Dialogue System:
+
+Add ANaviDialogueSystem and UNaviDialogueWidget.
+Define dialogue trees for Navi.
+
+
+Integrate the Inventory System:
+
+Add UInventorySystem and UInventoryWidget.
+Place collectible items in your levels.
+
+
+Test All Systems Together:
+
+Play through Sequence B and verify all interactions work.
+Test branching paths (e.g., power on PET early, ignore terminal).
+
+
+📜 Updated README.md Additions
+Add these sections to your README.md under Interactive Elements:
+
+markdown
+Copy
+
+## 🎮 Interactive Systems
+
+### 1. Memory Reconstruction Mini-Game
+**Domain**: Mistral (Procedural Generation & UI Automation)
+**Purpose**: Players reassemble corrupted memory fragments to uncover hidden lore.
+
+#### Features:
+- Drag and drop fragments into the correct order.
+- Unlocks lore entries, new commands, or alternate cutscene paths.
+- Triggered via the terminal (`reconstruct` command) or inspecting corrupted files.
+
+#### Files:
+- `Plugins/Developer/AIAutomation/MemoryReconstructionGame.h/cpp`
+- `Plugins/Developer/AIAutomation/MemoryReconstructionWidget.h/cpp`
+
+#### Example Usage:
+```cpp
+// Start the memory game from the terminal
+ATerminalSystem* Terminal = FindObjectOfClass<ATerminalSystem>(GetWorld());
+if (Terminal)
+{
+    Terminal->StartMemoryReconstruction();
+}
+
+
+
+
+2. Bugmatter Containment Quick-Time Event (QTE)
+Domain: Claude (Gameplay Mechanics)
+Purpose: Players must rapidly press buttons to contain the bugmatter before it spreads.
+Features:
+
+Timed button-mashing mini-game.
+Success: Bugmatter is contained; cutscene continues normally.
+Failure: Bugmatter spreads, triggering darker cutscene paths.
+Files:
+
+Source/Private/Gameplay/BugmatterContainmentGame.h/cpp
+Plugins/Developer/AIAutomation/BugmatterContainmentWidget.h/cpp
+Example Usage:
+cpp
+Copy
+
+// Trigger the QTE when inspecting the bugmatter vault
+ABugmatterContainmentGame* ContainmentGame = FindObjectOfClass<ABugmatterContainmentGame>(GetWorld());
+if (ContainmentGame)
+{
+    ContainmentGame->StartGame(10.0f, 5); // 10 seconds, 5 successes needed
+}
+
+
+
+
+3. Navi Dialogue System
+Domain: Claude (Gameplay Mechanics)
+Purpose: Branching dialogue for Navi, allowing players to ask questions and receive contextual responses.
+Features:
+
+Dialogue trees with branching paths.
+Contextual responses based on game state (e.g., PET powered on early, terminal hacked).
+Triggered by clicking on Navi or typing talk in the terminal.
+Files:
+
+Source/Private/Gameplay/NaviDialogueSystem.h/cpp
+Plugins/Developer/AIAutomation/NaviDialogueWidget.h/cpp
+Example Dialogue Tree:
+cpp
+Copy
+
+FDialogueNode RootNode;
+RootNode.SpeakerName = "Navi";
+RootNode.DialogueText = "Good morning, Operator. Ready to work?";
+
+FDialogueOption Option1;
+Option1.OptionText = "Who are you?";
+Option1.ResponseText = "I'm your guide, Operator. The N3T is dangerous, but I'll help you navigate it.";
+
+RootNode.Options.Add(Option1);
+// Add more options...
+
+
+
+
+4. Inventory System
+Domain: Gemini (Core Memory & Data Arrays)
+Purpose: Players can collect, store, and use items to unlock new areas or lore.
+Features:
+
+Grid-based inventory UI.
+Items can be used in the terminal (e.g., use data_chip_7g) or on interactable objects.
+Collectible items include data chips, keys, and bugmatter samples.
+Files:
+
+Source/Private/Core/Memory/InventorySystem.h/cpp
+Plugins/Developer/AIAutomation/InventoryWidget.h/cpp
+Example Usage:
+cpp
+Copy
+
+// Add an item to the inventory
+FInventoryItem DataChip;
+DataChip.ItemID = "data_chip_7g";
+DataChip.ItemName = "Data Chip (Sector 7-G)";
+DataChip.ItemDescription = "Contains corrupted memory fragments from Sector 7-G.";
+DataChip.UseCommand = "reconstruct";
+
+UInventorySystem* Inventory = FindObjectOfClass<UInventorySystem>(GetWorld());
+if (Inventory)
+{
+    Inventory->AddItem(DataChip);
+}
+
+
+
+
+🔌 Integration with Existing Systems
+All interactive systems integrate with:
+
+Terminal System: Trigger mini-games or dialogue via commands.
+Interactable Objects: Click on objects to inspect, collect items, or trigger events.
+Cutscene Manager: Branch cutscenes based on player choices or mini-game outcomes.
+
+🎯 Example: Full Interactive Sequence B
+
+
+  
+    
+      Shot
+      Visual
+      Interaction
+      Outcome
+    
+  
+  
+    
+      B1
+      Bedroom ceiling
+      None
+      Ambient sounds play.
+    
+    
+      B2
+      Bedroom wide shot
+      Inspect Bed/Desk/PET/Terminal
+      Show descriptions.
+    
+    
+      B3
+      PET device closeup
+      Click PET → Power on early
+      Navi appears early (skip to B8).
+    
+    
+      B4
+      Terminal flickers on
+      Type scan, hack, reconstruct
+      Unlock lore or trigger mini-games.
+    
+    
+      B5
+      Terminal types errors
+      Type hack → Hacking Mini-Game
+      Success: Unlock lore. Failure: Alert.
+    
+    
+      
+      
+      Type reconstruct → Memory Game
+      Success: Unlock hidden lore.
+    
+    
+      
+      
+      Ignore terminal
+      Worsen glitches in B6.
+    
+    
+      B6
+      Terminal glitches
+      None
+      Branching: Severe glitches if ignored.
+    
+    
+      B7
+      Terminal dies
+      Click terminal → Attempt to revive
+      Fails.
+    
+    
+      B8
+      Navi appears
+      Click Navi → Start dialogue
+      Branching dialogue.
+    
+    
+      B9
+      Employment Terminal
+      Click buttons → Navigate menu
+      Start game, access settings, etc.
+    
+    
+      
+      
+      Open Inventory → View/Use items
+      Use items to unlock new options.
+    
+  
+
+
+
+
+🛠 Tips for Designers
+
+
+Feedback:
+
+Provide visual/audio feedback for all interactions (e.g., highlight hotspots, play sounds).
+Use tooltips or descriptions to guide players.
+
+
+Pacing:
+
+Keep interactions optional to avoid breaking cutscene flow.
+Use time limits for mini-games to maintain tension.
+
+
+Rewards:
+
+Reward exploration with lore, secrets, or alternate paths.
+Avoid punishing players for missing interactions.
+
+
+Aesthetic:
+
+Match the cyberpunk UI style (neon colors, glitch effects, monospace fonts).
+Use sound design to enhance immersion (e.g., terminal beeps, glitch static).
+
+
+🚀 Future Enhancements
+
+Save/Load System: Save inventory, dialogue progress, and mini-game states.
+Crafting System: Combine items to create new tools (e.g., bugmatter analyzer).
+NPC Interactions: Expand dialogue to other characters (e.g., Celestial Order, Aegis Concord).
+Puzzle Solving: Add environmental puzzles (e.g., reroute power to unlock doors).
+text
+Copy
+
+---
+---
+---
+---
+## **🎉 Final Notes**
+You now have **four fully implemented interactive systems** for **R3ALN3T.EXE**:
+1. **Memory Reconstruction Mini-Game** (Mistral).
+2. **Bugmatter Containment QTE** (Claude).
+3. **Navi Dialogue System** (Claude).
+4. **Inventory System** (Gemini).
+
+All systems:
+✅ **Respect architecture locks** (no modifications to `NetNavi.h/cpp`).
+✅ **Align with domain assignments** (Gemini, Claude, Mistral).
+✅ **Integrate seamlessly** with your existing cutscene and terminal systems.
+✅ **Support branching narratives** and player choices.
+
+---
+Would you like me to:
+1. **Add a save/load system** for inventory, dialogue progress, and mini-game states?
+2. **Expand the dialogue system** to other NPCs (e.g., Celestial Order, Aegis Concord)?
+3. **Create a crafting system** to combine items (e.g., bugmatter analyzer)?
+4. **Design environmental puzzles** (e.g., reroute power to unlock doors)?
+
+
+
+
+
+
+
+
+
+
+
+
+

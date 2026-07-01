@@ -21,7 +21,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnChipSelectLocked, FChipInstance, 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnChipSelectCancelled);
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
-class R3ALN3T_EXE_API UBattleStateComponent : public UActorComponent
+class R3ALN3T_UE5_API UBattleStateComponent : public UActorComponent
 {
 	GENERATED_BODY()
 

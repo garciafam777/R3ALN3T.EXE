@@ -14,7 +14,7 @@
 class ABattleStagePanel;
 
 UCLASS()
-class R3ALN3T_EXE_API ABattleGridManager : public AActor
+class R3ALN3T_UE5_API ABattleGridManager : public AActor
 {
 	GENERATED_BODY()
 

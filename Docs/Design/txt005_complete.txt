@@ -1,0 +1,58 @@
+R3ALN3T.EXE — Player NetP Character Creation: Design Draft
+
+Status: Draft v0.1 — element opposite-mappings are provisional pending Richard's review (see Section 3, flagged data).
+
+
+1. Scope
+
+This system applies only to player-created NetPs. The 3 premade MC Admin characters (Trinity Ascendant + 2 others) are fixed, hand-authored Skeletal Meshes with no runtime customization — they are out of scope for this document.
+
+Player character creation produces a NetP defined by:
+
+
+Tier (visual/power category)
+Rank (progression level within Tier)
+Element (one of 10, see Section 3)
+[Category 4 — from Navigator stat sheet, TBD name]
+[Category 5 — from Navigator stat sheet, TBD name]
+
+
+These 5 categories drive both stat/mechanical identity (battle stats, chip access) and visual identity (modular part availability, color/material theming on the battle grid — tying back into ABattleGridManager's TierColor system already built).
+
+(Open item: Richard to confirm exact names/definitions of Categories 4 and 5 from the Navigator stat sheet — referenced as existing but not yet detailed in this conversation.)
+
+
+2. Customization Model: Modular Parts
+
+Player NetPs are built from swappable modular parts, not sliders/morphs. This maps directly onto Unreal's Customizable Object (Mutable) plugin, already present in the project.
+
+2.1 Part Categories (draft — needs confirmation)
+
+SlotExamplesNotesHeadHelmet, visor, hair, faceplateBody/TorsoArmor chest piece, base suitLikely where Tier visual identity reads most stronglyArmsGauntlets, blade-arms, weapon-integrated limbsLegsGreaves, boots, mobility unitsBack/WingsWings, thruster packs, capesTrinity Ascendant's wings suggest this is a desired slot even for premades — confirm if players can access wing-type parts too, or if that's MC-Admin-exclusiveAccessoryHalos, floating modules, emblems
+
+Open question for Richard: Are all 6 slots always present (just empty/minimal if unequipped), or do some Tiers unlock additional slots (e.g., wings only available at higher Tier)?
+
+2.2 Part Unlocking by Tier/Rank
+
+Recommended pattern (pending confirmation): each part has a MinimumTier and/or MinimumRank requirement, gating it from the character creator's selectable list until the player's progression meets it. This reuses your existing Tier/Rank stat sheet categories as the unlock currency, rather than inventing a separate unlock system.
+
+2.3 Part Coloring by Element
+
+Each equipped part's material should expose an Element-driven color parameter, consistent with the panel/HUD color language already established (ABattleGridManager::TierColor, the per-side glow system). This means a single mesh (e.g., one gauntlet model) can visually read as Fire, Aqua, Plasma, etc. via material parameter swap rather than needing 10 separate gauntlet meshes — a major asset-production time-saver.
+
+
+3. Elements (10 total) — PROVISIONAL, NEEDS RICHARD'S CORRECTED LIST
+
+Relationship rule (confirmed): opposites are mutual, but many-to-many — an element may have more than one opposite, and if A lists B, B must list A back.
+
+ElementOpposite(s) as stated tonightStatusFireIce, Plasma⚠ Plasma's reverse-listing conflicts with single-opposite assumption — now resolved as many-to-many, keptVoidLightningWaterEarthTimeAetherPlasmaFire(see Fire row — mutual, intentional)BloodBloomPoisonPhotonWindGravitySoundMetalCrystalNature
+
+Action item for Richard: This table is incomplete/unverified — it reflects exactly what was stated in chat tonight, including the one resolved conflict. Please correct/complete before this becomes the source data for EElementType and any UDataTable built from it. Once confirmed, I'll update:
+
+
+EElementType enum (currently only has 8 placeholder values: None, Fire, Aqua, Elec, Wood, Wind, Holy, Void — needs full replacement with your real 10)
+A new opposites lookup (likely TMap<EElementType, TArray<EElementType>> or a UDataTable row struct with an array field, NOT a single enum field, to support many-to-many)
+
+
+
+

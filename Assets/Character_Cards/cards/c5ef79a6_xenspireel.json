@@ -1,0 +1,25 @@
+{
+  "id": "c5ef79a6",
+  "name": "Xenspireel the Dusk Reaper",
+  "short_name": "Xenspireel",
+  "tier": "RHO",
+  "element": "Nature",
+  "type": "Tank",
+  "faction": "Celestial Order",
+  "stats": {
+    "hp": 36,
+    "atk": 8,
+    "rapid": 8,
+    "charge": 9,
+    "def": 6
+  },
+  "programs": [
+    "Bloom Field",
+    "Bloom Shift",
+    "Bloom Strike"
+  ],
+  "description": "A RHO-tier Nature-aligned Tank of the Celestial Order.",
+  "color_primary": "#37853b",
+  "color_accent": "#300803",
+  "generated": "2026-06-30T02:11:13.258481"
+}

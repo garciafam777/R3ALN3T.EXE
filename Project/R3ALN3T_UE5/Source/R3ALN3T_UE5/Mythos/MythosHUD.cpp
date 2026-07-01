@@ -45,7 +45,7 @@ void AMythosHUD::DrawHeader(AMythosGameMode* GM)
 	DrawLineText(TEXT("R3ALN3T.EXE // THE MYTHOS ORIGIN_3026"), 34.f, FLinearColor(0.1f, 1.f, 0.72f), 1.45f);
 	DrawLineText(FString::Printf(TEXT("Day %d | Act %d | Rank %s | Career %s | Element %s | Objective: %s"),
 		GM->Run.Day, GM->Run.ActIndex + 1, *GM->GetRankName(), *GM->GetCareerName(), *GM->GetElementName(), *GM->Run.Objective), 34.f, FLinearColor::White, 0.95f);
-	DrawLineText(FString::Printf(TEXT("HP %d/%d | Z %d | Corruption %d | Astra Bond %d"),
+	DrawLineText(FString::Printf(TEXT("HP %d/%d | Z %d | Corruption %d | NetP Bond %d"),
 		GM->Run.HP, GM->Run.MaxHP, GM->Run.Z, GM->Run.Corruption, GM->Run.NetPBond), 34.f, FLinearColor(1.f, 0.78f, 0.28f), 0.95f);
 	DrawLineText(FString::Printf(TEXT("Factions: Celestial %d | Aegis %d | Dominion %d | Undernet %d | Abyssal %d | FreeGrid %d"),
 		GM->Run.Celestial, GM->Run.Aegis, GM->Run.Dominion, GM->Run.Undernet, GM->Run.Abyssal, GM->Run.FreeGrid), 34.f, FLinearColor(0.7f, 0.8f, 1.f), 0.82f);
@@ -105,7 +105,9 @@ void AMythosHUD::DrawStoryChoice(AMythosGameMode* GM)
 	const FMythosStoryNode& Node = GM->GetStoryNodes()[GM->ActiveStoryNode];
 	DrawLineText(Node.Title, 70.f, FLinearColor(1.f, 0.78f, 0.28f), 1.2f);
 	DrawLineText(Node.Body, 70.f, FLinearColor::White, 1.f);
-	for (const FString& Line : Node.Terminal.ParseIntoArrayLines())
+	TArray<FString> Lines;
+	Node.Terminal.ParseIntoArrayLines(Lines);
+	for (const FString& Line : Lines)
 	{
 		DrawLineText(Line, 90.f, FLinearColor(0.1f, 1.f, 0.72f), 0.95f);
 	}

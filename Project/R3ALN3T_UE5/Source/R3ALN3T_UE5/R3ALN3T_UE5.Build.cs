@@ -11,11 +11,11 @@ public class R3ALN3T_UE5 : ModuleRules
 		PublicDependencyModuleNames.AddRange(new string[] { 
 			"Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput",
 			"UMG", "Slate", "SlateCore", "Niagara", "CinematicCamera",
-			"LevelSequence", "MovieScene", "MovieSceneTracks"
+			"LevelSequence", "MovieScene", "MovieSceneTracks",
+			"Json", "JsonUtilities", "HTTP"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] { 
-			"UMGEditor", "Sequencer"
 		});
 	}
 }

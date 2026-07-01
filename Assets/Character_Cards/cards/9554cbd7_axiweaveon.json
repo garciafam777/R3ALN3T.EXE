@@ -1,0 +1,25 @@
+{
+  "id": "9554cbd7",
+  "name": "Axiweaveon the Radiant",
+  "short_name": "Axiweaveon",
+  "tier": "RHO",
+  "element": "Light",
+  "type": "Demonic",
+  "faction": "Celestial Order",
+  "stats": {
+    "hp": 39,
+    "atk": 7,
+    "rapid": 5,
+    "charge": 6,
+    "def": 4
+  },
+  "programs": [
+    "Radiant Field",
+    "Radiant Wall",
+    "Radiant Strike"
+  ],
+  "description": "A RHO-tier Light-aligned Demonic of the Celestial Order.",
+  "color_primary": "#801f1f",
+  "color_accent": "#79b361",
+  "generated": "2026-06-30T02:11:13.258535"
+}
