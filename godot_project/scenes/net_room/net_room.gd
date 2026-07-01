@@ -11,7 +11,7 @@ signal customizer_requested
 signal hidden_files_requested
 
 @onready var decrypt_button = $EncryptDecryptNode/DecryptButton
-@onready var customizer_button = $NaviCustomizerCloset/CustomizerButton
+@onready var customizer_button = $NetPCustomizerCloset/CustomizerButton
 @onready var library_button = $HiddenFilesLibrary/LibraryButton
 @onready var netp = $Navi
 @onready var health_bar = $HUD/HealthBar

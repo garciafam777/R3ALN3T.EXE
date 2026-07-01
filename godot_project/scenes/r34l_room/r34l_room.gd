@@ -1,7 +1,7 @@
 extends Node2D
 class_name R34LRoom
 
-# Physical room where the player controls their Navi
+# Physical room where the player controls their Astra
 # Entry point to encrypt into the N3T
 
 signal encrypt_requested

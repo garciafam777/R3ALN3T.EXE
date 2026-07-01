@@ -1,10 +1,22 @@
-﻿# Godot Engine
+# Godot Engine
 .godot/
 *.import
 export_presets.cfg
 *.gotot
 
-# Unreal Engine - R3ALN3T_EXE project (nested under repo root)
+# Unreal Engine - Generic ignores for nested projects
+**/Binaries/
+**/Build/
+**/Intermediate/
+**/DerivedDataCache/
+**/Saved/
+**/.vs/
+**/.vscode/
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
+# Specific paths for R3ALN3T_EXE project
 R3ALN3T_EXE/Binaries/
 R3ALN3T_EXE/Build/
 R3ALN3T_EXE/Plugins/*/Binaries/
@@ -12,12 +24,29 @@ R3ALN3T_EXE/Plugins/*/Intermediate/
 R3ALN3T_EXE/Intermediate/
 R3ALN3T_EXE/DerivedDataCache/
 R3ALN3T_EXE/Saved/
-
-# .vs/ can appear at repo root too, not only nested
-.vs/
 R3ALN3T_EXE/.vs/
 R3ALN3T_EXE/.vscode/
+R3ALN3T_EXE/*.vcxproj
+R3ALN3T_EXE/*.vcxproj.filters
+R3ALN3T_EXE/*.vcxproj.user
 
+# Specific paths for R3ALN3TEXE project
+R3ALN3TEXE/Binaries/
+R3ALN3TEXE/Build/
+R3ALN3TEXE/Plugins/*/Binaries/
+R3ALN3TEXE/Plugins/*/Intermediate/
+R3ALN3TEXE/Intermediate/
+R3ALN3TEXE/DerivedDataCache/
+R3ALN3TEXE/Saved/
+R3ALN3TEXE/.vs/
+R3ALN3TEXE/.vscode/
+R3ALN3TEXE/*.vcxproj
+R3ALN3TEXE/*.vcxproj.filters
+R3ALN3TEXE/*.vcxproj.user
+
+# System and editor files
+.DS_Store
+Thumbs.db
 *.sln
 *.slnx
 *.suo
@@ -28,9 +57,31 @@ R3ALN3T_EXE/.vscode/
 *.VC.db-shm
 *.VC.db-wal
 
-R3ALN3T_EXE/*.vcxproj
-R3ALN3T_EXE/*.vcxproj.filters
-R3ALN3T_EXE/*.vcxproj.user
+# Node/npm
+node_modules/
+package-lock.json
+yarn.lock
 
-.DS_Store
-Thumbs.db
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+Desktop.ini
+$RECYCLE.BIN/
+
+# Large generated directories
+intro_lifein6thgearSTUDIOS/Intro_Lifein6thGEAR-main/node_modules/
+intro_lifein6thgearSTUDIOS/Intro_Lifein6thGEAR-main/dist/

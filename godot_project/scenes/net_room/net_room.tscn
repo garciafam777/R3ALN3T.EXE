@@ -32,10 +32,10 @@ offset_right = 100.0
 offset_bottom = 25.0
 text = "DECRYPT"
 
-[node name="NaviCustomizerCloset" type="Area2D" parent="."]
+[node name="NetPCustomizerCloset" type="Area2D" parent="."]
 position = Vector2(-300, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NaviCustomizerCloset"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NetPCustomizerCloset"]
 shape = SubResource("RectangleShape2D_1")
 
 [node name="Sprite2D" type="Sprite2D" parent="NaviCustomizerCloset"]

@@ -5,7 +5,7 @@
 	"Description": "",
 	"Modules": [
 		{
-			"Name": "R3ALN3T_EXE",
+			"Name": "R3ALN3TEXE",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
 		}

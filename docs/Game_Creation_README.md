@@ -4,7 +4,7 @@
 This document explains how to create NETAdmin_EXE from concept to playable build. It is written to help define the systems first, then expand into content, balance, and production. A good design document keeps the project focused, reduces confusion, and gives every feature a place in the overall structure.
 
 ## Vision
-NETAdmin_EXE is a cyberpunk-themed RPG where players control a Navi (digital avatar) that can "jack in" to a virtual network world called the N3T. The player is a System Administrator who manages AI-powered Navi agents, each with unique personalities and abilities. Most of the time, the player explores the Cyber Square hub, accepts governance tasks from various districts, battles corrupted data entities, and customizes their Navi team. The game is fun because it combines strategic grid-based combat with AI-driven character interactions, creating a sense of managing a living digital team that grows and evolves based on player choices.
+NETAdmin_EXE is a cyberpunk-themed RPG where players control a NetP (Network Processor — digital avatar) that can "jack in" to a virtual network world called the N3T. The player is a System Administrator who manages AI-powered NetP agents, each with unique personalities and abilities. Most of the time, the player explores the Cyber Square hub, accepts governance tasks from various districts, battles corrupted data entities, and customizes their NetP team. The game is fun because it combines strategic grid-based combat with AI-driven character interactions, creating a sense of managing a living digital team that grows and evolves based on player choices.
 
 ## Core Loop
 The core loop is the repeatable cycle the player experiences most of the time:
