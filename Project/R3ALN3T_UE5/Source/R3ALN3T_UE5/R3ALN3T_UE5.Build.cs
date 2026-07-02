@@ -12,7 +12,8 @@ public class R3ALN3T_UE5 : ModuleRules
 			"Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput",
 			"UMG", "Slate", "SlateCore", "Niagara", "CinematicCamera",
 			"LevelSequence", "MovieScene", "MovieSceneTracks",
-			"Json", "JsonUtilities", "HTTP"
+			"Json", "JsonUtilities", "HTTP",
+			"MediaAssets", "MediaUtils"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] { 
