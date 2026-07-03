@@ -18,9 +18,11 @@ Usage:
 import argparse
 import csv
 import json
+import math
 import os
 import random
 import sys
+import uuid
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import List, Dict, Optional, Tuple
@@ -301,7 +303,7 @@ generated_names_cache: set = set()
 def generate_unique_name(alignment: str, element: str, tier: str) -> str:
     """Generate a unique fantasy name for a NetP construct."""
     max_attempts = 100
-    for _ in range(max_attempts):
+    for attempt in range(max_attempts):
         style = random.choice(["compound", "titled", "suffixed", "mythic"])
 
         if style == "compound":
@@ -310,7 +312,7 @@ def generate_unique_name(alignment: str, element: str, tier: str) -> str:
             name = f"{prefix}{core}"
         elif style == "titled":
             core = random.choice(NAME_CORES).capitalize()
-            title = random.choice(FACTION_TITLES[alignment])
+            title = random.choice(FACTION_TITLES.get(alignment, ["Entity"]))
             name = f"{core} {title}"
         elif style == "suffixed":
             prefix = random.choice(NAME_PREFIXES)
@@ -331,8 +333,11 @@ def generate_unique_name(alignment: str, element: str, tier: str) -> str:
             generated_names_cache.add(name)
             return name
 
-    # Fallback with random suffix
-    return f"NETP-{random.randint(1000, 9999)}"
+    # Fallback with UUID-based suffix (guarantees uniqueness)
+    unique_id = str(uuid.uuid4())[:8].upper()
+    fallback_name = f"NETP-{unique_id}"
+    generated_names_cache.add(fallback_name)
+    return fallback_name
 
 # =============================================================================
 # 7. STAT GENERATION
@@ -340,15 +345,16 @@ def generate_unique_name(alignment: str, element: str, tier: str) -> str:
 
 def generate_stats(tier: str, alignment: str) -> Dict[str, int]:
     """Generate RPG stats biased toward alignment strengths."""
-    ranges = TIER_STAT_RANGES[tier]
-    bias_stats = ALIGNMENTS[alignment]["stat_bias"]
+    ranges = TIER_STAT_RANGES.get(tier, TIER_STAT_RANGES["OMICRON"])
+    bias_stats = ALIGNMENTS.get(alignment, {}).get("stat_bias", [])
 
     stats = {}
     for stat, (low, high) in ranges.items():
         if stat in bias_stats:
-            # Biased: upper 75% of range
-            biased_low = low + (high - low) * 0.25
-            val = random.randint(int(biased_low), high)
+            # Biased: upper 75% of range (using proper math.ceil for rounding)
+            range_size = high - low
+            biased_low = low + int(math.ceil(range_size * 0.25))
+            val = random.randint(biased_low, high)
         else:
             val = random.randint(low, high)
         stats[stat] = val
@@ -361,7 +367,7 @@ def generate_stats(tier: str, alignment: str) -> Dict[str, int]:
 
 def generate_moves(element: str, alignment: str, tier: str) -> List[str]:
     """Generate 9 localized moves from element + action pools."""
-    element_words = ELEMENT_ROSTER[element]["words"]
+    element_words = ELEMENT_ROSTER.get(element, {}).get("words", ["Action"])
     moves = []
 
     # 3 Assault, 2 Control, 2 Support, 2 Burst
@@ -370,9 +376,10 @@ def generate_moves(element: str, alignment: str, tier: str) -> List[str]:
     ]
 
     for action_type, count in action_distribution:
+        action_list = ACTION_WORDS.get(action_type, ["Act"])
         for _ in range(count):
-            word = random.choice(element_words)
-            action = random.choice(ACTION_WORDS[action_type])
+            word = random.choice(element_words) if element_words else "Action"
+            action = random.choice(action_list)
 
             # OMEGA special formatting
             if tier == "OMEGA":
@@ -383,6 +390,7 @@ def generate_moves(element: str, alignment: str, tier: str) -> List[str]:
             moves.append(move)
 
     random.shuffle(moves)
+    assert len(moves) == 9, f"Move generation failed: expected 9 moves, got {len(moves)}"
     return moves
 
 # =============================================================================
@@ -431,14 +439,17 @@ tier_counters: Dict[str, int] = {}
 def get_next_card_number(tier: str) -> str:
     """Get the next sequential card number for a tier."""
     if tier not in tier_counters:
-        tier_counters[tier] = TIER_BY_NAME[tier]["start"]
-    else:
-        tier_counters[tier] += 1
-
+        tier_counters[tier] = TIER_BY_NAME[tier]["start"] - 1
+    
+    tier_counters[tier] += 1
     num = tier_counters[tier]
+    
+    # Validate within tier bounds
     tier_info = TIER_BY_NAME[tier]
-
-    # Format: TIER-### (e.g., OMEGA-004, ALPHA-101)
+    if num > tier_info["end"]:
+        raise ValueError(f"Tier {tier} card counter ({num}) exceeds max ({tier_info['end']})")
+    
+    # Format: TIER-### (e.g., OMEGA-001, ALPHA-101)
     return f"{tier}-{num:03d}"
 
 # =============================================================================
