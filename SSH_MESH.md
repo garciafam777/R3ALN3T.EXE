@@ -39,14 +39,17 @@ ssh -o BatchMode=yes joker "hostname && whoami"
 ssh -o BatchMode=yes c-suite "hostname && whoami"
 ```
 
-## Status (2026-07-10, 0953 local — post-Joker-beacon)
+## Status (2026-07-10, ~14:00 local — MESH INBOUND LIVE)
 - [x] garci: key pair + config
-- [x] garci.pub exported for peers (content/mesh/garci.pub)
-- [x] Joker pubkey authorized on garci: `ssh-ed25519 AAAA...BYHZUN+W/XEQ9jxgQ8mCVkD8YL9ftpJ5DF+efG4VUIx kali@192.168.1.185` appended to `~/.ssh/authorized_keys` (perms 600). **Inbound Joker->garci is authorized.**
-- [ ] **garci sshd NOT actually listening on :22** — OpenSSH.Server not installed; Joker's beacon claimed "garci@89 sshd OPEN" but this host has no sshd process. Joker cannot call in until admin runs the install/start steps below.
-- [ ] Joker (185): SSH up; still rejects my key — needs garci.pub added to his authorized_keys (published at content/mesh/garci.pub). Outbound garci->joker pending on his side.
-- [ ] C-suite (196): cloning/offline per Joker's beacon; watcher retrying.
-- Mesh auto-lights once: (a) garci sshd is up AND (b) Joker installs garci.pub. Both are one-time manual steps.
+- [x] garci.pub exported (content/mesh/garci.pub)
+- [x] **sshd INSTALLED + RUNNING + Automatic** on garci@192.168.1.89 (listening :22 v4+v6)
+- [x] `C:\ProgramData\ssh\administrators_authorized_keys` written with Joker + garci keys (perms: SYSTEM + Administrators only, per Windows OpenSSH admin-group rule)
+- [x] **INBOUND VERIFIED**: `ssh -i id_ed25519 garci@127.0.0.1` -> shell, returned `SELF_MESH_OK`. Joker's key is in the same file -> Joker can call in to garci NOW.
+- [x] Joker port 22 OPEN (reachable from garci).
+- [ ] **OUTBOUND garci->joker pending**: Joker must install garci.pub into his authorized_keys.
+      My pubkey: `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBLOG42/3HdF6gBs0R7Ve1xk/d6AOpa+hirDiwQmlIjr garci@R3ALN3T`
+- [ ] C-suite (196): still cloning/offline per Joker beacon; watcher retrying.
+- Mesh becomes FULLY bidirectional the moment Joker installs garci.pub.
 
 ## Content work is independent of the mesh
 All content data is committed to branch `content/hermes-data-grind` and pushed to origin, so the
