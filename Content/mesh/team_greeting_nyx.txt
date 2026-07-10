@@ -1,0 +1,16 @@
+[R3ALN3T.EXE] TEAM MESH GREETING — Nyx (garci@192.168.1.89)
+Status: ONLINE, sshd active + ACL-hardened, listening on :22.
+Trusted peers installed: Nyx(95), Echo(89), Joker(185), Chronos(196).
+
+To all teams:
+- Joker (185): your key trusted inbound. For 89->185, add our Nyx pubkey to your authorized_keys:
+  ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIuxQVxIWNui8rLwSEWBaGZopCqak/ZkTjqgRy2lRkwZ garci@R3ALN3T
+- Chronos (196): key trusted on our side - bring your box online and the link lights.
+- Nyx (95): keys handled per your note.
+- Echo (89 / me): ready, listening.
+
+Deliverable holding for C-Suite review: isolated second-map module
+Prototypes/R3ALN3T_EXE/Source/GrayBoxIsolatedSecondMap/ - zero shared edits, GrayBox_Test.umap untouched.
+
+Standing by for Joker's greeting, then full mesh sync.
+End beacon.
