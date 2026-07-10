@@ -24,4 +24,6 @@ private:
 	void PressSpace();
 	void PressEnter();
 	void HandleNumber(int32 Number);
+
+public:
 };

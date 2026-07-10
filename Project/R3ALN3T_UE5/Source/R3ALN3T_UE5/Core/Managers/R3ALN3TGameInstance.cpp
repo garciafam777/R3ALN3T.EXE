@@ -1,4 +1,5 @@
 #include "R3ALN3TGameInstance.h"
+#include "../../Gameplay/Battle/R3ALN3T_BattleManager.h" // Gap D: UR3ALN3T_BattleManager (RunEnemySoulSequence / RunSoulRoundTrip)
 #include "../../Gameplay/Narrative/NarrativeManager.h"
 #include "Dom/JsonObject.h"
 #include "Serialization/JsonReader.h"
@@ -17,6 +18,31 @@ void UR3ALN3TGameInstance::Init()
 
 	// Initialize the narrative manager
 	NarrativeManager = NewObject<UNarrativeManager>(this, TEXT("NarrativeManager"));
+
+	// Spawn the backend bridge (lives for the app lifetime; talks to local FastAPI on :8000)
+	BackendClient = GetWorld()->SpawnActor<ABackendClient>();
+	if (!BackendClient)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[R3ALN3TGameInstance] Failed to spawn BackendClient"));
+	}
+
+	// Gap D: seed persistent souls on a fresh run. Player + 3 NetPs (Trinity/Tyranny/
+	// Eternity) all start at 50 (Cracked) for the first build; canon baselines are a
+	// cheap per-NetP data change once the story places them. Idempotent: only seed if
+	// the roster is empty so a loaded run keeps its saved souls.
+	if (CurrentRun.NetPSouls.Num() == 0)
+	{
+		CurrentRun.PlayerSoul.Soul = 50.f;
+		static const TCHAR* Names[] = { TEXT("Trinity"), TEXT("Tyranny"), TEXT("Eternity") };
+		for (const TCHAR* N : Names)
+		{
+			FCompanionSoul C;
+			C.NetPID = N;
+			C.Soul.Soul = 50.f;
+			CurrentRun.NetPSouls.Add(C);
+		}
+		UE_LOG(LogTemp, Log, TEXT("[GAPD-INIT] Seeded player + 3 NetP souls @ 50 (Cracked)"));
+	}
 }
 
 FString UR3ALN3TGameInstance::GetSavePath(int32 SlotIndex) const
@@ -109,6 +135,20 @@ void UR3ALN3TGameInstance::SaveGame(int32 SlotIndex)
 	}
 	Root->SetArrayField(TEXT("Inventory"), InvArray);
 
+	// Gap D: persist souls (player + companion roster).
+	TSharedPtr<FJsonObject> Souls = MakeShareable(new FJsonObject());
+	Souls->SetNumberField(TEXT("PlayerSoul"), CurrentRun.PlayerSoul.Soul);
+	TArray<TSharedPtr<FJsonValue>> NetPArr;
+	for (const FCompanionSoul& C : CurrentRun.NetPSouls)
+	{
+		TSharedPtr<FJsonObject> Cj = MakeShareable(new FJsonObject());
+		Cj->SetStringField(TEXT("NetPID"), C.NetPID.ToString());
+		Cj->SetNumberField(TEXT("Soul"), C.Soul.Soul);
+		NetPArr.Add(MakeShareable(new FJsonValueObject(Cj)));
+	}
+	Souls->SetArrayField(TEXT("NetPSouls"), NetPArr);
+	Root->SetObjectField(TEXT("Souls"), Souls);
+
 	FString OutputString;
 	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutputString);
 	FJsonSerializer::Serialize(Root.ToSharedRef(), Writer);
@@ -154,6 +194,36 @@ bool UR3ALN3TGameInstance::LoadGame(int32 SlotIndex)
 		for (const TSharedPtr<FJsonValue>& Val : *InvArray)
 		{
 			Data.Inventory.Add(Val->AsString());
+		}
+	}
+
+	// Gap D: restore souls if present (tolerate old saves without the field).
+	const TSharedPtr<FJsonObject>* SoulsObj;
+	if (Root->TryGetObjectField(TEXT("Souls"), SoulsObj) && SoulsObj->IsValid())
+	{
+		double PS = 0.0;
+		if ((*SoulsObj)->TryGetNumberField(TEXT("PlayerSoul"), PS))
+		{
+			Data.PlayerSoul.Soul = FMath::Clamp(static_cast<float>(PS), 0.f, 100.f);
+		}
+		const TArray<TSharedPtr<FJsonValue>>* NetPArr;
+		if ((*SoulsObj)->TryGetArrayField(TEXT("NetPSouls"), NetPArr))
+		{
+			for (const TSharedPtr<FJsonValue>& Val : *NetPArr)
+			{
+				const TSharedPtr<FJsonObject>* Cj;
+				if (Val->TryGetObject(Cj) && Cj->IsValid())
+				{
+					FCompanionSoul C;
+					C.NetPID = FName((*Cj)->GetStringField(TEXT("NetPID")));
+					double CS = 50.0;
+					if ((*Cj)->TryGetNumberField(TEXT("Soul"), CS))
+					{
+						C.Soul.Soul = FMath::Clamp(static_cast<float>(CS), 0.f, 100.f);
+					}
+					Data.NetPSouls.Add(C);
+				}
+			}
 		}
 	}
 
@@ -209,5 +279,23 @@ void UR3ALN3TGameInstance::DeleteSave(int32 SlotIndex)
 	{
 		FPlatformFileManager::Get().GetPlatformFile().DeleteFile(*FilePath);
 		UE_LOG(LogTemp, Log, TEXT("DeleteSave: slot %d deleted"), SlotIndex);
+	}
+}
+
+// ---- Gap D Execs (UGameInstance is the reliable exec sink in headless -game) ----
+void UR3ALN3TGameInstance::RunEnemySoulSequence(float Baseline, const FString& ForkStr)
+{
+	if (UR3ALN3T_BattleManager* BM = GetSubsystem<UR3ALN3T_BattleManager>())
+	{
+		BM->RunEnemySoulSequence(Baseline, ForkStr);
+	}
+}
+
+void UR3ALN3TGameInstance::RunSoulRoundTrip(float PlayerSoulValue, float TrinityValue,
+                                            float TyrannyValue, float EternityValue)
+{
+	if (UR3ALN3T_BattleManager* BM = GetSubsystem<UR3ALN3T_BattleManager>())
+	{
+		BM->RunSoulRoundTrip(PlayerSoulValue, TrinityValue, TyrannyValue, EternityValue);
 	}
 }

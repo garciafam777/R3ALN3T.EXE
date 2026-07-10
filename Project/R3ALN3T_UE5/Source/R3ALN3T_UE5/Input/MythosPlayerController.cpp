@@ -3,6 +3,8 @@
 #include "Engine/World.h"
 #include "InputCoreTypes.h"
 #include "../Gameplay/Narrative/MythosGameMode.h"
+#include "../Gameplay/Battle/R3ALN3T_BattleManager.h"       // Gap D: UR3ALN3T_BattleManager
+#include "../Core/Managers/R3ALN3TGameInstance.h"           // Gap D: UR3ALN3TGameInstance
 
 void AMythosPlayerController::BeginPlay()
 {

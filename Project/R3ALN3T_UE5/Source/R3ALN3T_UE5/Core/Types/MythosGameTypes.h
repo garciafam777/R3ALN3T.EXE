@@ -2,6 +2,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "../../Gameplay/Characters/R3ALN3T_NetPStructures.h" // Gap D: FCompanionSoul
+#include "../../Core/Types/SoulState.h"                    // Gap D: FSoulState
 #include "MythosGameTypes.generated.h"
 
 UENUM(BlueprintType)

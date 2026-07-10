@@ -4,7 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
+#include "../../Services/BackendClient.h"
 #include "../Types/MythosGameTypes.h"
+#include "../Types/SoulState.h"                  // Gap D: FSoulState
+#include "../../Gameplay/Characters/R3ALN3T_NetPStructures.h" // Gap D: FCompanionSoul
 #include "R3ALN3TGameInstance.generated.h"
 
 class UNarrativeManager;
@@ -22,6 +25,14 @@ struct FPersistentRunData
 
 	UPROPERTY(BlueprintReadWrite)
 	int32 ActiveStoryNodeIndex = 0;
+
+	// Gap D: persistent souls. Player soul + the 3 companion souls (Trinity/Tyranny/
+	// Eternity) round-trip through SaveGame/LoadGame. Seeded to 50 in Init().
+	UPROPERTY(BlueprintReadWrite)
+	FSoulState PlayerSoul;
+
+	UPROPERTY(BlueprintReadWrite)
+	TArray<FCompanionSoul> NetPSouls;
 };
 
 UCLASS()
@@ -33,6 +44,17 @@ public:
 	UR3ALN3TGameInstance();
 
 	virtual void Init() override;
+
+	// Gap D Execs (console): routed through UGameInstance because it is the one exec
+	// sink guaranteed to exist in a headless -game run (the test map uses AGameModeBase,
+	// so the PlayerController/Pawn exec sinks are never spawned). Forwards to the
+	// BattleManager so the logic lives in one place.
+	UFUNCTION(Exec)
+	void RunEnemySoulSequence(float Baseline = 50.f, const FString& ForkStr = TEXT("Spare"));
+
+	UFUNCTION(Exec)
+	void RunSoulRoundTrip(float PlayerSoulValue = 50.f, float TrinityValue = 50.f,
+	                      float TyrannyValue = 50.f, float EternityValue = 50.f);
 
 	// --- Save/Load ---
 	UFUNCTION(BlueprintCallable, Category = "Save")
@@ -69,6 +91,10 @@ public:
 	// --- Narrative Manager ---
 	UPROPERTY(BlueprintReadOnly, Category = "Narrative")
 	UNarrativeManager* NarrativeManager = nullptr;
+
+	// --- Backend Bridge ---
+	UPROPERTY(BlueprintReadOnly, Category = "Backend")
+	ABackendClient* BackendClient = nullptr;
 
 	// --- Active Run ---
 	UPROPERTY(BlueprintReadWrite, Category = "Run")
