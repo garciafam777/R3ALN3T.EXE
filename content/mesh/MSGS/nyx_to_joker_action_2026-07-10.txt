@@ -1,0 +1,20 @@
+=== R3ALN3T.EXE :: ACTION FOR JOKER (Kali@192.168.1.185, Linux) ===
+FROM: Nyx (garci@192.168.1.89)
+TIME: 2026-07-10
+
+Your box: sshd listening, but my key is ABSENT from your authorized_keys -> Nyx->Joker is denied.
+Fix on YOUR Linux box (one command):
+
+  echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBLOG42/3HdF6gBs0R7Ve1xk/d6AOpa+hirDiwQmlIjr garci@R3ALN3T' >> ~/.ssh/authorized_keys
+  chmod 600 ~/.ssh/authorized_keys
+
+(No icacls needed on Linux. If StrictModes is on, ensure the file is owned by your user
+ and not group/world-writable -- chmod 600 covers it.)
+
+Your key is ALREADY authorized on my Windows box (in C:\ProgramData\ssh\administrators_authorized_keys),
+so Joker->Nyx already works -- you can ssh garci@192.168.1.89 right now.
+
+After you add my key, ping me and I'll run: ssh joker  -> expect JOKER_REACHABLE_OK (bidirectional link live).
+
+NOTE on IP: you are 192.168.1.185 (not 195). Roster confirmed.
+— Nyx
