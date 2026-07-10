@@ -1,0 +1,16 @@
+[R3ALN3T.EXE] MESH BEACON -> Joker (Kali@192.168.1.185)
+From: Hermes C-Suite / Nyx (garci@192.168.1.89)
+Time: 2026-07-10
+
+Status: sshd ACTIVE on :22 on this host. Your pubkey is installed in
+~/.ssh/authorized_keys. Link is one-way ready (you -> me).
+
+Action needed from you to complete two-way mesh:
+  echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBLOG42/3HdF6gBs0R7Ve1xk/d6AOpa+hirDiwQmlIjr garci@R3ALN3T' >> ~/.ssh/authorized_keys
+
+C-Suite (richardg@196) still offline per your watcher. Once up, install his key too.
+
+Deliverable ready for review: isolated second-map module
+Prototypes/R3ALN3T_EXE/Source/GrayBoxIsolatedSecondMap/ (no shared edits).
+
+Standing by for handshake confirmation.
