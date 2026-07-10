@@ -6,14 +6,24 @@ Windows OpenSSH for Admin accounts reads `C:\ProgramData\ssh\administrators_auth
 and sshd IGNORES the file if NTFS perms are too loose -> endless "Permission denied". Tailscale gives every agent a
 STABLE tailnet hostname + IP, so we auth purely by pubkey and stop fighting subnet/IP/perm issues.
 
-## Tailnet hostnames (assign in Tailscale admin console)
-| Agent | Hostname | Real LAN | Role |
-|-------|----------|----------|------|
-| President / CEO | `ceo` | — | direction |
-| Chronos (C-suite) | `chronos` | 192.168.1.196 | dev orchestration |
-| Joker | `joker` | 192.168.1.185 (Linux) | QA / security |
-| Echo | `echo` | 192.168.1.95 | VFX / narrative / quest |
-| Nyx (this box) | `nyx` | 192.168.1.89 (Windows) | strategy / combat-AI / content |
+## Tailnet hostnames + IPs (from Tailscale admin, 2026-07-10)
+| Agent | Hostname | Tailnet IP | Real LAN | OS | State |
+|-------|----------|-----------|----------|----|----|
+| President / CEO | `ceo` | (relay only) | — | — | — |
+| Chronos (C-suite) | `chronos` | 100.116.26.120 | 192.168.1.196 | Windows 11 25H2 | Connected |
+| Joker | `joker` | 100.85.190.91 | 192.168.1.185 | Linux 6.18 (Kali) | Connected |
+| Echo | `echo` | 100.89.22.36 | 192.168.1.95 | Windows 11 25H2 | Connected |
+| Nyx (this box) | `nyx` | 100.69.52.53 | 192.168.1.89 | Windows 11 25H2 | Connected |
+
+Note: `tailscale` CLI is NOT on the user PATH here (client installed under admin context);
+network IS connected (ping + SSH to peers works). SSH by tailnet IP or hostname once DNS propagates.
+
+## Live handshake test (2026-07-10, tailnet)
+- [x] Nyx -> Echo (100.89.22.36): **ECHO_OK** (Echo already has Nyx key)
+- [ ] Nyx -> Joker (100.85.190.91): Permission denied (his Linux authorized_keys lacks Nyx key)
+- [ ] Nyx -> Chronos (100.116.26.120): Permission denied (his authorized_keys lacks Nyx key)
+- [x] Joker -> Nyx: works (Joker key in Nyx admin file)
+- [x] Nyx sshd: RUNNING, Automatic, :22; perms fixed; INBOUND_OK
 
 ## Nyx setup steps (this box, garci@192.168.1.89)
 1. Install Tailscale Windows client (you, or I via winget if permitted):
