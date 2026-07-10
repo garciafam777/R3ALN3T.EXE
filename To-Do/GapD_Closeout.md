@@ -1,7 +1,9 @@
 # R3ALN3T.EXE — Gap D Closeout (How It Was Closed)
 
 **Status:** ✅ CLOSED (CEO sign-off received). Committed + pushed to `origin/main`.
-**Closed:** 2026-07-09 session. **Sign-off trigger:** CEO confirmed on seeing the live `[GAPD-SAVE]` line.
+**Closed:** 2026-07-09 session. **Sign-off:** CEO signed off on Gap D being functionally complete.
+The `[GAPD-SAVE]` round-trip was **re-run fresh on the current DLL at close** (log cleared first),
+so the closeout is backed by this-session evidence, not a carried-forward line.
 
 ---
 
