@@ -576,7 +576,7 @@ class CardImageGenerator:
         draw.text((self.CARD_WIDTH - 190, footer_y + 47), "OVERCLOCK: 100%", fill=(255, 255, 255, 255), font=font_small)
 
         # Save
-        safe_name = card_data["Name"].replace(' ', '_').replace('/', '_').replace('\', '_')
+        safe_name = card_data["Name"].replace(' ', '_').replace('/', '_').replace('\\', '_')
         card_path = self.output_dir / f"{safe_name}.png"
         card.save(card_path, 'PNG')
         return str(card_path)

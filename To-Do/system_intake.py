@@ -36,3 +36,16 @@ Pinokio must execute the following sequence via local CLI terminals to compile c
 1. **Kill Stray Editor Threads:**
    ```bash
    taskkill /F /IM UnrealEditor.exe /T
+"""
+
+
+def main():
+    # Write the Pinokio intake markdown to a local file.
+    out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "system_intake_output.md")
+    with open(out_path, "w", encoding="utf-8") as f:
+        f.write(pinokio_md)
+    print(f"[+] Wrote intake doc -> {out_path}")
+
+
+if __name__ == "__main__":
+    main()
