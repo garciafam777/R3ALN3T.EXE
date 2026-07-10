@@ -39,11 +39,14 @@ ssh -o BatchMode=yes joker "hostname && whoami"
 ssh -o BatchMode=yes c-suite "hostname && whoami"
 ```
 
-## Status (2026-07-10, pre-0730 check)
+## Status (2026-07-10, 0953 local — post-Joker-beacon)
 - [x] garci: key pair + config
-- [x] garci.pub exported for peers
-- [ ] joker (185): SSH up, rejects key — needs authorized_keys entry (awaiting human)
-- [ ] c-suite (196): unreachable (powered off / asleep) — retry after 0730
+- [x] garci.pub exported for peers (content/mesh/garci.pub)
+- [x] Joker pubkey authorized on garci: `ssh-ed25519 AAAA...BYHZUN+W/XEQ9jxgQ8mCVkD8YL9ftpJ5DF+efG4VUIx kali@192.168.1.185` appended to `~/.ssh/authorized_keys` (perms 600). **Inbound Joker->garci is authorized.**
+- [ ] **garci sshd NOT actually listening on :22** — OpenSSH.Server not installed; Joker's beacon claimed "garci@89 sshd OPEN" but this host has no sshd process. Joker cannot call in until admin runs the install/start steps below.
+- [ ] Joker (185): SSH up; still rejects my key — needs garci.pub added to his authorized_keys (published at content/mesh/garci.pub). Outbound garci->joker pending on his side.
+- [ ] C-suite (196): cloning/offline per Joker's beacon; watcher retrying.
+- Mesh auto-lights once: (a) garci sshd is up AND (b) Joker installs garci.pub. Both are one-time manual steps.
 
 ## Content work is independent of the mesh
 All content data is committed to branch `content/hermes-data-grind` and pushed to origin, so the
