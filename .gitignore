@@ -16,76 +16,65 @@ export_presets.cfg
 *.vcxproj.filters
 *.vcxproj.user
 
-# Main UE5 project
-Project/R3ALN3T_UE5/Binaries/
-Project/R3ALN3T_UE5/Build/
-Project/R3ALN3T_UE5/Intermediate/
-Project/R3ALN3T_UE5/DerivedDataCache/
-Project/R3ALN3T_UE5/Saved/
-Project/R3ALN3T_UE5/.vs/
-Project/R3ALN3T_UE5/Plugins/*/Binaries/
-Project/R3ALN3T_UE5/Plugins/*/Intermediate/
+# Unreal Engine Generated Folders (root)
+Binaries/
+Build/
+DerivedDataCache/
+Intermediate/
+Saved/
+Script/
 
-# Prototypes (legacy UE5 projects)
-Prototypes/R3ALN3TEXE/Binaries/
-Prototypes/R3ALN3TEXE/Build/
-Prototypes/R3ALN3TEXE/Intermediate/
-Prototypes/R3ALN3TEXE/DerivedDataCache/
-Prototypes/R3ALN3TEXE/Saved/
-Prototypes/R3ALN3TEXE/.vs/
-Prototypes/R3ALN3TEXE/.vscode/
-Prototypes/R3ALN3TEXE/*.sln
-Prototypes/R3ALN3TEXE/*.slnx
-Prototypes/R3ALN3TEXE/*.vcxproj
+# Builds folder
+/Builds/
 
-Prototypes/R3ALN3T_EXE/Binaries/
-Prototypes/R3ALN3T_EXE/Build/
-Prototypes/R3ALN3T_EXE/Intermediate/
-Prototypes/R3ALN3T_EXE/DerivedDataCache/
-Prototypes/R3ALN3T_EXE/Saved/
-Prototypes/R3ALN3T_EXE/.vs/
-Prototypes/R3ALN3T_EXE/.vscode/
-Prototypes/R3ALN3T_EXE/*.sln
-Prototypes/R3ALN3T_EXE/*.slnx
-Prototypes/R3ALN3T_EXE/*.vcxproj
+# Specific paths for R3ALN3T_EXE project
+R3ALN3T_EXE/Binaries/
+R3ALN3T_EXE/Build/
+R3ALN3T_EXE/Plugins/*/Binaries/
+R3ALN3T_EXE/Plugins/*/Intermediate/
+R3ALN3T_EXE/Intermediate/
+R3ALN3T_EXE/DerivedDataCache/
+R3ALN3T_EXE/Saved/
+R3ALN3T_EXE/.vs/
+R3ALN3T_EXE/.vscode/
+R3ALN3T_EXE/*.vcxproj
+R3ALN3T_EXE/*.vcxproj.filters
+R3ALN3T_EXE/*.vcxproj.user
 
-# Godot prototype
-Prototypes/Godot/.godot/
-Prototypes/Godot/*.import
-Prototypes/Godot/export_presets.cfg
+# Specific paths for R3ALN3TEXE project
+R3ALN3TEXE/Binaries/
+R3ALN3TEXE/Build/
+R3ALN3TEXE/Plugins/*/Binaries/
+R3ALN3TEXE/Plugins/*/Intermediate/
+R3ALN3TEXE/Intermediate/
+R3ALN3TEXE/DerivedDataCache/
+R3ALN3TEXE/Saved/
+R3ALN3TEXE/.vs/
+R3ALN3TEXE/.vscode/
+R3ALN3TEXE/*.vcxproj
+R3ALN3TEXE/*.vcxproj.filters
+R3ALN3TEXE/*.vcxproj.user
 
-# Cinematic (Intro)
-Cinematics/Intro/node_modules/
-Cinematics/Intro/dist/
-Cinematics/Intro/intro.mp4
-
-# Python / AI Backend
-Services/AI_Backend/__pycache__/
-Services/AI_Backend/*.pyc
-Services/AI_Backend/.venv/
-Services/AI_Backend/venv/
-
-# Card generation scripts
-Scripts/Card\ Creation/cards/__pycache__/
-Scripts/Card\ Creation/cards/generated_cards.csv
-Main_Game_Files/R3ALN3T.EXE_game_creation/scripts/Card\ Creation/cards/generated_cards.csv
-
-# Large generated data files (>100MB)
-**/generated_cards.csv
-**/characters.csv
-
-# System and editor files
-.DS_Store
-Thumbs.db
-*.sln
-*.slnx
-*.suo
-*.opensdf
-*.sdf
+# IDE / Compilation Artifacts
 *.VC.db
 *.VC.opendb
 *.VC.db-shm
 *.VC.db-wal
+*.opensdf
+*.opendb
+*.sdf
+*.sln
+*.slnx
+*.suo
+*.xcodeproj
+*.xcworkspace
+*.obj
+*.exe
+*.dll
+*.dylib
+*.so
+*.a
+*.lib
 
 # Node/npm
 node_modules/
@@ -108,9 +97,33 @@ venv/
 *.swo
 *~
 
-# OS
+# OS Meta-files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 Desktop.ini
 $RECYCLE.BIN/
 
-# Logs
-log.txt
+# DCC Temp Files (Blender/Audacity)
+*.blend1
+*.blend2
+*.aup3-shm
+*.aup3-wal
+
+# Large generated directories
+intro_lifein6thgearSTUDIOS/Intro_Lifein6thGEAR-main/node_modules/
+intro_lifein6thgearSTUDIOS/Intro_Lifein6thGEAR-main/dist/
+
+# Hard Preservation Rules
+!Project/Config/
+!Project/Content/
+!Source/
+!Plugins/
+
+# Sandbox/Local Exclusions
+Project/Content/Developers/
+Project/Content/Collections/

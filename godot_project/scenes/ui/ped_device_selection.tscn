@@ -1,0 +1,151 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8qk4ped_selection"]
+
+[ext_resource type="Script" path="res://scenes/ui/ped_device_selection.gd" id="1_8x7y9"]
+
+[node name="PEDDeviceSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8x7y9")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.0, 0.1, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -300.0
+offset_right = 200.0
+offset_bottom = -250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "SELECT YOUR PED"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -240.0
+offset_right = 250.0
+offset_bottom = -220.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Personal Electronic Device"
+horizontal_alignment = 1
+
+[node name="DeviceContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -150.0
+offset_right = 400.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="KernalCard" type="PanelContainer" parent="DeviceContainer"]
+custom_minimum_size = Vector2(300, 300)
+
+[node name="KernalContent" type="VBoxContainer" parent="DeviceContainer/KernalCard"]
+layout_mode = 2
+
+[node name="KernalIcon" type="ColorRect" parent="DeviceContainer/KernalCard/KernalContent"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+color = Color(0.2, 0.6, 1.0, 1)
+
+[node name="KernalLabel" type="Label" parent="DeviceContainer/KernalCard/KernalContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "KERNAL"
+horizontal_alignment = 1
+
+[node name="KernalDescription" type="Label" parent="DeviceContainer/KernalCard/KernalContent"]
+layout_mode = 2
+text = "Premium, clean, simple interface"
+autowrap_mode = 3
+horizontal_alignment = 1
+
+[node name="KernalFeatures" type="Label" parent="DeviceContainer/KernalCard/KernalContent"]
+layout_mode = 2
+text = "• Elegant design
+• Streamlined experience
+• Premium support"
+autowrap_mode = 3
+
+[node name="KernalSelectButton" type="Button" parent="DeviceContainer/KernalCard/KernalContent"]
+layout_mode = 2
+text = "SELECT KERNAL"
+
+[node name="MODCard" type="PanelContainer" parent="DeviceContainer"]
+custom_minimum_size = Vector2(300, 300)
+
+[node name="MODContent" type="VBoxContainer" parent="DeviceContainer/MODCard"]
+layout_mode = 2
+
+[node name="MODIcon" type="ColorRect" parent="DeviceContainer/MODCard/MODContent"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+color = Color(0.8, 0.2, 0.8, 1)
+
+[node name="MODLabel" type="Label" parent="DeviceContainer/MODCard/MODContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "MOD"
+horizontal_alignment = 1
+
+[node name="MODDescription" type="Label" parent="DeviceContainer/MODCard/MODContent"]
+layout_mode = 2
+text = "Highly customizable, admin-focused"
+autowrap_mode = 3
+horizontal_alignment = 1
+
+[node name="MODFeatures" type="Label" parent="DeviceContainer/MODCard/MODContent"]
+layout_mode = 2
+text = "• Full customization
+• Admin access
+• Open ecosystem"
+autowrap_mode = 3
+
+[node name="MODSelectButton" type="Button" parent="DeviceContainer/MODCard/MODContent"]
+layout_mode = 2
+text = "SELECT MOD"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -60.0
+offset_right = 100.0
+offset_bottom = -20.0
+grow_horizontal = 2
+text = "BACK"
