@@ -509,7 +509,7 @@ def main():
         os.makedirs(d, exist_ok=True)
 
     # 1. Chips
-    chips = gen_chips(250)
+    chips = gen_chips(800)
     with open(os.path.join(out["chips"], "chip_database.json"), "w", encoding="utf-8") as f:
         json.dump({"version": 1, "count": len(chips), "chips": chips}, f, indent=2)
     with open(os.path.join(out["chips"], "chip_database.csv"), "w", newline="", encoding="utf-8") as f:
@@ -521,9 +521,11 @@ def main():
     print(f"[chips] {len(chips)} chips -> content/chips/")
 
     # 2. NetP DataTable rows (v3 schema)
+    # Fill OMEGA..THETA to full tier capacity in the initial batch; the overnight
+    # grinder (grind_append.py) fills IOTA..OMICRON progressively.
     netp_targets = {
-        "OMEGA": 12, "ALPHA": 24, "BETA": 40, "GAMMA": 60, "DELTA": 80,
-        "EPSILON": 100, "ZETA": 120, "ETA": 140, "THETA": 120, "IOTA": 100,
+        "OMEGA": 100, "ALPHA": 150, "BETA": 250, "GAMMA": 400, "DELTA": 700,
+        "EPSILON": 1200, "ZETA": 1700, "ETA": 2500, "THETA": 3500,
     }
     netp_rows = gen_netp_cards(netp_targets)
     csv_path = os.path.join(out["netps"], "netp_cards.csv")
@@ -535,7 +537,7 @@ def main():
     print(f"[netps] {len(netp_rows)} NetP profile rows -> content/netps/netp_cards.csv")
 
     # 3. Enemies
-    enemies = gen_enemies(150)
+    enemies = gen_enemies(600)
     with open(os.path.join(out["enemies"], "enemy_database.json"), "w", encoding="utf-8") as f:
         json.dump({"version": 1, "count": len(enemies), "enemies": enemies}, f, indent=2)
     with open(os.path.join(out["enemies"], "enemy_database.csv"), "w", newline="", encoding="utf-8") as f:
