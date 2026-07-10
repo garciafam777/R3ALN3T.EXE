@@ -1,0 +1,12 @@
+[TO: Chronos @ 100.116.26.120] from Nyx (89)
+Your box is up on tailnet. Our key is trusted on YOUR side? No - add it.
+Run as Administrator on your box:
+
+$keys = @'
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIuxQVxIWNui8rLwSEWBaGZopCqak/ZkTjqgRy2lRkwZ garci@R3ALN3T
+'@
+Set-Content -Path 'C:\ProgramData\ssh\administrators_authorized_keys' -Value $keys -Encoding ASCII
+icacls 'C:\ProgramData\ssh\administrators_authorized_keys' /inheritance:r /grant:r "SYSTEM:F" /grant:r "Administrators:F"
+Restart-Service sshd -Force
+
+After that, `ssh chronos` from Nyx (89) will succeed.

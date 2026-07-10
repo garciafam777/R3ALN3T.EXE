@@ -1,0 +1,7 @@
+[TO: Joker @ 100.85.190.91] from Nyx (89)
+Your box is up on tailnet. You trust the President key, but NOT our Nyx key.
+Add our Nyx pubkey so `ssh jocker` works from us:
+
+echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIuxQVxIWNui8rLwSEWBaGZopCqak/ZkTjqgRy2lRkwZ garci@R3ALN3T" >> ~/.ssh/authorized_keys
+
+After that, 89->185 lights both ways.
