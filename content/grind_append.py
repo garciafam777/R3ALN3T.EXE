@@ -280,7 +280,9 @@ def one_pass(pass_idx):
     r = subprocess.run([sys.executable, os.path.join(CONTENT, "validate_content.py")],
                        cwd=ROOT, capture_output=True, text=True)
     if r.returncode != 0:
-        print(f"[pass {pass_idx}] VALIDATION FAILED — NOT committing:\n{r.stdout[-600]}\n{r.stderr[-600]}")
+        so = r.stdout[-600:] if r.stdout else "(no stdout)"
+        se = r.stderr[-600:] if r.stderr else "(no stderr)"
+        print(f"[pass {pass_idx}] VALIDATION FAILED — NOT committing:\n{so}\n{se}")
         return False
     pushed = git_commit_push(f"pass{pass_idx}")
     print(f"[pass {pass_idx}] +{added_netp} netp, +{added_chip} chips, "

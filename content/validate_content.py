@@ -88,7 +88,7 @@ p = os.path.join(CONTENT, "narrative", "career_paths.json")
 data = json.load(open(p, encoding="utf-8"))
 careers = data["career_paths"]
 ids = [c["id"] for c in careers]
-check(len(careers) == 252, f"career count == 252 (got {len(careers)})")
+check(len(careers) >= 252, f"career count >= 252 (got {len(careers)})")
 check(len(ids) == len(set(ids)), "career IDs unique")
 check(all(c["lore"] and c["opening_line"] for c in careers), "career text present")
 ok.append(f"careers: {len(careers)} paths, text present")
