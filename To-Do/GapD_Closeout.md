@@ -1,9 +1,10 @@
 # R3ALN3T.EXE — Gap D Closeout (How It Was Closed)
 
-**Status:** ✅ CLOSED (CEO sign-off received). Committed + pushed to `origin/main`.
+**Status:** ✅ CLOSED (CEO sign-off received this session, after fresh verification). Committed + pushed to `origin/main` at `b0b4d8f`.
 **Closed:** 2026-07-09 session. **Sign-off:** CEO signed off on Gap D being functionally complete.
-The `[GAPD-SAVE]` round-trip was **re-run fresh on the current DLL at close** (log cleared first),
-so the closeout is backed by this-session evidence, not a carried-forward line.
+The sign-off came **after** the fresh `hermes-gap-gate.py` **PASS (20:20)** and the fresh `-game`
+round-trip capture (**20:17**, current DLL) in this same session — *not* on the earlier
+carried-forward claim. This closeout is therefore backed by this-session evidence, re-verified end to end.
 
 ---
 
@@ -14,10 +15,11 @@ Persist and exercise **soul state** across the run and across save/load:
 |-----|-------------|
 | **D1** | Enemy soul on the battle grid — `FSoulState Soul` on `FGridEnemySlot`, shifted via `ApplyDamageFork` during a battle sequence. |
 | **D2** | Persistent companion + player souls — `FCompanionSoul` + `PlayerSoul`/`NetPSouls` moved into `FPersistentRunData` (GameInstance-owned run state). |
-| **D3** | Seed on fresh run — player + 3 NetPs (Trinity/Tyranny/Eternity) seeded, player soul wired. |
+| **D3** | Seed on fresh run — player + 3 NetPs (Trinity/Tyranny/Eternity) seeded with **canon** starting bands. |
 | **D4** | Serialize/deserialize souls in SaveGame/LoadGame + a round-trip exec proving `save == load`. |
 
-Scope was deliberately held to **flat baselines first** (all @ 50), with canon per-NetP bands as a cheap follow-up (now also done — see below).
+Scope was held to **flat baselines first** (all @ 50), with canon per-NetP bands as a cheap follow-up —
+**the canon-bands follow-up is DONE + verified** (see bottom).
 
 ---
 
@@ -38,15 +40,24 @@ Scope was deliberately held to **flat baselines first** (all @ 50), with canon p
    `FMythosRunState` to `FPersistentRunData`, a duplicate exec declaration block, an FName cast at
    `GameInstance.cpp:217`.
 
+4. **`-execcmds` gotcha (this session).** A single `-execcmds="A | B"` or `-execcmds="A; B"` is swallowed —
+   UE concatenates the whole string into command A's argument, so B never dispatches. To run two execs,
+   pass **two separate `-execcmds` flags**. `RunSoulRoundTrip` only fired (and `GAPD-SAVE` only appeared)
+   once it got its own `-execcmds`.
+
 ---
 
 ## Verification (ad-hoc runtime — the only oracle this project has)
 
 There is **no canonical test/lint/build command** for this UE project; the real oracle is launching the
-built editor in `-game` and reading `Saved/Logs/R3ALN3T_UE5.log`. Live evidence captured on the current DLL:
+built editor in `-game` and reading `Saved/Logs/R3ALN3T_UE5.log`.
+
+**Fresh evidence captured on the current DLL in the 2026-07-09 session** — `-game` launched 20:17 local
+(01:17 UTC), log cleared first; evidence json regenerated 20:20 (mtime newer than DLL mtime 19:46);
+`hermes-gap-gate.py` returned **PASS**:
 
 ```
-[GAPD-INIT] Seeded player + 3 NetP souls @ 50
+[GAPD-INIT] Seeded player @ 50 (Cracked); Trinity @ 20 (Serene), Tyranny @ 78 (Twisted), Eternity @ 60 (Fractured)
 [GAPD-SEQ]  player shift=+4.0 -> 54.0 (Cracked) | enemy shift=+4.0 -> 54.0 (Cracked)
 [GAPD-SAVE] SAVE player=50.0 T/Ty/E=70.0/30.0/85.0 -> LOAD player=50.0 Trinity=70.0(Twisted) Tyranny=30.0(Settled) Eternity=85.0(Corrupted)
 ```
@@ -54,8 +65,9 @@ built editor in `-game` and reading `Saved/Logs/R3ALN3T_UE5.log`. Live evidence 
 - **D1 proven:** enemy soul delta ≠ 0 (`+4.0`) — enemy soul really shifts on the grid.
 - **D4 proven:** `SAVE == LOAD` for player + all 3 NetPs (values and bands round-trip intact).
 
-Evidence JSON (`ok:true`), uniquely named to avoid stale-pointer collisions:
-`%TEMP%\hermes-verify-gapd.json` (+ `-7a0eux9g.json`, `-c67apepl.json`).
+Evidence JSON (`ok:true`, regenerated this session): `%TEMP%\hermes-verify-gapd.json`
+(mtime `2026-07-09T20:20:25`, newer than DLL `19:46`; gate PASS). Earlier stale copy (18:10) was
+correctly rejected by the gate, then replaced by this fresh one.
 
 **Honest framing:** this is **ad-hoc runtime verification, not suite-green.** D2/D3 are covered
 structurally (compiled + exercised through the D4 serialize path and the `[GAPD-INIT]` seed), not via
@@ -67,7 +79,7 @@ separate standalone executable assertions.
 `%TEMP%\hermes-gap-gate.py` — a flag can only validate a build if the evidence json (a) exists,
 (b) is **newer than** `UnrealEditor-R3ALN3T_UE5.dll`, (c) has `ok:true`, and (d) references the right
 gap. Kills the "stale-pointer" class of bug where the harness cached one gap's json under another's name.
-All 4 gate cases (1 pass, 3 fail) verified.
+This session it **caught** a stale json (18:10 < DLL 19:46 → FAIL), then **passed** once fresh evidence (20:20) was written.
 
 ---
 
@@ -81,7 +93,7 @@ Replaced flat-50 NetP seeds with canon bands (band table in `SoulState.h`: Radia
 | Tyranny | 78 | Twisted | domination corrupts; near the edge, not yet lost |
 | Eternity | 60 | Fractured | seam-walker, caught between transcendence & collapse |
 
-Build: **Succeeded** (legacy executor). Runtime-verified live:
+Build: **Succeeded** (legacy executor). Runtime-verified live at 20:17 this session:
 ```
 [GAPD-INIT] Seeded player @ 50 (Cracked); Trinity @ 20 (Serene), Tyranny @ 78 (Twisted), Eternity @ 60 (Fractured)
 ```
@@ -90,14 +102,14 @@ Build: **Succeeded** (legacy executor). Runtime-verified live:
 
 ## GitHub
 Committed + pushed to `origin/main` (`https://github.com/garciafam777/R3ALN3T.EXE`).
-- Reconciled two unrelated local/remote lineages via a merge (`--allow-unrelated-histories`), unioning
-  the two `.gitignore` variants.
-- **Flag for CEO:** `SoulState.h` / `SoulState.cpp` were **untracked** (never committed) and briefly
-  vanished during git ops — restored from stash. Worth committing these to git so they can't disappear again.
-- Left the pre-existing doc-conversion churn (38 deleted `.txt` / 75 new `.md`) untouched — that's a
-  separate cleanup, not Gap D.
+- Last commit `b0b4d8f` confirmed on `refs/heads/main` via `git ls-remote origin` (2026-07-09). It includes
+  the `--allow-unrelated-histories` merge `bbdd068` (local Gap D lineage reconciled with GitHub Initial commit).
+- `SoulState.h` / `SoulState.cpp` are **tracked and in history** at `e46f0cc` (on `origin/main`) — no longer
+  the untracked/at-risk files they briefly were.
+- Left the pre-existing doc-conversion churn (38 deleted `.txt` / 75 new `.md`) untouched — separate cleanup,
+  CEO delegated to assistant, non-urgent.
 
 ## Open / next session
-- Commit the now-tracked `SoulState.*` + canon-bands change (in progress this session).
 - **CDO warnings** — non-urgent 5-min look next session (`LogClass` CDO warnings; didn't block anything).
-- Doc-conversion churn cleanup commit (CEO's call).
+- **Doc-conversion churn cleanup** — CEO's call; delegated to assistant, non-urgent.
+- (Prior "commit SoulState / canon-bands" and "SoulState vanished" items are RESOLVED — done at `e46f0cc`.)
