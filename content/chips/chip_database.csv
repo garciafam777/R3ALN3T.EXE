@@ -1,0 +1,251 @@
+id,name,code,mb,element,class,power,rarity,description,effect,target,droppable
+CHIP-0001,Shadow V3,S,36,Shadow,Attack,104,Common,Strikes from the dark; crit amp.,Shadow family — Attack chip dealing ~104 Shadow damage.,enemy,True
+CHIP-0002,Blood,U,36,Blood,Attack,96,Uncommon,Life-drains; scales on missing HP.,Blood family — Attack chip dealing ~96 Blood damage.,enemy,True
+CHIP-0003,Recover R,G,10,Recov,Recovery,0,Uncommon,Restores HP to the NetP.,Recover family — Recovery chip.,self,True
+CHIP-0004,Wood Z,G,30,Wood,Attack,81,Uncommon,"Roots the target, regen on hit.",Wood family — Attack chip dealing ~81 Wood damage.,enemy,True
+CHIP-0005,Sound,S,28,Sound,Attack,77,Uncommon,Stuns in an area around the target.,Sound family — Attack chip dealing ~77 Sound damage.,enemy,True
+CHIP-0006,Shot S,E,24,Null,Attack,66,Common,Homes in on the nearest enemy.,Shot family — Attack chip dealing ~66 Null damage.,enemy,True
+CHIP-0007,Blood S,G,30,Blood,Attack,101,Common,Life-drains; scales on missing HP.,Blood family — Attack chip dealing ~101 Blood damage.,enemy,True
+CHIP-0008,Panel R,G,8,Null,Program,0,Common,Transforms panels under the enemy.,Panel family — Program chip.,self,True
+CHIP-0009,Barrier EX,H,5,Null,Shield,0,Common,Blocks the next incoming attack.,Barrier family — Shield chip.,self,True
+CHIP-0010,Blood V1,Z,28,Blood,Attack,112,Common,Life-drains; scales on missing HP.,Blood family — Attack chip dealing ~112 Blood damage.,enemy,True
+CHIP-0011,Sound R,*,30,Sound,Attack,75,Common,Stuns in an area around the target.,Sound family — Attack chip dealing ~75 Sound damage.,enemy,True
+CHIP-0012,Blood EX,G,27,Blood,Attack,109,Common,Life-drains; scales on missing HP.,Blood family — Attack chip dealing ~109 Blood damage.,enemy,True
+CHIP-0013,Recover X,E,11,Recov,Recovery,0,Rare,Restores HP to the NetP.,Recover family — Recovery chip.,self,True
+CHIP-0014,Wind R,T,29,Wind,Attack,86,Common,Knocks the enemy back a tile.,Wind family — Attack chip dealing ~86 Wind damage.,enemy,True
+CHIP-0015,Fire M,G,35,Fire,Attack,88,Common,Engulfs the target in flames (Burn DOT).,Fire family — Attack chip dealing ~88 Fire damage.,enemy,True
+CHIP-0016,Light M,F,25,Light,Attack,84,Mega,"Blinds the target, boosts CHARGE.",Light family — Attack chip dealing ~84 Light damage.,enemy,True
+CHIP-0017,Cannon V3,C,19,Null,Attack,45,Common,Fires a straight shot down the row.,Cannon family — Attack chip dealing ~45 Null damage.,enemy,True
+CHIP-0018,Aqua SP,U,25,Aqua,Attack,99,Uncommon,"Douses fire panels, heals on contact.",Aqua family — Attack chip dealing ~99 Aqua damage.,enemy,True
+CHIP-0019,Break R,C,37,Break,Attack,116,Common,Breaks through defenses (ignores DEF).,Break family — Attack chip dealing ~116 Break damage.,enemy,True
+CHIP-0020,Wood SP,I,23,Wood,Attack,68,Uncommon,"Roots the target, regen on hit.",Wood family — Attack chip dealing ~68 Wood damage.,enemy,True
+CHIP-0021,Break V2,R,34,Break,Attack,103,Rare,Breaks through defenses (ignores DEF).,Break family — Attack chip dealing ~103 Break damage.,enemy,True
+CHIP-0022,Fire Z,B,27,Fire,Attack,100,Common,Engulfs the target in flames (Burn DOT).,Fire family — Attack chip dealing ~100 Fire damage.,enemy,True
+CHIP-0023,Light Z,B,30,Light,Attack,82,Common,"Blinds the target, boosts CHARGE.",Light family — Attack chip dealing ~82 Light damage.,enemy,True
+CHIP-0024,Break V3,F,30,Break,Attack,95,Mega,Breaks through defenses (ignores DEF).,Break family — Attack chip dealing ~95 Break damage.,enemy,True
+CHIP-0025,Ice X,E,32,Ice,Attack,85,Common,"Freezes the target, slows movement.",Ice family — Attack chip dealing ~85 Ice damage.,enemy,True
+CHIP-0026,Void V2,*,40,Void,Attack,130,Rare,"Nullifies buffs, deals true damage.",Void family — Attack chip dealing ~130 Void damage.,enemy,True
+CHIP-0027,Plasma V1,W,35,Plasma,Attack,94,Uncommon,Penetrates and chains with burn.,Plasma family — Attack chip dealing ~94 Plasma damage.,enemy,True
+CHIP-0028,Sound S,F,21,Sound,Attack,75,Common,Stuns in an area around the target.,Sound family — Attack chip dealing ~75 Sound damage.,enemy,True
+CHIP-0029,Shot V2,G,24,Null,Attack,53,Uncommon,Homes in on the nearest enemy.,Shot family — Attack chip dealing ~53 Null damage.,enemy,True
+CHIP-0030,Time V3,T,9,Time,Program,0,Common,Rewinds the NetP's HP by a few seconds.,Time family — Program chip.,self,True
+CHIP-0031,Plasma X,T,37,Plasma,Attack,101,Common,Penetrates and chains with burn.,Plasma family — Attack chip dealing ~101 Plasma damage.,enemy,True
+CHIP-0032,Barrier Plus,G,13,Null,Shield,0,Common,Blocks the next incoming attack.,Barrier family — Shield chip.,self,True
+CHIP-0033,Fire SP,P,30,Fire,Attack,92,Uncommon,Engulfs the target in flames (Burn DOT).,Fire family — Attack chip dealing ~92 Fire damage.,enemy,True
+CHIP-0034,Time M,A,4,Time,Program,0,Common,Rewinds the NetP's HP by a few seconds.,Time family — Program chip.,self,True
+CHIP-0035,Blood Z,T,30,Blood,Attack,82,Common,Life-drains; scales on missing HP.,Blood family — Attack chip dealing ~82 Blood damage.,enemy,True
+CHIP-0036,Poison X,A,26,Poison,Attack,58,Common,Stacking damage-over-time on hit.,Poison family — Attack chip dealing ~58 Poison damage.,enemy,True
+CHIP-0037,Break S,F,35,Break,Attack,106,Uncommon,Breaks through defenses (ignores DEF).,Break family — Attack chip dealing ~106 Break damage.,enemy,True
+CHIP-0038,Ice Plus,E,24,Ice,Attack,102,Common,"Freezes the target, slows movement.",Ice family — Attack chip dealing ~102 Ice damage.,enemy,True
+CHIP-0039,Fire V1,I,29,Fire,Attack,99,Mega,Engulfs the target in flames (Burn DOT).,Fire family — Attack chip dealing ~99 Fire damage.,enemy,True
+CHIP-0040,Shadow S,*,32,Shadow,Attack,112,Mega,Strikes from the dark; crit amp.,Shadow family — Attack chip dealing ~112 Shadow damage.,enemy,True
+CHIP-0041,Panel V3,D,4,Null,Program,0,Uncommon,Transforms panels under the enemy.,Panel family — Program chip.,self,True
+CHIP-0042,Recover M,D,4,Recov,Recovery,0,Uncommon,Restores HP to the NetP.,Recover family — Recovery chip.,self,True
+CHIP-0043,Shot M,I,20,Null,Attack,41,Rare,Homes in on the nearest enemy.,Shot family — Attack chip dealing ~41 Null damage.,enemy,True
+CHIP-0044,Ice V2,E,28,Ice,Attack,109,Rare,"Freezes the target, slows movement.",Ice family — Attack chip dealing ~109 Ice damage.,enemy,True
+CHIP-0045,Aqua Plus,*,31,Aqua,Attack,76,Common,"Douses fire panels, heals on contact.",Aqua family — Attack chip dealing ~76 Aqua damage.,enemy,True
+CHIP-0046,Sound SP,H,27,Sound,Attack,103,Common,Stuns in an area around the target.,Sound family — Attack chip dealing ~103 Sound damage.,enemy,True
+CHIP-0047,Cannon Z,Z,13,Null,Attack,42,Common,Fires a straight shot down the row.,Cannon family — Attack chip dealing ~42 Null damage.,enemy,True
+CHIP-0048,Barrier X,H,11,Null,Shield,0,Rare,Blocks the next incoming attack.,Barrier family — Shield chip.,self,True
+CHIP-0049,Poison SP,D,22,Poison,Attack,77,Common,Stacking damage-over-time on hit.,Poison family — Attack chip dealing ~77 Poison damage.,enemy,True
+CHIP-0050,Sub R,V,14,Null,Shield,0,Common,Deploys a barrier with its own HP pool.,Sub family — Shield chip.,self,True
+CHIP-0051,Break EX,T,30,Break,Attack,112,Common,Breaks through defenses (ignores DEF).,Break family — Attack chip dealing ~112 Break damage.,enemy,True
+CHIP-0052,Light SP,W,28,Light,Attack,90,Common,"Blinds the target, boosts CHARGE.",Light family — Attack chip dealing ~90 Light damage.,enemy,True
+CHIP-0053,Shot SP,V,20,Null,Attack,53,Common,Homes in on the nearest enemy.,Shot family — Attack chip dealing ~53 Null damage.,enemy,True
+CHIP-0054,Zap M,E,24,Elec,Attack,78,Uncommon,Paralyzes and chains to adjacent foes.,Zap family — Attack chip dealing ~78 Elec damage.,enemy,True
+CHIP-0055,Blood V2,I,32,Blood,Attack,94,Common,Life-drains; scales on missing HP.,Blood family — Attack chip dealing ~94 Blood damage.,enemy,True
+CHIP-0056,Wood EX,J,29,Wood,Attack,93,Common,"Roots the target, regen on hit.",Wood family — Attack chip dealing ~93 Wood damage.,enemy,True
+CHIP-0057,Fire X,*,36,Fire,Attack,103,Mega,Engulfs the target in flames (Burn DOT).,Fire family — Attack chip dealing ~103 Fire damage.,enemy,True
+CHIP-0058,Plasma R,E,37,Plasma,Attack,92,Uncommon,Penetrates and chains with burn.,Plasma family — Attack chip dealing ~92 Plasma damage.,enemy,True
+CHIP-0059,Sword R,C,31,Sword,Attack,90,Common,Slashes the enemy in the same column.,Sword family — Attack chip dealing ~90 Sword damage.,enemy,True
+CHIP-0060,Blood Plus,I,28,Blood,Attack,82,Rare,Life-drains; scales on missing HP.,Blood family — Attack chip dealing ~82 Blood damage.,enemy,True
+CHIP-0061,Crystal Z,U,25,Crystal,Attack,99,Common,"Generates a barrier, amplifies stats.",Crystal family — Attack chip dealing ~99 Crystal damage.,enemy,True
+CHIP-0062,Wind V2,I,27,Wind,Attack,72,Common,Knocks the enemy back a tile.,Wind family — Attack chip dealing ~72 Wind damage.,enemy,True
+CHIP-0063,Zap,Z,25,Elec,Attack,66,Common,Paralyzes and chains to adjacent foes.,Zap family — Attack chip dealing ~66 Elec damage.,enemy,True
+CHIP-0064,Ice V3,R,27,Ice,Attack,83,Rare,"Freezes the target, slows movement.",Ice family — Attack chip dealing ~83 Ice damage.,enemy,True
+CHIP-0065,Crystal V2,L,24,Crystal,Attack,93,Common,"Generates a barrier, amplifies stats.",Crystal family — Attack chip dealing ~93 Crystal damage.,enemy,True
+CHIP-0066,Poison EX,Z,18,Poison,Attack,72,Common,Stacking damage-over-time on hit.,Poison family — Attack chip dealing ~72 Poison damage.,enemy,True
+CHIP-0067,Wind V3,W,28,Wind,Attack,81,Common,Knocks the enemy back a tile.,Wind family — Attack chip dealing ~81 Wind damage.,enemy,True
+CHIP-0068,Zap R,E,30,Elec,Attack,94,Common,Paralyzes and chains to adjacent foes.,Zap family — Attack chip dealing ~94 Elec damage.,enemy,True
+CHIP-0069,Crystal,*,25,Crystal,Attack,88,Common,"Generates a barrier, amplifies stats.",Crystal family — Attack chip dealing ~88 Crystal damage.,enemy,True
+CHIP-0070,Crystal R,E,30,Crystal,Attack,98,Common,"Generates a barrier, amplifies stats.",Crystal family — Attack chip dealing ~98 Crystal damage.,enemy,True
+CHIP-0071,Wind,U,25,Wind,Attack,94,Common,Knocks the enemy back a tile.,Wind family — Attack chip dealing ~94 Wind damage.,enemy,True
+CHIP-0072,Crystal Plus,J,29,Crystal,Attack,107,Uncommon,"Generates a barrier, amplifies stats.",Crystal family — Attack chip dealing ~107 Crystal damage.,enemy,True
+CHIP-0073,Fire R,V,34,Fire,Attack,111,Uncommon,Engulfs the target in flames (Burn DOT).,Fire family — Attack chip dealing ~111 Fire damage.,enemy,True
+CHIP-0074,Shadow V2,F,33,Shadow,Attack,120,Common,Strikes from the dark; crit amp.,Shadow family — Attack chip dealing ~120 Shadow damage.,enemy,True
+CHIP-0075,Time X,E,7,Time,Program,0,Uncommon,Rewinds the NetP's HP by a few seconds.,Time family — Program chip.,self,True
+CHIP-0076,Gravity V2,C,31,Gravity,Attack,85,Common,Roots and deals HP% damage.,Gravity family — Attack chip dealing ~85 Gravity damage.,enemy,True
+CHIP-0077,Sound V2,G,31,Sound,Attack,98,Common,Stuns in an area around the target.,Sound family — Attack chip dealing ~98 Sound damage.,enemy,True
+CHIP-0078,Break Z,L,37,Break,Attack,104,Uncommon,Breaks through defenses (ignores DEF).,Break family — Attack chip dealing ~104 Break damage.,enemy,True
+CHIP-0079,Plasma Z,Z,36,Plasma,Attack,107,Common,Penetrates and chains with burn.,Plasma family — Attack chip dealing ~107 Plasma damage.,enemy,True
+CHIP-0080,Shot EX,H,24,Null,Attack,74,Common,Homes in on the nearest enemy.,Shot family — Attack chip dealing ~74 Null damage.,enemy,True
+CHIP-0081,Wood M,E,24,Wood,Attack,76,Common,"Roots the target, regen on hit.",Wood family — Attack chip dealing ~76 Wood damage.,enemy,True
+CHIP-0082,Void Z,P,40,Void,Attack,129,Common,"Nullifies buffs, deals true damage.",Void family — Attack chip dealing ~129 Void damage.,enemy,True
+CHIP-0083,Zap V1,L,24,Elec,Attack,60,Uncommon,Paralyzes and chains to adjacent foes.,Zap family — Attack chip dealing ~60 Elec damage.,enemy,True
+CHIP-0084,Aqua V3,F,26,Aqua,Attack,99,Uncommon,"Douses fire panels, heals on contact.",Aqua family — Attack chip dealing ~99 Aqua damage.,enemy,True
+CHIP-0085,Sword X,S,32,Sword,Attack,86,Common,Slashes the enemy in the same column.,Sword family — Attack chip dealing ~86 Sword damage.,enemy,True
+CHIP-0086,Aqua M,T,24,Aqua,Attack,78,Common,"Douses fire panels, heals on contact.",Aqua family — Attack chip dealing ~78 Aqua damage.,enemy,True
+CHIP-0087,Recover EX,*,4,Recov,Recovery,0,Common,Restores HP to the NetP.,Recover family — Recovery chip.,self,True
+CHIP-0088,Time S,*,4,Time,Program,0,Uncommon,Rewinds the NetP's HP by a few seconds.,Time family — Program chip.,self,True
+CHIP-0089,Break,D,37,Break,Attack,118,Common,Breaks through defenses (ignores DEF).,Break family — Attack chip dealing ~118 Break damage.,enemy,True
+CHIP-0090,Break M,U,33,Break,Attack,121,Giga,Breaks through defenses (ignores DEF).,Break family — Attack chip dealing ~121 Break damage.,enemy,True
+CHIP-0091,Time,T,5,Time,Program,0,Mega,Rewinds the NetP's HP by a few seconds.,Time family — Program chip.,self,True
+CHIP-0092,Crystal M,D,30,Crystal,Attack,76,Mega,"Generates a barrier, amplifies stats.",Crystal family — Attack chip dealing ~76 Crystal damage.,enemy,True
+CHIP-0093,Recover Z,U,7,Recov,Recovery,0,Common,Restores HP to the NetP.,Recover family — Recovery chip.,self,True
+CHIP-0094,Void Plus,R,35,Void,Attack,112,Uncommon,"Nullifies buffs, deals true damage.",Void family — Attack chip dealing ~112 Void damage.,enemy,True
+CHIP-0095,Break SP,V,28,Break,Attack,91,Common,Breaks through defenses (ignores DEF).,Break family — Attack chip dealing ~91 Break damage.,enemy,True
+CHIP-0096,Sound V3,A,33,Sound,Attack,77,Common,Stuns in an area around the target.,Sound family — Attack chip dealing ~77 Sound damage.,enemy,True
+CHIP-0097,Wind V1,H,21,Wind,Attack,86,Common,Knocks the enemy back a tile.,Wind family — Attack chip dealing ~86 Wind damage.,enemy,True
+CHIP-0098,Ice Z,B,27,Ice,Attack,79,Common,"Freezes the target, slows movement.",Ice family — Attack chip dealing ~79 Ice damage.,enemy,True
+CHIP-0099,Wind S,F,21,Wind,Attack,98,Common,Knocks the enemy back a tile.,Wind family — Attack chip dealing ~98 Wind damage.,enemy,True
+CHIP-0100,Sword S,Z,26,Sword,Attack,70,Rare,Slashes the enemy in the same column.,Sword family — Attack chip dealing ~70 Sword damage.,enemy,True
+CHIP-0101,Break X,E,36,Break,Attack,105,Rare,Breaks through defenses (ignores DEF).,Break family — Attack chip dealing ~105 Break damage.,enemy,True
+CHIP-0102,Blood SP,H,32,Blood,Attack,80,Common,Life-drains; scales on missing HP.,Blood family — Attack chip dealing ~80 Blood damage.,enemy,True
+CHIP-0103,Recover V1,C,4,Recov,Recovery,0,Common,Restores HP to the NetP.,Recover family — Recovery chip.,self,True
+CHIP-0104,Light V2,C,31,Light,Attack,83,Rare,"Blinds the target, boosts CHARGE.",Light family — Attack chip dealing ~83 Light damage.,enemy,True
+CHIP-0105,Ice V1,F,35,Ice,Attack,80,Rare,"Freezes the target, slows movement.",Ice family — Attack chip dealing ~80 Ice damage.,enemy,True
+CHIP-0106,Plasma EX,S,37,Plasma,Attack,100,Common,Penetrates and chains with burn.,Plasma family — Attack chip dealing ~100 Plasma damage.,enemy,True
+CHIP-0107,Void M,V,34,Void,Attack,128,Uncommon,"Nullifies buffs, deals true damage.",Void family — Attack chip dealing ~128 Void damage.,enemy,True
+CHIP-0108,Wind M,G,31,Wind,Attack,74,Common,Knocks the enemy back a tile.,Wind family — Attack chip dealing ~74 Wind damage.,enemy,True
+CHIP-0109,Zap X,H,19,Elec,Attack,68,Common,Paralyzes and chains to adjacent foes.,Zap family — Attack chip dealing ~68 Elec damage.,enemy,True
+CHIP-0110,Crystal V3,Z,28,Crystal,Attack,96,Common,"Generates a barrier, amplifies stats.",Crystal family — Attack chip dealing ~96 Crystal damage.,enemy,True
+CHIP-0111,Plasma V2,*,37,Plasma,Attack,105,Uncommon,Penetrates and chains with burn.,Plasma family — Attack chip dealing ~105 Plasma damage.,enemy,True
+CHIP-0112,Zap S,U,20,Elec,Attack,83,Common,Paralyzes and chains to adjacent foes.,Zap family — Attack chip dealing ~83 Elec damage.,enemy,True
+CHIP-0113,Sword Plus,T,25,Sword,Attack,78,Uncommon,Slashes the enemy in the same column.,Sword family — Attack chip dealing ~78 Sword damage.,enemy,True
+CHIP-0114,Sword,U,34,Sword,Attack,96,Uncommon,Slashes the enemy in the same column.,Sword family — Attack chip dealing ~96 Sword damage.,enemy,True
+CHIP-0115,Panel Plus,V,7,Null,Program,0,Rare,Transforms panels under the enemy.,Panel family — Program chip.,self,True
+CHIP-0116,Ice EX,T,32,Ice,Attack,101,Common,"Freezes the target, slows movement.",Ice family — Attack chip dealing ~101 Ice damage.,enemy,True
+CHIP-0117,Gravity Z,F,30,Gravity,Attack,84,Common,Roots and deals HP% damage.,Gravity family — Attack chip dealing ~84 Gravity damage.,enemy,True
+CHIP-0118,Sound Plus,Z,25,Sound,Attack,82,Common,Stuns in an area around the target.,Sound family — Attack chip dealing ~82 Sound damage.,enemy,True
+CHIP-0119,Barrier M,P,14,Null,Shield,0,Rare,Blocks the next incoming attack.,Barrier family — Shield chip.,self,True
+CHIP-0120,Break V1,G,36,Break,Attack,102,Uncommon,Breaks through defenses (ignores DEF).,Break family — Attack chip dealing ~102 Break damage.,enemy,True
+CHIP-0121,Plasma SP,C,33,Plasma,Attack,115,Uncommon,Penetrates and chains with burn.,Plasma family — Attack chip dealing ~115 Plasma damage.,enemy,True
+CHIP-0122,Zap Z,L,25,Elec,Attack,79,Common,Paralyzes and chains to adjacent foes.,Zap family — Attack chip dealing ~79 Elec damage.,enemy,True
+CHIP-0123,Bomb V3,W,20,Null,Attack,55,Uncommon,"Explodes on impact, splash damage.",Bomb family — Attack chip dealing ~55 Null damage.,enemy,True
+CHIP-0124,Shot Plus,F,24,Null,Attack,71,Uncommon,Homes in on the nearest enemy.,Shot family — Attack chip dealing ~71 Null damage.,enemy,True
+CHIP-0125,Fire V2,W,28,Fire,Attack,105,Common,Engulfs the target in flames (Burn DOT).,Fire family — Attack chip dealing ~105 Fire damage.,enemy,True
+CHIP-0126,Panel SP,L,14,Null,Program,0,Rare,Transforms panels under the enemy.,Panel family — Program chip.,self,True
+CHIP-0127,Crystal S,R,29,Crystal,Attack,83,Common,"Generates a barrier, amplifies stats.",Crystal family — Attack chip dealing ~83 Crystal damage.,enemy,True
+CHIP-0128,Time V2,B,10,Time,Program,0,Uncommon,Rewinds the NetP's HP by a few seconds.,Time family — Program chip.,self,True
+CHIP-0129,Shot R,B,18,Null,Attack,50,Uncommon,Homes in on the nearest enemy.,Shot family — Attack chip dealing ~50 Null damage.,enemy,True
+CHIP-0130,Sword V3,F,32,Sword,Attack,83,Mega,Slashes the enemy in the same column.,Sword family — Attack chip dealing ~83 Sword damage.,enemy,True
+CHIP-0131,Sword V2,W,27,Sword,Attack,71,Uncommon,Slashes the enemy in the same column.,Sword family — Attack chip dealing ~71 Sword damage.,enemy,True
+CHIP-0132,Ice SP,I,34,Ice,Attack,97,Common,"Freezes the target, slows movement.",Ice family — Attack chip dealing ~97 Ice damage.,enemy,True
+CHIP-0133,Cannon V2,T,24,Null,Attack,63,Rare,Fires a straight shot down the row.,Cannon family — Attack chip dealing ~63 Null damage.,enemy,True
+CHIP-0134,Recover S,G,8,Recov,Recovery,0,Mega,Restores HP to the NetP.,Recover family — Recovery chip.,self,True
+CHIP-0135,Time SP,D,13,Time,Program,0,Rare,Rewinds the NetP's HP by a few seconds.,Time family — Program chip.,self,True
+CHIP-0136,Fire EX,V,33,Fire,Attack,103,Mega,Engulfs the target in flames (Burn DOT).,Fire family — Attack chip dealing ~103 Fire damage.,enemy,True
+CHIP-0137,Ice R,E,25,Ice,Attack,97,Uncommon,"Freezes the target, slows movement.",Ice family — Attack chip dealing ~97 Ice damage.,enemy,True
+CHIP-0138,Sub M,H,13,Null,Shield,0,Common,Deploys a barrier with its own HP pool.,Sub family — Shield chip.,self,True
+CHIP-0139,Cannon SP,S,13,Null,Attack,45,Common,Fires a straight shot down the row.,Cannon family — Attack chip dealing ~45 Null damage.,enemy,True
+CHIP-0140,Aqua V1,L,32,Aqua,Attack,73,Common,"Douses fire panels, heals on contact.",Aqua family — Attack chip dealing ~73 Aqua damage.,enemy,True
+CHIP-0141,Time Plus,A,14,Time,Program,0,Rare,Rewinds the NetP's HP by a few seconds.,Time family — Program chip.,self,True
+CHIP-0142,Light EX,I,25,Light,Attack,112,Common,"Blinds the target, boosts CHARGE.",Light family — Attack chip dealing ~112 Light damage.,enemy,True
+CHIP-0143,Blood X,P,32,Blood,Attack,91,Uncommon,Life-drains; scales on missing HP.,Blood family — Attack chip dealing ~91 Blood damage.,enemy,True
+CHIP-0144,Shot Z,S,26,Null,Attack,42,Common,Homes in on the nearest enemy.,Shot family — Attack chip dealing ~42 Null damage.,enemy,True
+CHIP-0145,Panel V2,Z,4,Null,Program,0,Common,Transforms panels under the enemy.,Panel family — Program chip.,self,True
+CHIP-0146,Wind Plus,P,31,Wind,Attack,71,Uncommon,Knocks the enemy back a tile.,Wind family — Attack chip dealing ~71 Wind damage.,enemy,True
+CHIP-0147,Shadow EX,R,25,Shadow,Attack,109,Uncommon,Strikes from the dark; crit amp.,Shadow family — Attack chip dealing ~109 Shadow damage.,enemy,True
+CHIP-0148,Recover V3,F,4,Recov,Recovery,0,Common,Restores HP to the NetP.,Recover family — Recovery chip.,self,True
+CHIP-0149,Sound EX,A,24,Sound,Attack,85,Common,Stuns in an area around the target.,Sound family — Attack chip dealing ~85 Sound damage.,enemy,True
+CHIP-0150,Shadow R,A,31,Shadow,Attack,107,Uncommon,Strikes from the dark; crit amp.,Shadow family — Attack chip dealing ~107 Shadow damage.,enemy,True
+CHIP-0151,Wind X,*,20,Wind,Attack,77,Uncommon,Knocks the enemy back a tile.,Wind family — Attack chip dealing ~77 Wind damage.,enemy,True
+CHIP-0152,Ice,U,24,Ice,Attack,81,Common,"Freezes the target, slows movement.",Ice family — Attack chip dealing ~81 Ice damage.,enemy,True
+CHIP-0153,Sound V1,R,33,Sound,Attack,87,Uncommon,Stuns in an area around the target.,Sound family — Attack chip dealing ~87 Sound damage.,enemy,True
+CHIP-0154,Void V1,W,40,Void,Attack,127,Giga,"Nullifies buffs, deals true damage.",Void family — Attack chip dealing ~127 Void damage.,enemy,True
+CHIP-0155,Sword EX,C,31,Sword,Attack,96,Common,Slashes the enemy in the same column.,Sword family — Attack chip dealing ~96 Sword damage.,enemy,True
+CHIP-0156,Panel V1,C,8,Null,Program,0,Common,Transforms panels under the enemy.,Panel family — Program chip.,self,True
+CHIP-0157,Crystal V1,D,29,Crystal,Attack,102,Giga,"Generates a barrier, amplifies stats.",Crystal family — Attack chip dealing ~102 Crystal damage.,enemy,True
+CHIP-0158,Sub Z,R,4,Null,Shield,0,Common,Deploys a barrier with its own HP pool.,Sub family — Shield chip.,self,True
+CHIP-0159,Fire Plus,B,26,Fire,Attack,92,Mega,Engulfs the target in flames (Burn DOT).,Fire family — Attack chip dealing ~92 Fire damage.,enemy,True
+CHIP-0160,Wood R,P,30,Wood,Attack,61,Rare,"Roots the target, regen on hit.",Wood family — Attack chip dealing ~61 Wood damage.,enemy,True
+CHIP-0161,Gravity V1,B,34,Gravity,Attack,113,Rare,Roots and deals HP% damage.,Gravity family — Attack chip dealing ~113 Gravity damage.,enemy,True
+CHIP-0162,Cannon S,A,14,Null,Attack,53,Common,Fires a straight shot down the row.,Cannon family — Attack chip dealing ~53 Null damage.,enemy,True
+CHIP-0163,Zap SP,*,30,Elec,Attack,93,Mega,Paralyzes and chains to adjacent foes.,Zap family — Attack chip dealing ~93 Elec damage.,enemy,True
+CHIP-0164,Sub SP,T,5,Null,Shield,0,Mega,Deploys a barrier with its own HP pool.,Sub family — Shield chip.,self,True
+CHIP-0165,Aqua EX,A,29,Aqua,Attack,72,Uncommon,"Douses fire panels, heals on contact.",Aqua family — Attack chip dealing ~72 Aqua damage.,enemy,True
+CHIP-0166,Sword V1,S,32,Sword,Attack,70,Rare,Slashes the enemy in the same column.,Sword family — Attack chip dealing ~70 Sword damage.,enemy,True
+CHIP-0167,Ice S,S,32,Ice,Attack,81,Common,"Freezes the target, slows movement.",Ice family — Attack chip dealing ~81 Ice damage.,enemy,True
+CHIP-0168,Aqua,W,28,Aqua,Attack,90,Common,"Douses fire panels, heals on contact.",Aqua family — Attack chip dealing ~90 Aqua damage.,enemy,True
+CHIP-0169,Panel,*,6,Null,Program,0,Common,Transforms panels under the enemy.,Panel family — Program chip.,self,True
+CHIP-0170,Gravity SP,P,32,Gravity,Attack,86,Mega,Roots and deals HP% damage.,Gravity family — Attack chip dealing ~86 Gravity damage.,enemy,True
+CHIP-0171,Gravity R,T,32,Gravity,Attack,87,Common,Roots and deals HP% damage.,Gravity family — Attack chip dealing ~87 Gravity damage.,enemy,True
+CHIP-0172,Recover V2,*,4,Recov,Recovery,0,Mega,Restores HP to the NetP.,Recover family — Recovery chip.,self,True
+CHIP-0173,Recover,V,12,Recov,Recovery,0,Rare,Restores HP to the NetP.,Recover family — Recovery chip.,self,True
+CHIP-0174,Crystal EX,C,23,Crystal,Attack,74,Rare,"Generates a barrier, amplifies stats.",Crystal family — Attack chip dealing ~74 Crystal damage.,enemy,True
+CHIP-0175,Gravity S,I,25,Gravity,Attack,85,Common,Roots and deals HP% damage.,Gravity family — Attack chip dealing ~85 Gravity damage.,enemy,True
+CHIP-0176,Wind Z,P,26,Wind,Attack,95,Common,Knocks the enemy back a tile.,Wind family — Attack chip dealing ~95 Wind damage.,enemy,True
+CHIP-0177,Ice M,B,24,Ice,Attack,103,Common,"Freezes the target, slows movement.",Ice family — Attack chip dealing ~103 Ice damage.,enemy,True
+CHIP-0178,Shadow X,F,25,Shadow,Attack,95,Common,Strikes from the dark; crit amp.,Shadow family — Attack chip dealing ~95 Shadow damage.,enemy,True
+CHIP-0179,Fire S,R,24,Fire,Attack,94,Rare,Engulfs the target in flames (Burn DOT).,Fire family — Attack chip dealing ~94 Fire damage.,enemy,True
+CHIP-0180,Cannon,R,13,Null,Attack,58,Uncommon,Fires a straight shot down the row.,Cannon family — Attack chip dealing ~58 Null damage.,enemy,True
+CHIP-0181,Shot,E,17,Null,Attack,71,Uncommon,Homes in on the nearest enemy.,Shot family — Attack chip dealing ~71 Null damage.,enemy,True
+CHIP-0182,Cannon M,J,23,Null,Attack,38,Uncommon,Fires a straight shot down the row.,Cannon family — Attack chip dealing ~38 Null damage.,enemy,True
+CHIP-0183,Break Plus,I,38,Break,Attack,123,Uncommon,Breaks through defenses (ignores DEF).,Break family — Attack chip dealing ~123 Break damage.,enemy,True
+CHIP-0184,Ice-184,H,24,Ice,Attack,94,Rare,"Freezes the target, slows movement.",Ice family — Attack chip dealing ~94 Ice damage.,enemy,True
+CHIP-0185,Time V1,W,7,Time,Program,0,Uncommon,Rewinds the NetP's HP by a few seconds.,Time family — Program chip.,self,True
+CHIP-0186,Poison,S,27,Poison,Attack,76,Rare,Stacking damage-over-time on hit.,Poison family — Attack chip dealing ~76 Poison damage.,enemy,True
+CHIP-0187,Zap Plus,P,25,Elec,Attack,84,Common,Paralyzes and chains to adjacent foes.,Zap family — Attack chip dealing ~84 Elec damage.,enemy,True
+CHIP-0188,Sword M,L,27,Sword,Attack,82,Uncommon,Slashes the enemy in the same column.,Sword family — Attack chip dealing ~82 Sword damage.,enemy,True
+CHIP-0189,Recover Plus,H,4,Recov,Recovery,0,Uncommon,Restores HP to the NetP.,Recover family — Recovery chip.,self,True
+CHIP-0190,Recover-190,H,8,Recov,Recovery,0,Common,Restores HP to the NetP.,Recover family — Recovery chip.,self,True
+CHIP-0191,Sound X,Z,26,Sound,Attack,79,Common,Stuns in an area around the target.,Sound family — Attack chip dealing ~79 Sound damage.,enemy,True
+CHIP-0192,Recover SP,L,6,Recov,Recovery,0,Common,Restores HP to the NetP.,Recover family — Recovery chip.,self,True
+CHIP-0193,Recover-193,S,6,Recov,Recovery,0,Common,Restores HP to the NetP.,Recover family — Recovery chip.,self,True
+CHIP-0194,Void V3,L,36,Void,Attack,100,Uncommon,"Nullifies buffs, deals true damage.",Void family — Attack chip dealing ~100 Void damage.,enemy,True
+CHIP-0195,Sound Z,D,26,Sound,Attack,69,Common,Stuns in an area around the target.,Sound family — Attack chip dealing ~69 Sound damage.,enemy,True
+CHIP-0196,Bomb R,J,18,Null,Attack,83,Common,"Explodes on impact, splash damage.",Bomb family — Attack chip dealing ~83 Null damage.,enemy,True
+CHIP-0197,Sound M,J,31,Sound,Attack,89,Uncommon,Stuns in an area around the target.,Sound family — Attack chip dealing ~89 Sound damage.,enemy,True
+CHIP-0198,Plasma M,B,26,Plasma,Attack,93,Uncommon,Penetrates and chains with burn.,Plasma family — Attack chip dealing ~93 Plasma damage.,enemy,True
+CHIP-0199,Wood V2,*,21,Wood,Attack,63,Uncommon,"Roots the target, regen on hit.",Wood family — Attack chip dealing ~63 Wood damage.,enemy,True
+CHIP-0200,Shadow Z,H,26,Shadow,Attack,108,Uncommon,Strikes from the dark; crit amp.,Shadow family — Attack chip dealing ~108 Shadow damage.,enemy,True
+CHIP-0201,Zap V2,R,20,Elec,Attack,79,Common,Paralyzes and chains to adjacent foes.,Zap family — Attack chip dealing ~79 Elec damage.,enemy,True
+CHIP-0202,Void,A,37,Void,Attack,111,Common,"Nullifies buffs, deals true damage.",Void family — Attack chip dealing ~111 Void damage.,enemy,True
+CHIP-0203,Panel EX,J,12,Null,Program,0,Common,Transforms panels under the enemy.,Panel family — Program chip.,self,True
+CHIP-0204,Break-204,V,33,Break,Attack,92,Mega,Breaks through defenses (ignores DEF).,Break family — Attack chip dealing ~92 Break damage.,enemy,True
+CHIP-0205,Fire,*,35,Fire,Attack,88,Mega,Engulfs the target in flames (Burn DOT).,Fire family — Attack chip dealing ~88 Fire damage.,enemy,True
+CHIP-0206,Shadow SP,G,25,Shadow,Attack,98,Uncommon,Strikes from the dark; crit amp.,Shadow family — Attack chip dealing ~98 Shadow damage.,enemy,True
+CHIP-0207,Blood R,A,34,Blood,Attack,103,Uncommon,Life-drains; scales on missing HP.,Blood family — Attack chip dealing ~103 Blood damage.,enemy,True
+CHIP-0208,Cannon R,U,24,Null,Attack,47,Common,Fires a straight shot down the row.,Cannon family — Attack chip dealing ~47 Null damage.,enemy,True
+CHIP-0209,Zap EX,G,27,Elec,Attack,79,Uncommon,Paralyzes and chains to adjacent foes.,Zap family — Attack chip dealing ~79 Elec damage.,enemy,True
+CHIP-0210,Void R,E,38,Void,Attack,96,Common,"Nullifies buffs, deals true damage.",Void family — Attack chip dealing ~96 Void damage.,enemy,True
+CHIP-0211,Void EX,F,40,Void,Attack,98,Uncommon,"Nullifies buffs, deals true damage.",Void family — Attack chip dealing ~98 Void damage.,enemy,True
+CHIP-0212,Ice-212,I,31,Ice,Attack,98,Rare,"Freezes the target, slows movement.",Ice family — Attack chip dealing ~98 Ice damage.,enemy,True
+CHIP-0213,Plasma Plus,Z,38,Plasma,Attack,91,Common,Penetrates and chains with burn.,Plasma family — Attack chip dealing ~91 Plasma damage.,enemy,True
+CHIP-0214,Light X,W,25,Light,Attack,105,Rare,"Blinds the target, boosts CHARGE.",Light family — Attack chip dealing ~105 Light damage.,enemy,True
+CHIP-0215,Wind EX,L,26,Wind,Attack,83,Common,Knocks the enemy back a tile.,Wind family — Attack chip dealing ~83 Wind damage.,enemy,True
+CHIP-0216,Sword Z,E,25,Sword,Attack,91,Mega,Slashes the enemy in the same column.,Sword family — Attack chip dealing ~91 Sword damage.,enemy,True
+CHIP-0217,Zap-217,A,20,Elec,Attack,71,Rare,Paralyzes and chains to adjacent foes.,Zap family — Attack chip dealing ~71 Elec damage.,enemy,True
+CHIP-0218,Cannon Plus,I,14,Null,Attack,48,Common,Fires a straight shot down the row.,Cannon family — Attack chip dealing ~48 Null damage.,enemy,True
+CHIP-0219,Recover-219,W,4,Recov,Recovery,0,Common,Restores HP to the NetP.,Recover family — Recovery chip.,self,True
+CHIP-0220,Poison M,A,25,Poison,Attack,83,Uncommon,Stacking damage-over-time on hit.,Poison family — Attack chip dealing ~83 Poison damage.,enemy,True
+CHIP-0221,Light V3,B,27,Light,Attack,112,Common,"Blinds the target, boosts CHARGE.",Light family — Attack chip dealing ~112 Light damage.,enemy,True
+CHIP-0222,Shadow V1,A,35,Shadow,Attack,95,Common,Strikes from the dark; crit amp.,Shadow family — Attack chip dealing ~95 Shadow damage.,enemy,True
+CHIP-0223,Void X,W,30,Void,Attack,104,Uncommon,"Nullifies buffs, deals true damage.",Void family — Attack chip dealing ~104 Void damage.,enemy,True
+CHIP-0224,Sword SP,R,28,Sword,Attack,89,Common,Slashes the enemy in the same column.,Sword family — Attack chip dealing ~89 Sword damage.,enemy,True
+CHIP-0225,Light S,D,35,Light,Attack,86,Common,"Blinds the target, boosts CHARGE.",Light family — Attack chip dealing ~86 Light damage.,enemy,True
+CHIP-0226,Light Plus,T,24,Light,Attack,91,Uncommon,"Blinds the target, boosts CHARGE.",Light family — Attack chip dealing ~91 Light damage.,enemy,True
+CHIP-0227,Sword-227,D,33,Sword,Attack,74,Rare,Slashes the enemy in the same column.,Sword family — Attack chip dealing ~74 Sword damage.,enemy,True
+CHIP-0228,Sound-228,Z,33,Sound,Attack,86,Common,Stuns in an area around the target.,Sound family — Attack chip dealing ~86 Sound damage.,enemy,True
+CHIP-0229,Shot V1,J,24,Null,Attack,67,Common,Homes in on the nearest enemy.,Shot family — Attack chip dealing ~67 Null damage.,enemy,True
+CHIP-0230,Blood M,D,26,Blood,Attack,96,Mega,Life-drains; scales on missing HP.,Blood family — Attack chip dealing ~96 Blood damage.,enemy,True
+CHIP-0231,Sound-231,A,24,Sound,Attack,73,Uncommon,Stuns in an area around the target.,Sound family — Attack chip dealing ~73 Sound damage.,enemy,True
+CHIP-0232,Crystal SP,T,25,Crystal,Attack,76,Common,"Generates a barrier, amplifies stats.",Crystal family — Attack chip dealing ~76 Crystal damage.,enemy,True
+CHIP-0233,Shot X,C,20,Null,Attack,42,Common,Homes in on the nearest enemy.,Shot family — Attack chip dealing ~42 Null damage.,enemy,True
+CHIP-0234,Sound-234,S,26,Sound,Attack,95,Common,Stuns in an area around the target.,Sound family — Attack chip dealing ~95 Sound damage.,enemy,True
+CHIP-0235,Void S,W,32,Void,Attack,104,Uncommon,"Nullifies buffs, deals true damage.",Void family — Attack chip dealing ~104 Void damage.,enemy,True
+CHIP-0236,Void SP,R,40,Void,Attack,102,Common,"Nullifies buffs, deals true damage.",Void family — Attack chip dealing ~102 Void damage.,enemy,True
+CHIP-0237,Sword-237,F,30,Sword,Attack,84,Uncommon,Slashes the enemy in the same column.,Sword family — Attack chip dealing ~84 Sword damage.,enemy,True
+CHIP-0238,Gravity X,B,31,Gravity,Attack,92,Common,Roots and deals HP% damage.,Gravity family — Attack chip dealing ~92 Gravity damage.,enemy,True
+CHIP-0239,Sword-239,R,27,Sword,Attack,85,Common,Slashes the enemy in the same column.,Sword family — Attack chip dealing ~85 Sword damage.,enemy,True
+CHIP-0240,Panel M,H,11,Null,Program,0,Common,Transforms panels under the enemy.,Panel family — Program chip.,self,True
+CHIP-0241,Shadow M,F,31,Shadow,Attack,91,Common,Strikes from the dark; crit amp.,Shadow family — Attack chip dealing ~91 Shadow damage.,enemy,True
+CHIP-0242,Poison V3,C,27,Poison,Attack,79,Mega,Stacking damage-over-time on hit.,Poison family — Attack chip dealing ~79 Poison damage.,enemy,True
+CHIP-0243,Sub X,S,9,Null,Shield,0,Uncommon,Deploys a barrier with its own HP pool.,Sub family — Shield chip.,self,True
+CHIP-0244,Cannon V1,V,14,Null,Attack,50,Mega,Fires a straight shot down the row.,Cannon family — Attack chip dealing ~50 Null damage.,enemy,True
+CHIP-0245,Panel S,P,8,Null,Program,0,Rare,Transforms panels under the enemy.,Panel family — Program chip.,self,True
+CHIP-0246,Gravity,R,26,Gravity,Attack,98,Rare,Roots and deals HP% damage.,Gravity family — Attack chip dealing ~98 Gravity damage.,enemy,True
+CHIP-0247,Poison V1,J,27,Poison,Attack,64,Uncommon,Stacking damage-over-time on hit.,Poison family — Attack chip dealing ~64 Poison damage.,enemy,True
+CHIP-0248,Sound-248,S,32,Sound,Attack,99,Rare,Stuns in an area around the target.,Sound family — Attack chip dealing ~99 Sound damage.,enemy,True
+CHIP-0249,Poison Plus,V,28,Poison,Attack,77,Common,Stacking damage-over-time on hit.,Poison family — Attack chip dealing ~77 Poison damage.,enemy,True
+CHIP-0250,Poison V2,P,18,Poison,Attack,58,Common,Stacking damage-over-time on hit.,Poison family — Attack chip dealing ~58 Poison damage.,enemy,True
