@@ -32,16 +32,28 @@ void UR3ALN3TGameInstance::Init()
 	// the roster is empty so a loaded run keeps its saved souls.
 	if (CurrentRun.NetPSouls.Num() == 0)
 	{
+		// Player starts neutral (Cracked, mid-scale) — the band is earned in play.
 		CurrentRun.PlayerSoul.Soul = 50.f;
-		static const TCHAR* Names[] = { TEXT("Trinity"), TEXT("Tyranny"), TEXT("Eternity") };
-		for (const TCHAR* N : Names)
+
+		// Canon NetP starting bands (0=Radiant .. 100=Corrupted):
+		//   Trinity  -> Serene   (20) : harmonic/moral anchor of the trinity, grace-leaning.
+		//   Tyranny  -> Twisted  (78) : domination corrupts; near the edge, not yet lost.
+		//   Eternity -> Fractured(60) : seam-walker, caught between transcendence & collapse.
+		struct FSeed { const TCHAR* Name; float Soul; };
+		static const FSeed Seeds[] = {
+			{ TEXT("Trinity"),  20.f },
+			{ TEXT("Tyranny"),  78.f },
+			{ TEXT("Eternity"), 60.f },
+		};
+		for (const FSeed& S : Seeds)
 		{
 			FCompanionSoul C;
-			C.NetPID = N;
-			C.Soul.Soul = 50.f;
+			C.NetPID = S.Name;
+			C.Soul.Soul = S.Soul;
 			CurrentRun.NetPSouls.Add(C);
 		}
-		UE_LOG(LogTemp, Log, TEXT("[GAPD-INIT] Seeded player + 3 NetP souls @ 50 (Cracked)"));
+		UE_LOG(LogTemp, Log, TEXT("[GAPD-INIT] Seeded player @ 50 (Cracked); ")
+			TEXT("Trinity @ 20 (Serene), Tyranny @ 78 (Twisted), Eternity @ 60 (Fractured)"));
 	}
 }
 
