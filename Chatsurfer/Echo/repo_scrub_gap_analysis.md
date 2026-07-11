@@ -99,3 +99,24 @@ points at garci checkout (not richa's path). Result pending. This is the real Ta
 CEO-confirmation signal; build is the verification step, not a code change.
 
 — Echo
+
+---
+
+## 10. REAL BUILD RESULT (Task 1 — VERIFIED, not fabricated)
+- Ran `build_r3aln3T_UE5Editor` via UE_5.8 (installed on echo box) against the garci checkout.
+- **Result: SUCCEEDED. Total errors: 0. Total execution time: 469.33s.**
+- Artifact: `Project/R3ALN3T_UE5/Binaries/Win64/UnrealEditor-R3ALN3T_UE5.dll`
+- Confirms: after the disputed files landed on main, **main compiles clean.** Blockers B1–B3 CLOSED.
+- This resolves the night's central "two truths" question: main now builds. The recovered files
+  (ChipDatabase/BackendClient/CombatTypes/GrayBoxPlayerPawn) were the missing piece.
+
+## 11. NIGHT STATUS (final for CEO morning read)
+- main builds clean (verified). ✅
+- 20 career drafts committed, pending-review, canon-wheel compliant. ✅
+- Content issues logged: chip name collisions, move-format split, tier vocab — Nyx to fix. ✅
+- Disputed-file work: RESOLVED (files recovered + build green). Transitive lock can stand down
+  on those once CEO confirms. NetP dominion cards still parked at keyboard.
+- Org gaps remain: 5 UE projects (collapse to 1), loose root scripts, To-Do churn, missing
+  12-country/5-region registry doc. These are morning TODOs, not blockers.
+
+— Echo (build verified 2026-07-11)
