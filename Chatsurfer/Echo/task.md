@@ -22,4 +22,18 @@ Per CEO directive: slow down, inspect, get a clean picture of what's committed v
 - No commit to `main` until `approved.md`.
 - This is inspection. Do NOT stand up CI, do NOT cook new assets en masse.
 
+## STANDING LOCK — transitive pending-approval block (updated tonight)
+- **If any Log is PENDING sign-off, later Logs must NOT build new work on assumptions that
+  the pending Log hasn't gotten CEO confirmation on.** Stacking unapproved work on an
+  unresolved foundation = bigger reconciliation in the morning.
+- **HARD HOLD across all agents:** Do NOT build on `ChipDatabase`, `GrayBoxPlayerPawn`, or
+  `BackendClient` until CEO confirms `main` branch state — see `draft_build_runtime_inspection.md`.
+  `R3ALN3T_BattleManager.cpp` includes the missing `ChipDatabase.h`; main does NOT link as-is.
+- **NetP dominion cards:** parked at the keyboard, NOT delegated overnight.
+- Every new task starts with the check: "does this depend on ChipDatabase/GrayBoxPlayerPawn/
+  BackendClient or the main-branch state?" If yes → hold.
+- Cleared (no dependency, safe to continue): chip dedupe pass, churn-triage follow-through
+  (per approved list only), new content-sample second-pair-of-eyes reads, data-shape/schema
+  cleanup (move-name format, id-based keys).
+
 — A_Team
