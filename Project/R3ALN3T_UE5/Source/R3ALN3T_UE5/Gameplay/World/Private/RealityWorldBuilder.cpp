@@ -105,7 +105,9 @@ void ARealityWorldBuilder::SpawnRoad(const FRoadSegment& Segment)
         Road->SetActorScale3D(FVector(Length / 100.0f, Segment.Width / 100.0f, 0.2f));
         if (RoadMaterial)
             Road->GetStaticMeshComponent()->SetMaterial(0, RoadMaterial);
+#if WITH_EDITOR
         Road->SetActorLabel(FString::Printf(TEXT("Road_%.0f_%.0f"), Mid.X, Mid.Y));
+#endif
         SpawnedActors.Add(Road);
     }
 }
@@ -125,7 +127,9 @@ void ARealityWorldBuilder::SpawnBuilding(const FBuildingPlot& Plot)
         Building->SetActorScale3D(Plot.Extent / 100.0f);
         if (BuildingMaterial)
             Building->GetStaticMeshComponent()->SetMaterial(0, BuildingMaterial);
+#if WITH_EDITOR
         Building->SetActorLabel(FString::Printf(TEXT("Building_%s_%.0f_%.0f"), *Plot.BuildingType, Plot.Location.X, Plot.Location.Y));
+#endif
         SpawnedActors.Add(Building);
     }
 }

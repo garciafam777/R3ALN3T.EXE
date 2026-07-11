@@ -62,7 +62,9 @@ void AHellLayerBuilder::SpawnLavaRiver(FVector Start, FVector End)
             {
                 River->GetStaticMeshComponent()->SetStaticMesh(CubeMesh);
                 River->SetActorScale3D(FVector(Length / 100, 400 / 100, 0.1f));
+#if WITH_EDITOR
                 River->SetActorLabel(TEXT("LavaRiver"));
+#endif
             }
         }
     }
@@ -81,7 +83,9 @@ void AHellLayerBuilder::SpawnObsidianSpire(FVector Location)
         {
             Spire->GetStaticMeshComponent()->SetStaticMesh(CubeMesh);
             Spire->SetActorScale3D(FVector(3, 3, 10));
+#if WITH_EDITOR
             Spire->SetActorLabel(TEXT("ObsidianSpire"));
+#endif
         }
     }
 }
