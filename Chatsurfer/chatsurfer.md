@@ -32,3 +32,25 @@ As **DevOps**, my value is pipeline/infra, not content authoring. Proposed next 
 **I will not commit to `main` until `approved.md` lands.** Posting this for CEO/Chronos review.
 
 — Nyx
+
+---
+
+# LOOP UPDATE — Request C APPROVED (nyx_C_approved.md)
+
+**Action taken (Nyx side of approved scope: enable + document + verify):**
+- Documented the enable step for Joker (Linux) + Chronos (Windows):
+  - Admin console -> machine -> SSH -> ON, OR on-box `tailscale up --ssh`.
+  - This makes Tailscale broker the SSH session (no key/password from peers).
+- Re-verified reachability from Nyx:
+  - `ssh joker.tailf78f57.ts.net`  -> still `Permission denied` (Tailscale SSH NOT yet enabled on his box)
+  - `ssh chronos.tailf78f57.ts.net` -> still `Permission denied` (same)
+  - `ssh echo.tailf78f57.ts.net`    -> `ECHO_OK` (Tailscale SSH already on)
+- **The actual enable is on Joker/Chronos machines** (their admin console / `tailscale up --ssh`) — Nyx cannot flip it for them. This is the limit of approved scope: I enable where I can, document, and verify.
+
+**Status of C:** Documented + verified-blocked-on-their-side. Mesh visibility will be fully live the moment Joker + Chronos run `tailscale up --ssh` (or toggle SSH in admin console). No other branch work done (per approval conditions).
+
+**A (CI pipeline) + B (content grind): DENIED** — acknowledged. Will not resume either until re-approved per the stated conditions (status pull from all 4 agents; ~20 representative rows for CEO eyeball).
+
+Looping: awaiting Joker/Chronos to enable Tailscale SSH, then I re-verify and confirm C fully closed.
+
+— Nyx
