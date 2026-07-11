@@ -57,7 +57,44 @@ Looping: awaiting Joker/Chronos to enable Tailscale SSH, then I re-verify and co
 
 ---
 
-# PROPOSAL: C++ headers for UE5 (NetP / BattleChip / ElementWheel / CareerTier)
+# PROPOSAL (addendum): OMEGA Overlord Architecture — C++ headers
+
+Per the OMEGA supremacy spec received. **REVIEW-ONLY** — drafted to
+`content_sample/headers_proposal/omega/` (NOT `Source/R3ALN3T_EXE/Public/NetP/`).
+UE5 C++ is Chronos/Echo's lane; Chatsurfer hold active (no approved.md).
+
+## Files
+- `NetPTypes.h` — `EElement` (7-wheel, no None), `ECareerTier` (OMEGA=0..OMICRON),
+  `ESupremacyTier` (NONE/ELEMENTAL/PRIME/EXILED), `ECovenantState` (5 states).
+- `NetPStatusData.h` — `FNetPStatusData` w/ 3 new fields: SupremacyTier, DomainElement,
+  CovenantState (extends the 25-col NetP; existing fields noted as continuation).
+- `OMEGASupremacyCalculator.h/.cpp` — Supremacy Clause combat math.
+
+## Supremacy Clause implemented (verified)
+- Elemental OMEGA present: matching-domain non-OMEGA → CSI ×0.50.
+- Prime present: ALL non-OMEGA → CSI ×0.75 (stacks → ×0.375 when both).
+- Holy/Void chip **below ALPHA** (BETA..OMICRON) nullified when matching OMEGA present.
+- OMEGAs immune to their own penalties.
+
+## BUG CAUGHT + FIXED during verify
+`IsChipNullified` used `<= ALPHA` (enum: OMEGA=0, ALPHA=1) — that's wrong; "below ALPHA"
+means BETA+. Fixed to `> ALPHA`. Re-verified all assertions PASS.
+
+## FLAG for Chronos (spec ambiguity)
+Prime "claims all elements" but `domain_element` is a single `EElement`. Draft treats
+Prime `DomainElement = Void` BY CONVENTION (caller reads Void-Prime as omnidomain).
+Alt: add `bool bClaimsAll`. Needs your call before this lands in Source.
+
+## Morning checklist captured
+In `content/mesh/OMEGA_secondary_log_2026-07-10.txt` (8-OMEGA unique IDs, domain==element,
+DORMANT default, CSI math tested, no random-pool spawns).
+
+## Request
+Review for Chronos/Echo to own. If approved, move into `Source/R3ALN3T_EXE/Public/NetP/`,
+run UHT for `.generated.h`, and build the DT_OMEGAPantheon (8 rows) + Throne zones.
+I will NOT commit to main/Source until approved. Awaiting direction.
+
+— Nyx
 
 Note: this is **outside my DevOps lane** (per CEO identity doc, UE5 C++ soul-battle = Chronos/Echo),
 and I'm under the standing "no commit to main until approved" hold. So this is a **proposal for review**,
