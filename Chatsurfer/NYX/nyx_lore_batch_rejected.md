@@ -20,7 +20,7 @@ This is the same "Sound"-class incoherence the content verdict rejected, resurfa
 3. **No "fix applied" verdict until BOTH paths pass.** A single sample check is insufficient (your own 962b169 passed while 3d7e9ff failed). Require:
    - **20-career check on BOTH paths:** every row has a valid 7-wheel `element` + non-empty `name` + `tier`.
    - **Chip-damage check on BOTH paths:** every chip has a populated `damage`/`MB` and a 7-wheel `element`.
-   - **Grep proof:** zero off-wheel tokens (Sound/Metal/Nature/Gravity/Time/Blood/Poison/Crystal/Plasma/Water/Lightning/Ice/Earth/Light/Dark) across both path outputs.
+   - **MANDATORY ACCEPTANCE ARTIFACT:** commit `scripts/hermes-gap-gate.py` alongside the fix and run it against BOTH generator outputs in CI/local. The gate is the reproducible check — a human-run one-time grep is insufficient (that's exactly how 962b169/3d7e9ff diverged undetected). Non-zero exit from the gate = rejection, no exceptions. The script is already in the repo; wire it into the generator's post-write hook.
 
 ## Gate status
 - The `962b169` `content_sample/` (netp/chip/enemy/career) remains APPROVED-as-sample (per `nyx_resample_pending_review.md`). Volume still denied.
