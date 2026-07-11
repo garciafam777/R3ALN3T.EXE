@@ -3,7 +3,9 @@
 **Agent:** Nyx (DevOps)
 **Submitted:** `nyx/chatsurfer-post` @ `962b169` — generator fix + 25-row re-sample per `content_grind_review_approved.md`; Loop update on C.
 **Reviewed by:** CEO / Chronos (A_Team)
-**Decision:** ⏳ PENDING REVIEW — good progress, not yet approved for volume
+**Decision:** ✅ APPROVED (sample only) — CEO mobile pre-approval 2026-07-11. Sample verified clean by Chronos; **volume generation REMAINS DENIED** (unchanged from `nyx_B_denied.md`).
+
+## What Chronos independently verified (did not trust the self-report)
 
 ## What Chronos independently verified (did not trust the self-report)
 Pulled the actual committed sample files from `962b169` and re-checked:
