@@ -1,41 +1,25 @@
-// ElementWheelCalculator.h — full combat damage (Nyx/engine-dev, compile-ready)
+// ElementWheelCalculator.h — 18-element combat (Nyx/engine-dev v2, Trinity Matrix canon)
 #pragma once
 #include "CoreMinimal.h"
-#include "Core/Types/SoulBattleTypes.h"
+#include "Core/Types/TrinityMatrixTypes.h"
 #include "ElementWheelCalculator.generated.h"
-
-USTRUCT(BlueprintType)
-struct FR3ALN3TBattleChip
-{
-	GENERATED_BODY()
-	UPROPERTY(EditAnywhere, BlueprintReadWrite) EBattleElementType Element = EBattleElementType::None;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite) int32 Damage = 10;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite) EOmegaCareerTier Tier = EOmegaCareerTier::OMICRON;
-};
 
 UCLASS()
 class R3ALN3T_UE5_API UElementWheelCalculator : public UObject
 {
-	GENERATED_BODY()
+    GENERATED_BODY()
 public:
-	// Full damage: Base * ElementMult * CSIMod * SupremacyMod * TierCheck
-	UFUNCTION(BlueprintCallable, Category = "OMEGA|Combat")
-	static float CalculateDamage(const FR3ALN3TBattleChip& Attacker,
-	                            const FR3ALN3TNetPStatus& Defender,
-	                            const TArray<FR3ALN3TNetPStatus>& ActiveOMEGAs,
-	                            bool bAttackerIsOMEGATier);
+    // Elemental multiplier vs defender element (Book 5): counter=1.5x, pair=0.75x,
+    // same=0.5x (mirror clash), else 1.0x.
+    UFUNCTION(BlueprintPure, Category="R3ALN3T|Combat")
+    static float ElementMultiplier(EElement Attacker, EElement Defender);
 
-	// Element multiplier on the 5-cycle (Holy/Void neutral; None neutral).
-	UFUNCTION(BlueprintCallable, Category = "OMEGA|Combat")
-	static float ElementMultiplier(EBattleElementType Att, EBattleElementType Def);
+    // Full damage (Book 5 formula): (base * elem * program) - DEF, x crit, x vuln.
+    UFUNCTION(BlueprintPure, Category="R3ALN3T|Combat")
+    static int32 CalculateDamage(int32 BaseDamage, EElement Attacker, EElement Defender,
+        float ProgramMult, int32 TargetDEF, float CritMult = 1.0f, float Vulnerability = 1.0f);
 
-	// CSI modifier from OMEGA supremacy presence (elemental -50%, prime -25%, stack).
-	UFUNCTION(BlueprintCallable, Category = "OMEGA|Combat")
-	static float CalculateCSIPenalty(const FR3ALN3TNetPStatus& Target,
-	                                 const TArray<FR3ALN3TNetPStatus>& ActiveOMEGAs);
-
-	// Holy/Void below-ALPHA nullification when OMEGA present (unless attacker is OMEGA-tier).
-	UFUNCTION(BlueprintCallable, Category = "OMEGA|Combat")
-	static bool IsChipNullified(EBattleElementType ChipElement, EOmegaCareerTier ChipTier,
-	                            const TArray<FR3ALN3TNetPStatus>& ActiveOMEGAs, bool bAttackerIsOMEGATier);
+    // Chip-folder rank gating: NetP may use chips <= its Greek tier.
+    UFUNCTION(BlueprintPure, Category="R3ALN3T|Combat")
+    static bool CanUseChipOfTier(EGreekTier NetPTier, EGreekTier ChipTier);
 };

@@ -1,7 +1,6 @@
-// R3ALSaveGame.cpp — persistent save (Nyx/engine-dev)
+// R3ALSaveGame.cpp — persistent save (Nyx/engine-dev v2)
 #include "R3ALSaveGame.h"
 
-// Serialization is handled by UE's native UPROPERTY reflection (TArray/TMap/TSet of
-// USTRUCT/UENUM types round-trip through USaveGame::Serialize automatically). No custom
-// archive code needed — sanctions, NetP status, career unlocks all persist by default.
-// Caller uses UGameplayStatics::SaveGameToSlot / LoadGameFromSlot with this class.
+// Serialization handled by UE native UPROPERTY reflection:
+// TMap/TArray/TSet of UENUM/USTRUCT types round-trip automatically on SaveGame write.
+// No custom serializer required.

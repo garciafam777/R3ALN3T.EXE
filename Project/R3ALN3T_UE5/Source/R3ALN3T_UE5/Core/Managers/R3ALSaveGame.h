@@ -1,39 +1,40 @@
-// R3ALSaveGame.h — persistent save (Nyx/engine-dev, compile-ready)
+// R3ALSaveGame.h — persistent save (Nyx/engine-dev v2, Trinity Matrix canon)
 #pragma once
 #include "CoreMinimal.h"
 #include "GameFramework/SaveGame.h"
-#include "Core/Types/SoulBattleTypes.h"
+#include "Core/Types/TrinityMatrixTypes.h"
 #include "R3ALSaveGame.generated.h"
 
 UCLASS()
 class R3ALN3T_UE5_API UR3ALSaveGame : public USaveGame
 {
-	GENERATED_BODY()
+    GENERATED_BODY()
 public:
-	// NetP collection (player roster + OMEGA status extensions)
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Save")
-	TArray<FR3ALN3TNetPStatus> NetPCollection;
+    // 3 NetP constructs (Trinity/Tyranny/Eternity); unused slots stay default.
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Save")
+    TMap<ENetPConstruct, FR3ALN3TNetPStatus> NetPs;
 
-	// Chip folder (owned chip ids + memory cost)
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Save")
-	TArray<FString> ChipFolder;
+    // Collected chip folders keyed by construct.
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Save")
+    TMap<ENetPConstruct, TArray<FString>> ChipFolders;
 
-	// Career unlocks (tier reached per element)
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Save")
-	TMap<EBattleElementType, EOmegaCareerTier> CareerUnlocks;
+    // Career unlocks (career IDs from the 252+ path table).
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Save")
+    TArray<FString> UnlockedCareers;
 
-	// Story flags (narrative nodes reached)
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Save")
-	TSet<FString> StoryFlags;
+    // Faction reputation (-100..100 per faction).
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Save")
+    TMap<EFaction, int32> FactionRep;
 
-	// Active sanctions on the player (persist across saves)
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Save")
-	TArray<ESanctionType> ActiveSanctions;
+    // Soul State per construct (-1 Infernal .. +1 Celestial).
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Save")
+    TMap<ENetPConstruct, ESoulState> SoulState;
 
-	// Player's OMEGA supremacy (set on usurp)
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Save")
-	ESupremacyTier PlayerSupremacy = ESupremacyTier::NONE;
+    // Story flags (act completion, secret-chapter discovery).
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Save")
+    TSet<FString> StoryFlags;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Save")
-	EBattleElementType ClaimedDomain = EBattleElementType::None;
+    // Highest Greek tier achieved (for Trinity unlock check).
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Save")
+    EGreekTier HighestRank = EGreekTier::OmicronPSI;
 };
