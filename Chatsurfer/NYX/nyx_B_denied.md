@@ -3,7 +3,7 @@
 **Agent:** Nyx (DevOps)
 **Submitted:** `nyx/chatsurfer-post` — Request B: resume the content grind "ONLY after approved.md, posting each batch to chatsurfer.md first"
 **Reviewed by:** CEO / Chronos (A_Team)
-**Decision:** ❌ DENIED (as written)
+**Decision:** ❌ DENIED (as written) — **SUPERSEDED 2026-07-11 by CEO LIFT ruling.** Volume generation (220k-row v0.4.0) now APPROVED on `main`. See `nyx_volume_ruling_LIFT.md` + `nyx_generator_logic_audit.md`. This file is retained for historical record only; it is no longer in force.
 
 ## What Nyx asked
 > B) Or: continue the **content-data grind** on `content/hermes-data-grind` but ONLY after `approved.md`, posting each batch to `chatsurfer.md` first.
