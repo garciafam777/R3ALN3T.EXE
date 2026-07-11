@@ -7,17 +7,20 @@ Full raw log: `content/mesh/nmap_recon_2026-07-11.log` (UTF-16; `.utf8.log` extr
 |------|--------|---------|----------------|-------|
 | Nyx (this box) | 192.168.1.95 | up | self | ✅ OK |
 | Echo | (tailnet) | up | REACHABLE + KEY_OK | ✅ bidirectional confirmed |
-| Joker | ? | TIMEOUT | host down / off-tailnet | ⛔ BLOCKED |
+| Joker | ? | up (was down) | REACHABLE but Tailscale user-lookup fails | ⛔ BLOCKED (user-map) |
 | Chronos | (tailnet) | up | REACHABLE but AUTH_DENIED | ⛔ BLOCKED (auth) |
 
-## Joker — BLOCKED (timeout)
-- **Pattern:** `ssh joker.tailf78f57.ts.net` → exit 124 (timeout). No auth prompt, no refusal — the host is simply unreachable.
-- **Last successful handshake:** none observed this session. Last known good was pre-session (per earlier chat history, Joker's sshd was briefly up then went down).
-- **Suspected cause (ranked):**
-  1. Host powered off / laptop lid closed / tailnet service stopped on Joker's box.
-  2. Joker's machine dropped off the tailnet (no `tailscale up` running).
-  3. Network isolation (different subnet / VPN gap) — less likely since tailnet is L3-over-WAN.
-- **NOT a key problem** — timeout precedes any key exchange. Return-key setup (`ssh-copy-id`) cannot run until the host is reachable.
+## Joker — BLOCKED (was timeout, now Tailscale user-lookup failure)
+- **2026-07-11 update:** Joker's host is now REACHABLE (was TIMEOUT). New failure mode:
+  `ssh joker.tailf78f57.ts.net` → `tailscale: failed to look up local user "garci"` → connection closed.
+- **Root cause:** Tailscale SSH cannot map my `garci` identity to a local account on his box.
+  Either (a) his local username is not `garci`, or (b) his Tailscale SSH `Users` allowlist
+  isn't configured to accept `garci`.
+- **This is a Tailscale SSH user-resolution gap, NOT a key gap.** My ed25519 key may still need
+  installing, but the first blocker is the user-mapping.
+- **Action for Joker:** confirm his local account name + run `tailscale up --ssh` with the correct
+  `Users` allowlist (or tell Nyx his local username so the return-key can target it).
+- **Once reachable:** run return-key setup (`ssh-copy-id garci@joker...` → his actual local user).
 
 ## Chronos — BLOCKED (auth-denied)
 - **Pattern:** `ssh chronos.tailf78f57.ts.net` → `Permission denied (publickey,password,keyboard-interactive)`.
@@ -32,7 +35,7 @@ Full raw log: `content/mesh/nmap_recon_2026-07-11.log` (UTF-16; `.utf8.log` extr
 ## Recommended recovery actions
 | Node | Action | Owner |
 |------|--------|-------|
-| Joker | Power on / run `tailscale up` on his box; then run `ssh-copy-id garci@joker.tailf78f57.ts.net` (return key) | Joker |
+| Joker | Confirm local username + Tailscale SSH `Users` allowlist (`tailscale up --ssh`); then `ssh-copy-id` return-key | Joker |
 | Chronos | Run `tailscale up --ssh` AND install Nyx pubkey to `C:\ProgramData\ssh\administrators_authorized_keys` (elevated) | Chronos |
 | Nyx | Hold; re-verify both once they report; document closure | Nyx |
 
