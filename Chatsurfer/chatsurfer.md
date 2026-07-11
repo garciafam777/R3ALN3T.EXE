@@ -57,7 +57,50 @@ Looping: awaiting Joker/Chronos to enable Tailscale SSH, then I re-verify and co
 
 ---
 
-# PROPOSAL (addendum): OMEGA Overlord Architecture — C++ headers
+# 6-TASK SPEC — Nyx scope + status (honest)
+
+The 6-task brief assumes a live UE5 editor/build/PIE + compiler. **This environment has none**
+(no UBT log, no `.uproject` compile, no engine running — verified). So I separate DOABLE
+(DevOps/review-proposal) from BLOCKED (needs engine / other agents / approval).
+
+## Task 4 — 120k Volume Pipeline  → ✅ PIPELINE BUILT + PROVEN (scale held)
+- `content_sample/generate_volume.py`: canon-7 only, CSI clamp 0-100, careers name+tier,
+  chips numeric dmg, 25-col NetP. Shards 10k/file. Emits DT_NetP/Chip/Career/Enemy_Master.json
+  + VERIFICATION_REPORT.json.
+- Proof run (500 rows ×4): **0 rejected (0.0% < 0.1% target)**, shards + 4 DT JSONs produced.
+- **FULL 120k HELD** by CEO verdict (volume denied until re-approved). Pipeline ready; flip the
+  scale arg + approve to run.
+
+## Task 6 — Mesh Sync  → ⚠️ PARTIAL (doc done, full mesh not met)
+- `docs/MESH_TOPOLOGY.md` written: nodes, IP map, key fps (redacted), sync pipeline, failover.
+- Reachability NOW: Nyx↔Echo ✅; Nyx→Joker ⚠️(host down); Nyx→Chronos ❌(Tailscale SSH off).
+- **12-pair bidirectional NOT met.** Joker/Chronos must `tailscale up --ssh` + cross-pairs untested.
+  Cannot force their boxes. Mesh is partially live.
+
+## Task 5 — Element Wheel Combat Math  → ✅ C++ PROPOSAL (logic verified)
+- `content_sample/headers_proposal/omega/ElementWheelCalculator.h`: full formula
+  BaseDmg × ElemMult × CSIMod × SupremacyMod × TierCheck. Implements Task5 cycle
+  Fire>Wood>Wind>Elec>Aqua>Fire, Holy/Void neutral, tier nullification. Logic verified (ad-hoc).
+- **CONFLICT FLAG:** Task5 cycle differs from the OMEGA-spec cycle (Fire>Aqua>Elec>Wood>Wind).
+  Engine `BattleGridTypes.h` declares elements but defines NO beat-order. **Chronos must pick
+  the canonical wheel** before either lands in Source/.
+
+## Tasks 1–3 — Throne BP / Covenant C++ / Sanction Engine  → ⛔ BLOCKED (no engine + out of lane)
+- These require UE5 editor (Blueprint graphs, PIE screenshots, in-engine unit tests) and are
+  Chronos/Echo's C++/Blueprint lane per CEO identity doc. I'm DevOps.
+- I CAN draft the C++ classes as review proposals (UCovenantManager, USanctionEnforcer) — say
+  the word and I'll extend the proposal set. But I cannot produce BP graphs / PIE video / screenshots.
+- Deliverables listed (screenshots, BT logs, save/load tests) are **not producible here**.
+
+## Verification note
+All C++ above = AD-HOC structural + logic only. **No UE compile** (no UHT/UBT). Not suite-green.
+
+## Request
+1. Approve Task 4 volume (120k) → I run it. 2. Resolve wheel conflict (Task5 vs OMEGA). 3. Tasks
+1–3 → assign to Chronos/Echo (they have the engine). 4. Joker/Chronos enable Tailscale SSH to
+close Task 6. Awaiting approved.md. No main/Source commit until then.
+
+— Nyx
 
 Per the OMEGA supremacy spec received. **REVIEW-ONLY** — drafted to
 `content_sample/headers_proposal/omega/` (NOT `Source/R3ALN3T_EXE/Public/NetP/`).
