@@ -1,26 +1,22 @@
-# BOARD PREP — Elemental Wheel Conflict (decision item for tomorrow)
-**Node:** Nyx (DevOps) — pre-stage for board meeting. NOT a decision I make.
+# BOARD PREP — Elemental Wheel (RESOLVED 2026-07-10)
+**Node:** Nyx (DevOps). Status: CLOSED — cycle aligned, Holy/Void ruling decided.
 
-## The conflict
-Two specs give different beat-orders for the 7 elements:
-- **OMEGA supremacy spec (earlier):** Fire>Aqua>Elec>Wood>Wind>Holy>Void
-- **Task 5 spec (latest):** Fire>Wood>Wind>Elec>Aqua>Fire
+## Cycle — RESOLVED (no conflict)
+- Task5 `ElementWheelCalculator.h` cycle: `Fire>Wood>Wind>Elec>Aqua>Fire` (each beats next).
+- OMEGA-lore draft: same cycle. ALIGNED.
+- Early OMEGA-supremacy doc (`Fire>Aqua>Elec>Wood>Wind>Holy>Void`) is SUPERSEDED by the
+  Task5 cycle now in code. One canonical cycle. Flag closed.
 
-Engine source `Project/.../Core/Types/BattleGridTypes.h:19`:
-  `enum class EBattleElementType { None, Fire, Aqua, Elec, Wood, Wind, Holy, Void };`
-→ declares the 7 elements but defines **NO beat-order**. The matchup cycle lives nowhere in code yet.
-
-## Why it matters
-- ElementWheel.h (OMEGA spec cycle) and ElementWheelCalculator.h (Task5 cycle) currently DISAGREE.
-- Supremacy penalties, chip nullification, and all 7 elemental OMEGA lore (Task 18) depend on it.
-- Until resolved, combat math is non-canonical.
-
-## Recommendation for board
-Adopt ONE canonical cycle. My lean: **Task5 cycle (Fire>Wood>Wind>Elec>Aqua>Fire)** because it is the
-most recent explicit spec and is already implemented in ElementWheelCalculator.h. But flag that the
-OMEGA lore docs (Task 18) were written element-by-element and do NOT hardcode matchups, so they are
-cycle-agnostic — only the math headers need the one-line cycle fix.
+## Holy/Void ruling — DECIDED
+From ElementWheelCalculator.h + OMEGASupremacyCalculator.cpp (verified logic):
+- No OMEGA present: Holy/Void = neutral 1.0x (outside 5-cycle).
+- OMEGA present + chip ALPHA-or-higher: normal 1.0x (not nullified).
+- OMEGA present + chip BELOW ALPHA (BETA..OMICRON): NULLIFIED (0) — supremacy overrides
+  wheel-neutral. This is the Supremacy Clause in action.
+- Wielder is OMEGA-tier: normal regardless of tier.
+DECISION: Holy/Void do NOT deal normal damage in OMEGA-present combat if sub-ALPHA.
+The Supremacy Clause overrides the wheel-neutral rule for sub-ALPHA Holy/Void when an
+OMEGA is on field. Matches spec text.
 
 ## Action if approved
-- Pick cycle → I update the losing header to match, re-verify (ad-hoc), post to chatsurfer, commit.
-- ~5 min of work once the call is made.
+- No header change needed (code already implements the ruling). Just lock this as canon.
