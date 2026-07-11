@@ -18,12 +18,16 @@ STABLE tailnet hostname + IP, so we auth purely by pubkey and stop fighting subn
 Note: `tailscale` CLI is NOT on the user PATH here (client installed under admin context);
 network IS connected (ping + SSH to peers works). SSH by tailnet IP or hostname once DNS propagates.
 
-## Live handshake test (2026-07-10, tailnet)
-- [x] Nyx -> Echo (100.89.22.36): **ECHO_OK** (Echo already has Nyx key)
-- [ ] Nyx -> Joker (100.85.190.91): Permission denied (his Linux authorized_keys lacks Nyx key)
-- [ ] Nyx -> Chronos (100.116.26.120): Permission denied (his authorized_keys lacks Nyx key)
-- [x] Joker -> Nyx: works (Joker key in Nyx admin file)
+## Live handshake test (2026-07-10, tailnet, full hostnames)
+- [x] Nyx -> Echo (echo.tailf78f57.ts.net): **ECHO_OK** (Tailscale SSH brokering works there)
+- [ ] Nyx -> Joker (joker.tailf78f57.ts.net): Permission denied — his sshd offers publickey/password/keyboard-interactive but Tailscale SSH NOT brokering -> needs Tailscale SSH ENABLED on his machine in admin console
+- [ ] Nyx -> Chronos (chronos.tailf78f57.ts.net): Permission denied — same: Tailscale SSH not brokering on his box
+- [x] Joker -> Nyx / Echo -> Nyx: work (their keys / tailnet auth accepted on Nyx)
 - [x] Nyx sshd: RUNNING, Automatic, :22; perms fixed; INBOUND_OK
+
+ACTION FOR JOKER + CHRONOS: enable Tailscale SSH on their machines
+  Admin console -> machine -> SSH -> ON  (or `tailscale up --ssh` / set ssh in access policy)
+  Once enabled, Nyx can `ssh joker.tailf78f57.ts.net` / `ssh chronos.tailf78f57.ts.net` passwordless.
 
 ## Nyx setup steps (this box, garci@192.168.1.89)
 1. Install Tailscale Windows client (you, or I via winget if permitted):
