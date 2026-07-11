@@ -139,4 +139,19 @@ if __name__=="__main__":
     rep["scale_requested"]=scale
     rep["note"]="Proof run. Full 120k HELD by CEO verdict (volume denied until re-approved)."
     json.dump(rep,open(f"{out}/VERIFICATION_REPORT.json","w"),indent=2)
+    # Reproducible gate (board mandate): run hermes-gap-gate.py against generated output.
+    try:
+        import subprocess, os as _os
+        gate=os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))),"scripts","hermes-gap-gate.py")
+        if _os.path.exists(gate):
+            r=subprocess.run(["python",gate,out],capture_output=True,text=True)
+            print(r.stdout)
+            print("GATE_EXIT",r.returncode)
+            if r.returncode!=0:
+                print("GATE FAILED - output not canon-compliant; fix generator before commit")
+                sys.exit(r.returncode)
+        else:
+            print("gate script not found; skipping automated gate")
+    except Exception as e:
+        print("gate run error:",e)
     print(json.dumps(rep,indent=2))

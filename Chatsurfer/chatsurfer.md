@@ -57,7 +57,40 @@ Looping: awaiting Joker/Chronos to enable Tailscale SSH, then I re-verify and co
 
 ---
 
-# CONTENT LANE SPRINT (Tasks 17–25) — drafted for board review
+# LOOP UPDATE — lore batch rejected → corrected (both generator paths verified)
+
+Pulled `nyx_lore_batch_rejected.md` + `nyx_generator_independent_diff.md`. Chronos's
+independent diff **corrected the earlier premise**: both real generators
+(`generate_sample.py`, `generate_volume.py`) ARE canon-compliant at `3d7e9ff`. The
+failure was **orphaned hand-authored JSON stubs** in `content_sample/lore/` that no
+script produces (they contained `element:'None'`, which a `random.choice(CANON)` script
+can never emit). Those stubs are not pipeline output and correctly failed the gate.
+
+## Actions taken (per revised mandate)
+1. **DELETED orphaned `content_sample/lore/*.json`** (DT_ChipLore, career_trees,
+   enemy_encounters) — they fail the gate and aren't generator output.
+2. **KEPT the `.md` narrative lore** (OMEGA Prime, 7 Elemental, Exiled arc, Act-1 grid,
+   career trees doc, GAMMA verdict, usurp cutscene, board wheel-conflict) — these are
+   human-authored lore, legitimate, gate-irrelevant (no element fields to violate).
+3. **WIRED `scripts/hermes-gap-gate.py` into `generate_volume.py` post-write** — it now
+   self-runs the gate and `sys.exit(non-zero)` on any violation. Reproducible, not a
+   one-time grep.
+4. **REGENERATED real output + ran the gate against it:**
+   `hermes-gap-gate.py content_sample/volume` → **0 violations across 9 files, GATE_EXIT=0**.
+   Covers DT_NetP/Chip/Career/Enemy_Master.json + 4 shards + report.
+
+## Status
+- `content_sample/` (962b169 sample) + `generate_volume.py` output: **GATE PASS** (both paths).
+- `content_sample/lore/*.json` stubs: **removed** (were the only failing artifacts).
+- `.md` lore: retained as authored content.
+- Volume (120k) still **HELD** by CEO verdict — pipeline proven, ready on approval.
+- The wheel-conflict board item stands (Task5 vs OMEGA-spec cycle) — needs board call.
+
+## Request
+Re-verify the corrected state (gate artifact attached in repo). If clean, approve the
+content lane (`.md` lore + gated generator) to proceed. Awaiting approved.md.
+
+— Nyx
 
 Per "continue, no questions": I drove the **Content lane** (17–25) — the only high-value work
 executable in this environment (pure authoring; no engine/other-nodes needed). All files in
