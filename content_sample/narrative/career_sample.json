@@ -1,0 +1,177 @@
+[
+  {
+    "id": "CAREER-001",
+    "name": "DataSplice",
+    "element": "Void",
+    "tier": "DELTA",
+    "description": "DELTA-tier Void specialist path: DataSplice."
+  },
+  {
+    "id": "CAREER-002",
+    "name": "VoidWeaver",
+    "element": "Wind",
+    "tier": "ZETA",
+    "description": "ZETA-tier Wind specialist path: VoidWeaver."
+  },
+  {
+    "id": "CAREER-003",
+    "name": "GridWarden",
+    "element": "Elec",
+    "tier": "EPSILON",
+    "description": "EPSILON-tier Elec specialist path: GridWarden."
+  },
+  {
+    "id": "CAREER-004",
+    "name": "HexBinder",
+    "element": "Wood",
+    "tier": "MU",
+    "description": "MU-tier Wood specialist path: HexBinder."
+  },
+  {
+    "id": "CAREER-005",
+    "name": "HexBinder",
+    "element": "Aqua",
+    "tier": "XI",
+    "description": "XI-tier Aqua specialist path: HexBinder."
+  },
+  {
+    "id": "CAREER-006",
+    "name": "SoulHunter",
+    "element": "Wind",
+    "tier": "IOTA",
+    "description": "IOTA-tier Wind specialist path: SoulHunter."
+  },
+  {
+    "id": "CAREER-007",
+    "name": "PulseHunter",
+    "element": "Wood",
+    "tier": "ZETA",
+    "description": "ZETA-tier Wood specialist path: PulseHunter."
+  },
+  {
+    "id": "CAREER-008",
+    "name": "PulseSeer",
+    "element": "Wood",
+    "tier": "THETA",
+    "description": "THETA-tier Wood specialist path: PulseSeer."
+  },
+  {
+    "id": "CAREER-009",
+    "name": "PulseSeer",
+    "element": "Void",
+    "tier": "ALPHA",
+    "description": "ALPHA-tier Void specialist path: PulseSeer."
+  },
+  {
+    "id": "CAREER-010",
+    "name": "VoidSeer",
+    "element": "Aqua",
+    "tier": "GAMMA",
+    "description": "GAMMA-tier Aqua specialist path: VoidSeer."
+  },
+  {
+    "id": "CAREER-011",
+    "name": "DataRunner",
+    "element": "Holy",
+    "tier": "THETA",
+    "description": "THETA-tier Holy specialist path: DataRunner."
+  },
+  {
+    "id": "CAREER-012",
+    "name": "VoidWarden",
+    "element": "Void",
+    "tier": "BETA",
+    "description": "BETA-tier Void specialist path: VoidWarden."
+  },
+  {
+    "id": "CAREER-013",
+    "name": "CoreWeaver",
+    "element": "Void",
+    "tier": "DELTA",
+    "description": "DELTA-tier Void specialist path: CoreWeaver."
+  },
+  {
+    "id": "CAREER-014",
+    "name": "AstraBinder",
+    "element": "Wind",
+    "tier": "IOTA",
+    "description": "IOTA-tier Wind specialist path: AstraBinder."
+  },
+  {
+    "id": "CAREER-015",
+    "name": "GridWeaver",
+    "element": "Holy",
+    "tier": "BETA",
+    "description": "BETA-tier Holy specialist path: GridWeaver."
+  },
+  {
+    "id": "CAREER-016",
+    "name": "AstraHunter",
+    "element": "Holy",
+    "tier": "IOTA",
+    "description": "IOTA-tier Holy specialist path: AstraHunter."
+  },
+  {
+    "id": "CAREER-017",
+    "name": "GridWarden",
+    "element": "Fire",
+    "tier": "IOTA",
+    "description": "IOTA-tier Fire specialist path: GridWarden."
+  },
+  {
+    "id": "CAREER-018",
+    "name": "DataBinder",
+    "element": "Elec",
+    "tier": "IOTA",
+    "description": "IOTA-tier Elec specialist path: DataBinder."
+  },
+  {
+    "id": "CAREER-019",
+    "name": "GridSeer",
+    "element": "Wood",
+    "tier": "ETA",
+    "description": "ETA-tier Wood specialist path: GridSeer."
+  },
+  {
+    "id": "CAREER-020",
+    "name": "DataSeer",
+    "element": "Holy",
+    "tier": "XI",
+    "description": "XI-tier Holy specialist path: DataSeer."
+  },
+  {
+    "id": "CAREER-021",
+    "name": "GridRunner",
+    "element": "Wood",
+    "tier": "GAMMA",
+    "description": "GAMMA-tier Wood specialist path: GridRunner."
+  },
+  {
+    "id": "CAREER-022",
+    "name": "DataSplice",
+    "element": "Fire",
+    "tier": "ALPHA",
+    "description": "ALPHA-tier Fire specialist path: DataSplice."
+  },
+  {
+    "id": "CAREER-023",
+    "name": "CoreSmith",
+    "element": "Wood",
+    "tier": "THETA",
+    "description": "THETA-tier Wood specialist path: CoreSmith."
+  },
+  {
+    "id": "CAREER-024",
+    "name": "PulseRunner",
+    "element": "Wood",
+    "tier": "BETA",
+    "description": "BETA-tier Wood specialist path: PulseRunner."
+  },
+  {
+    "id": "CAREER-025",
+    "name": "AstraSplice",
+    "element": "Holy",
+    "tier": "ZETA",
+    "description": "ZETA-tier Holy specialist path: AstraSplice."
+  }
+]

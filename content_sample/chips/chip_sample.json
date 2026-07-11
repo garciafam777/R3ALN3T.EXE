@@ -1,0 +1,202 @@
+[
+  {
+    "id": "CHIP-0001",
+    "name": "Wind V2",
+    "element": "Wind",
+    "damage": 60,
+    "mb": 60,
+    "description": "Elemental chip (Wind). Deals 60 damage."
+  },
+  {
+    "id": "CHIP-0002",
+    "name": "Fire SP",
+    "element": "Fire",
+    "damage": 50,
+    "mb": 50,
+    "description": "Elemental chip (Fire). Deals 50 damage."
+  },
+  {
+    "id": "CHIP-0003",
+    "name": "Elec V1",
+    "element": "Elec",
+    "damage": 150,
+    "mb": 150,
+    "description": "Elemental chip (Elec). Deals 150 damage."
+  },
+  {
+    "id": "CHIP-0004",
+    "name": "Void SP",
+    "element": "Void",
+    "damage": 100,
+    "mb": 100,
+    "description": "Elemental chip (Void). Deals 100 damage."
+  },
+  {
+    "id": "CHIP-0005",
+    "name": "Elec V1",
+    "element": "Elec",
+    "damage": 10,
+    "mb": 10,
+    "description": "Elemental chip (Elec). Deals 10 damage."
+  },
+  {
+    "id": "CHIP-0006",
+    "name": "Wind M",
+    "element": "Wind",
+    "damage": 50,
+    "mb": 50,
+    "description": "Elemental chip (Wind). Deals 50 damage."
+  },
+  {
+    "id": "CHIP-0007",
+    "name": "Wind M",
+    "element": "Wind",
+    "damage": 20,
+    "mb": 20,
+    "description": "Elemental chip (Wind). Deals 20 damage."
+  },
+  {
+    "id": "CHIP-0008",
+    "name": "Void SP",
+    "element": "Void",
+    "damage": 20,
+    "mb": 20,
+    "description": "Elemental chip (Void). Deals 20 damage."
+  },
+  {
+    "id": "CHIP-0009",
+    "name": "Fire R",
+    "element": "Fire",
+    "damage": 10,
+    "mb": 10,
+    "description": "Elemental chip (Fire). Deals 10 damage."
+  },
+  {
+    "id": "CHIP-0010",
+    "name": "Elec V2",
+    "element": "Elec",
+    "damage": 80,
+    "mb": 80,
+    "description": "Elemental chip (Elec). Deals 80 damage."
+  },
+  {
+    "id": "CHIP-0011",
+    "name": "Aqua V1",
+    "element": "Aqua",
+    "damage": 80,
+    "mb": 80,
+    "description": "Elemental chip (Aqua). Deals 80 damage."
+  },
+  {
+    "id": "CHIP-0012",
+    "name": "Void V3",
+    "element": "Void",
+    "damage": 50,
+    "mb": 50,
+    "description": "Elemental chip (Void). Deals 50 damage."
+  },
+  {
+    "id": "CHIP-0013",
+    "name": "Fire R",
+    "element": "Fire",
+    "damage": 10,
+    "mb": 10,
+    "description": "Elemental chip (Fire). Deals 10 damage."
+  },
+  {
+    "id": "CHIP-0014",
+    "name": "Elec V1",
+    "element": "Elec",
+    "damage": 30,
+    "mb": 30,
+    "description": "Elemental chip (Elec). Deals 30 damage."
+  },
+  {
+    "id": "CHIP-0015",
+    "name": "Wood R",
+    "element": "Wood",
+    "damage": 120,
+    "mb": 120,
+    "description": "Elemental chip (Wood). Deals 120 damage."
+  },
+  {
+    "id": "CHIP-0016",
+    "name": "Wind M",
+    "element": "Wind",
+    "damage": 150,
+    "mb": 150,
+    "description": "Elemental chip (Wind). Deals 150 damage."
+  },
+  {
+    "id": "CHIP-0017",
+    "name": "Aqua V1",
+    "element": "Aqua",
+    "damage": 40,
+    "mb": 40,
+    "description": "Elemental chip (Aqua). Deals 40 damage."
+  },
+  {
+    "id": "CHIP-0018",
+    "name": "Aqua R",
+    "element": "Aqua",
+    "damage": 150,
+    "mb": 150,
+    "description": "Elemental chip (Aqua). Deals 150 damage."
+  },
+  {
+    "id": "CHIP-0019",
+    "name": "Aqua EX",
+    "element": "Aqua",
+    "damage": 150,
+    "mb": 150,
+    "description": "Elemental chip (Aqua). Deals 150 damage."
+  },
+  {
+    "id": "CHIP-0020",
+    "name": "Fire SP",
+    "element": "Fire",
+    "damage": 40,
+    "mb": 40,
+    "description": "Elemental chip (Fire). Deals 40 damage."
+  },
+  {
+    "id": "CHIP-0021",
+    "name": "Wind EX",
+    "element": "Wind",
+    "damage": 150,
+    "mb": 150,
+    "description": "Elemental chip (Wind). Deals 150 damage."
+  },
+  {
+    "id": "CHIP-0022",
+    "name": "Void EX",
+    "element": "Void",
+    "damage": 30,
+    "mb": 30,
+    "description": "Elemental chip (Void). Deals 30 damage."
+  },
+  {
+    "id": "CHIP-0023",
+    "name": "Wood SP",
+    "element": "Wood",
+    "damage": 120,
+    "mb": 120,
+    "description": "Elemental chip (Wood). Deals 120 damage."
+  },
+  {
+    "id": "CHIP-0024",
+    "name": "Wind SP",
+    "element": "Wind",
+    "damage": 20,
+    "mb": 20,
+    "description": "Elemental chip (Wind). Deals 20 damage."
+  },
+  {
+    "id": "CHIP-0025",
+    "name": "Fire EX",
+    "element": "Fire",
+    "damage": 50,
+    "mb": 50,
+    "description": "Elemental chip (Fire). Deals 50 damage."
+  }
+]
