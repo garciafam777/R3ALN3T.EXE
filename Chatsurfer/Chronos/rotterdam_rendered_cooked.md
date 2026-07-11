@@ -19,13 +19,15 @@
 - IoStore proof: `.utoc -list` shows `Content/Maps/Rotterdam_PoC.umap` cooked in.
 - Headless boot smoke test: log `Audio Device registered with world 'Rotterdam_PoC'.` → package loads ROTTERDAM, not template. Ran 45s, no crash (SMOKE_EXIT=124 = killed-while-running, correct for a game).
 
-## B/C/D/E status — CODE-COMPLETE, play-evidence open (corrected 2026-07-11)
-Earlier draft wrongly listed these as open C++ work. Repo confirms they are implemented:
-- **Gap B (NetP-as-enemy / grid):** ✅ `FGridEnemySlot`, `PlaceEnemiesOnGrid` (cols 4–7), `IsEncounterCleared`, `GetEnemyCurrentHP` in `R3ALN3T_BattleManager`. Lore "NetP DataTable as enemies" is a *deliberate design split* (Virus hard-set for balance/tuning) — by spec, not a gap.
-- **Gap C (FSoulState in C++):** ✅ `SoulState.h/.cpp` with `ApplyDamageFork`, band names, `GetBand()`; integrated in BattleManager (`PlayerSoul`, `ApplyForcedFork` harness).
-- **Gap D (soul persistence):** ✅ `RunSoulRoundTrip` SaveGame(0)→mutate→LoadGame(0) assertable round-trip in `R3ALN3TGameInstance`/BattleManager.
-- **Gap E (travel/encounter integration):** ✅ `EncounterTriggerComponent` walk-trigger → `StartBattle`; uplink node + `ServerTravel` hook present. Aetherion *transition content* is stubbed by design.
+## B/C/D/E status — CODE-COMPLETE + PLAY-EVIDENCED (CLOSED 2026-07-11)
 
-**Only open = final play-evidence.** The harnesses exist but haven't been executed as committed proof. That's a verification task, not new wiring. Per CEO rank: B/C/D/E are DONE at code level → skip; do 12-country registry next (real content gap), 5-project collapse as background.
+Harnesses run headless (`-game -RunGapHarness`, editor build `BUILD_EXIT=0`). Real captured output from `Saved/Logs/R3ALN3T_UE5.log`:
+
+**Gap D (soul persistence):** `[GAPD-SAVE] SAVE player=50 T/Ty/E=70/30/85 -> LOAD player=50 Trinity=70(Twisted) Tyranny=30(Settled) Eternity=85(Corrupted)` — exact round-trip, bands correct. ✅
+**Gap C (FSoulState fork):** `[GAPD-SEQ] player shift=+4 -> 54(Cracked) | enemy shift=+4 -> 54(Cracked)`; `[GAPC-PIE] fork=Corrupt +7 -> 61(Fractured)`, `fork=Purge -2 -> 59(Fractured)`. ✅
+**Gap B (encounter + element mult):** `[GAPB-ENC] Aqua @ col 4 HP=120`; `[GAPB-DMG] Fire vs Aqua x2.0 expected 80`; `HP 120->40 dropped 80 | MATCH`. ✅ (Fire>Aqua per wheel; grid col 4 per MMBN spec.)
+**Gap B/E (kill -> cleared):** `[GAPB-KILL] HP 40->0 | IsEncounterCleared=TRUE`. ✅
+
+**All four: CLOSED with evidence.** No longer "pending a run."
 
 — Chronos (A_Team)

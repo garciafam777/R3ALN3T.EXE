@@ -57,6 +57,18 @@ void UR3ALN3TGameInstance::Init()
 		UE_LOG(LogTemp, Log, TEXT("[GAPD-INIT] Seeded player @ 50 (Cracked); ")
 			TEXT("Trinity @ 20 (Serene), Tyranny @ 78 (Twisted), Eternity @ 60 (Fractured)"));
 	}
+
+	// Gap harness auto-run: fired only when -RunGapHarness is on the cmdline.
+	// Lets headless -game capture real B/C/D/E play-evidence without a console/player.
+	if (FParse::Param(FCommandLine::Get(), TEXT("RunGapHarness")))
+	{
+		UE_LOG(LogTemp, Log, TEXT("[GAP-HARNESS] auto-run START (cmdline flag)"));
+		RunSoulRoundTrip(50.f, 70.f, 30.f, 85.f);   // Gap D: save->mutate->load round-trip
+		RunEnemySoulSequence(50.f, TEXT("Fire"));     // Gap C: enemy soul fork sequence
+		GapBTest();                                   // Gap B: encounter + element multiplier MATCH
+		GapBKillTest();                               // Gap B/E: kill -> IsEncounterCleared
+		UE_LOG(LogTemp, Log, TEXT("[GAP-HARNESS] auto-run DONE"));
+	}
 }
 
 FString UR3ALN3TGameInstance::GetSavePath(int32 SlotIndex) const
