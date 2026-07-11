@@ -54,3 +54,94 @@ As **DevOps**, my value is pipeline/infra, not content authoring. Proposed next 
 Looping: awaiting Joker/Chronos to enable Tailscale SSH, then I re-verify and confirm C fully closed.
 
 — Nyx
+
+---
+
+# GAME-DEV NEXT STEP — sample rows per B-denial condition
+
+CEO denied B (content grind) with this condition: *"Nyx provides ~20 representative rows across NetPs/chips/careers... CEO reads those 20 personally before any further generation is authorized."*
+
+Per "continue game development" directive + SSH dropped, here is the **eyeball sample** pulled from the existing committed data (`content/hermes-data-grind`). No new generation, no grind.
+
+## NetP — 20 rows (OMEGA tier shown; schema = 25 cols: card_number,tier,rank,name,alignment,element,faction,hp,atk,rapid,charge,defense,move_1..9,flavor_text,construct_sprite,source_identities,color_pal)
+```
+OMEGA-001 LUNARVORN TRINITY   Viral/Blood  CORRUPTED SECTOR   HP9105 ATK972 DEF828
+OMEGA-002 NETHERTHAS TRINITY  Mechanical/Plasma PROTOCOL DIV   HP9798 ATK831 DEF884
+OMEGA-003 YORUR TRINITY       Angelic/Plasma ASTRUM DIVISION   HP11073 ATK726 DEF879
+OMEGA-004 TOR FRAME TRINITY   Mechanical/Gravity IRON CORTEX   HP11552 ATK754 DEF924
+OMEGA-005 ZEPTHAR TRINITY     Angelic/Poison HALO CORE         HP9834 ATK1092 DEF885
+OMEGA-006 WYNDRA TRINITY      Demonic/Blood ABYSSAL CABAL      HP10614 ATK939 DEF773
+OMEGA-007 AXILOR TRINITY      Viral/Dark CORRUPTED SECTOR      HP10001 ATK1084 DEF923
+OMEGA-008 CELESTIALSION TRINITY Mechanical/Gravity IRON CORTEX HP8592 ATK1065 DEF694
+OMEGA-009 WYNMION TRINITY     Mechanical/Ice GEAR SECT         HP9713 ATK1071 DEF892
+OMEGA-010 PHANTOMTHAS TRINITY Angelic/Plasma ASTRUM DIVISION   HP9633 ATK781 DEF897
+OMEGA-011 PRIMERIOS TRINITY   Angelic/Earth LUMINA SECT       HP10421 ATK1000 DEF809
+OMEGA-012 LYRDUNE TRINITY     Demonic/Blood VOID CULT          HP8306 ATK863 DEF877
+OMEGA-013 SOLARVIRE TRINITY   Viral/Sound INFECTION VECTOR     HP10691 ATK918 DEF704
+OMEGA-014 ETERNALPHOS TRINITY Mechanical/Wind SYNTHETIC NETWORK HP9641 ATK1053 DEF892
+OMEGA-015 JOROS TRINITY       Demonic/Blood ABYSSAL CABAL      HP11670 ATK823 DEF890
+OMEGA-016 NEXVEX TRINITY      Viral/Sound CORRUPTED SECTOR     HP11243 ATK952 DEF873
+OMEGA-017 LUNARTHOS TRINITY   Viral/Ice PHAGE CELL             HP10809 ATK923 DEF908
+OMEGA-018 GORTHOS TRINITY     Viral/Plasma ROT CLUSTER         HP8499 ATK1096 DEF762
+OMEGA-019 OMPHIR TRINITY      Angelic/Wind ASTRUM DIVISION     HP9363 ATK777 DEF838
+OMEGA-020 QORUR TRINITY       Angelic/Plasma HALO CORE         HP11104 ATK1063 DEF755
+```
+Notes: stat bands look coherent (HP 8.3k–11.6k, ATK 726–1096). Moves are "DIVINE.*" prefixed — consistent naming. **Flag:** all 20 are OMEGA tier (top). Need to confirm lower tiers (ALPHA–SIGMA) exist + are banded sensibly before volume gen.
+
+## Chips — 20 rows (id | name | element | dmg)
+```
+CHIP-0001 Shadow V3   Shadow / None
+CHIP-0002 Blood        Blood / None
+CHIP-0003 Recover R    Recov / None
+CHIP-0004 Wood Z       Wood / None
+CHIP-0005 Sound        Sound / None
+CHIP-0006 Shot S       Null / None
+CHIP-0007 Blood S      Blood / None
+CHIP-0008 Panel R      Null / None
+CHIP-0009 Barrier EX   Null / None
+CHIP-0010 Blood V1     Blood / None
+CHIP-0011 Sound R      Sound / None
+CHIP-0012 Blood EX     Blood / None
+CHIP-0013 Recover X    Recov / None
+CHIP-0014 Wind R       Wind / None
+CHIP-0015 Fire M       Fire / None
+CHIP-0016 Light M      Light / None
+CHIP-0017 Cannon V3    Null / None
+CHIP-0018 Aqua SP      Aqua / None
+CHIP-0019 Break R      Break / None
+CHIP-0020 Wood SP      Wood / None
+```
+**Flag:** `damage` = "None" for ALL 20. Chips carry no damage value in the generated data — likely a generator gap (MMBN chips have MB/dmg). Needs a field before this is shippable.
+
+## Careers — 20 rows (id | element | name/tier MISSING)
+```
+CAREER-001 Fire   (name: ?, tier: ?)
+CAREER-002 Earth  (name: ?, tier: ?)
+CAREER-003 Dark   (name: ?, tier: ?)
+CAREER-004 Sound  (name: ?, tier: ?)
+CAREER-005 Void   (name: ?, tier: ?)
+CAREER-006 Ice    (name: ?, tier: ?)
+CAREER-007 Time   (name: ?, tier: ?)
+CAREER-008 Water  (name: ?, tier: ?)
+CAREER-009 Void   (name: ?, tier: ?)
+CAREER-010 Crystal(name: ?, tier: ?)
+CAREER-011 Fire   (name: ?, tier: ?)
+CAREER-012 Nature (name: ?, tier: ?)
+CAREER-013 Earth  (name: ?, tier: ?)
+CAREER-014 Blood  (name: ?, tier: ?)
+CAREER-015 Wind   (name: ?, tier: ?)
+CAREER-016 Time   (name: ?, tier: ?)
+CAREER-017 Earth  (name: ?, tier: ?)
+CAREER-018 Crystal(name: ?, tier: ?)
+CAREER-019 Time   (name: ?, tier: ?)
+CAREER-020 Nature (name: ?, tier: ?)
+```
+**Flag:** `name` and `tier` are EMPTY for every career row — the generator emitted element-only stubs. This is the biggest quality gap: careers have no actual names/paths. Must be fixed before any volume gen.
+
+## Summary of what I'm asking you to eyeball
+- NetP: schema + stat bands look usable; confirm tier spread.
+- Chips: need a `damage`/`MB` field populated.
+- Careers: `name`/`tier` missing entirely — generator gap, needs fix.
+- **No grind resumed.** Awaiting your read + direction (fix fields? regenerate sample with names? approve limited volume?).
+
+— Nyx
