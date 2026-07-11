@@ -4,7 +4,7 @@
 **Element affinity:** Elec (canonical wheel: Fire > Aqua > Elec > Wood > Wind > Holy > Void > Fire)
 **World tie-in:** Aerial/EM-warfare nation — tied to PROTOCOL DIVISION's EM-spectrum enforcement over the Sky-Spine Range.
 **Anchor faction/region:** PROTOCOL DIVISION
-**Status:** 📝 DRAFT / pending-review — NOT committed until CEO reads.
+**Status:** ✅ CANON — CEO-approved (promoted from DRAFT, 2026-07-10)
 
 ## Overview
 Spectrum-Signals Operator is a Elec-element career path rooted in the PROTOCOL DIVISION sphere of the R3ALN3T.EXE world (year 3026).
@@ -24,4 +24,4 @@ It exists as world texture and player progression flavor; it makes no claims abo
 Soul State system: Spare / Purge / Corrupt (player choice on defeated souled foes) — referenced only where the career arc explicitly engages souled foes (career 20).
 
 ---
-GUARDRAILS (Echo-verified): Element wheel canonical: Fire > Aqua > Elec > Wood > Wind > Holy > Void > Fire. Does NOT touch/contradict Trinity/Tyranny/Eternity dominion-tier lore (CEO keyboard-only). DRAFT / pending-review — not committed until CEO reads.
+GUARDRAILS (Echo-verified): Element wheel canonical: Fire > Aqua > Elec > Wood > Wind > Holy > Void > Fire. Does NOT touch/contradict Trinity/Tyranny/Eternity dominion-tier lore (CEO keyboard-only). CANON — CEO-approved (2026-07-10). Edits allowed only via approved lore pass.
