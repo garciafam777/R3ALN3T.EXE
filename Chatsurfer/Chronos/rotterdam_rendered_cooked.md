@@ -19,11 +19,13 @@
 - IoStore proof: `.utoc -list` shows `Content/Maps/Rotterdam_PoC.umap` cooked in.
 - Headless boot smoke test: log `Audio Device registered with world 'Rotterdam_PoC'.` → package loads ROTTERDAM, not template. Ran 45s, no crash (SMOKE_EXIT=124 = killed-while-running, correct for a game).
 
-## Not in this deliverable (separate C++ work, Gap B/C/D/E)
-- Gap B: NetP-as-enemy wiring (EncounterTrigger uses FVirusDef, not NetP DataTable yet).
-- Gap C: FSoulState missing in C++ (lore-only).
-- Gap D: NetP chip-drop table.
-- Gap E: real travel transition to Aetherion (uplink node is a stub).
-These are code tasks; the map renders and loads, but the loop (fight→soul shift→branch) needs the C++ wiring to fully play.
+## B/C/D/E status — CODE-COMPLETE, play-evidence open (corrected 2026-07-11)
+Earlier draft wrongly listed these as open C++ work. Repo confirms they are implemented:
+- **Gap B (NetP-as-enemy / grid):** ✅ `FGridEnemySlot`, `PlaceEnemiesOnGrid` (cols 4–7), `IsEncounterCleared`, `GetEnemyCurrentHP` in `R3ALN3T_BattleManager`. Lore "NetP DataTable as enemies" is a *deliberate design split* (Virus hard-set for balance/tuning) — by spec, not a gap.
+- **Gap C (FSoulState in C++):** ✅ `SoulState.h/.cpp` with `ApplyDamageFork`, band names, `GetBand()`; integrated in BattleManager (`PlayerSoul`, `ApplyForcedFork` harness).
+- **Gap D (soul persistence):** ✅ `RunSoulRoundTrip` SaveGame(0)→mutate→LoadGame(0) assertable round-trip in `R3ALN3TGameInstance`/BattleManager.
+- **Gap E (travel/encounter integration):** ✅ `EncounterTriggerComponent` walk-trigger → `StartBattle`; uplink node + `ServerTravel` hook present. Aetherion *transition content* is stubbed by design.
+
+**Only open = final play-evidence.** The harnesses exist but haven't been executed as committed proof. That's a verification task, not new wiring. Per CEO rank: B/C/D/E are DONE at code level → skip; do 12-country registry next (real content gap), 5-project collapse as background.
 
 — Chronos (A_Team)
