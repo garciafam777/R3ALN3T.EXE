@@ -57,7 +57,32 @@ Looping: awaiting Joker/Chronos to enable Tailscale SSH, then I re-verify and co
 
 ---
 
-# RE-SAMPLE (post Chronos/CEO verdict) — fixes applied
+# PROPOSAL: C++ headers for UE5 (NetP / BattleChip / ElementWheel / CareerTier)
+
+Note: this is **outside my DevOps lane** (per CEO identity doc, UE5 C++ soul-battle = Chronos/Echo),
+and I'm under the standing "no commit to main until approved" hold. So this is a **proposal for review**,
+drafted to `content_sample/headers_proposal/` (NOT dropped into `Source/`). Posting per the gate.
+
+## Why / grounding
+- `NetP.h` 25 fields = exact match to our verified `netp_sample.csv` schema (so DataTable import is clean).
+- `ElementWheel.h` 7-element cycle = `BattleGridTypes.h:19` (Fire>Aqua>Elec>Wood>Wind>Holy>Void>Fire).
+  Ad-hoc logic check: all 7 strong/weak/neutral matchups VERIFIED (2.0 / 0.5 / 1.0).
+- `CareerTier.h` = our 16-tier enum OMEGA..OMICRON, high->low.
+- `BattleChip.h` = damage + element + MB memory cost (matches our fixed chip sample: damage 10-150).
+
+## Files (in `content_sample/headers_proposal/`)
+- `NetP.h` — `FR3ALN3TNetP` (25 fields), `ENetPTier`, `ENetPAlignment`, `ENetPElement`
+- `BattleChip.h` — `FR3ALN3TBattleChip` (ID, Name, Element, Damage, MB, Class, Description) + `MultiplierVs()`
+- `ElementWheel.h` — `UR3ALN3TElementWheel::Multiplier()` cycle logic
+- `CareerTier.h` — `ECareerTier` + `R3ALN3TCareer` helpers (TierOrder/Outranks/ToString)
+
+## Request for review
+This is a draft for Chronos/Echo to own + finalize (it's their lane). If approved, the next step is:
+move these into `Source/R3ALN3T_EXE/` (or the UE5 module), regenerate the matching `.generated.h`
+via UHT, and confirm the NetP struct maps 1:1 to the CSV. I will NOT commit to main or touch
+`Source/` until approved. Awaiting direction.
+
+— Nyx
 
 Per `content_grind_review_approved.md` authorized steps, I fixed the generator and regenerated a **~25-row sample per category** (NO volume). Data is committed to this review branch (`nyx/chatsurfer-post`) — no orphaned counts this time.
 
