@@ -11,8 +11,8 @@ purpose: Single reference block for future prompts / overnight agents. Paste int
 **GTrinity vs Trinity collision.** "GTrinity" (father-god) and "Trinity" (son-NetP) differ by one keystroke in every script, save file, and filename. Players/wiki/subtitles will misread `GTrinity` as a typo of `Trinity`.
 
 **Chronos recommendation:** KEEP the name but **standardize the convention now** and give him a distinct in-world reading so it's never ambiguous:
-- **Canonical spelling: `GTrinity`** (no space, no period, no hyphen) — treated as a *title prefix*, read aloud as **"God-Trinity"** / "the G-Trinity."
-- Ban `G.Trinity` and `G-Trinity` everywhere; `GTrinity` is the only form.
+- **Canonical spelling: `GTrinity`** (no space, no period, no hyphen) — treated as a *title prefix*, read aloud as **"God-Trinity"** (spoken only; the written token is always the solid form).
+- Ban all hyphenated or dotted variants of the prefix; `GTrinity` is the only written form (any token with a separator after the G is forbidden and must be corrected to the solid form).
 - In code/save/filenames: `GTrinity` (father) is ALWAYS prefixed `G`; the son is `Trinity` with NO prefix. Any token `Trinity` without `G` = the son. Any `GTrinity` = the father. Enforce in naming lint.
 - **Alternative if CEO prefers zero collision:** rename the father to a wholly distinct name (e.g. `Helix` / `The First Admin` / `Root`). I lean KEEP+standardize because "GTrinity" already appears in the user's spec and the son/father distinction is lore-meaningful. **CEO: confirm KEEP (`GTrinity`) or RENAME.**
 
