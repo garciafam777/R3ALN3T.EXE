@@ -44,6 +44,36 @@ void UEncounterTriggerComponent::BeginPlay()
     {
         // LayerManager and BattleManager would be fetched from GameInstance in full implementation
     }
+
+    // PIE acceptance-test seam: deterministic encounter on start (no walk-roll).
+    if (bForceEncounterOnStart)
+    {
+        ForceEncounter();
+    }
+}
+
+void UEncounterTriggerComponent::ForceEncounter()
+{
+    UR3ALN3T_BattleManager* BM = GetWorld()
+        ? GetWorld()->GetGameInstance()->GetSubsystem<UR3ALN3T_BattleManager>()
+        : nullptr;
+    if (!BM)
+    {
+        UE_LOG(LogTemp, Error, TEXT("[GAPB-PIE] ForceEncounter: BattleManager subsystem unavailable."));
+        return;
+    }
+
+    FEnemyDef Enemy = MakeEnemyDefFromVirus(ForcedTestVirus);
+    TArray<FEnemyDef> Encounter;
+    Encounter.Add(Enemy);
+
+    BM->BeginEncounter(Encounter);
+
+    int32 HP = BM->GetEnemyCurrentHP(4, 0);
+    UE_LOG(LogTemp, Log, TEXT("[GAPB-PIE] Forced encounter STARTED: %s (Element=%d) placed at column 4, row 0, HP=%d"),
+        *Enemy.DisplayName.ToString(), (int32)Enemy.Element, HP);
+    UE_LOG(LogTemp, Log, TEXT("[GAPB-PIE] From PIE console run:  PlayChipConsole Alpha 4 0   (expect HP %d -> %d)"),
+        HP, FMath::Max(0, HP - 80));
 }
 
 void UEncounterTriggerComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
@@ -82,8 +112,26 @@ void UEncounterTriggerComponent::TryEncounter(FVector CurrentLocation)
             Encounter.Add(Viruses[Idx]);
         }
 
-        // Trigger battle (BattleManager would be called in full impl)
-        UE_LOG(LogTemp, Log, TEXT("Random encounter! %d viruses ambushed the player."), Count);
+        // Trigger battle — Gap B seam: convert viruses to the unified FEnemyDef and
+        // place them on the 8x4 grid (cols 4-7). This is "enemy spawning" = grid
+        // placement, NOT an overworld actor. Per Architecture_Overview.md.
+        UR3ALN3T_BattleManager* BM = GetWorld()
+            ? GetWorld()->GetGameInstance()->GetSubsystem<UR3ALN3T_BattleManager>()
+            : nullptr;
+        if (BM)
+        {
+            TArray<FEnemyDef> EnemyDefs;
+            for (int32 i = 0; i < Count; ++i)
+            {
+                int32 Idx = FMath::RandRange(0, Viruses.Num() - 1);
+                EnemyDefs.Add(MakeEnemyDefFromVirus(Viruses[Idx]));
+            }
+            BM->BeginEncounter(EnemyDefs);
+        }
+        else
+        {
+            UE_LOG(LogTemp, Log, TEXT("Random encounter! %d viruses ambushed the player (BattleManager unavailable)."), Count);
+        }
     }
 }
 

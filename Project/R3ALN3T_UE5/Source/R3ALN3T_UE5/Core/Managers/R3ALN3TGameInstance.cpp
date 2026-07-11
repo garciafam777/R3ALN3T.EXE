@@ -1,5 +1,7 @@
 #include "R3ALN3TGameInstance.h"
-#include "../../Gameplay/Battle/R3ALN3T_BattleManager.h" // Gap D: UR3ALN3T_BattleManager (RunEnemySoulSequence / RunSoulRoundTrip)
+#include "../../Gameplay/Battle/R3ALN3T_BattleManager.h" // Gap D: UR3ALN3T_BattleManager (RunEnemySoulSequence / RunSoulRoundTrip / GapBTest)
+#include "../../Gameplay/Battle/Cards/ChipDatabase.h"      // Gap E: UChipDatabase::ResolveChipDamage
+#include "../../Gameplay/Battle/GrayBoxPlayerPawn.h"        // Gap E: AGrayBoxPlayerPawn (spawn to prove pawn->trigger path)
 #include "../../Gameplay/Narrative/NarrativeManager.h"
 #include "Dom/JsonObject.h"
 #include "Serialization/JsonReader.h"
@@ -65,7 +67,7 @@ FString UR3ALN3TGameInstance::GetSavePath(int32 SlotIndex) const
 static TSharedPtr<FJsonObject> RunStateToJson(const FMythosRunState& State)
 {
 	TSharedPtr<FJsonObject> J = MakeShareable(new FJsonObject());
-	J->SetStringField(TEXT("OperatorName"), State.OperatorName);
+	J->SetStringField(FStringView(TEXT("OperatorName")), State.OperatorName);
 	J->SetNumberField(TEXT("Career"), static_cast<int32>(State.Career));
 	J->SetNumberField(TEXT("Element"), static_cast<int32>(State.Element));
 	J->SetNumberField(TEXT("Screen"), static_cast<int32>(State.Screen));
@@ -86,8 +88,8 @@ static TSharedPtr<FJsonObject> RunStateToJson(const FMythosRunState& State)
 	J->SetNumberField(TEXT("Undernet"), State.Undernet);
 	J->SetNumberField(TEXT("Abyssal"), State.Abyssal);
 	J->SetNumberField(TEXT("FreeGrid"), State.FreeGrid);
-	J->SetStringField(TEXT("Objective"), State.Objective);
-	J->SetStringField(TEXT("EndingName"), State.EndingName);
+	J->SetStringField(FStringView(TEXT("Objective")), State.Objective);
+	J->SetStringField(FStringView(TEXT("EndingName")), State.EndingName);
 	return J;
 }
 
@@ -154,7 +156,7 @@ void UR3ALN3TGameInstance::SaveGame(int32 SlotIndex)
 	for (const FCompanionSoul& C : CurrentRun.NetPSouls)
 	{
 		TSharedPtr<FJsonObject> Cj = MakeShareable(new FJsonObject());
-		Cj->SetStringField(TEXT("NetPID"), C.NetPID.ToString());
+		Cj->SetStringField(FStringView(TEXT("NetPID")), C.NetPID.ToString());
 		Cj->SetNumberField(TEXT("Soul"), C.Soul.Soul);
 		NetPArr.Add(MakeShareable(new FJsonValueObject(Cj)));
 	}
@@ -310,4 +312,105 @@ void UR3ALN3TGameInstance::RunSoulRoundTrip(float PlayerSoulValue, float Trinity
 	{
 		BM->RunSoulRoundTrip(PlayerSoulValue, TrinityValue, TyrannyValue, EternityValue);
 	}
+}
+
+// ---- Gap E Exec: deterministic battle-encounter proof (headless -game) ----
+void UR3ALN3TGameInstance::GapBTest()
+{
+	UR3ALN3T_BattleManager* BM = GetSubsystem<UR3ALN3T_BattleManager>();
+	UChipDatabase* ChipDB = GetSubsystem<UChipDatabase>();
+	if (!BM || !ChipDB)
+	{
+		UE_LOG(LogTemp, Error, TEXT("[GAPB-ENC] BattleManager or ChipDB subsystem unavailable."));
+		return;
+	}
+
+	// Aqua enemy so a Fire chip (Alpha, power 40) lands strong-against (x2.0) per
+	// R3ALN3T's wheel (Fire > Aqua). Proves the strong-against branch of the multiplier.
+	FEnemyDef AquaEnemy;
+	AquaEnemy.EnemyID = TEXT("GAPB_TEST_AQUA");
+	AquaEnemy.DisplayName = FText::FromString(TEXT("Test Aqua Grunt"));
+	AquaEnemy.Source = EEnemySource::Virus;
+	AquaEnemy.HP = 120;
+	AquaEnemy.MaxHP = 120;
+	AquaEnemy.Element = EBattleElementType::Aqua;
+	AquaEnemy.SpawnCoord = FGridCoord(4, 0);
+
+	BM->BeginEncounter({ AquaEnemy });
+
+	const int32 Col = 4, Row = 0;
+	const int32 HP0 = BM->GetEnemyCurrentHP(Col, Row);
+	UE_LOG(LogTemp, Log, TEXT("[GAPB-ENC] Placed Aqua enemy @ col %d row %d, HP=%d"), Col, Row, HP0);
+
+	// Resolve the Fire chip (Alpha, power 40) vs Aqua target -> engine returns the multiplier.
+	const FName FireChip = TEXT("Alpha");
+	const float Expected = ChipDB->ResolveChipDamage(FireChip, EBattleElementType::Aqua);
+	const float Mult = Expected / 40.0f;
+	UE_LOG(LogTemp, Log, TEXT("[GAPB-DMG] %s (Fire,40) vs Aqua -> multiplier x%.1f, expected dmg=%.0f"),
+		*FireChip.ToString(), Mult, Expected);
+
+	BM->PlayChip(FireChip, Col, Row);
+
+	const int32 HP1 = BM->GetEnemyCurrentHP(Col, Row);
+	const int32 Dropped = HP0 - HP1;
+	const bool bMatch = FMath::IsNearlyEqual(static_cast<float>(Dropped), Expected);
+	UE_LOG(LogTemp, Log, TEXT("[GAPB-DMG] HP %d -> %d (dropped %d) | expected %.0f | %s"),
+		HP0, HP1, Dropped, Expected, bMatch ? TEXT("MATCH") : TEXT("MISMATCH"));
+}
+
+// ---- Gap E Exec: prove the pawn->trigger->BattleManager production path headless ----
+void UR3ALN3TGameInstance::GapBSpawnPawn()
+{
+	UWorld* World = GetWorld();
+	if (!World)
+	{
+		UE_LOG(LogTemp, Error, TEXT("[GAPB-PAWN] No world available to spawn into."));
+		return;
+	}
+
+	FActorSpawnParameters Params;
+	Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+	AGrayBoxPlayerPawn* Pawn = World->SpawnActor<AGrayBoxPlayerPawn>(
+		AGrayBoxPlayerPawn::StaticClass(), FVector::ZeroVector, FRotator::ZeroRotator, Params);
+
+	if (Pawn)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[GAPB-PAWN] Spawned GrayBoxPlayerPawn @ origin. BeginPlay->ForceEncounter fires the production path."));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("[GAPB-PAWN] Spawn failed."));
+	}
+}
+
+// ---- Gap E Exec: prove the KILL + encounter-cleared branch headless ----
+void UR3ALN3TGameInstance::GapBKillTest()
+{
+	UR3ALN3T_BattleManager* BM = GetSubsystem<UR3ALN3T_BattleManager>();
+	if (!BM)
+	{
+		UE_LOG(LogTemp, Error, TEXT("[GAPB-KILL] BattleManager subsystem unavailable."));
+		return;
+	}
+
+	// Low-HP Aqua enemy so a single Fire chip (Alpha, x2.0 -> 80) drops 40 -> 0.
+	FEnemyDef AquaEnemy;
+	AquaEnemy.EnemyID = TEXT("GAPB_TEST_KILL");
+	AquaEnemy.DisplayName = FText::FromString(TEXT("Test Aqua (low HP)"));
+	AquaEnemy.Source = EEnemySource::Virus;
+	AquaEnemy.HP = 40;
+	AquaEnemy.MaxHP = 40;
+	AquaEnemy.Element = EBattleElementType::Aqua;
+	AquaEnemy.SpawnCoord = FGridCoord(4, 0);
+
+	BM->BeginEncounter({ AquaEnemy });
+	const int32 HP0 = BM->GetEnemyCurrentHP(4, 0);
+	UE_LOG(LogTemp, Log, TEXT("[GAPB-KILL] Placed Aqua enemy HP=%d @ col 4"), HP0);
+
+	BM->PlayChip(TEXT("Alpha"), 4, 0); // Fire, x2.0 vs Aqua -> 80 dmg -> dead
+
+	const int32 HP1 = BM->GetEnemyCurrentHP(4, 0);
+	const bool bCleared = BM->IsEncounterCleared();
+	UE_LOG(LogTemp, Log, TEXT("[GAPB-KILL] HP %d -> %d | IsEncounterCleared=%s"),
+		HP0, HP1, bCleared ? TEXT("TRUE") : TEXT("FALSE"));
 }

@@ -3,6 +3,7 @@
 #include "CoreMinimal.h"
 #include "Engine/DataTable.h"
 #include "../World/R3ALN3T_WorldStructures.h"
+#include "../../Core/Types/SoulState.h"   // Gap D: FSoulState for companion souls
 #include "R3ALN3T_NetPStructures.generated.h"
 
 UENUM(BlueprintType)
@@ -46,4 +47,21 @@ struct FR3ALN3TNetPProfileRow : public FTableRowBase
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Assets")
     TSoftObjectPtr<USkeletalMesh> CharacterMeshOverride;
+};
+
+// Gap D: a companion's persistent soul. One per NetP (Trinity / Tyranny / Eternity),
+// stored in FPersistentRunData::NetPSouls (UR3ALN3TGameInstance::CurrentRun.NetPSouls)
+// so it round-trips through SaveGame/LoadGame. The run's mythos state lives separately
+// in FMythosRunState (FPersistentRunData::RunState). The transient battle-enemy soul
+// (FGridEnemySlot::Soul) is separate and NOT saved.
+USTRUCT(BlueprintType)
+struct FCompanionSoul
+{
+    GENERATED_BODY()
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Soul")
+    FName NetPID;            // e.g. "Trinity", "Tyranny", "Eternity"
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Soul")
+    FSoulState Soul;         // 0-100, band via Soul.GetBand()
 };

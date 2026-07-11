@@ -48,7 +48,7 @@ void UR3ALN3T_PositionTracker::ReportPositionNow()
 void UR3ALN3T_PositionTracker::SendPositionAsync(const FPositionPayload& Payload)
 {
     TSharedPtr<FJsonObject> Json = MakeShareable(new FJsonObject());
-    Json->SetStringField(TEXT("entity_id"), Payload.EntityID);
+    Json->SetStringField(FStringView(TEXT("entity_id")), Payload.EntityID);
     Json->SetNumberField(TEXT("x"), Payload.Location.X);
     Json->SetNumberField(TEXT("y"), Payload.Location.Y);
     Json->SetNumberField(TEXT("z"), Payload.Location.Z);

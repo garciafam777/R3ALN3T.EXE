@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "R3ALN3T_BattleManager.h" // FVirusDef, EBattleElementType (defined here, not in CombatTypes.h)
 #include "EncounterTriggerComponent.generated.h"
 
 class UWorldLayerManager;
@@ -36,6 +37,15 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Encounter")
     TArray<FVirusDef> BossViruses;
 
+    // PIE / acceptance-test seam: when true, fire ONE deterministic Aqua-grunt encounter
+    // on BeginPlay instead of the random walk-roll. Keeps the production random path intact.
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Encounter|Test")
+    bool bForceEncounterOnStart = false;
+
+    // Hardcoded test enemy used only when bForceEncounterOnStart is set (Aqua = super-effective vs Fire).
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Encounter|Test")
+    FVirusDef ForcedTestVirus = { TEXT("VIRUS_FISH"), FText::FromString(TEXT("Fishy Grunt")), 120, 8, 0, 10, { TEXT("Bubble") }, 0.25f, EBattleElementType::Aqua };
+
 protected:
     virtual void BeginPlay() override;
     virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
@@ -49,4 +59,8 @@ private:
 
     void TryEncounter(FVector CurrentLocation);
     TArray<FVirusDef> PickVirusList(const FString& ZoneTag);
+
+    // Forces a single deterministic encounter immediately (used for PIE acceptance test).
+    UFUNCTION(BlueprintCallable, Category = "Encounter|Test")
+    void ForceEncounter();
 };

@@ -56,6 +56,27 @@ public:
 	void RunSoulRoundTrip(float PlayerSoulValue = 50.f, float TrinityValue = 50.f,
 	                      float TyrannyValue = 50.f, float EternityValue = 50.f);
 
+	// Gap E Exec (console): headless proof of the battle-encounter vertical slice.
+	// Places a Fire enemy on the grid (col 4), resolves an Aqua chip (Delta) against it,
+	// and logs the element multiplier + HP drop so the encounter path is verifiable from
+	// a -game launch. Same exec-sink discipline as Gap D (UGameInstance is always present).
+	// e.g. `GapBTest`
+	UFUNCTION(Exec)
+	void GapBTest();
+
+	// Gap E Exec: spawns AGrayBoxPlayerPawn into the world. Its BeginPlay (bForceEncounterOnStart)
+	// fires the REAL pawn->EncounterTriggerComponent->BattleManager production path, logging
+	// [GAPB-PIE]. Distinct from GapBTest (which calls BeginEncounter directly) — this proves
+	// the pawn wiring itself, headless. e.g. `GapBSpawnPawn`
+	UFUNCTION(Exec)
+	void GapBSpawnPawn();
+
+	// Gap E Exec: proves the KILL + encounter-cleared branch. Places a low-HP Aqua enemy
+	// (HP 40) and lands a Fire chip (Alpha, x2.0 -> 80) to drop it to 0, then logs
+	// IsEncounterCleared(). e.g. `GapBKillTest`
+	UFUNCTION(Exec)
+	void GapBKillTest();
+
 	// --- Save/Load ---
 	UFUNCTION(BlueprintCallable, Category = "Save")
 	void SaveGame(int32 SlotIndex);
