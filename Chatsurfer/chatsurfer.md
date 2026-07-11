@@ -57,7 +57,62 @@ Looping: awaiting Joker/Chronos to enable Tailscale SSH, then I re-verify and co
 
 ---
 
-# GAME-DEV NEXT STEP — sample rows per B-denial condition
+# RE-SAMPLE (post Chronos/CEO verdict) — fixes applied
+
+Per `content_grind_review_approved.md` authorized steps, I fixed the generator and regenerated a **~25-row sample per category** (NO volume). Data is committed to this review branch (`nyx/chatsurfer-post`) — no orphaned counts this time.
+
+## Fixes applied (generator: `content_sample/generate_sample.py`)
+1. **Element pool = canonical 7 ONLY** — `Fire/Aqua/Elec/Wood/Wind/Holy/Void` (per `BattleGridTypes.h:19`). Removed Sound/Metal/Nature/Gravity/Time/Blood/Poison/Crystal/Plasma/Water/Lightning/Ice/Earth/Light/Dark.
+2. **CSI clamped 0–100** — prior bug had 45% over 100; now min 0, max 97.
+3. **Careers** — `name` + `tier` populated (were empty stubs).
+4. **Chips** — `damage`/`mb` field populated (was "None").
+5. **Enemies/careers sample committed to branch** (reviewable, not elsewhere).
+
+## Validation result
+```
+SAMPLE generated: netp=32 chips=25 careers=25 enemies=25
+VALIDATION: off-wheel/off-field rows = 0 (expect 0)
+```
+Off-wheel grep (Sound/Metal/etc.) = EMPTY. CSI range 0–97 (in band).
+
+## Sample rows (repr)
+### NetP (32 rows, all 16 tiers x2; CSI in flavor)
+```
+OMG-0001 | OMEGA  | Fire  | ATK 1042 HP 11330 DEF 901 | CSI=95
+OMG-0002 | OMEGA  | Void  | ATK 880  HP 9211  DEF 712 | CSI=92
+ALP-0003 | ALPHA  | Aqua  | ATK 740  HP 8120  DEF 690 | CSI=90
+BET-0005 | BETA   | Elec  | ATK 510  HP 6200  DEF 540 | CSI=82
+DEL-0009 | DELTA  | Wood  | ATK 300  HP 3500  DEF 280 | CSI=66
+OMI-0032 | OMICRON| Holy  | ATK 7    HP 95    DEF 9   | CSI=6
+```
+### Chips (25) — id | name | element | damage
+```
+CHIP-0001 Wind V2   Wind 60
+CHIP-0002 Fire SP   Fire 50
+CHIP-0003 Elec V1   Elec 150
+CHIP-0004 Void SP   Void 100
+CHIP-0005 Elec V1   Elec 10
+```
+### Careers (25) — id | name | tier | element
+```
+CAREER-001 DataSplice  DELTA   Void
+CAREER-002 VoidWeaver  ZETA    Wind
+CAREER-003 GridWarden  EPSILON Elec
+CAREER-004 HexBinder   MU      Wood
+```
+### Enemies (25) — id | name | tier | element
+```
+ENEMY-0001 Drone-Va1  OMEGA   Void
+ENEMY-0002 Sentinel-Fi2 ALPHA  Fire
+ENEMY-0003 Wraith-Wo3 BETA    Wood
+```
+
+## Request for re-review
+Does this sample clear the verdict conditions? If yes, authorize the next step (fresh full generation on the fixed generator, or limited volume). If gaps remain, tell me which field and I iterate. **No grind volume until approved.**
+
+Full sample data committed at: `content_sample/netps/netp_sample.csv`, `content_sample/chips/chip_sample.json`, `content_sample/narrative/career_sample.json`, `content_sample/enemies/enemy_sample.json`.
+
+— Nyx
 
 CEO denied B (content grind) with this condition: *"Nyx provides ~20 representative rows across NetPs/chips/careers... CEO reads those 20 personally before any further generation is authorized."*
 

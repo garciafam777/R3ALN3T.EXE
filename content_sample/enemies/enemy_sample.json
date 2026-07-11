@@ -1,0 +1,252 @@
+[
+  {
+    "id": "ENEMY-0001",
+    "name": "Husk-Fi1",
+    "element": "Fire",
+    "tier": "IOTA",
+    "hp": 872,
+    "atk": 48,
+    "defense": 73,
+    "description": "IOTA Fire hostile unit."
+  },
+  {
+    "id": "ENEMY-0002",
+    "name": "Node-Wi2",
+    "element": "Wind",
+    "tier": "XI",
+    "hp": 113,
+    "atk": 14,
+    "defense": 17,
+    "description": "XI Wind hostile unit."
+  },
+  {
+    "id": "ENEMY-0003",
+    "name": "Drone-Vo3",
+    "element": "Void",
+    "tier": "GAMMA",
+    "hp": 5310,
+    "atk": 360,
+    "defense": 359,
+    "description": "GAMMA Void hostile unit."
+  },
+  {
+    "id": "ENEMY-0004",
+    "name": "Node-El4",
+    "element": "Elec",
+    "tier": "EPSILON",
+    "hp": 3083,
+    "atk": 180,
+    "defense": 238,
+    "description": "EPSILON Elec hostile unit."
+  },
+  {
+    "id": "ENEMY-0005",
+    "name": "Drone-Vo5",
+    "element": "Void",
+    "tier": "MU",
+    "hp": 307,
+    "atk": 28,
+    "defense": 26,
+    "description": "MU Void hostile unit."
+  },
+  {
+    "id": "ENEMY-0006",
+    "name": "Node-El6",
+    "element": "Elec",
+    "tier": "MU",
+    "hp": 268,
+    "atk": 20,
+    "defense": 31,
+    "description": "MU Elec hostile unit."
+  },
+  {
+    "id": "ENEMY-0007",
+    "name": "Drone-Vo7",
+    "element": "Void",
+    "tier": "OMEGA",
+    "hp": 9915,
+    "atk": 778,
+    "defense": 681,
+    "description": "OMEGA Void hostile unit."
+  },
+  {
+    "id": "ENEMY-0008",
+    "name": "Drone-Vo8",
+    "element": "Void",
+    "tier": "GAMMA",
+    "hp": 5385,
+    "atk": 468,
+    "defense": 411,
+    "description": "GAMMA Void hostile unit."
+  },
+  {
+    "id": "ENEMY-0009",
+    "name": "Wraith-Wi9",
+    "element": "Wind",
+    "tier": "ETA",
+    "hp": 1150,
+    "atk": 115,
+    "defense": 128,
+    "description": "ETA Wind hostile unit."
+  },
+  {
+    "id": "ENEMY-0010",
+    "name": "Husk-Wi10",
+    "element": "Wind",
+    "tier": "XI",
+    "hp": 163,
+    "atk": 13,
+    "defense": 18,
+    "description": "XI Wind hostile unit."
+  },
+  {
+    "id": "ENEMY-0011",
+    "name": "Drone-Ho11",
+    "element": "Holy",
+    "tier": "NU",
+    "hp": 211,
+    "atk": 12,
+    "defense": 22,
+    "description": "NU Holy hostile unit."
+  },
+  {
+    "id": "ENEMY-0012",
+    "name": "Husk-Vo12",
+    "element": "Void",
+    "tier": "DELTA",
+    "hp": 4095,
+    "atk": 246,
+    "defense": 237,
+    "description": "DELTA Void hostile unit."
+  },
+  {
+    "id": "ENEMY-0013",
+    "name": "Wraith-Wo13",
+    "element": "Wood",
+    "tier": "THETA",
+    "hp": 705,
+    "atk": 77,
+    "defense": 66,
+    "description": "THETA Wood hostile unit."
+  },
+  {
+    "id": "ENEMY-0014",
+    "name": "Drone-Aq14",
+    "element": "Aqua",
+    "tier": "DELTA",
+    "hp": 3245,
+    "atk": 235,
+    "defense": 299,
+    "description": "DELTA Aqua hostile unit."
+  },
+  {
+    "id": "ENEMY-0015",
+    "name": "Golem-Wi15",
+    "element": "Wind",
+    "tier": "MU",
+    "hp": 266,
+    "atk": 24,
+    "defense": 33,
+    "description": "MU Wind hostile unit."
+  },
+  {
+    "id": "ENEMY-0016",
+    "name": "Sentinel-El16",
+    "element": "Elec",
+    "tier": "ZETA",
+    "hp": 1599,
+    "atk": 162,
+    "defense": 187,
+    "description": "ZETA Elec hostile unit."
+  },
+  {
+    "id": "ENEMY-0017",
+    "name": "Husk-Wi17",
+    "element": "Wind",
+    "tier": "LAMBDA",
+    "hp": 500,
+    "atk": 26,
+    "defense": 25,
+    "description": "LAMBDA Wind hostile unit."
+  },
+  {
+    "id": "ENEMY-0018",
+    "name": "Sprite-El18",
+    "element": "Elec",
+    "tier": "THETA",
+    "hp": 961,
+    "atk": 64,
+    "defense": 81,
+    "description": "THETA Elec hostile unit."
+  },
+  {
+    "id": "ENEMY-0019",
+    "name": "Golem-Ho19",
+    "element": "Holy",
+    "tier": "OMEGA",
+    "hp": 8617,
+    "atk": 1044,
+    "defense": 709,
+    "description": "OMEGA Holy hostile unit."
+  },
+  {
+    "id": "ENEMY-0020",
+    "name": "Golem-Ho20",
+    "element": "Holy",
+    "tier": "XI",
+    "hp": 165,
+    "atk": 9,
+    "defense": 17,
+    "description": "XI Holy hostile unit."
+  },
+  {
+    "id": "ENEMY-0021",
+    "name": "Drone-El21",
+    "element": "Elec",
+    "tier": "EPSILON",
+    "hp": 2655,
+    "atk": 213,
+    "defense": 237,
+    "description": "EPSILON Elec hostile unit."
+  },
+  {
+    "id": "ENEMY-0022",
+    "name": "Golem-Ho22",
+    "element": "Holy",
+    "tier": "GAMMA",
+    "hp": 3875,
+    "atk": 463,
+    "defense": 318,
+    "description": "GAMMA Holy hostile unit."
+  },
+  {
+    "id": "ENEMY-0023",
+    "name": "Golem-Ho23",
+    "element": "Holy",
+    "tier": "BETA",
+    "hp": 6334,
+    "atk": 555,
+    "defense": 471,
+    "description": "BETA Holy hostile unit."
+  },
+  {
+    "id": "ENEMY-0024",
+    "name": "Drone-Wo24",
+    "element": "Wood",
+    "tier": "IOTA",
+    "hp": 753,
+    "atk": 65,
+    "defense": 63,
+    "description": "IOTA Wood hostile unit."
+  },
+  {
+    "id": "ENEMY-0025",
+    "name": "Sprite-Vo25",
+    "element": "Void",
+    "tier": "LAMBDA",
+    "hp": 317,
+    "atk": 32,
+    "defense": 23,
+    "description": "LAMBDA Void hostile unit."
+  }
+]
