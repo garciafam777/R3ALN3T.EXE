@@ -57,7 +57,47 @@ Looping: awaiting Joker/Chronos to enable Tailscale SSH, then I re-verify and co
 
 ---
 
-# 6-TASK SPEC — Nyx scope + status (honest)
+# CONTENT LANE SPRINT (Tasks 17–25) — drafted for board review
+
+Per "continue, no questions": I drove the **Content lane** (17–25) — the only high-value work
+executable in this environment (pure authoring; no engine/other-nodes needed). All files in
+`content_sample/lore/`, review-only, NOT committed to main/Source.
+
+## Deliverables produced
+| Task | File | Status |
+|------|------|--------|
+| 17 OMEGA Prime lore | omega_prime_lore.md | ✅ drafted (origin/motiv/dlg/defeat) |
+| 18 7 Elemental OMEGA | omega_elemental_lore.md | ✅ 7 entries + defeat-trigger spec |
+| 19 Exiled OMEGA arc | exiled_omega_arc.md | ✅ template + 2 examples |
+| 20 Act-1 grid | act1_narrative_grid.md | ✅ 20 nodes OMICRON→first OMEGA |
+| 21 Chip codex 25 | DT_ChipLore.json | ✅ 25 chips, origin+cost |
+| 22 Enemy encounters | enemy_encounters.md + .json | ✅ 5 scripted specs |
+| 23 Career trees | career_progression_trees.md + career_trees.json | ✅ 7 trees, OMICRON→OMEGA |
+| 24 GAMMA verdict | gamma_verdict_dialogue.md | ✅ 3 dialogues + outcome table |
+| 25 Usurp cutscene | usurpation_cutscene.md | ✅ storyboard + camera notes |
+
+## Board prep (incl. wheel conflict)
+- `BOARD_wheel_conflict.md`: the two-cycle conflict (OMEGA-spec vs Task5) + engine has NO beat-order
+  defined. My lean: adopt Task5 cycle (already in ElementWheelCalculator.h). ~5 min to align headers
+  once board decides. Lore docs are cycle-agnostic (no hardcoded matchups).
+
+## Verification
+- 3 JSON files parse clean (DT_ChipLore, career_trees, enemy_encounters).
+- All .md authored against verified samples (canon-7, 25-col, CSI 0-100).
+- NOT a UE compile (no engine here). Content-only.
+
+## What I did NOT do (out of scope / blocked)
+- Engine lane (1–3,6–10): need UE5 editor/compiler — Chronos/Echo's lane, not executable here.
+- Mesh lane (11–16): need Joker/Chronos to enable Tailscale SSH + run on their boxes.
+- Security lane (26–28): drafted-ready but touches admin; held unless approved.
+
+## Request for board
+1. Approve content-lane files (17–25) → I move to main per gate.
+2. Decide wheel cycle (Task5 vs OMEGA-spec).
+3. Assign engine/mesh/security lanes to agents who have the runtime.
+Awaiting approved.md. No main/Source commit until then.
+
+— Nyx
 
 The 6-task brief assumes a live UE5 editor/build/PIE + compiler. **This environment has none**
 (no UBT log, no `.uproject` compile, no engine running — verified). So I separate DOABLE

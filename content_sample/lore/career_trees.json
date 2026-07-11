@@ -1,0 +1,20 @@
+{
+  "tier_order": ["OMICRON","XI","NU","MU","LAMBDA","KAPPA","IOTA","THETA","ETA","ZETA","EPSILON","DELTA","GAMMA","BETA","ALPHA","OMEGA"],
+  "trees": {
+    "Fire": {"nodes":["Ember Initiate","Cinder Hand","Pyre Warden","Purifier","Wildfire","Flame Exarch","Cinder Sovereign's Adept"],
+             "branches":{"at":"MU","options":["Purifier","Wildfire"]},
+             "cap":"OMEGA (usurp Cinder Sovereign)"},
+    "Aqua": {"nodes":["Tide Initiate","Ripple Hand","Torrent Warden","Diver","Tidal","Surge Exarch","Tide Warden's Adept"],
+             "branches":{"at":"MU","options":["Diver","Tidal"]},"cap":"OMEGA (usurp Tide Warden)"},
+    "Elec": {"nodes":["Spark Initiate","Bolt Hand","Arc Warden","Relay","Storm","Current Exarch","Surge Arbiter's Adept"],
+             "branches":{"at":"MU","options":["Relay","Storm"]},"cap":"OMEGA (usurp Surge Arbiter)"},
+    "Wood": {"nodes":["Root Initiate","Thorn Hand","Vine Warden","Grove","Bramble","Verdant Exarch","Root Throne's Adept"],
+             "branches":{"at":"MU","options":["Grove","Bramble"]},"cap":"OMEGA (usurp Root Throne)"},
+    "Wind": {"nodes":["Gale Initiate","Breeze Hand","Draft Warden","Squall","Zephyr","Sky Exarch","Gale Cipher's Adept"],
+             "branches":{"at":"MU","options":["Squall","Zephyr"]},"cap":"OMEGA (usurp Gale Cipher)"},
+    "Holy": {"nodes":["Lumen Initiate","Halo Hand","Sera Warden","Radiant","Sanct","Light Exarch","Lumen Pact's Adept"],
+             "branches":{"at":"MU","options":["Radiant","Sanct"]},"cap":"OMEGA (usurp Lumen Pact)"},
+    "Void": {"nodes":["Null Initiate","Rift Hand","Abyss Warden","Eclipse","Umbral","Void Exarch","Null Throne's Adept"],
+             "branches":{"at":"MU","options":["Eclipse","Umbral"]},"cap":"OMEGA (usurp Null Throne)"}
+  }
+}

@@ -1,0 +1,12 @@
+[
+  {"id":"E1","name":"Corrupted Spawn","tier":"OMICRON","element":"Void","terrain":"corrupted sector alley; erasure floors",
+   "ai_behavior":"rushes; uses below-ALPHA Void chip (lands, no OMEGA present)","win":"reduce CSI to 0","lose":"player CSI to 0 first","act_node":3},
+  {"id":"E2","name":"Tide Patrol","tier":"NU","element":"Aqua","terrain":"flooded corridor; pressure gates",
+   "ai_behavior":"kites behind water; punishes melee","win":"flush to dry tile + burst","lose":"drown timer expires","act_node":4},
+  {"id":"E3","name":"Surge Node","tier":"MU","element":"Elec","terrain":"conductive grid; chain-risk",
+   "ai_behavior":"chains damage across metal; isolates player","win":"break 2 relays","lose":"chained to 0","act_node":8},
+  {"id":"E4","name":"Root Warden","tier":"LAMBDA","element":"Wood","terrain":"overgrowth; re-seals",
+   "ai_behavior":"regenerates in lulls; punishes dawdling","win":"sever root in regen-phase","lose":"overrun by sprouts","act_node":9},
+  {"id":"E5","name":"Cinder Flare","tier":"ETA","element":"Fire","terrain":"lava floor (pre-Throne)",
+   "ai_behavior":"applies -50% CSI to player's Fire NPCs (supremacy demo); herald, not true OMEGA","win":"survive + extinguish anchors","lose":"CSI attrition","act_node":12}
+]
