@@ -1,34 +1,39 @@
 {
   "netp": {
-    "count": 500,
+    "count": 120000,
     "rejected": 0,
     "reject_rate_pct": 0.0,
     "reasons": {}
   },
   "chip": {
-    "count": 500,
+    "count": 48000,
     "rejected": 0,
     "reject_rate_pct": 0.0,
     "reasons": {}
   },
   "career": {
-    "count": 500,
+    "count": 16000,
     "rejected": 0,
     "reject_rate_pct": 0.0,
     "reasons": {}
   },
   "enemy": {
-    "count": 500,
+    "count": 36000,
     "rejected": 0,
     "reject_rate_pct": 0.0,
     "reasons": {}
   },
   "shards": {
-    "netp": 1,
-    "chip": 1,
-    "career": 1,
-    "enemy": 1
+    "netp": 12,
+    "chip": 5,
+    "career": 2,
+    "enemy": 4
   },
-  "scale_requested": 500,
-  "note": "Proof run. Full 120k HELD by CEO verdict (volume denied until re-approved)."
+  "scale_requested": {
+    "netp": 120000,
+    "chip": 48000,
+    "career": 16000,
+    "enemy": 36000
+  },
+  "note": "PRODUCTION run (v0.4.0-content-gate approved by CEO). Sharded 10k/file for multiplayer sync."
 }
