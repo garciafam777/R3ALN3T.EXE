@@ -17,7 +17,7 @@ Usage:
 Supports: .json (recurses objects/arrays), or a directory of .json files.
 For each file it reports per-row violations and exits non-zero if any found.
 """
-import sys, os, json, argparse
+import sys, os, json, argparse, csv
 
 CANON = {"fire","aqua","elec","wood","wind","holy","void"}
 # off-wheel tokens that must NEVER appear as an element value
@@ -70,6 +70,48 @@ def scan_file(fp):
     check_obj(data, fp, problems)
     return problems
 
+def scan_csv(fp, problems):
+    """CSV scan: find the element column, check every value is on-wheel,
+    and verify row distinctness on the first id-ish column."""
+    try:
+        with open(fp, "r", encoding="utf-8", newline="") as f:
+            reader = csv.reader(f)
+            header = next(reader, None)
+            if not header:
+                problems.append(f"{fp}: EMPTY csv")
+                return
+            # locate element column (case-insensitive)
+            elem_idx = None
+            id_idx = 0
+            for i, h in enumerate(header):
+                hl = h.strip().lower()
+                if hl in ELEMENT_KEYS and elem_idx is None:
+                    elem_idx = i
+                if hl in ("card_number","id","uid") and id_idx == 0:
+                    id_idx = i
+            seen_ids = set()
+            dup = 0
+            rows = 0
+            if elem_idx is None:
+                problems.append(f"{fp}: no element column found (header={header[:8]})")
+            for r in reader:
+                rows += 1
+                if elem_idx is not None and elem_idx < len(r):
+                    ev = r[elem_idx].strip().lower()
+                    if ev and ev not in CANON:
+                        problems.append(f"{fp}:row{rows}.{header[elem_idx]} = '{r[elem_idx]}' (not in 7-wheel)")
+                if id_idx < len(r):
+                    rid = r[id_idx]
+                    if rid in seen_ids:
+                        dup += 1
+                    else:
+                        seen_ids.add(rid)
+            if dup:
+                problems.append(f"{fp}: {dup} DUPLICATE id rows (distinctness violated)")
+            # report structural pass info via a benign marker is avoided; just return
+    except Exception as e:
+        problems.append(f"{fp}: UNREADABLE ({e})")
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("path")
@@ -81,14 +123,18 @@ def main():
     if os.path.isdir(args.path):
         for root, _, files in os.walk(args.path):
             for fn in files:
-                if fn.endswith(".json"):
+                if fn.endswith(".json") or fn.endswith(".csv"):
                     targets.append(os.path.join(root, fn))
     else:
         targets.append(args.path)
 
     total = 0
     for t in targets:
-        probs = scan_file(t)
+        if t.endswith(".csv"):
+            probs = []
+            scan_csv(t, probs)
+        else:
+            probs = scan_file(t)
         if probs:
             total += len(probs)
             print(f"[FAIL] {t}")
