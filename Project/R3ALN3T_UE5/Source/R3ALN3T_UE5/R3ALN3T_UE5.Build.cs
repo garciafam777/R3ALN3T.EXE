@@ -13,7 +13,7 @@ public class R3ALN3T_UE5 : ModuleRules
 			"UMG", "Slate", "SlateCore", "Niagara", "CinematicCamera",
 			"LevelSequence", "MovieScene", "MovieSceneTracks",
 			"Json", "JsonUtilities", "HTTP",
-			"MediaAssets", "MediaUtils"
+			"MediaAssets", "MediaUtils", "AIModule"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] { 
