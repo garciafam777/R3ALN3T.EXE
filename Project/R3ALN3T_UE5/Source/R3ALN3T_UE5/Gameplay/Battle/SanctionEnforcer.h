@@ -2,7 +2,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
-#include "Core/Types/TrinityMatrixTypes.h"
+#include "../../Core/Types/TrinityMatrixTypes.h"
 #include "SanctionEnforcer.generated.h"
 
 class AActor;
@@ -40,5 +40,6 @@ public:
     void PersistTo(UR3ALSaveGame* Save) const;
 
 protected:
-    UPROPERTY() TMap<AActor*, TArray<ESanctionType>> ActiveSanctions;
+    // Runtime-only sanction tracking (not serialized; AActor* key is non-reflectable).
+    TMap<TObjectPtr<AActor>, TArray<ESanctionType>> ActiveSanctions;
 };

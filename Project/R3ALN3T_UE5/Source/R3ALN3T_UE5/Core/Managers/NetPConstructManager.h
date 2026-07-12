@@ -3,7 +3,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
-#include "Core/Types/TrinityMatrixTypes.h"
+#include "../../Core/Types/TrinityMatrixTypes.h"
 #include "NetPConstructManager.generated.h"
 
 UCLASS()

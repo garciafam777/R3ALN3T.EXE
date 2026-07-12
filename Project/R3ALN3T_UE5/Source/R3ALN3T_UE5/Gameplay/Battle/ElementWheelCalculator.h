@@ -1,7 +1,7 @@
 // ElementWheelCalculator.h — 18-element combat (Nyx/engine-dev v2, Trinity Matrix canon)
 #pragma once
 #include "CoreMinimal.h"
-#include "Core/Types/TrinityMatrixTypes.h"
+#include "../../Core/Types/TrinityMatrixTypes.h"
 #include "ElementWheelCalculator.generated.h"
 
 UCLASS()

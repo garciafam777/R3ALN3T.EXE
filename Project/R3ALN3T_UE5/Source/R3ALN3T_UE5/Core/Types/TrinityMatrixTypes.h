@@ -77,13 +77,13 @@ enum class ENetPConstruct : uint8
     Eternity UMETA(DisplayName="Eternity")  // Tertiary (Trinity unlock)
 };
 
-// Soul State scale: -01 (Infernal lean) .. +01 (Celestial lean).
+// Soul State scale: 0 Infernal lean .. 2 Celestial lean (uint8 required for BlueprintType).
 UENUM(BlueprintType)
-enum class ESoulState : int8
+enum class ESoulState : uint8
 {
-    Infernal  = -1,
-    Neutral   =  0,
-    Celestial =  1
+    Infernal  = 0,
+    Neutral   = 1,
+    Celestial = 2
 };
 
 // 6 core NetP stats (Book 5).
