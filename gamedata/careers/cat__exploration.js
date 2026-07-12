@@ -1,0 +1,21 @@
+export default {
+  id: "careers/cat__exploration",
+  label: "DEPARTMENT :: EXPLORATION",
+  text: `Exploration has 12 open positions on file. Pick one to read the posting.`,
+  soulStateDelta: 0,
+  choices: [
+    { label: "Deep Space Explorer", goto: "careers/job__exploration__deep_space_explorer" },
+    { label: "Anomaly Investigator", goto: "careers/job__exploration__anomaly_investigator" },
+    { label: "Subterranean Cartographer", goto: "careers/job__exploration__subterranean_cartographer" },
+    { label: "Deep Sea Salvage Operator", goto: "careers/job__exploration__deep_sea_salvage_operator" },
+    { label: "Exoplanetary Surveyor", goto: "careers/job__exploration__exoplanetary_surveyor" },
+    { label: "Wasteland Reconnaissance Scout", goto: "careers/job__exploration__wasteland_reconnaissance_scout" },
+    { label: "Cryogenic Wilderness Guide", goto: "careers/job__exploration__cryogenic_wilderness_guide" },
+    { label: "Atmospheric Pioneer", goto: "careers/job__exploration__atmospheric_pioneer" },
+    { label: "Quantum Terrain Analyst", goto: "careers/job__exploration__quantum_terrain_analyst" },
+    { label: "Ruins Archaeologist", goto: "careers/job__exploration__ruins_archaeologist" },
+    { label: "Frontier Settlement Coordinator", goto: "careers/job__exploration__frontier_settlement_coordinator" },
+    { label: "Temporal Boundary Surveyor", goto: "careers/job__exploration__temporal_boundary_surveyor" },
+    { label: "[ Back to departments ]", goto: "02b_employment_extended" },
+  ],
+};
