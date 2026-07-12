@@ -1,0 +1,14 @@
+export default {
+  id: "careers/job__entertainment_arts__reality_show_producer",
+  label: "POSTING :: REALITY SHOW PRODUCER",
+  text: `You stage unscripted drama for audiences who crave authenticity in an age of artificiality. Your current production is "The Real World: 2086"—a 24/7 broadcast from a sealed community of 100 people living in a simulated post-apocalyptic environment. The twist: they don't know they're on camera. The audience does. The ratings are astronomical. The drama is real. The trauma is... profitable. But the community has started developing its own culture, its own language, its own religion. They worship "The Watchers"—us, the audience—creating rituals to attract our attention, sacrifices to appease our boredom, and myths about the world outside that are more accurate than you'd like. They've figured out they're being watched. They haven't figured out how to escape. But they're trying. They've built devices from salvaged materials, devices that shouldn't work but do, devices that receive signals from the audience, that broadcast back, that create a feedback loop between watched and watcher. The audience is becoming part of the show. Viewers report feeling observed by the participants, influenced by their rituals, changed by their prayers. The boundary between reality and production is dissolving. The community has elected a leader whose platform is "escape through transcendence." She claims that if enough viewers believe they can leave, the belief will create the possibility. She's right. The ratings spike when she speaks. The audience wants her to succeed. They want to see what happens when the watched become the watchers. Your producers want to cancel the show before she breaks the fourth wall permanently. The audience wants to fund her campaign. The participants want freedom. You want to know what you've created. Is it entertainment? Is it exploitation? Is it evolution? The leader is looking at the camera, directly at you, through the lens, through the screen, into your living room. She says: "We know you're there. We know you're real. We're coming to find you. Not to hurt you. To thank you. To show you what you've made. To show you what you are." The broadcast is cutting out. The signal is being hijacked. The last thing you see is her hand, reaching toward the camera, growing larger, until it fills the screen, until you feel it on your shoulder, warm and solid and real. She's here. They're all here. The show is over. The real world begins.`,
+  soulStateDelta: 0,
+  onEnter(state) {
+    state.job = "Reality Show Producer";
+    state.jobCategory = "Entertainment & Arts";
+  },
+  choices: [
+    { label: "Take the position.", goto: "03_first_lie_extended" },
+    { label: "[ Back to Entertainment & Arts listings ]", goto: "careers/cat__entertainment_arts" },
+  ],
+};

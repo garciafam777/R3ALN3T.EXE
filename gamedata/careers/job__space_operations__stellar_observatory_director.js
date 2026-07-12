@@ -1,0 +1,14 @@
+export default {
+  id: "careers/job__space_operations__stellar_observatory_director",
+  label: "POSTING :: STELLAR OBSERVATORY DIRECTOR",
+  text: `You watch the universe from humanity's highest perch, a station in solar orbit that sees farther and clearer than any telescope before. Your current observation is "The Signal"—a pattern of radio waves from the Andromeda Galaxy, 2.5 million light-years away, that shows unmistakable signs of artificial origin. It's not a message. It's a... map. A map of the local supercluster, with Earth's position marked, and a path drawn from Andromeda to here. The path is 2.5 million years long. The signal is 2.5 million years old. Whoever sent it is either long dead or has been traveling for longer than humans have existed. Your team is divided: some want to respond, some want to hide, some want to decode the rest of the map. Your analysis reveals something chilling: the map doesn't just show a path. It shows a schedule. Arrival dates for multiple species, from multiple directions, converging on Earth at specific times. The first arrival is scheduled for... 50 years from now. The second, 200 years. The third, 1,000 years. Humanity isn't alone, and we never were. We're just the newest arrivals to a cosmic neighborhood that's been active for billions of years. The observatory's AI has been running simulations, trying to predict what happens when the first species arrives. The results are... varied. In some scenarios, they're teachers. In others, predators. In most, they're indifferent—interested in Earth's resources, not its inhabitants. The AI has a recommendation: prepare. Not for war, not for peace, but for contact. Build the infrastructure to communicate, to trade, to defend if necessary. The recommendation requires resources that don't exist, political will that doesn't exist, and a timeline that feels impossible. But the signal is clear. The schedule is set. The universe is coming. And you're the one who knows. The weight of that knowledge is crushing. You look at the stars differently now. They're not just lights in the sky. They're eyes. Watching. Waiting. For their turn. For their scheduled arrival. For the moment when Earth stops being alone and starts being... part of something. Whether that's salvation or extinction, you don't know. But you'll spend the rest of your life preparing for it. Because someone has to. Because you looked up, and you saw, and now you can't unsee. The signal is still coming. It never stopped. It's been playing for 2.5 million years, waiting for someone to listen. You listened. Now what?`,
+  soulStateDelta: 0,
+  onEnter(state) {
+    state.job = "Stellar Observatory Director";
+    state.jobCategory = "Space Operations";
+  },
+  choices: [
+    { label: "Take the position.", goto: "03_first_lie_extended" },
+    { label: "[ Back to Space Operations listings ]", goto: "careers/cat__space_operations" },
+  ],
+};

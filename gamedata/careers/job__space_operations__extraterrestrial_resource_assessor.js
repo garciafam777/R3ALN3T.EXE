@@ -1,0 +1,14 @@
+export default {
+  id: "careers/job__space_operations__extraterrestrial_resource_assessor",
+  label: "POSTING :: EXTRATERRESTRIAL RESOURCE ASSESSOR",
+  text: `You evaluate the value of materials and territories beyond Earth, determining what's worth extracting and what's worth preserving. Your current assignment is assessing "The Archive"—a structure discovered on the Moon's far side, buried beneath 3 billion years of regolith. The structure isn't human. It predates human existence by... a long time. Your assessment should be straightforward: catalog the materials, estimate the value, recommend extraction or preservation. But the Archive isn't just a structure. It's a... library. A repository of information, stored in a medium that your instruments can barely detect, in formats that your best AIs are struggling to parse. The information is vast—more data than all of human civilization has ever produced, stored in a space the size of a football field. And it's active. Not alive, but responsive. It reacts to your presence, to your instruments, to your attempts to access it. It shows you things: images of worlds that don't exist, species that never evolved, histories that didn't happen. It asks you questions: "What do you want?" "What do you fear?" "What do you hope?" Your answers determine what it shows you next. It's testing you. Evaluating you. Deciding whether you're worthy. Worthy of what, you don't know. But the assessment is mutual. You're evaluating the Archive's resource value. The Archive is evaluating yours. Your latest session revealed something new: a map. Not of the Moon, or Earth, or the solar system. A map of probability space, showing all possible futures as branches on an infinite tree. Your future is there, marked with a symbol that translates as "undetermined." The Archive says you have a choice. A choice that will affect not just your timeline but thousands of others. It says the choice is coming soon. It says it will help you prepare. In exchange for... something. A sample. Of your consciousness. Of your potential. Of what you could become. The extraction is painless, it says. You won't even notice. But you'll be different. Better, perhaps. More aware. More capable of making the choice that needs to be made. Your employers want the Archive mined for technology. The Archive wants to mine you for potential. You're caught between two assessments, two valuations, two visions of what's worth extracting and what's worth preserving. The choice is yours. The Archive is waiting. And somewhere in the probability tree, a version of you is already deciding.`,
+  soulStateDelta: 0,
+  onEnter(state) {
+    state.job = "Extraterrestrial Resource Assessor";
+    state.jobCategory = "Space Operations";
+  },
+  choices: [
+    { label: "Take the position.", goto: "03_first_lie_extended" },
+    { label: "[ Back to Space Operations listings ]", goto: "careers/cat__space_operations" },
+  ],
+};

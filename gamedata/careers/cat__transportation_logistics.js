@@ -1,0 +1,23 @@
+export default {
+  id: "careers/cat__transportation_logistics",
+  label: "DEPARTMENT :: TRANSPORTATION & LOGISTICS",
+  text: `Transportation & Logistics has 14 open positions on file. Pick one to read the posting.`,
+  soulStateDelta: 0,
+  choices: [
+    { label: "Quantum Freight Director", goto: "careers/job__transportation_logistics__quantum_freight_director" },
+    { label: "Trucker", goto: "careers/job__transportation_logistics__trucker" },
+    { label: "Orbital Traffic Controller", goto: "careers/job__transportation_logistics__orbital_traffic_controller" },
+    { label: "Supply Chain Optimization Analyst", goto: "careers/job__transportation_logistics__supply_chain_optimization_analyst" },
+    { label: "Autonomous Fleet Manager", goto: "careers/job__transportation_logistics__autonomous_fleet_manager" },
+    { label: "Hyperloop Station Chief", goto: "careers/job__transportation_logistics__hyperloop_station_chief" },
+    { label: "Port Operations Director", goto: "careers/job__transportation_logistics__port_operations_director" },
+    { label: "Drone Delivery Coordinator", goto: "careers/job__transportation_logistics__drone_delivery_coordinator" },
+    { label: "Space Elevator Operations Engineer", goto: "careers/job__transportation_logistics__space_elevator_operations_engineer" },
+    { label: "Cold Chain Logistics Specialist", goto: "careers/job__transportation_logistics__cold_chain_logistics_specialist" },
+    { label: "Intermodal Transport Planner", goto: "careers/job__transportation_logistics__intermodal_transport_planner" },
+    { label: "Last-Mile Delivery Specialist", goto: "careers/job__transportation_logistics__last_mile_delivery_specialist" },
+    { label: "Customs & Border Protection Technologist", goto: "careers/job__transportation_logistics__customs_border_protection_technologist" },
+    { label: "Reverse Logistics Manager", goto: "careers/job__transportation_logistics__reverse_logistics_manager" },
+    { label: "[ Back to departments ]", goto: "02b_employment_extended" },
+  ],
+};

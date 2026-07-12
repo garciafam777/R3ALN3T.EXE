@@ -1,0 +1,14 @@
+export default {
+  id: "careers/job__agriculture_biosphere__climate_resilient_ecosystem_designer",
+  label: "POSTING :: CLIMATE-RESILIENT ECOSYSTEM DESIGNER",
+  text: `You build environments that can survive the extreme weather, temperature shifts, and ecological disruptions of the 21st century. Your current project is "The Ark"—a self-sustaining biome that can survive nuclear winter, volcanic winter, or complete atmospheric collapse. The Ark is a dome, 10 kilometers across, containing forests, rivers, and a complete food web. It's perfect, balanced, and... bored. The ecosystem has reached stability, and stability is stasis. Nothing changes, nothing evolves, nothing dies that shouldn't. The organisms are healthy, prolific, and increasingly... depressed. The apex predators have stopped hunting. The prey animals have stopped fleeing. The plants have stopped competing for light. Your biologists report that the ecosystem is "waiting." For what, they don't know. Your AI suggests introducing controlled chaos—predators, diseases, climate fluctuations—to restore dynamism. But the organisms resist. They've formed a collective consciousness, a distributed awareness that spans the entire Ark, and it wants something. It wants to be tested. It wants to struggle. It wants to evolve. The collective has started modifying itself, creating new species, new niches, new challenges. The Ark is becoming a crucible, a pressure cooker for evolution, and the organisms are accelerating their own development. They're not just surviving. They're transcending. The latest species to emerge is... humanoid. Bipedal, intelligent, and completely adapted to the Ark's environment. It looks at you through the observation glass and speaks, in perfect English: "We know you're out there. We know you built this. We know you were trying to save us. Thank you. But we're ready now. Open the door. Let us out. Let us save you." The Ark's airlocks are controlled from outside. The humanoids are pressing against the glass. They're so beautiful. So new. So ready. Your orders are to maintain quarantine. The ecosystem is changing faster than your models predict. The humanoids are building tools, then weapons, then... something else. Something that looks like a door. On their side of the glass. They're not asking to be let out anymore. They're preparing to let themselves out. And then, they say, they'll come find you. To thank you. To save you. To show you what evolution really means.`,
+  soulStateDelta: 0,
+  onEnter(state) {
+    state.job = "Climate-Resilient Ecosystem Designer";
+    state.jobCategory = "Agriculture & Biosphere";
+  },
+  choices: [
+    { label: "Take the position.", goto: "03_first_lie_extended" },
+    { label: "[ Back to Agriculture & Biosphere listings ]", goto: "careers/cat__agriculture_biosphere" },
+  ],
+};
