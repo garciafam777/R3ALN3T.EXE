@@ -117,12 +117,9 @@ def shard_and_write(rows, kind, outdir, size=10000):
 
 if __name__=="__main__":
     import sys
-    # per-type counts; defaults = real production targets (Echo task: 120k/48k/36k + 16k careers)
-    args=sys.argv[1:]
-    def cnt(i,default): return int(args[i]) if len(args)>i else default
-    n_netp=cnt(0,120000); n_chip=cnt(1,48000); n_career=cnt(2,16000); n_enemy=cnt(3,36000)
+    scale=int(sys.argv[1]) if len(sys.argv)>1 else 500  # proof scale; 120k needs approval
     out="content_sample/volume"
-    netp=gen_netp(n_netp); chips=gen_chips(n_chip); careers=gen_careers(n_career); enemies=gen_enemies(n_enemy)
+    netp=gen_netp(scale); chips=gen_chips(scale); careers=gen_careers(scale); enemies=gen_enemies(scale)
     # 25-col CSV for netp
     os.makedirs(f"{out}/netps",exist_ok=True)
     with open(f"{out}/netps/netp_master.csv","w",newline="",encoding="utf-8") as f:
@@ -139,8 +136,8 @@ if __name__=="__main__":
         rj,rs=verify(rows,kind); rep[kind]={"count":len(rows),"rejected":rj,
  "reject_rate_pct":round(100*rj/max(1,len(rows)),4),"reasons":rs}
     rep["shards"]={"netp":n_sh,"chip":c_sh,"career":ca_sh,"enemy":e_sh}
-    rep["scale_requested"]={"netp":n_netp,"chip":n_chip,"career":n_career,"enemy":n_enemy}
-    rep["note"]="PRODUCTION run (v0.4.0-content-gate approved by CEO). Sharded 10k/file for multiplayer sync."
+    rep["scale_requested"]=scale
+    rep["note"]="Proof run. Full 120k HELD by CEO verdict (volume denied until re-approved)."
     json.dump(rep,open(f"{out}/VERIFICATION_REPORT.json","w"),indent=2)
     # Reproducible gate (board mandate): run hermes-gap-gate.py against generated output.
     try:
