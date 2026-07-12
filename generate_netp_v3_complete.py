@@ -89,6 +89,17 @@ TIER_STAT_RANGES = {
 # =============================================================================
 # 2. THE TYPE - 4 Philosophical Alignments
 # =============================================================================
+# NOTE (canon clarity): The `factions` lists below are LORE-FLAVOR pools
+# (17 distinct strings across the 6 alignments) used only for generated card
+# flavor text. They are INTENTIONALLY broader than the game's canonical faction
+# system. The actual game uses EMythosFaction (Source/.../Core/Types/MythosGameTypes.h)
+# which defines exactly 6 canon factions:
+#   CelestialOrder, AegisConcord, N3TDominion, UndernetSyndicate,
+#   AbyssalCovenant, FreeGridCollective
+# (spaced form in data: "Celestial Order", "Aegis Concord", etc.)
+# The shipped NetP data (_manifest.js) uses ONLY those 6 canon names.
+# Do NOT "fix" these flavor pools to match the 6 — they are a separate concern.
+# =============================================================================
 
 ALIGNMENTS = {
     "Mechanical": {
