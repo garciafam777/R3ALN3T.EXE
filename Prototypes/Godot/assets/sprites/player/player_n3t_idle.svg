@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
-  <rect width="128" height="128" fill="#0A0A18"/>
-  <circle cx="64" cy="48" r="22" fill="#00FFFF" opacity="0.9"/>
-  <rect x="40" y="72" width="48" height="40" rx="8" fill="#0066FF" opacity="0.8"/>
-  <text x="64" y="122" text-anchor="middle" fill="#00FFFF" font-size="9">N3T</text>
-</svg>

@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="8" fill="#1A1030" stroke="#FF00FF" stroke-width="2"/>
-  <path d="M44 20 L32 32 L20 20" fill="none" stroke="#00FFFF" stroke-width="3"/>
-  <text x="32" y="54" text-anchor="middle" fill="#FF00FF" font-size="7">DEC</text>
-</svg>

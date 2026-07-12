@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="8" fill="#101828"/>
-  <path d="M32 8 Q48 20 48 36 Q48 52 32 56 Q16 52 16 36 Q16 20 32 8" fill="none" stroke="#44FFAA" stroke-width="2"/>
-  <circle cx="32" cy="34" r="6" fill="#FF00FF"/>
-  <text x="32" y="62" text-anchor="middle" fill="#44FFAA" font-size="6">M.A.N.</text>
-</svg>

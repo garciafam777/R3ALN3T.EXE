@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="180" height="280" viewBox="0 0 180 280">
-  <rect width="180" height="280" fill="#0A1520"/>
-  <ellipse cx="90" cy="110" rx="45" ry="55" fill="#00FFFF" opacity="0.5"/>
-  <text x="90" y="200" text-anchor="middle" fill="#556677" font-family="sans-serif" font-size="12">NetP</text>
-</svg>
