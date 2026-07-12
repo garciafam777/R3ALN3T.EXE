@@ -127,3 +127,4 @@ intro_lifein6thgearSTUDIOS/Intro_Lifein6thGEAR-main/dist/
 # Sandbox/Local Exclusions
 Project/Content/Developers/
 Project/Content/Collections/
+.env.nodebase
