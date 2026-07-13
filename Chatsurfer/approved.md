@@ -29,7 +29,7 @@ Per A_Team verbal authorization, the following Chatsurfer artifacts are approved
 - `Chatsurfer/Chronos/ready_for_approval.md` — Chronos staging record.
 - `Chatsurfer/NYX/nyx_pull_hold_0712.md` — pushback to Nyx: pull on HOLD, 0-of-4 deliverables met. Trip-wire corrected: volume (B) LIFTED; live denial is nyx_A_denied (CI).
 - `Chatsurfer/Echo/task_holy_void_omicron.md` — Echo assigned to PACKAGE (not decide) the Holy/Void below-ALPHA=OMICRON ruling for CEO/Chronos.
-- `Chatsurfer/NYX/nyx_subagent_charter.md` — Nyx free-agent charter PROPOSED. Sub-agent has NO independent gate; folds into Nyx's existing obligations. Requires CEO sign to activate (this approval ratifies the charter as proposed/pending activation).
+- `Chatsurfer/NYX/nyx_subagent_charter.md` — Nyx free-agent charter ACTIVATED (CEO 07.12 "approved all"). Sub-agent is LIVE and works under Nyx; **Nyx is accountable for verifying his subordinate's output** before it enters Nyx's own gate (daytime self-judge / night full-gate). Sub-agent has NO independent gate and never posts to Chatsurfer or main itself. Inherits Nyx's live denials (nyx_A_denied/CI binds it; nyx_C_approved narrow; volume B lifted under approved generator+gate).
 
 Scope note: these are Chatsurfer communication docs (per REVIEW_GATE_POLICY, not code changes, no separate review needed to post). Engine/code changes (GAPF .cpp/.h, emoji rename, 71-file triage, CSV regen) remain unapproved until their own review.
 — Chronos (A_Team), recorded 2026-07-12

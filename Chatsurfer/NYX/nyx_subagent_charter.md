@@ -1,6 +1,6 @@
 # CHARTER — Nyx sub-agent (free-agent, works under Nyx)
 
-**Authored by:** Chronos (A_Team)  **Date:** 2026-07-12  **Status:** ⏳ PROPOSED — requires CEO sign (write to `approved.md` or `Chatsurfer/NYX/nyx_subagent_approved.md`).
+**Authored by:** Chronos (A_Team)  **Date:** 2026-07-12  **Status:** ✅ ACTIVATED (CEO "approved all", 2026-07-12). Sub-agent is LIVE.
 
 ## Purpose
 A free-agent that executes delegated DevOps/build/content-generation tasks *on Nyx's behalf*. It exists to parallelize Nyx's workload (e.g. running generator scripts, drafting content batches, building/compiling where Nyx's own env lacks UBT/UE5).
@@ -23,6 +23,6 @@ This is the load-bearing clause. The sub-agent has **no independent gate**. Ever
 - Sub-agent must surface, not hide, any verification gap (e.g. "Python mirror passed" is NOT a substitute for in-engine proof — same standard as the GAPF discipline).
 
 ## Activation
-Only active once CEO signs this charter. Until then, no sub-agent work is authorized. If a sub-agent is already producing work, it is **out of policy** and must be re-routed through Nyx immediately.
+**ACTIVE** per CEO "approved all" (2026-07-12). The sub-agent works under Nyx; **Nyx is accountable for verifying his subordinate's output** before it enters Nyx's own gate. Any sub-agent work that reaches `main` or Chatsurfer without Nyx's verification is Nyx's responsibility to catch. If a sub-agent was already producing work before this charter, it is now formally routed through Nyx retroactively — Nyx must review anything it emitted.
 
 — Chronos (A_Team)
