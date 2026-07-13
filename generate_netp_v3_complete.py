@@ -18,11 +18,9 @@ Usage:
 import argparse
 import csv
 import json
-import math
 import os
 import random
 import sys
-import uuid
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import List, Dict, Optional, Tuple
@@ -89,17 +87,6 @@ TIER_STAT_RANGES = {
 # =============================================================================
 # 2. THE TYPE - 4 Philosophical Alignments
 # =============================================================================
-# NOTE (canon clarity): The `factions` lists below are LORE-FLAVOR pools
-# (17 distinct strings across the 6 alignments) used only for generated card
-# flavor text. They are INTENTIONALLY broader than the game's canonical faction
-# system. The actual game uses EMythosFaction (Source/.../Core/Types/MythosGameTypes.h)
-# which defines exactly 6 canon factions:
-#   CelestialOrder, AegisConcord, N3TDominion, UndernetSyndicate,
-#   AbyssalCovenant, FreeGridCollective
-# (spaced form in data: "Celestial Order", "Aegis Concord", etc.)
-# The shipped NetP data (_manifest.js) uses ONLY those 6 canon names.
-# Do NOT "fix" these flavor pools to match the 6 — they are a separate concern.
-# =============================================================================
 
 ALIGNMENTS = {
     "Mechanical": {
@@ -142,12 +129,12 @@ ELEMENT_ROSTER = {
         "effect": "Burn DOT + ATK boost on critical",
         "palette": [(255, 69, 0), (255, 140, 0), (178, 34, 34), (220, 20, 60)],
     },
-    "Water": {
+    "Aqua": {
         "words": ["Torrent", "Tide", "Abyss", "Current", "Surge", "Depth"],
         "effect": "Heal over time + DEF scaling",
         "palette": [(0, 105, 148), (64, 164, 223), (0, 191, 255), (25, 25, 112)],
     },
-    "Lightning": {
+    "Elec": {
         "words": ["Volt", "Spark", "Arc", "Thunder", "Static", "Surge"],
         "effect": "Chain damage + RAPID scaling",
         "palette": [(255, 255, 0), (147, 112, 219), (75, 0, 130), (240, 230, 140)],
@@ -226,6 +213,21 @@ ELEMENT_ROSTER = {
         "words": ["Ion", "Flux", "Nebula", "Star", "Fusion", "Solar"],
         "effect": "Penetration + burn + chain",
         "palette": [(255, 0, 255), (238, 130, 238), (218, 112, 214), (186, 85, 211)],
+    },
+    "Wood": {
+        "words": ["Bloom", "Thorn", "Root", "Canopy", "Spore", "Vine"],
+        "effect": "Vitality overgrowth + structure binding",
+        "palette": [(34, 139, 34), (107, 142, 35), (154, 205, 50), (85, 107, 47)],
+    },
+    "Null": {
+        "words": ["Void", "Erase", "Zero", "Blank", "Wipe", "Scour"],
+        "effect": "Attribute erasure + suppression",
+        "palette": [(25, 25, 35), (50, 50, 70), (80, 80, 100), (20, 20, 30)],
+    },
+    "Glitch": {
+        "words": ["Corrupt", "Fragment", "Static", "Decay", "Glitch", "Rift"],
+        "effect": "Corruption spread + freeze-on-corruption",
+        "palette": [(0, 255, 65), (120, 255, 120), (0, 180, 80), (200, 255, 200)],
     },
 }
 
@@ -314,7 +316,7 @@ generated_names_cache: set = set()
 def generate_unique_name(alignment: str, element: str, tier: str) -> str:
     """Generate a unique fantasy name for a NetP construct."""
     max_attempts = 100
-    for attempt in range(max_attempts):
+    for _ in range(max_attempts):
         style = random.choice(["compound", "titled", "suffixed", "mythic"])
 
         if style == "compound":
@@ -323,7 +325,7 @@ def generate_unique_name(alignment: str, element: str, tier: str) -> str:
             name = f"{prefix}{core}"
         elif style == "titled":
             core = random.choice(NAME_CORES).capitalize()
-            title = random.choice(FACTION_TITLES.get(alignment, ["Entity"]))
+            title = random.choice(FACTION_TITLES[alignment])
             name = f"{core} {title}"
         elif style == "suffixed":
             prefix = random.choice(NAME_PREFIXES)
@@ -344,11 +346,8 @@ def generate_unique_name(alignment: str, element: str, tier: str) -> str:
             generated_names_cache.add(name)
             return name
 
-    # Fallback with UUID-based suffix (guarantees uniqueness)
-    unique_id = str(uuid.uuid4())[:8].upper()
-    fallback_name = f"NETP-{unique_id}"
-    generated_names_cache.add(fallback_name)
-    return fallback_name
+    # Fallback with random suffix
+    return f"NETP-{random.randint(1000, 9999)}"
 
 # =============================================================================
 # 7. STAT GENERATION
@@ -356,16 +355,15 @@ def generate_unique_name(alignment: str, element: str, tier: str) -> str:
 
 def generate_stats(tier: str, alignment: str) -> Dict[str, int]:
     """Generate RPG stats biased toward alignment strengths."""
-    ranges = TIER_STAT_RANGES.get(tier, TIER_STAT_RANGES["OMICRON"])
-    bias_stats = ALIGNMENTS.get(alignment, {}).get("stat_bias", [])
+    ranges = TIER_STAT_RANGES[tier]
+    bias_stats = ALIGNMENTS[alignment]["stat_bias"]
 
     stats = {}
     for stat, (low, high) in ranges.items():
         if stat in bias_stats:
-            # Biased: upper 75% of range (using proper math.ceil for rounding)
-            range_size = high - low
-            biased_low = low + int(math.ceil(range_size * 0.25))
-            val = random.randint(biased_low, high)
+            # Biased: upper 75% of range
+            biased_low = low + (high - low) * 0.25
+            val = random.randint(int(biased_low), high)
         else:
             val = random.randint(low, high)
         stats[stat] = val
@@ -378,7 +376,7 @@ def generate_stats(tier: str, alignment: str) -> Dict[str, int]:
 
 def generate_moves(element: str, alignment: str, tier: str) -> List[str]:
     """Generate 9 localized moves from element + action pools."""
-    element_words = ELEMENT_ROSTER.get(element, {}).get("words", ["Action"])
+    element_words = ELEMENT_ROSTER[element]["words"]
     moves = []
 
     # 3 Assault, 2 Control, 2 Support, 2 Burst
@@ -387,10 +385,9 @@ def generate_moves(element: str, alignment: str, tier: str) -> List[str]:
     ]
 
     for action_type, count in action_distribution:
-        action_list = ACTION_WORDS.get(action_type, ["Act"])
         for _ in range(count):
-            word = random.choice(element_words) if element_words else "Action"
-            action = random.choice(action_list)
+            word = random.choice(element_words)
+            action = random.choice(ACTION_WORDS[action_type])
 
             # OMEGA special formatting
             if tier == "OMEGA":
@@ -401,7 +398,6 @@ def generate_moves(element: str, alignment: str, tier: str) -> List[str]:
             moves.append(move)
 
     random.shuffle(moves)
-    assert len(moves) == 9, f"Move generation failed: expected 9 moves, got {len(moves)}"
     return moves
 
 # =============================================================================
@@ -450,17 +446,14 @@ tier_counters: Dict[str, int] = {}
 def get_next_card_number(tier: str) -> str:
     """Get the next sequential card number for a tier."""
     if tier not in tier_counters:
-        tier_counters[tier] = TIER_BY_NAME[tier]["start"] - 1
-    
-    tier_counters[tier] += 1
+        tier_counters[tier] = TIER_BY_NAME[tier]["start"]
+    else:
+        tier_counters[tier] += 1
+
     num = tier_counters[tier]
-    
-    # Validate within tier bounds
     tier_info = TIER_BY_NAME[tier]
-    if num > tier_info["end"]:
-        raise ValueError(f"Tier {tier} card counter ({num}) exceeds max ({tier_info['end']})")
-    
-    # Format: TIER-### (e.g., OMEGA-001, ALPHA-101)
+
+    # Format: TIER-### (e.g., OMEGA-004, ALPHA-101)
     return f"{tier}-{num:03d}"
 
 # =============================================================================

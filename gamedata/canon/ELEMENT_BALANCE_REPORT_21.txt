@@ -1,0 +1,91 @@
+
+================================================================================
+        21-ELEMENT CYBERSPACE MATCHUP SYSTEM — BALANCE REPORT
+================================================================================
+
+ELEMENT ROSTER (21 total):
+  Generators:  Fire, Aqua, Elec, Ice, Wind, Earth, Light, Dark, Void, Metal,
+               Nature, Sound, Gravity, Time, Blood, Poison, Crystal, Plasma
+  Added:       Wood, Null, Glitch
+
+CORE 6-NODE CYCLE:
+  Ice → Glitch → Blood → Wood → Null → Ice  (5-cycle)
+  Void → Blood  (Void attachment)
+
+VOID RULE: Void beats ALL other 20 elements (20W/0L, 100% win rate)
+
+================================================================================
+POWER RANKING (by Win Rate):
+================================================================================
+      Void | 20W/ 0L |  100% | ████████████████████
+     Metal | 14W/ 6L |   70% | ██████████████
+      Dark | 14W/ 6L |   70% | ██████████████
+     Light | 14W/ 6L |   70% | ██████████████
+      Elec | 14W/ 6L |   70% | ██████████████
+     Earth | 13W/ 7L |   65% | █████████████
+      Wind | 13W/ 7L |   65% | █████████████
+       Ice | 13W/ 7L |   65% | █████████████
+      Aqua | 12W/ 8L |   60% | ████████████
+    Nature | 12W/ 8L |   60% | ████████████
+      Fire | 10W/10L |   50% | ██████████
+     Sound |  9W/11L |   45% | █████████
+   Gravity |  9W/11L |   45% | █████████
+      Time |  8W/12L |   40% | ████████
+    Poison |  7W/13L |   35% | ███████
+    Plasma |  7W/13L |   35% | ███████
+   Crystal |  6W/14L |   30% | ██████
+     Blood |  5W/15L |   25% | █████
+      Wood |  4W/16L |   20% | ████
+      Null |  4W/16L |   20% | ████
+    Glitch |  2W/18L |   10% | ██
+
+================================================================================
+BALANCE METRICS:
+================================================================================
+  • Strongest:        Void (20W/0L, 100%)
+  • Weakest:          Glitch (2W/18L, 10%)
+  • Win rate spread:  90.00%
+  • Std deviation:    0.2236
+  • Median win rate:  50.00%
+
+================================================================================
+BALANCE FLAGS:
+================================================================================
+  ⚠️  VOID:     20W/0L — BY DESIGN (apex predator)
+  ⚠️  GLITCH:    2W/18L — critically underpowered
+  ⚠️  NULL:      4W/16L — severely underpowered  
+  ⚠️  WOOD:      4W/16L — severely underpowered
+  ⚠️  BLOOD:     5W/15L — very weak
+  ⚠️  CRYSTAL:   6W/14L — weak
+
+================================================================================
+TIER BREAKDOWN:
+================================================================================
+  S-Tier (70-100%):  Void, Metal, Dark, Light, Elec
+  A-Tier (60-69%):   Earth, Wind, Ice, Aqua, Nature
+  B-Tier (45-59%):   Fire, Sound, Gravity
+  C-Tier (35-44%):   Time, Poison, Plasma
+  D-Tier (20-34%):   Crystal, Blood, Wood, Null
+  F-Tier (0-19%):    Glitch
+
+================================================================================
+RECOMMENDATIONS:
+================================================================================
+1. VOID as apex is intentional — consider making it a "boss-only" or 
+   "limited-availability" element to preserve competitive balance.
+
+2. GLITCH needs buffs — only beats Elec and Blood in current matrix.
+   Consider: Glitch beats Metal, Crystal, or Time (thematic: corruption
+   of order/structure).
+
+3. WOOD and NULL are too weak — they only beat 4 elements each.
+   Consider buffing their matchups against mid-tier elements.
+
+4. BLOOD is weak (5W) — consider making it beat Poison, Crystal, or Plasma.
+
+5. The 5-cycle (Ice→Glitch→Blood→Wood→Null→Ice) creates intentional 
+   weakness chains — ensure players understand these relationships.
+
+================================================================================
+TOTAL MATCHUPS DEFINED: 210 (all pairs resolved)
+================================================================================

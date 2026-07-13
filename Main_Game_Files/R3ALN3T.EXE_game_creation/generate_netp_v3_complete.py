@@ -129,12 +129,12 @@ ELEMENT_ROSTER = {
         "effect": "Burn DOT + ATK boost on critical",
         "palette": [(255, 69, 0), (255, 140, 0), (178, 34, 34), (220, 20, 60)],
     },
-    "Water": {
+    "Aqua": {
         "words": ["Torrent", "Tide", "Abyss", "Current", "Surge", "Depth"],
         "effect": "Heal over time + DEF scaling",
         "palette": [(0, 105, 148), (64, 164, 223), (0, 191, 255), (25, 25, 112)],
     },
-    "Lightning": {
+    "Elec": {
         "words": ["Volt", "Spark", "Arc", "Thunder", "Static", "Surge"],
         "effect": "Chain damage + RAPID scaling",
         "palette": [(255, 255, 0), (147, 112, 219), (75, 0, 130), (240, 230, 140)],
@@ -213,6 +213,21 @@ ELEMENT_ROSTER = {
         "words": ["Ion", "Flux", "Nebula", "Star", "Fusion", "Solar"],
         "effect": "Penetration + burn + chain",
         "palette": [(255, 0, 255), (238, 130, 238), (218, 112, 214), (186, 85, 211)],
+    },
+    "Wood": {
+        "words": ["Bloom", "Thorn", "Root", "Canopy", "Spore", "Vine"],
+        "effect": "Vitality overgrowth + structure binding",
+        "palette": [(34, 139, 34), (107, 142, 35), (154, 205, 50), (85, 107, 47)],
+    },
+    "Null": {
+        "words": ["Void", "Erase", "Zero", "Blank", "Wipe", "Scour"],
+        "effect": "Attribute erasure + suppression",
+        "palette": [(25, 25, 35), (50, 50, 70), (80, 80, 100), (20, 20, 30)],
+    },
+    "Glitch": {
+        "words": ["Corrupt", "Fragment", "Static", "Decay", "Glitch", "Rift"],
+        "effect": "Corruption spread + freeze-on-corruption",
+        "palette": [(0, 255, 65), (120, 255, 120), (0, 180, 80), (200, 255, 200)],
     },
 }
 
