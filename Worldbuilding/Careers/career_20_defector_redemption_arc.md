@@ -3,21 +3,21 @@
 **Career ID:** 20
 **Element affinity:** Void (canonical wheel: Fire > Aqua > Elec > Wood > Wind > Holy > Void > Fire)
 **World tie-in:** Mechanically ties to the Soul State system: Spare / Purge / Corrupt (player choice on defeated souled foes) — a defector chooses Spare/Purge/Corrupt for their former masters.
-**Anchor faction/region:** VOID CULT
+**Anchor faction/region:** VOID CULT (→ Abyssal Covenant)
 **Status:** ✅ CANON — CEO-approved (promoted from DRAFT, 2026-07-10)
 
 ## Overview
-Defector-Redemption Arc is a Void-element career path rooted in the VOID CULT sphere of the R3ALN3T.EXE world (year 3026).
+Defector-Redemption Arc is a Void-element career path rooted in the VOID CULT (→ Abyssal Covenant) sphere of the R3ALN3T.EXE world (year 3026).
 It exists as world texture and player progression flavor; it makes no claims about dominion-tier lore.
 
 ## Role in the World
-- Operates within: VOID CULT
+- Operates within: VOID CULT (→ Abyssal Covenant)
 - Geographic home: one of the post-Fall regions (Abyssal Plains, Sky-Spine Range, Trench Basins)
 - Element consistency: Void is valid under the canonical wheel and does not break combat balance assumptions.
 
 ## Progression Sketch
 - Entry: civilian or recruit with latent Void affinity.
-- Mid: trained operator within VOID CULT.
+- Mid: trained operator within VOID CULT (→ Abyssal Covenant).
 - Capstone: recognized master / defector / awakened (see arc careers 18–20).
 
 ## Soul-State Note (where relevant)

@@ -2,22 +2,22 @@
 
 **Career ID:** 08
 **Element affinity:** Void (canonical wheel: Fire > Aqua > Elec > Wood > Wind > Holy > Void > Fire)
-**World tie-in:** Black-market cyber-district — CORRUPTED SECTOR's signal-runners cracking Undernet locks.
-**Anchor faction/region:** CORRUPTED SECTOR
+**World tie-in:** Black-market cyber-district — CORRUPTED SECTOR (→ Undernet Syndicate)'s signal-runners cracking Undernet locks.
+**Anchor faction/region:** CORRUPTED SECTOR (→ Undernet Syndicate)
 **Status:** ✅ CANON — CEO-approved (promoted from DRAFT, 2026-07-10)
 
 ## Overview
-Hacker-Infiltrator is a Void-element career path rooted in the CORRUPTED SECTOR sphere of the R3ALN3T.EXE world (year 3026).
+Hacker-Infiltrator is a Void-element career path rooted in the CORRUPTED SECTOR (→ Undernet Syndicate) sphere of the R3ALN3T.EXE world (year 3026).
 It exists as world texture and player progression flavor; it makes no claims about dominion-tier lore.
 
 ## Role in the World
-- Operates within: CORRUPTED SECTOR
+- Operates within: CORRUPTED SECTOR (→ Undernet Syndicate)
 - Geographic home: one of the post-Fall regions (Abyssal Plains, Sky-Spine Range, Trench Basins)
 - Element consistency: Void is valid under the canonical wheel and does not break combat balance assumptions.
 
 ## Progression Sketch
 - Entry: civilian or recruit with latent Void affinity.
-- Mid: trained operator within CORRUPTED SECTOR.
+- Mid: trained operator within CORRUPTED SECTOR (→ Undernet Syndicate).
 - Capstone: recognized master / defector / awakened (see arc careers 18–20).
 
 ## Soul-State Note (where relevant)

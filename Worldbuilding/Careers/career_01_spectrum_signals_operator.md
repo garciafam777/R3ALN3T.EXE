@@ -2,22 +2,22 @@
 
 **Career ID:** 01
 **Element affinity:** Elec (canonical wheel: Fire > Aqua > Elec > Wood > Wind > Holy > Void > Fire)
-**World tie-in:** Aerial/EM-warfare nation — tied to PROTOCOL DIVISION's EM-spectrum enforcement over the Sky-Spine Range.
-**Anchor faction/region:** PROTOCOL DIVISION
+**World tie-in:** Aerial/EM-warfare nation — tied to PROTOCOL DIVISION (→ Aegis Concord)'s EM-spectrum enforcement over the Sky-Spine Range.
+**Anchor faction/region:** PROTOCOL DIVISION (→ Aegis Concord)
 **Status:** ✅ CANON — CEO-approved (promoted from DRAFT, 2026-07-10)
 
 ## Overview
-Spectrum-Signals Operator is a Elec-element career path rooted in the PROTOCOL DIVISION sphere of the R3ALN3T.EXE world (year 3026).
+Spectrum-Signals Operator is a Elec-element career path rooted in the PROTOCOL DIVISION (→ Aegis Concord) sphere of the R3ALN3T.EXE world (year 3026).
 It exists as world texture and player progression flavor; it makes no claims about dominion-tier lore.
 
 ## Role in the World
-- Operates within: PROTOCOL DIVISION
+- Operates within: PROTOCOL DIVISION (→ Aegis Concord)
 - Geographic home: one of the post-Fall regions (Abyssal Plains, Sky-Spine Range, Trench Basins)
 - Element consistency: Elec is valid under the canonical wheel and does not break combat balance assumptions.
 
 ## Progression Sketch
 - Entry: civilian or recruit with latent Elec affinity.
-- Mid: trained operator within PROTOCOL DIVISION.
+- Mid: trained operator within PROTOCOL DIVISION (→ Aegis Concord).
 - Capstone: recognized master / defector / awakened (see arc careers 18–20).
 
 ## Soul-State Note (where relevant)

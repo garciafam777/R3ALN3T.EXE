@@ -3,21 +3,21 @@
 **Career ID:** 11
 **Element affinity:** Void (canonical wheel: Fire > Aqua > Elec > Wood > Wind > Holy > Void > Fire)
 **World tie-in:** Void-fringe settlement — outcasts who survived Void exposure in the Trench Basin mists.
-**Anchor faction/region:** VOID CULT
+**Anchor faction/region:** VOID CULT (→ Abyssal Covenant)
 **Status:** ✅ CANON — CEO-approved (promoted from DRAFT, 2026-07-10)
 
 ## Overview
-Void-touched Heretic is a Void-element career path rooted in the VOID CULT sphere of the R3ALN3T.EXE world (year 3026).
+Void-touched Heretic is a Void-element career path rooted in the VOID CULT (→ Abyssal Covenant) sphere of the R3ALN3T.EXE world (year 3026).
 It exists as world texture and player progression flavor; it makes no claims about dominion-tier lore.
 
 ## Role in the World
-- Operates within: VOID CULT
+- Operates within: VOID CULT (→ Abyssal Covenant)
 - Geographic home: one of the post-Fall regions (Abyssal Plains, Sky-Spine Range, Trench Basins)
 - Element consistency: Void is valid under the canonical wheel and does not break combat balance assumptions.
 
 ## Progression Sketch
 - Entry: civilian or recruit with latent Void affinity.
-- Mid: trained operator within VOID CULT.
+- Mid: trained operator within VOID CULT (→ Abyssal Covenant).
 - Capstone: recognized master / defector / awakened (see arc careers 18–20).
 
 ## Soul-State Note (where relevant)

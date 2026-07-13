@@ -3,21 +3,21 @@
 **Career ID:** 14
 **Element affinity:** Aqua (canonical wheel: Fire > Aqua > Elec > Wood > Wind > Holy > Void > Fire)
 **World tie-in:** Trade-hub city — cross-region economy bridging Abyssal Plains and Sky-Spine caravans.
-**Anchor faction/region:** ABYSSAL CABAL
+**Anchor faction/region:** ABYSSAL CABAL (→ Abyssal Covenant)
 **Status:** ✅ CANON — CEO-approved (promoted from DRAFT, 2026-07-10)
 
 ## Overview
-Merchant-Trader is a Aqua-element career path rooted in the ABYSSAL CABAL sphere of the R3ALN3T.EXE world (year 3026).
+Merchant-Trader is a Aqua-element career path rooted in the ABYSSAL CABAL (→ Abyssal Covenant) sphere of the R3ALN3T.EXE world (year 3026).
 It exists as world texture and player progression flavor; it makes no claims about dominion-tier lore.
 
 ## Role in the World
-- Operates within: ABYSSAL CABAL
+- Operates within: ABYSSAL CABAL (→ Abyssal Covenant)
 - Geographic home: one of the post-Fall regions (Abyssal Plains, Sky-Spine Range, Trench Basins)
 - Element consistency: Aqua is valid under the canonical wheel and does not break combat balance assumptions.
 
 ## Progression Sketch
 - Entry: civilian or recruit with latent Aqua affinity.
-- Mid: trained operator within ABYSSAL CABAL.
+- Mid: trained operator within ABYSSAL CABAL (→ Abyssal Covenant).
 - Capstone: recognized master / defector / awakened (see arc careers 18–20).
 
 ## Soul-State Note (where relevant)

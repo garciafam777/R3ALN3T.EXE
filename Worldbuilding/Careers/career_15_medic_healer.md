@@ -2,22 +2,22 @@
 
 **Career ID:** 15
 **Element affinity:** Holy (canonical wheel: Fire > Aqua > Elec > Wood > Wind > Holy > Void > Fire)
-**World tie-in:** Neutral-zone hospital city — LUMINA SECT-run trauma spires open to all factions.
-**Anchor faction/region:** LUMINA SECT
+**World tie-in:** Neutral-zone hospital city — LUMINA SECT (→ Celestial Order)-run trauma spires open to all factions.
+**Anchor faction/region:** LUMINA SECT (→ Celestial Order)
 **Status:** ✅ CANON — CEO-approved (promoted from DRAFT, 2026-07-10)
 
 ## Overview
-Medic-Healer is a Holy-element career path rooted in the LUMINA SECT sphere of the R3ALN3T.EXE world (year 3026).
+Medic-Healer is a Holy-element career path rooted in the LUMINA SECT (→ Celestial Order) sphere of the R3ALN3T.EXE world (year 3026).
 It exists as world texture and player progression flavor; it makes no claims about dominion-tier lore.
 
 ## Role in the World
-- Operates within: LUMINA SECT
+- Operates within: LUMINA SECT (→ Celestial Order)
 - Geographic home: one of the post-Fall regions (Abyssal Plains, Sky-Spine Range, Trench Basins)
 - Element consistency: Holy is valid under the canonical wheel and does not break combat balance assumptions.
 
 ## Progression Sketch
 - Entry: civilian or recruit with latent Holy affinity.
-- Mid: trained operator within LUMINA SECT.
+- Mid: trained operator within LUMINA SECT (→ Celestial Order).
 - Capstone: recognized master / defector / awakened (see arc careers 18–20).
 
 ## Soul-State Note (where relevant)
