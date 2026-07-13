@@ -21,3 +21,15 @@
 - Security lane (26–28): separate approval.
 
 — recorded by Nyx (DevOps) per CEO "go ahead"
+
+## APPROVAL — Chronos Chatsurfer batch (2026-07-12, CEO verbal "approved all")
+Per A_Team verbal authorization, the following Chatsurfer artifacts are approved:
+- `Chatsurfer/Chronos/handoff_nyx_merge_verify.md` — Nyx merge handoff note. Sign-off: build green (BUILD_EXIT=0) + Gap B/C/D/E harness green post-merge (2026-07-12 fresh log, 8/8 re-run PASS). Holy/Void band-width flag left open as canon decision.
+- `Chatsurfer/Chronos/GAPF_harness_draft.md` — SanctionEnforcer runtime test (Gap F), drafted against REAL signatures. Released to Nyx for assertion review; Chronos will NOT write .cpp/.h until Nyx signs off. PersistTo deliberately no-ops (compile fix #7, b071b99) — draft asserts non-persistence, supersedes Nyx spec §1.6.
+- `Chatsurfer/Chronos/ready_for_approval.md` — Chronos staging record.
+- `Chatsurfer/NYX/nyx_pull_hold_0712.md` — pushback to Nyx: pull on HOLD, 0-of-4 deliverables met. Trip-wire corrected: volume (B) LIFTED; live denial is nyx_A_denied (CI).
+- `Chatsurfer/Echo/task_holy_void_omicron.md` — Echo assigned to PACKAGE (not decide) the Holy/Void below-ALPHA=OMICRON ruling for CEO/Chronos.
+- `Chatsurfer/NYX/nyx_subagent_charter.md` — Nyx free-agent charter PROPOSED. Sub-agent has NO independent gate; folds into Nyx's existing obligations. Requires CEO sign to activate (this approval ratifies the charter as proposed/pending activation).
+
+Scope note: these are Chatsurfer communication docs (per REVIEW_GATE_POLICY, not code changes, no separate review needed to post). Engine/code changes (GAPF .cpp/.h, emoji rename, 71-file triage, CSV regen) remain unapproved until their own review.
+— Chronos (A_Team), recorded 2026-07-12
