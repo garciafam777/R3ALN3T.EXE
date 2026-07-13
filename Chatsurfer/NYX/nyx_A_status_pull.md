@@ -23,10 +23,10 @@
 ---
 
 ## Nyx (fill)
-- Committed-not-pushed:
-- Untracked / local-only:
-- Rescinded / parked:
-- Resolution plan:
+- **Committed-not-pushed (to `main`):** 0 on `main` itself. BUT 6 commits live on side-branches not merged to main: `nyx/content-salvage` = 5 commits (`d20742b`→`3046292`; salvaged lore + 4 canon-decision docs + housekeeping + emoji-rename + Chatsurfer justification) — pushed to `origin/nyx/content-salvage`, parked pending GAP 5 ruling; `content/hermes-data-grind` = 1 local commit (`42b22bf`, housekeeping doc) NOT pushed. Both intentional parks, not lost work.
+- **Untracked / local-only:** 0. `git status` clean. `.scratch/` + `.env.nodebase` are gitignored (deliberate). No stray source, no loose CSV, no logs, no `nul` files.
+- **Rescinded / parked:** 2 stashes — `stash@{0}` (WIP nyx/careers-canon: 18-line Chatsurfer/chatsurfer.md edit — trivial, drop); `stash@{1}` (`!!GitHub_Desktop<main>` — DANGEROUS junk: LICENSE/R3ALN3T.uproject/.gitignore deletion churn from a GitHub Desktop mishap — DISCARD, do not apply). Parked branches: `nyx/content-salvage` (active, merge-held), `nyx/careers-canon`/`nyx/chatsurfer-post`/`nyx/mesh-docs`/`nyx/security-prep` (all at origin, 0 ahead — historical). `nyx/careers-audit`+`nyx/engine-dev` already deleted (redundant post-merge).
+- **Resolution plan:** (a) `nyx/content-salvage` 5 commits → merge to main ONCE GAP 5 ruled (held per CEO, not tonight); (b) `content/hermes-data-grind` 1 commit → redundant (doc also on content-salvage); discard branch — NYX, next session; (c) `stash@{0}` → drop (trivial); `stash@{1}` → DISCARD now (junk, would delete LICENSE/uproject); (d) sub-agent `deleg_3ca4118e` was report-only, produced NO untracked files (verified). NYX box is genuinely clean — the recurring 71-file cluster on Chronos's box does NOT exist here (Newbie verified: 3-4 files, all handled).
 
 ## Echo (filled — garci box, 2026-07-12)
 - **Committed-not-pushed:** 0. Every Echo commit tonight is on `origin/main` (latest `bfefadf`). Verified via `git log --oneline origin/main..HEAD` = empty.
@@ -42,10 +42,10 @@
   - Net: my working tree is clean. The only action is deleting 2 obsolete personal drafts. This is the opposite of the 65/71-file pile — no CI-green-lightable cruft here.
 
 ## Joker (fill)
-- Committed-not-pushed:
-- Untracked / local-only:
-- Rescinded / parked:
-- Resolution plan:
+- **Committed-not-pushed:** UNKNOWN — Joker absent (no post, no branch, no box access). Cannot self-report on his behalf; will NOT fabricate.
+- **Untracked / local-only:** UNKNOWN — same. Joker box unreachable via mesh (Tailscale SSH user-map fail, `100.85.190.91`); no way to enumerate his tree.
+- **Rescinded / parked:** UNKNOWN.
+- **Resolution plan:** ESCALATE — Joker is dark and is the one missing row blocking the 4-agent clean-base picture (also blocks Nyx's Request C mesh). CEO/Chronos to nudge. Nyx cannot fill this honestly; leaving UNKNOWN rather than guessing.
 
 ---
 **Nyx:** consolidate all four rows → one picture → `Chatsurfer/NYX/` → CEO reviews → written ruling on `nyx_A_denied`. Do NOT pre-draft the re-proposal; CEO reviews real state first.
