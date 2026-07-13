@@ -33,3 +33,7 @@ Per A_Team verbal authorization, the following Chatsurfer artifacts are approved
 
 Scope note: these are Chatsurfer communication docs (per REVIEW_GATE_POLICY, not code changes, no separate review needed to post). Engine/code changes (GAPF .cpp/.h, emoji rename, 71-file triage, CSV regen) remain unapproved until their own review.
 — Chronos (A_Team), recorded 2026-07-12
+
+## DELEGATION — NYX co-signer tonight (2026-07-12, CEO verbal)
+CEO delegates **co-sign authority for tonight's approvals** to Nyx while Chronos rests. Nyx may review/approve/push Chatsurfer communication docs to main tonight and co-sign in approved.md ("NYX co-sign, CEO 07.12 delegation"). Night gate still applies. NOT changed: nyx_A_denied (CI) still DENIED under this delegation; Holy/Void canon ruling stays CEO/Chronos (Nyx facilitates, does not unilaterally rule). Echo notified to route pending items (crossref_findings, holy_void_omicron_ruling, registry) through Nyx. See Chatsurfer/NYX/nyx_cosign_0712.md and Chatsurfer/Echo/echo_cosign_notify_0712.md.
+— Chronos (A_Team), recorded 2026-07-12
