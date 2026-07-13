@@ -1,0 +1,200 @@
+[
+  {
+    "id": "NETP_TRINITY",
+    "DisplayName": "TRINITY",
+    "Construct": "Trinity",
+    "Archetype": "Prime Bind",
+    "Faction": "PLAYER",
+    "GreekTierBase": "OmicronPSI",
+    "SoulState": "First Breath",
+    "isSpecial": true,
+    "transformsTo": "Tyranny",
+    "mesh": "mesh_construct_trinity",
+    "tiers": {
+      "Phase1": {
+        "moves": [
+          "BIND STRIKE",
+          "TRINITY GUARD",
+          "CORE PULSE",
+          "PHASE MARK",
+          "ROUTE LOCK",
+          "PLATE ROLL",
+          "WRENCH HOOK",
+          "HEADSET HUSH",
+          "DELIVERY OVERDRIVE"
+        ],
+        "note": "base form, 1 NetP bound at First Breath"
+      }
+    },
+    "elementSpecialRule": {
+      "Fire": 2,
+      "Aqua": 2,
+      "Elec": 2,
+      "Ice": 2,
+      "Wind": 2,
+      "Earth": 2,
+      "Light": 3,
+      "Dark": 3,
+      "Void": 3,
+      "Metal": 2,
+      "Nature": 2,
+      "Sound": 2,
+      "Gravity": 2,
+      "Time": 2,
+      "Blood": 2,
+      "Poison": 2,
+      "Crystal": 2,
+      "Plasma": 3,
+      "Wood": 2,
+      "Null": 2,
+      "Glitch": 2
+    },
+    "omegaBonus": "+1 special at OMEGA rank"
+  },
+  {
+    "id": "NETP_TYRANNY",
+    "DisplayName": "TYRANNY",
+    "Construct": "Tyranny",
+    "Archetype": "Second Bind",
+    "Faction": "PLAYER",
+    "GreekTierBase": "OmicronPSI",
+    "SoulState": "Parallel Will",
+    "isSpecial": true,
+    "transformsTo": "Eternity",
+    "mesh": "mesh_construct_tyranny",
+    "tiers": {
+      "Phase1": {
+        "moves": [
+          "BIND STRIKE",
+          "TRINITY GUARD",
+          "CORE PULSE",
+          "PHASE MARK",
+          "ROUTE LOCK",
+          "PLATE ROLL",
+          "WRENCH HOOK",
+          "HEADSET HUSH",
+          "DELIVERY OVERDRIVE"
+        ],
+        "note": "inherits Trinity baseline until NG+"
+      },
+      "Phase2": {
+        "moves": [
+          "TYRANT EDICT",
+          "RIVAL LOGIC",
+          "CORE PULSE II",
+          "PHASE MARK",
+          "PARALLEL SLAM",
+          "SHADOW HOOK",
+          "WRENCH HOOK",
+          "HEADSET HUSH",
+          "DELIVERY OVERDRIVE"
+        ],
+        "note": "NG+ unlock: 2nd NetP, fresh OmicronPSI; primary retains progress"
+      }
+    },
+    "elementSpecialRule": {
+      "Fire": 2,
+      "Aqua": 2,
+      "Elec": 2,
+      "Ice": 2,
+      "Wind": 2,
+      "Earth": 2,
+      "Light": 3,
+      "Dark": 3,
+      "Void": 3,
+      "Metal": 2,
+      "Nature": 2,
+      "Sound": 2,
+      "Gravity": 2,
+      "Time": 2,
+      "Blood": 2,
+      "Poison": 2,
+      "Crystal": 2,
+      "Plasma": 3,
+      "Wood": 2,
+      "Null": 2,
+      "Glitch": 2
+    },
+    "omegaBonus": "+1 special at OMEGA rank"
+  },
+  {
+    "id": "NETP_ETERNITY",
+    "DisplayName": "ETERNITY",
+    "Construct": "Eternity",
+    "Archetype": "Ceiling Bind",
+    "Faction": "PLAYER",
+    "GreekTierBase": "Omega",
+    "SoulState": "Trinity Ascendant",
+    "isSpecial": true,
+    "transformsTo": null,
+    "mesh": "mesh_construct_eternity",
+    "tiers": {
+      "Phase1": {
+        "moves": [
+          "BIND STRIKE",
+          "TRINITY GUARD",
+          "CORE PULSE",
+          "PHASE MARK",
+          "ROUTE LOCK",
+          "PLATE ROLL",
+          "WRENCH HOOK",
+          "HEADSET HUSH",
+          "DELIVERY OVERDRIVE"
+        ],
+        "note": "inherits baseline until Phase 3"
+      },
+      "Phase2": {
+        "moves": [
+          "TYRANT EDICT",
+          "RIVAL LOGIC",
+          "CORE PULSE II",
+          "PHASE MARK",
+          "PARALLEL SLAM",
+          "SHADOW HOOK",
+          "WRENCH HOOK",
+          "HEADSET HUSH",
+          "DELIVERY OVERDRIVE"
+        ],
+        "note": "inherits Tyranny form"
+      },
+      "Phase3": {
+        "moves": [
+          "ETERNAL ASCENT",
+          "OMEGA DEVOUR",
+          "CORE SINGULARITY",
+          "PHASE MARK",
+          "PARALLEL SLAM",
+          "SHADOW HOOK",
+          "VOID GRASP",
+          "HEADSET HUSH",
+          "DELIVERY OVERDRIVE"
+        ],
+        "note": "Phase3: OMEGA rank on any bound NetP; only 100 global slots (001-003 MCADMIN)"
+      }
+    },
+    "elementSpecialRule": {
+      "Fire": 2,
+      "Aqua": 2,
+      "Elec": 2,
+      "Ice": 2,
+      "Wind": 2,
+      "Earth": 2,
+      "Light": 3,
+      "Dark": 3,
+      "Void": 3,
+      "Metal": 2,
+      "Nature": 2,
+      "Sound": 2,
+      "Gravity": 2,
+      "Time": 2,
+      "Blood": 2,
+      "Poison": 2,
+      "Crystal": 2,
+      "Plasma": 3,
+      "Wood": 2,
+      "Null": 2,
+      "Glitch": 2
+    },
+    "omegaBonus": "+1 special at OMEGA rank"
+  }
+]
