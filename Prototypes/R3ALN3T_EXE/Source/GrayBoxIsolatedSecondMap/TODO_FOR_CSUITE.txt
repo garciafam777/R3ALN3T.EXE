@@ -1,0 +1,8 @@
+TODO — isolated second map gate
+1. Review Arch manifest: Content/Sublevels/TaxiIsolation/ARCHITECTURE_MANIFEST.md
+2. Approve region flavor: Taxi Kingdom / Bluegrass Perimeter / Luna Tollway
+3. Approve module prefix: R3ALN3T_EXE_API
+4. Approve adding dependency in R3ALN3T_EXE.Build.cs:
+     PublicDependencyModuleNames.Add("GrayBoxIsolatedSecondMap");
+5. Enable module only in editor; shipping stays disabled.
+6. Do NOT merge any change to GrayBox_Test.umap or GrayBoxPlayerPawn.

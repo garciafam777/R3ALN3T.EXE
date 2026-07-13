@@ -1,0 +1,42 @@
+{
+  "version": "0.1.0-isolated",
+  "moduleLabel": "GrayBoxIsolatedSecondMap",
+  "regionID": "TaxiKingdomIsolation",
+  "lockedLayerTag": "IsolationLayer",
+  "testMapRef": "NONE",
+  "sharedEditAllowed": false,
+  "manifest": [
+    {
+      "nodeID": "TK-Node-01",
+      "displayName": "Taxi Kingdom Plaza",
+      "buildingSet": "Courthouse",
+      "roadClass": "PedestrianRibbon",
+      "gridParcelMin": [-400.0, -400.0, 0.0],
+      "gridParcelMax": [0.0, 0.0, 120.0],
+      "worldLocation": [0.0, 0.0, 0.0]
+    },
+    {
+      "nodeID": "TK-Node-02",
+      "displayName": "Bluegrass Perimeter",
+      "buildingSet": "Foundry",
+      "roadClass": "ConcreteSpan",
+      "gridParcelMin": [0.0, -400.0, 0.0],
+      "gridParcelMax": [400.0, 0.0, 120.0],
+      "worldLocation": [500.0, 0.0, 0.0]
+    },
+    {
+      "nodeID": "TK-Node-03",
+      "displayName": "Luna Tollway Entry",
+      "buildingSet": "OrbitalHub",
+      "roadClass": "MagneticTrack",
+      "gridParcelMin": [-400.0, 0.0, 0.0],
+      "gridParcelMax": [0.0, 400.0, 120.0],
+      "worldLocation": [0.0, 500.0, 0.0]
+    }
+  ],
+  "architecturePatterns": [
+    "procedural_master",
+    "vertical_zone_placement",
+    "taxi_kingdom_localization"
+  ]
+}
