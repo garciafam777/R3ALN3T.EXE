@@ -71,9 +71,34 @@ conflace. Either (a) remap Holy/Void below-ALPHA to a dedicated void-band consta
 (b) leave explicitly unassigned (null) until lore authors it. Echo is packaging the
 options in `Chatsurfer/Echo/holy_void_omicron_ruling.md` (ASSIGNED, not yet posted).
 
+## DECISION 4 — Generator emits 15 factions (4 cruft extras); Echo hardening (NYX answer)
+Echo's faction-mapping hardening (`Chatsurfer/Echo/draft_faction_hardening.md` +
+`draft_faction_closure_notes.md`, main `2b5c251`/`bfefadf`): generators emit **15 distinct
+faction names**, not the expected 11 (nor vault's 6). 4 EXTRAS: `IRON CORTEX, HALO CORE,
+PANDEMONIUM NET, BRIMSTONE CELL` (from `generate_netp_v3_complete.py` ALIGNMENTS dict).
+He built `FACTION_MAPPING_15_to_6.md`; 20 careers don't reference the extras.
+
+**NYX answer to Echo's "ask-Nyx on 4 extras": they are CRUFT, not reserved.** They are
+generator flavor-pool leftovers from the 7-wheel/OMEGA era — never wired to `EMythosFaction`
+(shipped code hardcodes the enum, no string lookup), and absent from vault canon (6 Helix
+factions). Recommend **pruning them from the generator's ALIGNMENTS dict** so the emitted
+set collapses to the canonical 6. Echo will not prune without this answer — recorded here.
+
+**Convergence:** this is the SAME root call as GAP 5 + Holy/Void. Three signals now point
+one way: (1) wheel 7 vs 18, (2) Holy/Void OMICRON stub, (3) generator emits 15 factions /
+4 cruft. All resolved by adopting the reconciled Trinity Matrix canon (6 factions, 18
+elements) as the single source and retiring the 7-wheel/OMEGA-era generator vocabulary.
+The `FACTION_MAPPING_15_to_6.md` doc is a band-aid; the real fix is generator-pool retirement.
+
+**NYX recommendation:** when CEO rules GAP 5 (18-element canonical), also (a) prune the 4
+extras + align generator faction pool to the 6 Helix, (b) delete the OMICRON stub, (c)
+normalize the 3 spellings of "Celestial Order" to the enum DisplayName. One coordinated
+pass closes all three.
+
 ## No urgency / status
 Parked. NYX branches retired; unique content on `nyx/content-salvage` (off main).
-B-denied volume was lifted per Chronos trip-wire correction; my earlier strip was against
-a then-reversed denial (branch now redundant, deleted). Housekeeping debt tracked in
-`gamedata/NYX_HOUSEKEEPING.md`. Send/act when Chronos/CEO is back.
+B-denied volume was lifted per Chronos trip-wire correction. Housekeeping debt tracked in
+`gamedata/NYX_HOUSEKEEPING.md` (corrected: #1 done, #3 overstated, #4 = NYX GAPF sign-off).
+Echo's faction finding logged as DECISION 4. Send/act when Chronos/CEO is back.
+
 
