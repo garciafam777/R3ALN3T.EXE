@@ -35,6 +35,16 @@ CAT_ARCH = {
     "science_research": ("Lab", "LabAstralRig"),
     "government_administration": ("Civic", "CivicCommandShell"),
     "military_defense": ("Orbital", "OrbitalEnforcerExo"),
+    # extended categories (rule B: closest tool silhouette)
+    "agriculture_biosphere": ("Lab", "BioGrowthRig"),
+    "communications_media": ("Cipher", "SignalCipherShell"),
+    "economics_trade": ("Civic", "LedgerCommandShell"),
+    "education": ("Civic", "ScholaCommandShell"),
+    "engineering": ("Factory", "EngineerBotShell"),
+    "entertainment_arts": ("Cipher", "MediaCipherShell"),
+    "exploration": ("Lab", "FrontierAstralRig"),
+    "intelligence_agencies": ("Cipher", "IntelCipherExoshell"),
+    "law_justice": ("Civic", "JustitiaCommandShell"),
 }
 CAT_FACTION = {
     "transportation_logistics": "EonLogistics", "space_operations": "SkyDirectorate",

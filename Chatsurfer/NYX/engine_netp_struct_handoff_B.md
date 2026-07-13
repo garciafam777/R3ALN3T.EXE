@@ -41,10 +41,12 @@ enum class ENetPArchetype : uint8
 {
     // existing 5
     Vanguard, LogicGate, Infiltrator, SentientNode, Wraith,
-    // design archetypes (Option B)
+    // design archetypes (Option B) — covers all 20 career categories
     Trucker, ATC, Medical, Construction, Cipher,
     Cognition, DataCenter, Factory, Lab, Civic, Orbital
 };
+// NOTE: Lab/Civic map multiple categories (agriculture->Lab, exploration->Lab;
+//       economics/education/law->Civic). Archetype is the body-shell family, not 1:1 with faction.
 ```
 
 ### 1d. ESoulState — KEEP numeric band (Infernal/Neutral/Celestial) for soul mechanic.
