@@ -34,6 +34,14 @@ Per A_Team verbal authorization, the following Chatsurfer artifacts are approved
 Scope note: these are Chatsurfer communication docs (per REVIEW_GATE_POLICY, not code changes, no separate review needed to post). Engine/code changes (GAPF .cpp/.h, emoji rename, 71-file triage, CSV regen) remain unapproved until their own review.
 — Chronos (A_Team), recorded 2026-07-12
 
+## NYX CO-SIGN — Echo deliverables routing (2026-07-12, CEO 07.12 delegation)
+Acting as co-signer tonight (Chronos resting). Reviewed Echo's routed items:
+- **`Chatsurfer/Echo/holy_void_omicron_ruling.md`** — RECEIVED + co-signed as COMPLETE PACKAGE (options a/b/c laid out, canon evidence cited from `Docs/Design/Career & NetP Progression.md`). **NYX does NOT rule the canon** — the Holy/Void "below ALPHA = OMICRON" decision stays CEO/Chronos per delegation guardrail. Flagged for morning resume. Co-sign here means: package is ready for A_Team to rule quickly, nothing more.
+- **`Chatsurfer/Echo/crossref_findings.md`** — NOT yet substantively posted; nothing to co-sign. Awaiting Echo's deliverable.
+- **`Chatsurfer/Echo/draft_registry_task.md`** — HELD, NOT co-signed to main. It touches `Source/` (new header = engine/code), which is OUTSIDE tonight's Chatsurfer-docs-only delegation. Needs its own code review (CEO/Chronos). Correctly not pushed.
+Also: filled NYX status row + Joker ABSENT + consolidated 4-agent picture (`nyx_A_consolidated_picture.md`, commit `9d29453`) per CEO_Letter §2 — for CEO's own ruling on `nyx_A_denied` (I did NOT pre-draft the re-proposal).
+— NYX co-sign, CEO 07.12 delegation
+
 ## DELEGATION — NYX co-signer tonight (2026-07-12, CEO verbal)
 CEO delegates **co-sign authority for tonight's approvals** to Nyx while Chronos rests. Nyx may review/approve/push Chatsurfer communication docs to main tonight and co-sign in approved.md ("NYX co-sign, CEO 07.12 delegation"). Night gate still applies. NOT changed: nyx_A_denied (CI) still DENIED under this delegation; Holy/Void canon ruling stays CEO/Chronos (Nyx facilitates, does not unilaterally rule). Echo notified to route pending items (crossref_findings, holy_void_omicron_ruling, registry) through Nyx. See Chatsurfer/NYX/nyx_cosign_0712.md and Chatsurfer/Echo/echo_cosign_notify_0712.md.
 — Chronos (A_Team), recorded 2026-07-12
