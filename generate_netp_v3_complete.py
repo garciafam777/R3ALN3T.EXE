@@ -104,7 +104,7 @@ TIER_STAT_RANGES = {
 ALIGNMENTS = {
     "Mechanical": {
         "stat_bias": ["DEF", "RAPID"],
-        "factions": ["SYNTHETIC NETWORK", "IRON CORTEX", "GEAR SECT", "PROTOCOL DIVISION"],
+        "factions": ["SYNTHETIC NETWORK", "GEAR SECT", "PROTOCOL DIVISION"],  # cruft IRON CORTEX pruned (Override_b Ruling #1)
         "keywords": ["Protocol", "System", "Unit", "Construct", "Drone", "Core", "Matrix"],
         "shape": "angular_armored",
         "body_traits": ["plate_segments", "hydraulic_joints", "optical_sensors", "exposed_wiring"],
@@ -118,14 +118,14 @@ ALIGNMENTS = {
     },
     "Angelic": {
         "stat_bias": ["HP", "DEF", "CHARGE"],
-        "factions": ["CELESTIAL ORDER", "ASTRUM DIVISION", "HALO CORE", "LUMINA SECT"],
+        "factions": ["CELESTIAL ORDER", "ASTRUM DIVISION", "LUMINA SECT"],  # cruft HALO CORE pruned (Override_b Ruling #1)
         "keywords": ["Seraph", "Halo", "Wing", "Grace", "Divine", "Aegis", "Sanctum"],
         "shape": "winged_humanoid",
         "body_traits": ["feathered_wings", "radiant_aura", "halo_crown", "flowing_robes"],
     },
     "Demonic": {
         "stat_bias": ["ATK", "RAPID"],
-        "factions": ["PANDEMONIUM NET", "ABYSSAL CABAL", "BRIMSTONE CELL", "VOID CULT"],
+        "factions": ["ABYSSAL CABAL", "VOID CULT"],  # cruft PANDEMONIUM NET + BRIMSTONE CELL pruned (Override_b Ruling #1)
         "keywords": ["Imp", "Fiend", "Horn", "Claw", "Inferno", "Doom", "Terror"],
         "shape": "horned_beast",
         "body_traits": ["curved_horns", "barbed_tail", "burning_eyes", "scaled_hide"],
