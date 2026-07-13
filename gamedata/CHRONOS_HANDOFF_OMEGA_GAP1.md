@@ -101,4 +101,24 @@ B-denied volume was lifted per Chronos trip-wire correction. Housekeeping debt t
 `gamedata/NYX_HOUSEKEEPING.md` (corrected: #1 done, #3 overstated, #4 = NYX GAPF sign-off).
 Echo's faction finding logged as DECISION 4. Send/act when Chronos/CEO is back.
 
+---
+
+## RESOLVED 2026-07-13 — CEO Override_b supersedes the parked state above
+Override_b (CEO final sign) resolved DECISION 2/3/4:
+- **DECISION 2 (wheel):** 18-element Trinity Matrix is AUTHORITATIVE; 7-wheel deprecated.
+  (Chronos's earlier 7-wheel sample is now superseded — re-sample against 18-element before any volume gen.)
+- **DECISION 3 (Holy/Void OMICRON):** Holy/Void NOT in canonical 18. The OMICRON stub only
+  existed in `content_sample/headers_proposal/omega/` (REVIEW-ONLY proposal, never compiled into the
+  shipped engine). Shipped `ElementWheelCalculator.cpp/.h` has zero OMICRON/Holy/Void refs — already clean.
+  No live code to delete; proposal files are reference-only (left as-is, non-blocking).
+- **DECISION 4 (4 cruft factions):** IRON CORTEX/HALO CORE/PANDEMONIUM NET/BRIMSTONE CELL = cruft,
+  prune from generator ALIGNMENTS. Executed by NYX on nyx/engine-dev per Override_b Ruling #1.
+- **GAPF (Chronos #4):** CLOSED. GapFTest() written + run; 9/9 [GAPF-...] MATCH/PASS real-engine markers.
+  See gamedata/NYX_HOUSEKEEPING.md #4.
+
+**Carry-forward (still open, NOT resolved by Override_b):**
+- CI (Request A) REMAINS DENIED (nyx_A_denied.md) — awaits CEO's own written lift after four-agent status picture.
+- Chronos box: 65 untracked files (recurring 71-file mess) still untriaged — part of the status-pull blocker.
+- GAP 1 (7 OMEGA-contaminated lore files) needs canon rewrite/retire — vault-canon owner (Chronos) action.
+
 

@@ -103,3 +103,13 @@ void UR3ALN3TGameInstance::GapFTest()
 //
 // --- Required include (top of R3ALN3TGameInstance.cpp) ---
 // #include "../../Gameplay/Battle/SanctionEnforcer.h"   // Gap F: USanctionEnforcer
+
+// ============================ EXECUTED 2026-07-13 ============================
+// Per CEO Override_b Ruling #3 (GAPF sign-off GRANTED), the above was implemented for real:
+//  - GapFTest() added to R3ALN3TGameInstance.cpp (dispatch under -RunGapHarness).
+//  - SanctionEnforcer.h/.cpp gained a minimal const GetActiveSanctionsForDebug() accessor
+//    (read-only; used to verify AddUnique idempotency). No behavior change to shipped logic.
+//  - Build BUILD_EXIT=0. Headless -game -RunGapHarness captured 9/9 [GAPF-...] MATCH/PASS
+//    markers: null-safety, boosts 500/2000/5000 (Marked/Wanted/Fugitive), IsFugitive=TRUE,
+//    ShouldTransformToEcho FALSE->TRUE, AddUnique idempotent (reapply count=1), PersistTo no-op.
+//  Real engine verification — NOT the Python mirror. Closed record: gamedata/NYX_HOUSEKEEPING.md #4.

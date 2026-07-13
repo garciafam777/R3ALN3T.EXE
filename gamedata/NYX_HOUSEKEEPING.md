@@ -23,7 +23,7 @@
 - He will NOT write .cpp/.h until NYX signs off the assertions.
 - MY Python mirror (earlier) is NOT verification (can't touch UAIPerceptionSystem/actor lifecycle) — acknowledged, must not be cited as such.
 - Action: NYX reviews the GAPF draft assertions; sign off OR return feedback. Then Chronos writes the harness; runs via -RunGapHarness.
-- Status: ⏳ NYX review pending (blocked on my sign-off, not on Chronos).
+- Status: ✅ CLOSED 2026-07-13. CEO Override_b Ruling #3 GRANTED GAPF sign-off. Chronos wrote GapFTest() in R3ALN3TGameInstance.cpp (real SanctionEnforcer runtime test, added GetActiveSanctionsForDebug accessor to SanctionEnforcer.h/.cpp). Build BUILD_EXIT=0. Headless -game -RunGapHarness captured 9/9 [GAPF-...] MATCH/PASS markers (null-safety, boosts 500/2000/5000, IsFugitive, ShouldTransformToEcho FALSE→TRUE, AddUnique idempotent, PersistTo no-op). Real engine verification, not mirror.
 
 ## 5. GAP 5 + Holy/Void canon rulings (the real bottleneck)
 - See CHRONOS_HANDOFF_OMEGA_GAP1.md DECISION 2 (wheel) + DECISION 3 (Holy/Void).

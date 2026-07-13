@@ -39,6 +39,10 @@ public:
     UFUNCTION(BlueprintCallable, Category="R3ALN3T|Sanction")
     void PersistTo(UR3ALSaveGame* Save) const;
 
+    // Debug accessor: returns the active sanctions for a target (read-only).
+    // Used by the GapF headless harness to verify AddUnique idempotency.
+    const TArray<ESanctionType>* GetActiveSanctionsForDebug(AActor* Target) const;
+
 protected:
     // Runtime-only sanction tracking (not serialized; AActor* key is non-reflectable).
     TMap<TObjectPtr<AActor>, TArray<ESanctionType>> ActiveSanctions;

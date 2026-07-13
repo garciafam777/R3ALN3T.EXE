@@ -2,6 +2,7 @@
 #include "../../Gameplay/Battle/R3ALN3T_BattleManager.h" // Gap D: UR3ALN3T_BattleManager (RunEnemySoulSequence / RunSoulRoundTrip / GapBTest)
 #include "../../Gameplay/Battle/Cards/ChipDatabase.h"      // Gap E: UChipDatabase::ResolveChipDamage
 #include "../../Gameplay/Battle/GrayBoxPlayerPawn.h"        // Gap E: AGrayBoxPlayerPawn (spawn to prove pawn->trigger path)
+#include "../../Gameplay/Battle/SanctionEnforcer.h"         // Gap F: USanctionEnforcer runtime verification
 #include "../../Gameplay/Narrative/NarrativeManager.h"
 #include "Dom/JsonObject.h"
 #include "Serialization/JsonReader.h"
@@ -67,6 +68,7 @@ void UR3ALN3TGameInstance::Init()
 		RunEnemySoulSequence(50.f, TEXT("Fire"));     // Gap C: enemy soul fork sequence
 		GapBTest();                                   // Gap B: encounter + element multiplier MATCH
 		GapBKillTest();                               // Gap B/E: kill -> IsEncounterCleared
+		GapFTest();                                  // Gap F: SanctionEnforcer runtime verification
 		UE_LOG(LogTemp, Log, TEXT("[GAP-HARNESS] auto-run DONE"));
 	}
 }
@@ -425,4 +427,80 @@ void UR3ALN3TGameInstance::GapBKillTest()
 	const bool bCleared = BM->IsEncounterCleared();
 	UE_LOG(LogTemp, Log, TEXT("[GAPB-KILL] HP %d -> %d | IsEncounterCleared=%s"),
 		HP0, HP1, bCleared ? TEXT("TRUE") : TEXT("FALSE"));
+}
+
+// ---- Gap F Exec: SanctionEnforcer runtime verification (headless -game) ----
+// Verifies the REAL engine functions (not a Python mirror): detection-radius boosts,
+// fugitive/echo transforms, null-target safety, AddUnique idempotency, PersistTo no-op.
+void UR3ALN3TGameInstance::GapFTest()
+{
+	UWorld* World = GetWorld();
+	if (!World)
+	{
+		UE_LOG(LogTemp, Error, TEXT("[GAPF] No world available."));
+		return;
+	}
+
+	// Spawn a real actor to serve as the sanction target (proven GrayBoxPlayerPawn path).
+	AGrayBoxPlayerPawn* Target = World->SpawnActor<AGrayBoxPlayerPawn>();
+	if (!Target)
+	{
+		UE_LOG(LogTemp, Error, TEXT("[GAPF] Failed to spawn target pawn."));
+		return;
+	}
+
+	USanctionEnforcer* SE = NewObject<USanctionEnforcer>(this);
+	if (!SE)
+	{
+		UE_LOG(LogTemp, Error, TEXT("[GAPF] Failed to create SanctionEnforcer."));
+		return;
+	}
+
+	// (1) Null-target safety: ApplySanction(nullptr) must NOT crash.
+	SE->ApplySanction(ESanctionType::Marked, nullptr, TEXT("null-target-safety"));
+	UE_LOG(LogTemp, Log, TEXT("[GAPF-NULL] ApplySanction(nullptr) returned without crash | PASS"));
+
+	// (2) Detection-radius boosts (real code: Marked +500, Wanted +1500, Fugitive +3000).
+	SE->ApplySanction(ESanctionType::Marked, Target, TEXT("visual-tag"));
+	const float BoostMarked = SE->GetDetectionRadiusBoost(Target);
+	UE_LOG(LogTemp, Log, TEXT("[GAPF-BOOST] Marked boost=%.0f (expected 500) | %s"),
+		BoostMarked, FMath::IsNearlyEqual(BoostMarked, 500.f) ? TEXT("MATCH") : TEXT("MISMATCH"));
+
+	SE->ApplySanction(ESanctionType::Wanted, Target, TEXT("bounty"));
+	const float BoostWanted = SE->GetDetectionRadiusBoost(Target);
+	UE_LOG(LogTemp, Log, TEXT("[GAPF-BOOST] Marked+Wanted boost=%.0f (expected 2000) | %s"),
+		BoostWanted, FMath::IsNearlyEqual(BoostWanted, 2000.f) ? TEXT("MATCH") : TEXT("MISMATCH"));
+
+	SE->ApplySanction(ESanctionType::Fugitive, Target, TEXT("manhunt"));
+	const float BoostFugitive = SE->GetDetectionRadiusBoost(Target);
+	UE_LOG(LogTemp, Log, TEXT("[GAPF-BOOST] Marked+Wanted+Fugitive boost=%.0f (expected 5000) | %s"),
+		BoostFugitive, FMath::IsNearlyEqual(BoostFugitive, 5000.f) ? TEXT("MATCH") : TEXT("MISMATCH"));
+
+	// (3) Fugitive / Echo transform gates.
+	const bool bFugitive = SE->IsFugitive(Target);
+	UE_LOG(LogTemp, Log, TEXT("[GAPF-ISFUG] IsFugitive=%s (expected TRUE) | %s"),
+		bFugitive ? TEXT("TRUE") : TEXT("FALSE"), bFugitive ? TEXT("MATCH") : TEXT("MISMATCH"));
+
+	const bool bEchoBefore = SE->ShouldTransformToEcho(Target);
+	SE->ApplySanction(ESanctionType::Echoed, Target, TEXT("character-loss"));
+	const bool bEchoAfter = SE->ShouldTransformToEcho(Target);
+	UE_LOG(LogTemp, Log, TEXT("[GAPF-ECHO] Before=%s After=%s (expected FALSE->TRUE) | %s"),
+		bEchoBefore ? TEXT("TRUE") : TEXT("FALSE"), bEchoAfter ? TEXT("TRUE") : TEXT("FALSE"),
+		(!bEchoBefore && bEchoAfter) ? TEXT("MATCH") : TEXT("MISMATCH"));
+
+	// (4) AddUnique idempotency: re-applying same sanction must not duplicate.
+	SE->ApplySanction(ESanctionType::Marked, Target, TEXT("reapply"));
+	int32 MarkedCount = 0;
+	if (const TArray<ESanctionType>* S = SE->GetActiveSanctionsForDebug(Target))
+	{
+		for (ESanctionType T : *S) if (T == ESanctionType::Marked) MarkedCount++;
+	}
+	UE_LOG(LogTemp, Log, TEXT("[GAPF-UNIQ] Marked reapply count=%d (expected 1) | %s"),
+		MarkedCount, MarkedCount == 1 ? TEXT("MATCH") : TEXT("MISMATCH"));
+
+	// (5) PersistTo is a deliberate no-op (sanctions are non-serializable AActor* state).
+	SE->PersistTo(nullptr); // must not crash; intentionally writes nothing
+	UE_LOG(LogTemp, Log, TEXT("[GAPF-PERSIST] PersistTo(nullptr) no-op, no crash | PASS"));
+
+	UE_LOG(LogTemp, Log, TEXT("[GAPF] SanctionEnforcer runtime verification complete."));
 }

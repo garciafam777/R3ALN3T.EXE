@@ -45,3 +45,9 @@ void USanctionEnforcer::PersistTo(UR3ALSaveGame* Save) const
 	// so they are intentionally NOT persisted to the save game.
 	if (!Save) return;
 }
+
+const TArray<ESanctionType>* USanctionEnforcer::GetActiveSanctionsForDebug(AActor* Target) const
+{
+	if (!Target) return nullptr;
+	return ActiveSanctions.Find(Target);
+}

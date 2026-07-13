@@ -77,6 +77,11 @@ public:
 	UFUNCTION(Exec)
 	void GapBKillTest();
 
+	// Gap F Exec: verifies USanctionEnforcer REAL runtime behavior (boosts, fugitive/echo
+	// gates, null-target safety, AddUnique idempotency, PersistTo no-op). Headless -game.
+	UFUNCTION(Exec)
+	void GapFTest();
+
 	// --- Save/Load ---
 	UFUNCTION(BlueprintCallable, Category = "Save")
 	void SaveGame(int32 SlotIndex);
