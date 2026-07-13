@@ -1,0 +1,4 @@
+RegionID,DisplayName,Description,MacroRegion,ElevationMinM,ElevationMaxM,bCanonSeeded
+AbyssalPlains,Abyssal Plains,"Exposed old seabed, 0 to -2000m relative to new sea levels. Dense hyper-oxygenated greenhouse atmosphere; salt-crusted flats, petrified coral forests, hypersaline lakes.",PuertoRicoPostFall,-2000,0,true
+SkySpineRange,Sky-Spine Range,"Old PR main island (Cerro de Punta). Alpine cloud-forests, cold misty pine-shrub, vertical limestone cliffs with cave networks.",PuertoRicoPostFall,0,3300,true
+TrenchBasins,Trench Basins,"Puerto Rico Trench to the north. Ultra-deep hypersaline sea, sulfur mists, thermal evaporation cloud cover.",PuertoRicoPostFall,-8000,-2000,true
