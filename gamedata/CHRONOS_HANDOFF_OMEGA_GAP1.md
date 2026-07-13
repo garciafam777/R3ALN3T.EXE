@@ -54,12 +54,26 @@ NYX will NOT self-resolve this. Logged for your authority.
 
 ## Reference available (new canon-aligned lore, for review)
 - `content_sample/lore/faction_primers.md` (6 factions)
-- `content_sample/lore/endgame_paths.md` (4 endgames)
+- `content_sample/lore/endgame_paths.md` (4 endgame convergences + post-game frontiers)
 - `content_sample/lore/element_pair_bible.md` (18 elements / 9 pairs)
 - `content_sample/lore/netp_construct_primers.md` (Trinity/Tyranny/Eternity)
 - `content_sample/lore/soul_state.md` (uint8 0..2 scale — code-aligned)
 
+## DECISION 3 — Holy/Void "below ALPHA = OMICRON" band-width (canon decision)
+`ElementWheelCalculator` (in main, v2) has a literal `OMICRON` placeholder for Holy/Void
+"below ALPHA" Soul State band, flagged "TBD by Chronos." Per Echo's task brief, this
+conflates "below-ALPHA Soul State band" (0–100 scale, isomorphic to Heaven's 7 layers /
+Hell's 7 stages) with "OMICRON = bottom Greek-ladder rung" (Omicron→PSI→…→Omega). The
+mapping is undefined/unjustified. Engine builds green (not a compile issue) — purely canon.
+
+**NYX recommendation (non-binding, for CEO/Chronos ruling):** do NOT keep the OMICRON
+conflace. Either (a) remap Holy/Void below-ALPHA to a dedicated void-band constant, or
+(b) leave explicitly unassigned (null) until lore authors it. Echo is packaging the
+options in `Chatsurfer/Echo/holy_void_omicron_ruling.md` (ASSIGNED, not yet posted).
+
 ## No urgency / status
-Parked. NYX branches `nyx/careers-audit` + `nyx/engine-dev` stay unmerged (Q1 merge held per
-CEO). B-denied 120k volume stripped from both branches (Q2 cleanup done). Send/act when Chronos
-is back. Nothing blocks the morning.
+Parked. NYX branches retired; unique content on `nyx/content-salvage` (off main).
+B-denied volume was lifted per Chronos trip-wire correction; my earlier strip was against
+a then-reversed denial (branch now redundant, deleted). Housekeeping debt tracked in
+`gamedata/NYX_HOUSEKEEPING.md`. Send/act when Chronos/CEO is back.
+
