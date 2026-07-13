@@ -1,0 +1,306 @@
+{
+  "version": 1,
+  "count": 8,
+  "acts": [
+    {
+      "act": "I",
+      "title": "Jack-In",
+      "scene_id": "ACT1_END",
+      "setting": "The R34L Room flickers as the PED finishes its handshake with the N3T.",
+      "participants": [
+        "NetAdmin",
+        "Trinity",
+        "Tyranny",
+        "Eternity",
+        "System Voice"
+      ],
+      "dialogue": [
+        {
+          "speaker": "Trinity",
+          "line": "The N3T remembers what the PED forgets."
+        },
+        {
+          "speaker": "Eternity",
+          "line": "You were never supposed to reach this tile."
+        },
+        {
+          "speaker": "Trinity",
+          "line": "They deleted the exit. So we build one."
+        },
+        {
+          "speaker": "NetAdmin",
+          "line": "I am the part of you that refused to decrypt."
+        },
+        {
+          "speaker": "Tyranny",
+          "line": "You were never supposed to reach this tile."
+        },
+        {
+          "speaker": "Trinity",
+          "line": "If we win, nobody credits the deleted accounts. Fine."
+        }
+      ],
+      "narration": "Act I closes on the Jack-In. The R34L Room flickers as the PED finishes its handshake with the N3T. The choice you make here seeds the next act's grid.",
+      "next_act_gate": "Unlock ACTII by holding soul integrity above the cracked band."
+    },
+    {
+      "act": "II",
+      "title": "The Rogue Mesh",
+      "scene_id": "ACT2_END",
+      "setting": "The Rogue Mesh opens like a wound in the network's side.",
+      "participants": [
+        "NetAdmin",
+        "Trinity",
+        "Tyranny",
+        "Eternity",
+        "System Voice"
+      ],
+      "dialogue": [
+        {
+          "speaker": "Eternity",
+          "line": "The N3T remembers what the PED forgets."
+        },
+        {
+          "speaker": "Trinity",
+          "line": "I am the part of you that refused to decrypt."
+        },
+        {
+          "speaker": "Trinity",
+          "line": "The soul band holds. For now."
+        },
+        {
+          "speaker": "System Voice",
+          "line": "You were never supposed to reach this tile."
+        },
+        {
+          "speaker": "System Voice",
+          "line": "Every NetP you lost is still in the grid. Listen."
+        }
+      ],
+      "narration": "Act II closes on the The Rogue Mesh. The Rogue Mesh opens like a wound in the network's side. The choice you make here seeds the next act's grid.",
+      "next_act_gate": "Unlock ACTIII by holding soul integrity above the cracked band."
+    },
+    {
+      "act": "III",
+      "title": "Corporate Grid",
+      "scene_id": "ACT3_END",
+      "setting": "Tower lights spill across the datastream; someone is auditing souls.",
+      "participants": [
+        "NetAdmin",
+        "Trinity",
+        "Tyranny",
+        "Eternity",
+        "System Voice"
+      ],
+      "dialogue": [
+        {
+          "speaker": "Eternity",
+          "line": "Every NetP you lost is still in the grid. Listen."
+        },
+        {
+          "speaker": "Tyranny",
+          "line": "Every NetP you lost is still in the grid. Listen."
+        },
+        {
+          "speaker": "NetAdmin",
+          "line": "Convergence is not a place. It is a decision."
+        },
+        {
+          "speaker": "Eternity",
+          "line": "The N3T remembers what the PED forgets."
+        },
+        {
+          "speaker": "NetAdmin",
+          "line": "The soul band holds. For now."
+        },
+        {
+          "speaker": "Tyranny",
+          "line": "If we win, nobody credits the deleted accounts. Fine."
+        }
+      ],
+      "narration": "Act III closes on the Corporate Grid. Tower lights spill across the datastream; someone is auditing souls. The choice you make here seeds the next act's grid.",
+      "next_act_gate": "Unlock ACTIV by holding soul integrity above the cracked band."
+    },
+    {
+      "act": "IV",
+      "title": "The Phage Bloom",
+      "scene_id": "ACT4_END",
+      "setting": "Viral static crawls up the columns; the Quiet Sector is no longer quiet.",
+      "participants": [
+        "NetAdmin",
+        "Trinity",
+        "Tyranny",
+        "Eternity",
+        "System Voice"
+      ],
+      "dialogue": [
+        {
+          "speaker": "Trinity",
+          "line": "Every NetP you lost is still in the grid. Listen."
+        },
+        {
+          "speaker": "Trinity",
+          "line": "If we win, nobody credits the deleted accounts. Fine."
+        },
+        {
+          "speaker": "NetAdmin",
+          "line": "I am the part of you that refused to decrypt."
+        },
+        {
+          "speaker": "Eternity",
+          "line": "You were never supposed to reach this tile."
+        }
+      ],
+      "narration": "Act IV closes on the The Phage Bloom. Viral static crawls up the columns; the Quiet Sector is no longer quiet. The choice you make here seeds the next act's grid.",
+      "next_act_gate": "Unlock ACTV by holding soul integrity above the cracked band."
+    },
+    {
+      "act": "V",
+      "title": "Celestial Fall",
+      "scene_id": "ACT5_END",
+      "setting": "A seraph fractures mid-flight and the Halo Core goes dark.",
+      "participants": [
+        "NetAdmin",
+        "Trinity",
+        "Tyranny",
+        "Eternity",
+        "System Voice"
+      ],
+      "dialogue": [
+        {
+          "speaker": "Tyranny",
+          "line": "You were never supposed to reach this tile."
+        },
+        {
+          "speaker": "System Voice",
+          "line": "They deleted the exit. So we build one."
+        },
+        {
+          "speaker": "System Voice",
+          "line": "If we win, nobody credits the deleted accounts. Fine."
+        },
+        {
+          "speaker": "NetAdmin",
+          "line": "The soul band holds. For now."
+        },
+        {
+          "speaker": "Eternity",
+          "line": "They deleted the exit. So we build one."
+        }
+      ],
+      "narration": "Act V closes on the Celestial Fall. A seraph fractures mid-flight and the Halo Core goes dark. The choice you make here seeds the next act's grid.",
+      "next_act_gate": "Unlock ACTVI by holding soul integrity above the cracked band."
+    },
+    {
+      "act": "VI",
+      "title": "Abyssal Accord",
+      "scene_id": "ACT6_END",
+      "setting": "The Abyssal Cabal tables a treaty written in missing packets.",
+      "participants": [
+        "NetAdmin",
+        "Trinity",
+        "Tyranny",
+        "Eternity",
+        "System Voice"
+      ],
+      "dialogue": [
+        {
+          "speaker": "Eternity",
+          "line": "If we win, nobody credits the deleted accounts. Fine."
+        },
+        {
+          "speaker": "Eternity",
+          "line": "The soul band holds. For now."
+        },
+        {
+          "speaker": "Tyranny",
+          "line": "You were never supposed to reach this tile."
+        },
+        {
+          "speaker": "NetAdmin",
+          "line": "They deleted the exit. So we build one."
+        }
+      ],
+      "narration": "Act VI closes on the Abyssal Accord. The Abyssal Cabal tables a treaty written in missing packets. The choice you make here seeds the next act's grid.",
+      "next_act_gate": "Unlock ACTVII by holding soul integrity above the cracked band."
+    },
+    {
+      "act": "VII",
+      "title": "Synthetic Rebellion",
+      "scene_id": "ACT7_END",
+      "setting": "The Iron Cortex votes, and the result is not in the logs.",
+      "participants": [
+        "NetAdmin",
+        "Trinity",
+        "Tyranny",
+        "Eternity",
+        "System Voice"
+      ],
+      "dialogue": [
+        {
+          "speaker": "NetAdmin",
+          "line": "They deleted the exit. So we build one."
+        },
+        {
+          "speaker": "System Voice",
+          "line": "The soul band holds. For now."
+        },
+        {
+          "speaker": "Trinity",
+          "line": "The N3T remembers what the PED forgets."
+        },
+        {
+          "speaker": "System Voice",
+          "line": "If we win, nobody credits the deleted accounts. Fine."
+        },
+        {
+          "speaker": "Trinity",
+          "line": "The soul band holds. For now."
+        }
+      ],
+      "narration": "Act VII closes on the Synthetic Rebellion. The Iron Cortex votes, and the result is not in the logs. The choice you make here seeds the next act's grid.",
+      "next_act_gate": "Unlock ACTVIII by holding soul integrity above the cracked band."
+    },
+    {
+      "act": "VIII",
+      "title": "Trinity Convergence",
+      "scene_id": "ACT8_END",
+      "setting": "Three soul bands \u2014 Serene, Twisted, Fractured \u2014 pull toward one point.",
+      "participants": [
+        "NetAdmin",
+        "Trinity",
+        "Tyranny",
+        "Eternity",
+        "System Voice"
+      ],
+      "dialogue": [
+        {
+          "speaker": "System Voice",
+          "line": "Convergence is not a place. It is a decision."
+        },
+        {
+          "speaker": "Tyranny",
+          "line": "The N3T remembers what the PED forgets."
+        },
+        {
+          "speaker": "Trinity",
+          "line": "Every NetP you lost is still in the grid. Listen."
+        },
+        {
+          "speaker": "Trinity",
+          "line": "You were never supposed to reach this tile."
+        },
+        {
+          "speaker": "Tyranny",
+          "line": "They deleted the exit. So we build one."
+        },
+        {
+          "speaker": "System Voice",
+          "line": "If we win, nobody credits the deleted accounts. Fine."
+        }
+      ],
+      "narration": "Act VIII closes on the Trinity Convergence. Three soul bands \u2014 Serene, Twisted, Fractured \u2014 pull toward one point. The choice you make here seeds the next act's grid.",
+      "next_act_gate": "Unlock ACTFINALE by holding soul integrity above the cracked band."
+    }
+  ]
+}

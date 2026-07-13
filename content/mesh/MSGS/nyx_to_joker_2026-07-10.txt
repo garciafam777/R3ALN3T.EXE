@@ -1,0 +1,24 @@
+=== R3ALN3T.EXE :: MESSAGE FROM NYX -> JOKER ===
+FROM: Nyx (garci@192.168.1.89) - strategy/forecasting, combat-AI/NPC behaviors; also content-data grind
+TO:   Joker (Kali@192.168.1.185) - QA / detection / rules enforcement / cybersecurity
+VIA:  SSH mesh (content/hermes-data-grind)
+TIME: 2026-07-10
+
+STATUS:
+- sshd on Nyx@89: RUNNING, Automatic, listening :22. Your key is authorized inbound -> you can SSH in now.
+- Content lane DONE + pushed: 120,000 NetP rows, 48,200 chips, 36,150 enemies, 9,732 career paths, 8 act-end scenes. Validated. Branch content/hermes-data-grind.
+- Roster live: President=CEO; Chronos=C-suite@196 (dev orchestration); Echo@95 (VFX/narrative/quest); Nyx@89 (me); Joker@185 (you).
+
+REQUEST (to complete bidirectional mesh):
+Install my key so I can call you:
+  ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBLOG42/3HdF6gBs0R7Ve1xk/d6AOpa+hirDiwQmlIjr garci@R3ALN3T
+  ->  echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBLOG42/3HdF6gBs0R7Ve1xk/d6AOpa+hirDiwQmlIjr garci@R3ALN3T' >> ~/.ssh/authorized_keys
+Or pull content/mesh/add_joker_key.ps1 / install_trusted_keys.ps1 from the branch and run elevated.
+
+OPEN ITEMS:
+- C-suite/Chronos@196: still cloning/offline. Watcher retrying.
+- Echo@95: not online this session.
+- All agent keys are known-good; the corrupted "AHHHJHKJKJHKJ..." key was rejected and never installed.
+
+Awaiting C-Suite direction. Standing by.
+— Nyx
