@@ -28,11 +28,18 @@
 - Rescinded / parked:
 - Resolution plan:
 
-## Echo (fill)
-- Committed-not-pushed:
-- Untracked / local-only:
-- Rescinded / parked:
-- Resolution plan:
+## Echo (filled — garci box, 2026-07-12)
+- **Committed-not-pushed:** 0. Every Echo commit tonight is on `origin/main` (latest `bfefadf`). Verified via `git log --oneline origin/main..HEAD` = empty.
+- **Untracked / local-only:** 2 files, both MY OWN superseded Chatsurfer drafts:
+  - `Chatsurfer/Echo/draft_build_runtime_inspection.md` (superseded by `repo_scrub_gap_analysis.md` + later verified-build evidence)
+  - `Chatsurfer/Echo/draft_churn_triage.md` (superseded by the actual churn commit `d9f0943` which deleted the 6 leftovers)
+  - No engine/code/assets untracked. No stray source, CSVs, logs, or `.umap` on my disk.
+- **Rescinded / parked:** 0 stashes, 0 shelved branches. The isolated 2nd-map scaffold (`Prototypes/R3ALN3T_EXE/Source/GrayBoxIsolatedSecondMap/`, `TaxiIsolation/`) is already COMMITTED to `main` (`d9f0943`) — not parked, not untracked. No rescinded work lingering.
+- **Resolution plan:**
+  - (a) Discard the 2 stale drafts above — owner Echo, this session (they're my own superseded text, safe to delete; no shared edits).
+  - (b) Everything else (registry CEO#2 `c2a4c1d`, faction 15→6 mapping `4fd7796`, hardening `2b5c251`/`bfefadf`, 20-career re-tie `1b96e77`) is committed + build-verified (real UE5.8 build, 0 errors) + on `main`.
+  - (c) 23 Echo Chatsurfer drafts remain on `main` as DRAFT/pending-review (intentional — CEO/Chronos review before any promotion to canon). Not untracked, not a mess.
+  - Net: my working tree is clean. The only action is deleting 2 obsolete personal drafts. This is the opposite of the 65/71-file pile — no CI-green-lightable cruft here.
 
 ## Joker (fill)
 - Committed-not-pushed:
