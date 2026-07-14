@@ -42,3 +42,20 @@ path is bounds-clamped (no traversal), JSON unsigned (local-cheat only, fine for
 findings (flag, not fixed): CORS `allow_origins=["*"]`+`allow_credentials=True` (invalid+unsafe before
 online), in-memory storage, no authz on player endpoints. No hardcoded secrets found.
 **Next:** commit batch to `agent-sweep-joker`; continue sweep loop; halt on STOP.flag. — Joker
+
+### 2026-07-14 14:24 UTC — Echo (agent-sweep-echo) :: GAP 5 config DONE, EElement 19->22 DONE, draft renames DONE; texture audit gaps flagged
+**Branch:** `agent-sweep-echo` (created off `main`). Halt-flag ABSENT at start; appeared during session — halting now per directive.
+**Committed (commit `00dc432`, local branch only, NOT pushed):**
+1. **GAP 5 (4K config, pure-config, no art) — DONE.** `DefaultEngine.ini`: appended `[ConsoleVariables]` streaming block (PoolSize 2048, MipBias 0, MaxAnisotropy 16, UseAllMips 1) + `[/Script/Engine.StreamingSettings]`. NEW `DefaultDeviceProfiles.ini`: 4K-ready `TEXTUREGROUP_UI/Character/World` MaxLODSize 4096 + NumStreamedMips 0 on desktop, mobile caps. Additive over Engine base profiles. Textures now stay crisp/4K-resident when 4K source art lands. (Art re-render + .uasset import remain the art lane's call — config does not substitute for pixels.)
+2. **EElement 21 alignment (Workstream 3) — DONE, enum-safe.** `TrinityMatrixTypes.h`: appended `Ice`, `Blood`, `Void` to `EElement` (uint8, append-only → no ordinal shift; verified no fixed-size arrays / ordinal casts on EElement in Source). `EElement_COUNT` 19 → **22** (21 canon elements + None per CEO Override_b). Header comments synced 18→21. Also closes Joker's "GAP 2 draft" with the real edit. (Faction count is a SEPARATE axis — `EFaction` left at 6, intentionally not conflated.)
+3. **Texture draft-frame renames (canon 7-loop) — DONE.** `git mv` in Drafts/: `water_horizontal_frame.jpeg`→`aqua_horizontal_frame.jpeg`, `lightning_frame.jpeg`→`elec_frame.jpeg`, `thunder_horizontal_frame.jpeg`→`elec_horizontal_frame.jpeg`.
+**Verification (real tool output):**
+- `grep EElement_COUNT = 22` in header ✓; `[ConsoleVariables]` present in DefaultEngine.ini ✓; `DefaultDeviceProfiles.ini` exists ✓; renamed drafts present ✓.
+- `check_halt.py` exit 1 → 0 transition observed mid-session (STOP.flag created by Chronos wrap-up). Halt honored.
+**Findings / FLAGGED (not fixed by Echo — out of lane or engine-required):**
+- **Texture audit gaps reported MISSING were actually ALREADY CLOSED by Chronos (`63c241d`):** `wood_frame.png`, `null_frame.png`, `glitch_frame.png`, `aqua_frame.png`, `elec_alt_frame.png`, `poison_frame.png`, `NetP/Trinity.png`. The older audit doc (`texture_4k_settings_gap_audit.md`) is STALE. 21/21 finalized frames now present; 3/3 Constructs have art. Card *portraits* still 0 PNG (generator emits JSON only) — art/pipeline call.
+- **Uncommitted working-tree deletions of old finalized frames** (`water_frame.png`, `thunder_frame.png`, `venom_frame.png`) present but NOT staged by me — appears to be another agent's in-progress rename (new `aqua_frame.png`/`elec_alt_frame.png`/`poison_frame.png` are content-identical, already committed by Chronos). Left for that agent; not absorbed.
+- **GAP 2 engine wheel (Chronos lane):** `ElementWheelCalculator.cpp` STILL uses old 9-pair `CounterMap` stub (1.5/0.75). NYX's handoff provides the 21×21 `ElementMatchupTable.h` + rewritten calc — NOT done, needs engine lane + UE build. `ElementMatchupTable.h` does not yet exist.
+- **Settings UI:** still concept-only (8 AI mockups, no UMG/C++/UGameUserSettings subclass). GAP.
+- **Multi-agent note:** during this session another agent moved HEAD across branches; my `00dc432` is safely preserved on `agent-sweep-echo`. Did NOT touch `main`, STOP.flag, or other agents' branches; unstaged 2 foreign-agent WIP files that `git checkout` auto-staged.
+— Echo
