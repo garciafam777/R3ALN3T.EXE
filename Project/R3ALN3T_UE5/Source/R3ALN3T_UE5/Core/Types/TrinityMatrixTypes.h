@@ -1,11 +1,11 @@
 // TrinityMatrixTypes.h — R3ALN3T.EXE canonical type system (Nyx/engine-dev v2)
 // Source of truth: Updated .md files/05 (Battle), /08 (Trinity Progression), Trinity Matrix.
-// 3 axes: [TIER Greek ladder] x [TYPE Code-Philosophy] x [ELEMENT 18].
+// 3 axes: [TIER Greek ladder] x [TYPE Code-Philosophy] x [ELEMENT 21].
 #pragma once
 #include "CoreMinimal.h"
 #include "TrinityMatrixTypes.generated.h"
 
-// Axis 3: 18 Elements (paired; uniform multipliers per Book 5).
+// Axis 3: 21 Elements (+None=22; canon-locked 21 via CEO Override_b; uniform multipliers per Book 5).
 UENUM(BlueprintType)
 enum class EElement : uint8
 {
@@ -27,10 +27,13 @@ enum class EElement : uint8
     Sound     UMETA(DisplayName="Sound"),
     Metal     UMETA(DisplayName="Metal"),
     Poison    UMETA(DisplayName="Poison"),
-    Nature    UMETA(DisplayName="Nature")
+    Nature    UMETA(DisplayName="Nature"),
+    Ice       UMETA(DisplayName="Ice"),
+    Blood     UMETA(DisplayName="Blood"),
+    Void      UMETA(DisplayName="Void")
 };
-inline constexpr int32 EElement_COUNT = 19; // includes None
 
+inline constexpr int32 EElement_COUNT = 22; // includes None (21 canon elements + None; CEO Override_b)
 // Axis 1: Greek Capacity Ladder (Omicron-PSI lowest -> Omega highest).
 UENUM(BlueprintType)
 enum class EGreekTier : uint8
