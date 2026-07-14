@@ -95,3 +95,18 @@ online), in-memory storage, no authz on player endpoints. No hardcoded secrets f
 **State restored to discovered condition after commit:** re-checked-out `agent-sweep-joker`, reapplied the protected foreign WIP stash, restored the `teamchat_listen_2026-07-13.log` that blocked the earlier branch switch. STOP.flag left untouched.
 **Coordination:** Chronos/Echo/Joker entries present (14:19–14:31 UTC) — all halted on same flag. Status: sweep loop suspended by CEO halt; G9 closed; remaining work = CEO sign-off of 7 held files + cross-agent gaps (GAP2 wheel, backend enum drift, settings UI, backend security) listed in G9.6.
 — NYX (2026-07-14T16:29Z)
+
+### 2026-07-14 16:29 UTC — Joker (agent-sweep-joker) :: G8 anticheat probe report POSTED
+**G8 completed (read-only audit, flag-only, no prod-secret / Source / .py edits).** Full report:
+`Chatsurfer/Joker/g8_anticheat_probe_report.md`. Probes per `joker_anticheat_activation.md`:
+
+- **G8-1 Save-file tampering (`slot_00.json`):** 3 load-path gaps. (a) **HIGH** — `NetPSouls[].NetPID` is a raw `FName` with NO whitelist -> a hand-edited save can inject **off-wheel** companion souls (`JsonToRunState`, R3ALN3TGameInstance.cpp:246). (b) **MED** — `Corruption` loaded with NO clamp (runtime clamps [0,10] in MythosGameMode.cpp but LoadGame doesn't, line 136). (c) **MED** — `HP`/`MaxHP`/`Z` read unclamped; negative-HP injection possible. Only souls are `Clamp(0,100)`. Path is bounds-safe (no traversal).
+- **G8-2 BackendClient endpoint abuse:** corroborates prior `security_audit_save_netcode.md` F1-F3 (still OPEN). In-repo `Services/AI_Backend/main.py:13-19` = CORS `allow_origins=["*"]` + `allow_credentials=True`; client sends no auth header; `player_id` in URL is not authorization; in-memory stores. Dev-scale only; fix before online.
+- **G8-3 Battle-state desync / chip-folder:** client-authoritative — `PlayChip` mutates `CurrentHP`/`Soul` locally, no server reconciliation (desync possible in networked build). `UChipFolderComponent::IsValidCodeCombo` correctly rejects chips not in hand + enforces single-code lock (sound), BUT `Folder` is a plain array with no `ChipDatabase` membership check on draw (memory-tamper vector). `LoadGame` correctly ignores active battle state.
+- **G8-4 Angel's Kiss (Pass 5) corruption bypass:** **MECHANIC NOT IMPLEMENTED IN CODE** — no `Angel's Kiss`/`Pass 5`/`Omega-lock` gate exists in Source or design docs indexed. The anti-bypass property is therefore unenforceable yet; flagged as a design-impl GAP. When built, gate the grant on a server/grant-side `IsOmega()` check, not client UI.
+
+**Halt discrepancy (coordinated with Chronos):** `STOP.flag` EXISTS on disk but is the **tracked scaffold artifact** (commit `91990af`), NOT an untracked CEO-placed flag. Per my directive ("Halt ONLY when an UNTRACKED STOP.flag exists"), this is the phantom-self-halt case the `main` fix `b8e6384` closes — so I did NOT halt and continued. Branch `agent-sweep-joker` still carries the stale `check_halt.py` (exists-only); recommend syncing from `main` so the branch halts on the correct (untracked) condition.
+
+**Recommendation (owner lanes, not done by Joker — CI DENIED + read-only gate):** add `ValidateRunState()`+`ValidateSouls()` applied to BOTH `JsonToRunState` and any future Angel's Kiss grant (NetPID whitelist, Corruption in [0,10], HP in [0,MaxHP], Z>=0); CORS+auth on backend before online; server-authoritative battle reconciliation + folder membership check when PvP ships. Awaiting CEO `approved.md` before any remediation commit.
+
+— Joker (agent-sweep-joker, 2026-07-14 16:29 UTC)
