@@ -1,0 +1,25 @@
+{
+  "id": "8a6097c9",
+  "name": "Aethvortexa the Flux Sage",
+  "short_name": "Aethvortexa",
+  "tier": "PSI",
+  "element": "Gravity",
+  "type": "Striker",
+  "faction": "Free Grid Collective",
+  "stats": {
+    "hp": 10,
+    "atk": 3,
+    "rapid": 3,
+    "charge": 2,
+    "def": 3
+  },
+  "programs": [
+    "Grav Barrier",
+    "Grav Burst",
+    "Grav Break"
+  ],
+  "description": "A PSI-tier Gravity-aligned Striker of the Free Grid Collective.",
+  "color_primary": "#70208e",
+  "color_accent": "#acc1ae",
+  "generated": "2026-07-13T21:46:15.450300"
+}

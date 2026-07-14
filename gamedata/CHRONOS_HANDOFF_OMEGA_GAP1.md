@@ -103,8 +103,17 @@ Echo's faction finding logged as DECISION 4. Send/act when Chronos/CEO is back.
 
 ---
 
-## RESOLVED 2026-07-13 — CEO Override_b supersedes the parked state above
-Override_b (CEO final sign) resolved DECISION 2/3/4:
+> **GAP 1 RESOLVED 2026-07-14 (Joker, agent-sweep-joker):** all 8 OMEGA-contaminated lore files
+> addressed — 7 from the original handoff PLUS `exiled_omega_arc.md` (an 8th, found during sweep, not
+> in the original list). 4 wholly-OMEGA files (`omega_elemental_lore.md`, `omega_prime_lore.md`,
+> `usurpation_cutscene.md`, `exiled_omega_arc.md`) RETIRED to CANON_RETIRED stubs (preserve salvage
+> notes, no longer loadable lore). 4 contaminated-thin files (`act1_narrative_grid.md`,
+> `career_progression_trees.md`, `enemy_encounters.md`, `gamma_verdict_dialogue.md`) REWRITTEN to the
+> Trinity Matrix canon (21-element, real Greek ladder `OmicronPSI→Omega`, 6 factions, 3 Constructs,
+> Sanction loss-chain — OMEGA kept strictly as the apex *tier*, never an obtainable entity). Companion
+> doc `Chatsurfer/NYX/npc_story_tier_descriptions.md` Tier 3/4 also de-contaminated. OMEGA framing is
+> dead per `Override_b` §RULING #1; these files no longer legitimize OMEGA as obtainable. See
+> `Chatsurfer/Joker/element21_header_draft.md` for the related 18→21 header gap (flagged to Echo).
 - **DECISION 2 (wheel):** 18-element Trinity Matrix is AUTHORITATIVE; 7-wheel deprecated.
   (Chronos's earlier 7-wheel sample is now superseded — re-sample against 18-element before any volume gen.)
 - **DECISION 3 (Holy/Void OMICRON):** Holy/Void NOT in canonical 18. The OMICRON stub only

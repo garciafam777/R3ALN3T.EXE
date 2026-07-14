@@ -1,0 +1,25 @@
+{
+  "id": "df07f366",
+  "name": "Chronthoren the Code Warden",
+  "short_name": "Chronthoren",
+  "tier": "THETA",
+  "element": "Dark",
+  "type": "Assassin",
+  "faction": "Free Grid Collective",
+  "stats": {
+    "hp": 126,
+    "atk": 44,
+    "rapid": 28,
+    "charge": 32,
+    "def": 28
+  },
+  "programs": [
+    "Shadow Burst",
+    "Shadow Wall",
+    "Shadow Field"
+  ],
+  "description": "A THETA-tier Dark-aligned Assassin of the Free Grid Collective.",
+  "color_primary": "#aab2a7",
+  "color_accent": "#4af09c",
+  "generated": "2026-07-13T21:46:15.450213"
+}

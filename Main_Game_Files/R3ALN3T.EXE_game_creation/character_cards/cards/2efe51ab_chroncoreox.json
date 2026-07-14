@@ -1,0 +1,25 @@
+{
+  "id": "2efe51ab",
+  "name": "Chroncoreox the Echo Lord",
+  "short_name": "Chroncoreox",
+  "tier": "GAMMA",
+  "element": "Blood",
+  "type": "Technical",
+  "faction": "Aegis Concord",
+  "stats": {
+    "hp": 559,
+    "atk": 98,
+    "rapid": 52,
+    "charge": 116,
+    "def": 78
+  },
+  "programs": [
+    "Sanguine Barrier",
+    "Sanguine Burst",
+    "Sanguine Field"
+  ],
+  "description": "A GAMMA-tier Blood-aligned Technical of the Aegis Concord.",
+  "color_primary": "#0888ff",
+  "color_accent": "#073c88",
+  "generated": "2026-07-13T21:46:15.450156"
+}

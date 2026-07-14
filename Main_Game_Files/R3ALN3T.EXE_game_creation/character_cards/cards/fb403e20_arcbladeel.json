@@ -1,0 +1,25 @@
+{
+  "id": "fb403e20",
+  "name": "Arcbladeel the Void Walker",
+  "short_name": "Arcbladeel",
+  "tier": "SIGMA",
+  "element": "Lightning",
+  "type": "Technical",
+  "faction": "Abyssal Covenant",
+  "stats": {
+    "hp": 30,
+    "atk": 11,
+    "rapid": 3,
+    "charge": 7,
+    "def": 4
+  },
+  "programs": [
+    "Volt Break",
+    "Volt Barrier",
+    "Volt Pulse"
+  ],
+  "description": "A SIGMA-tier Lightning-aligned Technical of the Abyssal Covenant.",
+  "color_primary": "#2358ad",
+  "color_accent": "#0bd6cc",
+  "generated": "2026-07-13T21:46:15.450334"
+}

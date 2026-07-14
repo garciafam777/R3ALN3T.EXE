@@ -1,0 +1,25 @@
+{
+  "id": "fbba2ed7",
+  "name": "Cybermantisos the Null Knight",
+  "short_name": "Cybermantisos",
+  "tier": "OMEGA",
+  "element": "Light",
+  "type": "Tank",
+  "faction": "Celestial Order",
+  "stats": {
+    "hp": 2409,
+    "atk": 276,
+    "rapid": 136,
+    "charge": 186,
+    "def": 207
+  },
+  "programs": [
+    "Radiant Field",
+    "Radiant Wall",
+    "Radiant Wave"
+  ],
+  "description": "A OMEGA-tier Light-aligned Tank of the Celestial Order.",
+  "color_primary": "#0671d1",
+  "color_accent": "#f76955",
+  "generated": "2026-07-13T21:46:15.450112"
+}

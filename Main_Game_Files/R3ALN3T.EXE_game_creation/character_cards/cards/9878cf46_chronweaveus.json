@@ -1,0 +1,25 @@
+{
+  "id": "9878cf46",
+  "name": "Chronweaveus the Flux Sage",
+  "short_name": "Chronweaveus",
+  "tier": "CHI",
+  "element": "Void",
+  "type": "Striker",
+  "faction": "Undernet Syndicate",
+  "stats": {
+    "hp": 12,
+    "atk": 2,
+    "rapid": 3,
+    "charge": 4,
+    "def": 3
+  },
+  "programs": [
+    "Null Wall",
+    "Null Burst",
+    "Null Break"
+  ],
+  "description": "A CHI-tier Void-aligned Striker of the Undernet Syndicate.",
+  "color_primary": "#f2c5d9",
+  "color_accent": "#35afcf",
+  "generated": "2026-07-13T21:46:15.450368"
+}

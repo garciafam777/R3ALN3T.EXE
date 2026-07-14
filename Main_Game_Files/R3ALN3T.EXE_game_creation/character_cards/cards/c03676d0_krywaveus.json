@@ -1,0 +1,25 @@
+{
+  "id": "c03676d0",
+  "name": "Krywaveus the Grid Breaker",
+  "short_name": "Krywaveus",
+  "tier": "THETA",
+  "element": "Time",
+  "type": "Guardian",
+  "faction": "Celestial Order",
+  "stats": {
+    "hp": 218,
+    "atk": 35,
+    "rapid": 33,
+    "charge": 36,
+    "def": 25
+  },
+  "programs": [
+    "Chrono Field",
+    "Chrono Lance",
+    "Chrono Wave"
+  ],
+  "description": "A THETA-tier Time-aligned Guardian of the Celestial Order.",
+  "color_primary": "#47cb06",
+  "color_accent": "#cf8f8c",
+  "generated": "2026-07-13T21:46:15.450182"
+}

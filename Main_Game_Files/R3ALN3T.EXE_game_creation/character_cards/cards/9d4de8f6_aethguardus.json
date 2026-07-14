@@ -1,0 +1,25 @@
+{
+  "id": "9d4de8f6",
+  "name": "Aethguardus the Dusk Reaper",
+  "short_name": "Aethguardus",
+  "tier": "IOTA",
+  "element": "Void",
+  "type": "Viral",
+  "faction": "Aegis Concord",
+  "stats": {
+    "hp": 186,
+    "atk": 22,
+    "rapid": 31,
+    "charge": 23,
+    "def": 18
+  },
+  "programs": [
+    "Null Strike",
+    "Null Shift",
+    "Null Barrier"
+  ],
+  "description": "A IOTA-tier Void-aligned Viral of the Aegis Concord.",
+  "color_primary": "#0a8ddf",
+  "color_accent": "#ede62c",
+  "generated": "2026-07-13T21:46:15.450205"
+}

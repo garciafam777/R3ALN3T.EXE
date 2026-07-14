@@ -1,0 +1,25 @@
+{
+  "id": "c53480fb",
+  "name": "Tenebrweaveian the Echo Lord",
+  "short_name": "Tenebrweaveian",
+  "tier": "RHO",
+  "element": "Sound",
+  "type": "Guardian",
+  "faction": "N3T Dominion",
+  "stats": {
+    "hp": 49,
+    "atk": 8,
+    "rapid": 5,
+    "charge": 9,
+    "def": 6
+  },
+  "programs": [
+    "Sonic Wave",
+    "Sonic Strike",
+    "Sonic Barrier"
+  ],
+  "description": "A RHO-tier Sound-aligned Guardian of the N3T Dominion.",
+  "color_primary": "#aeb2ac",
+  "color_accent": "#b38efb",
+  "generated": "2026-07-13T21:46:15.450291"
+}

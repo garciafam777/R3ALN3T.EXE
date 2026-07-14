@@ -1,0 +1,25 @@
+{
+  "id": "fb36dfe3",
+  "name": "Luxaurael the Grid Breaker",
+  "short_name": "Luxaurael",
+  "tier": "BETA",
+  "element": "Poison",
+  "type": "Tank",
+  "faction": "N3T Dominion",
+  "stats": {
+    "hp": 786,
+    "atk": 121,
+    "rapid": 124,
+    "charge": 131,
+    "def": 95
+  },
+  "programs": [
+    "Toxin Pulse",
+    "Toxin Shift",
+    "Toxin Field"
+  ],
+  "description": "A BETA-tier Poison-aligned Tank of the N3T Dominion.",
+  "color_primary": "#3151ab",
+  "color_accent": "#9aa10f",
+  "generated": "2026-07-13T21:46:15.450171"
+}

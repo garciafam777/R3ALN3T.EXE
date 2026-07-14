@@ -1,0 +1,25 @@
+{
+  "id": "b2506766",
+  "name": "Umbrguardar the Void Walker",
+  "short_name": "Umbrguardar",
+  "tier": "KAPPA",
+  "element": "Dark",
+  "type": "Mechanical",
+  "faction": "Celestial Order",
+  "stats": {
+    "hp": 96,
+    "atk": 25,
+    "rapid": 15,
+    "charge": 20,
+    "def": 16
+  },
+  "programs": [
+    "Shadow Pulse",
+    "Shadow Lance",
+    "Shadow Break"
+  ],
+  "description": "A KAPPA-tier Dark-aligned Mechanical of the Celestial Order.",
+  "color_primary": "#f801cd",
+  "color_accent": "#515274",
+  "generated": "2026-07-13T21:46:15.450239"
+}

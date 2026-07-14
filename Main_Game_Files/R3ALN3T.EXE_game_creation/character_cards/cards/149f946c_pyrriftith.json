@@ -1,0 +1,25 @@
+{
+  "id": "149f946c",
+  "name": "Pyrriftith the Echo Lord",
+  "short_name": "Pyrriftith",
+  "tier": "UPSILON",
+  "element": "Wind",
+  "type": "Technical",
+  "faction": "Abyssal Covenant",
+  "stats": {
+    "hp": 34,
+    "atk": 8,
+    "rapid": 1,
+    "charge": 5,
+    "def": 4
+  },
+  "programs": [
+    "Cyclone Barrier",
+    "Cyclone Wall",
+    "Cyclone Field"
+  ],
+  "description": "A UPSILON-tier Wind-aligned Technical of the Abyssal Covenant.",
+  "color_primary": "#5b80ff",
+  "color_accent": "#401657",
+  "generated": "2026-07-13T21:46:15.450326"
+}

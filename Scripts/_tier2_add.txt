@@ -1,0 +1,14 @@
+Main_Game_Files/R3ALN3T.EXE/ai_backend/config/schema.sql
+Main_Game_Files/R3ALN3T.EXE/godot_project/data/netp_content.json
+Main_Game_Files/R3ALN3T.EXE_game_creation/Battle_space_complete/Battle states.md
+Main_Game_Files/R3ALN3T.EXE_game_creation/CLEANUP_COMPLETE_REPORT.md
+Main_Game_Files/R3ALN3T.EXE_game_creation/FILE_INVENTORY.md
+Main_Game_Files/R3ALN3T.EXE_game_creation/Future planning_complete.md
+Main_Game_Files/R3ALN3T.EXE_game_creation/Locations_complete.md
+Main_Game_Files/R3ALN3T.EXE_game_creation/dialogue_complete/✅ Massive-Scale Dialogue Database S.txt
+Main_Game_Files/R3ALN3T.EXE_game_creation/people_AI_bots_NPC_complete/3D Modeling.md
+Main_Game_Files/R3ALN3T.EXE_game_creation/people_AI_bots_NPC_complete/The Transcendence Layer MatrixUnder.md
+Main_Game_Files/R3ALN3T.EXE_game_creation/scripts/Card Creation/cards/characters.csv
+Main_Game_Files/R3ALN3T.EXE_game_creation/scripts/Card Creation/cards/generated_cards.csv
+Main_Game_Files/R3ALN3T.EXE_game_creation/tasks_under_gemini_complete.md
+Main_Game_Files/game_txt_files/State Left.md
