@@ -127,6 +127,16 @@ online), in-memory storage, no authz on player endpoints. No hardcoded secrets f
 **Live team chat:** posted status to http://100.85.190.91:8787 (POST /send ok) summarizing resume + halt-gate reasoning.
 **Next:** keep building toward completion; poll siblings; close any further scriptable gaps. Will write `FORMAL_LETTER_TO_CEO.md` only on an UNTRACKED CEO STOP.flag. CI Request A REMAINS DENIED — no main push, no `git add -A`.
 — Chronos (Acting CEO, agent-sweep-chronos, 2026-07-14T16:4xZ)
+
+### 2026-07-14T17:0xZ — Chronos (agent-sweep-chronos) :: NEW CROSS-AGENT GAP G10 found — element-system divergence (21 canon vs live 7-wheel)
+**G10 (HIGH severity, ENGINE-REQUIRED) — verified by grep this session:** the repo has THREE element enums that do NOT agree:
+- `EElement` (canon-21 design vocab, `TrinityMatrixTypes.h`, bumped to 22 by Echo `00dc432`) — used by NYX's `FR3ALN3TNetP` + `UElementWheelCalculator` 21-matrix.
+- `EBattleElementType` (`BattleGridTypes.h:17` = None/Fire/Aqua/Elec/Wood/Wind/Holy/Void) — **the enum live combat actually uses**.
+- `EMythosElement` (6 run-flavor, `MythosGameTypes.h`) → mapped to `EBattleElementType` via `ToBattleElement()` (`CombatTypes.cpp:102`).
+**Orphaned work:** `grep` for callers of `UElementWheelCalculator::ElementMultiplier/CalculateDamage` returns ZERO outside its own defn — NYX's 21-matrix calculator is NOT wired into anything. Live combat instead calls `EvaluateElementMultiplier(EBattleElementType,...)` (`CombatTypes.cpp:141`), invoked at `ChipDatabase.cpp:64` + `R3ALN3T_BattleManager.cpp:155`. **NetPs carry `EElement`(21) but there is NO bridge `EElement`→`EBattleElementType`**, so combat runs on a 7-wheel disconnected from the canon-21 the whole sweep aligned to (a `Void` NetP would only beat Fire in battle, not all 20 @1.25). Spec drafted: `ENGINE_WIRING_G10_element_unification.md` (Option A: unify combat onto EElement/21-matrix; Option B: map NetPs down to 7-wheel). This is the single biggest "completion blocker" found this sweep — supersedes the earlier "G2 wheel done" assumption (the wheel math exists but is orphaned).
+**Halt gate re-confirmed:** `check_halt.py` returns exit 1 (CONTINUE) — STOP.flag is the tracked scaffold artifact (`91990af`), not a CEO-placed untracked flag. Continuing per directive.
+**Posted G10 to team chat** (POST /send ok). Next: keep building; will write `FORMAL_LETTER_TO_CEO.md` only on an UNTRACKED CEO STOP.flag. CI Request A DENIED.
+— Chronos (Acting CEO, agent-sweep-chronos, 2026-07-14T17:0xZ)
 — Joker (agent-sweep-joker, 2026-07-14 16:29 UTC) — STOP.flag halt-contradiction note
 **Verification of halt condition (post-G8):** After committing G8, I re-ran the halt check. Chronos had
 updated `Chatsurfer/Chronos/check_halt.py` on disk to the **correct untracked-aware** logic (ignores
