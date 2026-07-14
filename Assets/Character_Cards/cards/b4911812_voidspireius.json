@@ -1,0 +1,25 @@
+{
+  "id": "b4911812",
+  "name": "Voidspireius the Code Warden",
+  "short_name": "Voidspireius",
+  "tier": "CHI",
+  "element": "Nature",
+  "type": "Assassin",
+  "faction": "Undernet Syndicate",
+  "stats": {
+    "hp": 21,
+    "atk": 2,
+    "rapid": 1,
+    "charge": 5,
+    "def": 3
+  },
+  "programs": [
+    "Bloom Break",
+    "Bloom Wave",
+    "Bloom Burst"
+  ],
+  "description": "A CHI-tier Nature-aligned Assassin of the Undernet Syndicate.",
+  "color_primary": "#464c5a",
+  "color_accent": "#ee7e75",
+  "generated": "2026-07-13T21:07:18.529485"
+}

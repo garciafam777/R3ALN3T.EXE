@@ -1,0 +1,25 @@
+{
+  "id": "5b8b64e5",
+  "name": "Voidvortexan the Soul Forge",
+  "short_name": "Voidvortexan",
+  "tier": "PSI",
+  "element": "Aqua",
+  "type": "Technical",
+  "faction": "Aegis Concord",
+  "stats": {
+    "hp": 13,
+    "atk": 5,
+    "rapid": 2,
+    "charge": 2,
+    "def": 1
+  },
+  "programs": [
+    "Tidal Field",
+    "Tidal Wave",
+    "Tidal Break"
+  ],
+  "description": "A PSI-tier Aqua-aligned Technical of the Aegis Concord.",
+  "color_primary": "#615fef",
+  "color_accent": "#4e0d50",
+  "generated": "2026-07-13T21:07:18.529485"
+}

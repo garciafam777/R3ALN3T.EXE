@@ -1,0 +1,25 @@
+{
+  "id": "3904c454",
+  "name": "Chronboundax the Void Walker",
+  "short_name": "Chronboundax",
+  "tier": "ETA",
+  "element": "Aqua",
+  "type": "Guardian",
+  "faction": "Abyssal Covenant",
+  "stats": {
+    "hp": 226,
+    "atk": 41,
+    "rapid": 32,
+    "charge": 42,
+    "def": 35
+  },
+  "programs": [
+    "Tidal Shift",
+    "Tidal Lance",
+    "Tidal Burst"
+  ],
+  "description": "A ETA-tier Aqua-aligned Guardian of the Abyssal Covenant.",
+  "color_primary": "#66a281",
+  "color_accent": "#c5371a",
+  "generated": "2026-07-13T21:07:18.528481"
+}

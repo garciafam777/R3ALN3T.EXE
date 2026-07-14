@@ -1,0 +1,25 @@
+{
+  "id": "34503731",
+  "name": "Axiauraar the Dusk Reaper",
+  "short_name": "Axiauraar",
+  "tier": "TAU",
+  "element": "Plasma",
+  "type": "Striker",
+  "faction": "Undernet Syndicate",
+  "stats": {
+    "hp": 33,
+    "atk": 7,
+    "rapid": 1,
+    "charge": 8,
+    "def": 3
+  },
+  "programs": [
+    "Nova Burst",
+    "Nova Shift",
+    "Nova Barrier"
+  ],
+  "description": "A TAU-tier Plasma-aligned Striker of the Undernet Syndicate.",
+  "color_primary": "#2b5f5c",
+  "color_accent": "#879409",
+  "generated": "2026-07-13T21:07:18.529485"
+}

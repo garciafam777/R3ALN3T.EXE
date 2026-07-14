@@ -49,10 +49,11 @@ TIER_STAT_RANGES = {
     'PSI': {'hp': (8,18),'atk':(2,5),'rapid':(1,3),'charge':(2,4),'def':(1,3)}
 }
 
-# ---- ELEMENTS ----
+# ---- ELEMENTS (LOCKED CANON 21: Aqua/Elec rename + Wood/Null/Glitch added) ----
 ELEMENTS = [
-    'Fire','Water','Lightning','Ice','Wind','Earth','Light','Dark','Void',
-    'Metal','Nature','Sound','Gravity','Time','Blood','Poison','Crystal','Plasma'
+    'Fire','Aqua','Elec','Ice','Wind','Earth','Light','Dark','Void',
+    'Metal','Nature','Sound','Gravity','Time','Blood','Poison','Crystal','Plasma',
+    'Wood','Null','Glitch'
 ]
 
 # ---- TYPES (alignments) ----
@@ -114,8 +115,8 @@ def gen_card(tier=None, element=None, type_=None, faction=None):
         'generated': datetime.now().isoformat()
     }
     
-    # Generate programs based on element
-    prog_prefixes = {'Fire':'Inferno','Water':'Tidal','Lightning':'Volt','Ice':'Cryo','Wind':'Cyclone','Earth':'Terra','Light':'Radiant','Dark':'Shadow','Void':'Null','Metal':'Ferro','Nature':'Bloom','Sound':'Sonic','Gravity':'Grav','Time':'Chrono','Blood':'Sanguine','Poison':'Toxin','Crystal':'Prism','Plasma':'Nova'}
+    # Generate programs based on element (LOCKED CANON 21 keys)
+    prog_prefixes = {'Fire':'Inferno','Aqua':'Tidal','Elec':'Volt','Ice':'Cryo','Wind':'Cyclone','Earth':'Terra','Light':'Radiant','Dark':'Shadow','Void':'Null','Metal':'Ferro','Nature':'Bloom','Sound':'Sonic','Gravity':'Grav','Time':'Chrono','Blood':'Sanguine','Poison':'Toxin','Crystal':'Prism','Plasma':'Nova','Wood':'Verdant','Null':'Hollow','Glitch':'Corrupt'}
     pp = prog_prefixes.get(element, 'Arcane')
     actions = ['Strike','Barrier','Pulse','Break','Shift','Burst','Wall','Lance','Field','Wave']
     card['programs'] = [f'{pp} {a}' for a in random.sample(actions, 3)]
@@ -162,7 +163,8 @@ def save_cards(cards):
 
 if __name__ == '__main__':
     import sys
-    count = int(sys.argv[1]) if len(sys.argv) > 1 else 25
+    random.seed(20260713)  # deterministic regen against locked canon
+    count = int(sys.argv[1]) if len(sys.argv) > 1 else 30
     print(f'Generating {count} character cards...')
     cards = generate_batch(count)
     manifest = save_cards(cards)

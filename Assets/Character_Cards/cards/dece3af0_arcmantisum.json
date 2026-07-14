@@ -1,0 +1,25 @@
+{
+  "id": "dece3af0",
+  "name": "Arcmantisum the Flux Sage",
+  "short_name": "Arcmantisum",
+  "tier": "ZETA",
+  "element": "Metal",
+  "type": "Demonic",
+  "faction": "Undernet Syndicate",
+  "stats": {
+    "hp": 198,
+    "atk": 48,
+    "rapid": 38,
+    "charge": 40,
+    "def": 40
+  },
+  "programs": [
+    "Ferro Pulse",
+    "Ferro Shift",
+    "Ferro Barrier"
+  ],
+  "description": "A ZETA-tier Metal-aligned Demonic of the Undernet Syndicate.",
+  "color_primary": "#fd67c0",
+  "color_accent": "#103553",
+  "generated": "2026-07-13T21:07:18.528481"
+}

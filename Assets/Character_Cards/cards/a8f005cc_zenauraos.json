@@ -1,0 +1,25 @@
+{
+  "id": "a8f005cc",
+  "name": "Zenauraos the Storm Herald",
+  "short_name": "Zenauraos",
+  "tier": "MU",
+  "element": "Blood",
+  "type": "Controller",
+  "faction": "Undernet Syndicate",
+  "stats": {
+    "hp": 99,
+    "atk": 21,
+    "rapid": 9,
+    "charge": 18,
+    "def": 18
+  },
+  "programs": [
+    "Sanguine Strike",
+    "Sanguine Break",
+    "Sanguine Wall"
+  ],
+  "description": "A MU-tier Blood-aligned Controller of the Undernet Syndicate.",
+  "color_primary": "#bd4e14",
+  "color_accent": "#3f0009",
+  "generated": "2026-07-13T21:07:18.529485"
+}

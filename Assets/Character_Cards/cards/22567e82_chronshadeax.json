@@ -1,0 +1,25 @@
+{
+  "id": "22567e82",
+  "name": "Chronshadeax the Echo Lord",
+  "short_name": "Chronshadeax",
+  "tier": "ALPHA",
+  "element": "Sound",
+  "type": "Mechanical",
+  "faction": "Aegis Concord",
+  "stats": {
+    "hp": 1323,
+    "atk": 204,
+    "rapid": 157,
+    "charge": 152,
+    "def": 112
+  },
+  "programs": [
+    "Sonic Break",
+    "Sonic Burst",
+    "Sonic Barrier"
+  ],
+  "description": "A ALPHA-tier Sound-aligned Mechanical of the Aegis Concord.",
+  "color_primary": "#c85963",
+  "color_accent": "#b418ef",
+  "generated": "2026-07-13T21:07:18.528481"
+}

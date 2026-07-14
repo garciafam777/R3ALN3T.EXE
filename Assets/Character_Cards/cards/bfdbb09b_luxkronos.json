@@ -1,0 +1,25 @@
+{
+  "id": "bfdbb09b",
+  "name": "Luxkronos the Storm Herald",
+  "short_name": "Luxkronos",
+  "tier": "THETA",
+  "element": "Sound",
+  "type": "Angelic",
+  "faction": "Aegis Concord",
+  "stats": {
+    "hp": 121,
+    "atk": 35,
+    "rapid": 31,
+    "charge": 42,
+    "def": 25
+  },
+  "programs": [
+    "Sonic Field",
+    "Sonic Barrier",
+    "Sonic Shift"
+  ],
+  "description": "A THETA-tier Sound-aligned Angelic of the Aegis Concord.",
+  "color_primary": "#a208fd",
+  "color_accent": "#327da0",
+  "generated": "2026-07-13T21:07:18.528481"
+}

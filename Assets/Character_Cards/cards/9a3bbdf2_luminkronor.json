@@ -1,0 +1,25 @@
+{
+  "id": "9a3bbdf2",
+  "name": "Luminkronor the Flux Sage",
+  "short_name": "Luminkronor",
+  "tier": "RHO",
+  "element": "Aqua",
+  "type": "Mechanical",
+  "faction": "Aegis Concord",
+  "stats": {
+    "hp": 39,
+    "atk": 12,
+    "rapid": 3,
+    "charge": 9,
+    "def": 6
+  },
+  "programs": [
+    "Tidal Lance",
+    "Tidal Shift",
+    "Tidal Strike"
+  ],
+  "description": "A RHO-tier Aqua-aligned Mechanical of the Aegis Concord.",
+  "color_primary": "#65cf17",
+  "color_accent": "#be5422",
+  "generated": "2026-07-13T21:07:18.529485"
+}

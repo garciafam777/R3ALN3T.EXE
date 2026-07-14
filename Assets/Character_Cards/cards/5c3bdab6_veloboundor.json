@@ -1,0 +1,25 @@
+{
+  "id": "5c3bdab6",
+  "name": "Veloboundor the Radiant",
+  "short_name": "Veloboundor",
+  "tier": "IOTA",
+  "element": "Wood",
+  "type": "Demonic",
+  "faction": "Celestial Order",
+  "stats": {
+    "hp": 137,
+    "atk": 29,
+    "rapid": 15,
+    "charge": 29,
+    "def": 22
+  },
+  "programs": [
+    "Verdant Barrier",
+    "Verdant Lance",
+    "Verdant Shift"
+  ],
+  "description": "A IOTA-tier Wood-aligned Demonic of the Celestial Order.",
+  "color_primary": "#5f57ea",
+  "color_accent": "#860716",
+  "generated": "2026-07-13T21:07:18.528481"
+}

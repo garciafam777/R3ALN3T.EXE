@@ -1,0 +1,25 @@
+{
+  "id": "039b81cb",
+  "name": "Tenebrspirean the Grid Breaker",
+  "short_name": "Tenebrspirean",
+  "tier": "SIGMA",
+  "element": "Gravity",
+  "type": "Mechanical",
+  "faction": "N3T Dominion",
+  "stats": {
+    "hp": 39,
+    "atk": 11,
+    "rapid": 2,
+    "charge": 8,
+    "def": 4
+  },
+  "programs": [
+    "Grav Break",
+    "Grav Barrier",
+    "Grav Field"
+  ],
+  "description": "A SIGMA-tier Gravity-aligned Mechanical of the N3T Dominion.",
+  "color_primary": "#7d462e",
+  "color_accent": "#84c5ac",
+  "generated": "2026-07-13T21:07:18.529485"
+}

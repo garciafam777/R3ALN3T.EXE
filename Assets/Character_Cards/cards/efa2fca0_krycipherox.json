@@ -1,0 +1,25 @@
+{
+  "id": "efa2fca0",
+  "name": "Krycipherox the Dusk Reaper",
+  "short_name": "Krycipherox",
+  "tier": "RHO",
+  "element": "Light",
+  "type": "Guardian",
+  "faction": "N3T Dominion",
+  "stats": {
+    "hp": 49,
+    "atk": 7,
+    "rapid": 4,
+    "charge": 9,
+    "def": 4
+  },
+  "programs": [
+    "Radiant Break",
+    "Radiant Barrier",
+    "Radiant Field"
+  ],
+  "description": "A RHO-tier Light-aligned Guardian of the N3T Dominion.",
+  "color_primary": "#779ea4",
+  "color_accent": "#e46906",
+  "generated": "2026-07-13T21:07:18.529485"
+}

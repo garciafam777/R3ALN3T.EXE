@@ -1,0 +1,25 @@
+{
+  "id": "aa581667",
+  "name": "Noxkronum the Radiant",
+  "short_name": "Noxkronum",
+  "tier": "UPSILON",
+  "element": "Ice",
+  "type": "Guardian",
+  "faction": "Celestial Order",
+  "stats": {
+    "hp": 35,
+    "atk": 4,
+    "rapid": 1,
+    "charge": 5,
+    "def": 2
+  },
+  "programs": [
+    "Cryo Wall",
+    "Cryo Strike",
+    "Cryo Lance"
+  ],
+  "description": "A UPSILON-tier Ice-aligned Guardian of the Celestial Order.",
+  "color_primary": "#e3f3e2",
+  "color_accent": "#7563be",
+  "generated": "2026-07-13T21:07:18.529485"
+}

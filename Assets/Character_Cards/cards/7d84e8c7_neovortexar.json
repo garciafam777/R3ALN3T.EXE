@@ -1,0 +1,25 @@
+{
+  "id": "7d84e8c7",
+  "name": "Neovortexar the Dusk Reaper",
+  "short_name": "Neovortexar",
+  "tier": "LAMBDA",
+  "element": "Fire",
+  "type": "Controller",
+  "faction": "Celestial Order",
+  "stats": {
+    "hp": 110,
+    "atk": 24,
+    "rapid": 23,
+    "charge": 18,
+    "def": 19
+  },
+  "programs": [
+    "Inferno Wall",
+    "Inferno Field",
+    "Inferno Pulse"
+  ],
+  "description": "A LAMBDA-tier Fire-aligned Controller of the Celestial Order.",
+  "color_primary": "#8fae1d",
+  "color_accent": "#83ed86",
+  "generated": "2026-07-13T21:07:18.528481"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "a985d371",
+  "name": "Noxguardon the Dusk Reaper",
+  "short_name": "Noxguardon",
+  "tier": "PI",
+  "element": "Void",
+  "type": "Striker",
+  "faction": "Abyssal Covenant",
+  "stats": {
+    "hp": 60,
+    "atk": 15,
+    "rapid": 6,
+    "charge": 8,
+    "def": 9
+  },
+  "programs": [
+    "Null Wave",
+    "Null Barrier",
+    "Null Burst"
+  ],
+  "description": "A PI-tier Void-aligned Striker of the Abyssal Covenant.",
+  "color_primary": "#1186ec",
+  "color_accent": "#005f0f",
+  "generated": "2026-07-13T21:07:18.529485"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "6de219cf",
+  "name": "Luxboundith the Grid Breaker",
+  "short_name": "Luxboundith",
+  "tier": "MU",
+  "element": "Plasma",
+  "type": "Assassin",
+  "faction": "N3T Dominion",
+  "stats": {
+    "hp": 130,
+    "atk": 24,
+    "rapid": 13,
+    "charge": 16,
+    "def": 14
+  },
+  "programs": [
+    "Nova Burst",
+    "Nova Shift",
+    "Nova Barrier"
+  ],
+  "description": "A MU-tier Plasma-aligned Assassin of the N3T Dominion.",
+  "color_primary": "#f7573b",
+  "color_accent": "#971bc7",
+  "generated": "2026-07-13T21:07:18.528481"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "d5e84287",
+  "name": "Pyrboundel the Echo Lord",
+  "short_name": "Pyrboundel",
+  "tier": "OMICRON",
+  "element": "Nature",
+  "type": "Guardian",
+  "faction": "Undernet Syndicate",
+  "stats": {
+    "hp": 74,
+    "atk": 15,
+    "rapid": 9,
+    "charge": 12,
+    "def": 8
+  },
+  "programs": [
+    "Bloom Field",
+    "Bloom Strike",
+    "Bloom Wave"
+  ],
+  "description": "A OMICRON-tier Nature-aligned Guardian of the Undernet Syndicate.",
+  "color_primary": "#63cfb3",
+  "color_accent": "#b578bb",
+  "generated": "2026-07-13T21:07:18.529485"
+}

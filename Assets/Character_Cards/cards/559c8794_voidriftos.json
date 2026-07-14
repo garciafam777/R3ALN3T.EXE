@@ -1,0 +1,25 @@
+{
+  "id": "559c8794",
+  "name": "Voidriftos the Soul Forge",
+  "short_name": "Voidriftos",
+  "tier": "OMEGA",
+  "element": "Metal",
+  "type": "Mechanical",
+  "faction": "Abyssal Covenant",
+  "stats": {
+    "hp": 1835,
+    "atk": 259,
+    "rapid": 131,
+    "charge": 214,
+    "def": 144
+  },
+  "programs": [
+    "Ferro Field",
+    "Ferro Lance",
+    "Ferro Barrier"
+  ],
+  "description": "A OMEGA-tier Metal-aligned Mechanical of the Abyssal Covenant.",
+  "color_primary": "#5f849d",
+  "color_accent": "#afb39a",
+  "generated": "2026-07-13T21:07:18.528481"
+}

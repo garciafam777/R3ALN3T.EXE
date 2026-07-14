@@ -1,0 +1,25 @@
+{
+  "id": "caea7d3c",
+  "name": "Umbrauraos the Soul Forge",
+  "short_name": "Umbrauraos",
+  "tier": "GAMMA",
+  "element": "Earth",
+  "type": "Abyssal",
+  "faction": "Celestial Order",
+  "stats": {
+    "hp": 507,
+    "atk": 100,
+    "rapid": 86,
+    "charge": 117,
+    "def": 95
+  },
+  "programs": [
+    "Terra Burst",
+    "Terra Shift",
+    "Terra Wall"
+  ],
+  "description": "A GAMMA-tier Earth-aligned Abyssal of the Celestial Order.",
+  "color_primary": "#403594",
+  "color_accent": "#2e49c3",
+  "generated": "2026-07-13T21:07:18.528481"
+}

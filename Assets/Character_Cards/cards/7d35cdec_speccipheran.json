@@ -1,0 +1,25 @@
+{
+  "id": "7d35cdec",
+  "name": "Speccipheran the Storm Herald",
+  "short_name": "Speccipheran",
+  "tier": "ETA",
+  "element": "Null",
+  "type": "Guardian",
+  "faction": "Abyssal Covenant",
+  "stats": {
+    "hp": 226,
+    "atk": 32,
+    "rapid": 28,
+    "charge": 37,
+    "def": 30
+  },
+  "programs": [
+    "Hollow Shift",
+    "Hollow Strike",
+    "Hollow Burst"
+  ],
+  "description": "A ETA-tier Null-aligned Guardian of the Abyssal Covenant.",
+  "color_primary": "#e9a6cd",
+  "color_accent": "#5ef16d",
+  "generated": "2026-07-13T21:07:18.528481"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "3f30ea62",
+  "name": "Axiveilar the Soul Forge",
+  "short_name": "Axiveilar",
+  "tier": "RHO",
+  "element": "Gravity",
+  "type": "Demonic",
+  "faction": "Aegis Concord",
+  "stats": {
+    "hp": 36,
+    "atk": 8,
+    "rapid": 4,
+    "charge": 8,
+    "def": 6
+  },
+  "programs": [
+    "Grav Wall",
+    "Grav Wave",
+    "Grav Shift"
+  ],
+  "description": "A RHO-tier Gravity-aligned Demonic of the Aegis Concord.",
+  "color_primary": "#34aa5a",
+  "color_accent": "#a114bc",
+  "generated": "2026-07-13T21:07:18.529485"
+}

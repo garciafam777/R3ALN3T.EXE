@@ -1,0 +1,25 @@
+{
+  "id": "b536036e",
+  "name": "Chronforgeum the Echo Lord",
+  "short_name": "Chronforgeum",
+  "tier": "PSI",
+  "element": "Aqua",
+  "type": "Controller",
+  "faction": "Undernet Syndicate",
+  "stats": {
+    "hp": 13,
+    "atk": 2,
+    "rapid": 1,
+    "charge": 3,
+    "def": 3
+  },
+  "programs": [
+    "Tidal Burst",
+    "Tidal Field",
+    "Tidal Wall"
+  ],
+  "description": "A PSI-tier Aqua-aligned Controller of the Undernet Syndicate.",
+  "color_primary": "#9f834d",
+  "color_accent": "#ede014",
+  "generated": "2026-07-13T21:07:18.529485"
+}

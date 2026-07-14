@@ -1,0 +1,25 @@
+{
+  "id": "f4b435e8",
+  "name": "Specboundox the Code Warden",
+  "short_name": "Specboundox",
+  "tier": "MU",
+  "element": "Plasma",
+  "type": "Demonic",
+  "faction": "N3T Dominion",
+  "stats": {
+    "hp": 90,
+    "atk": 30,
+    "rapid": 20,
+    "charge": 21,
+    "def": 17
+  },
+  "programs": [
+    "Nova Break",
+    "Nova Shift",
+    "Nova Wall"
+  ],
+  "description": "A MU-tier Plasma-aligned Demonic of the N3T Dominion.",
+  "color_primary": "#e153fe",
+  "color_accent": "#8c6979",
+  "generated": "2026-07-13T21:07:18.528481"
+}

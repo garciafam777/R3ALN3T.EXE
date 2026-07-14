@@ -1,0 +1,25 @@
+{
+  "id": "b2112d10",
+  "name": "Vexmantisan the Soul Forge",
+  "short_name": "Vexmantisan",
+  "tier": "SIGMA",
+  "element": "Null",
+  "type": "Technical",
+  "faction": "N3T Dominion",
+  "stats": {
+    "hp": 33,
+    "atk": 12,
+    "rapid": 3,
+    "charge": 6,
+    "def": 6
+  },
+  "programs": [
+    "Hollow Strike",
+    "Hollow Wall",
+    "Hollow Shift"
+  ],
+  "description": "A SIGMA-tier Null-aligned Technical of the N3T Dominion.",
+  "color_primary": "#932e54",
+  "color_accent": "#d17164",
+  "generated": "2026-07-13T21:07:18.529485"
+}

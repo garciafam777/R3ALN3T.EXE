@@ -1,0 +1,25 @@
+{
+  "id": "e268f48b",
+  "name": "Pyrthorus the Grid Breaker",
+  "short_name": "Pyrthorus",
+  "tier": "KAPPA",
+  "element": "Dark",
+  "type": "Technical",
+  "faction": "Abyssal Covenant",
+  "stats": {
+    "hp": 132,
+    "atk": 38,
+    "rapid": 23,
+    "charge": 27,
+    "def": 26
+  },
+  "programs": [
+    "Shadow Break",
+    "Shadow Wave",
+    "Shadow Lance"
+  ],
+  "description": "A KAPPA-tier Dark-aligned Technical of the Abyssal Covenant.",
+  "color_primary": "#6ab09a",
+  "color_accent": "#428546",
+  "generated": "2026-07-13T21:07:18.529485"
+}

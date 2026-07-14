@@ -1,482 +1,482 @@
 const CHARACTER_CARDS = [
   {
-    "id": "cbcd7e40",
-    "name": "Veloshiftan the Soul Forge",
+    "id": "559c8794",
+    "name": "Voidriftos the Soul Forge",
     "tier": "OMEGA",
-    "element": "Water",
+    "element": "Metal",
     "type": "Mechanical",
-    "faction": "Celestial Order",
-    "filename": "cbcd7e40_veloshiftan.json",
+    "faction": "Abyssal Covenant",
+    "filename": "559c8794_voidriftos.json",
     "stats": {
-      "hp": 1864,
-      "atk": 265,
-      "rapid": 150,
-      "charge": 225,
-      "def": 157
+      "hp": 1835,
+      "atk": 259,
+      "rapid": 131,
+      "charge": 214,
+      "def": 144
     }
   },
   {
-    "id": "d3ecefda",
-    "name": "Tenebrvortexor the Radiant",
-    "tier": "GAMMA",
-    "element": "Fire",
-    "type": "Celestial",
-    "faction": "Undernet Syndicate",
-    "filename": "d3ecefda_tenebrvortexor.json",
+    "id": "22567e82",
+    "name": "Chronshadeax the Echo Lord",
+    "tier": "ALPHA",
+    "element": "Sound",
+    "type": "Mechanical",
+    "faction": "Aegis Concord",
+    "filename": "22567e82_chronshadeax.json",
     "stats": {
-      "hp": 729,
-      "atk": 103,
-      "rapid": 64,
-      "charge": 113,
-      "def": 74
+      "hp": 1323,
+      "atk": 204,
+      "rapid": 157,
+      "charge": 152,
+      "def": 112
     }
   },
   {
-    "id": "7a2de4d3",
-    "name": "Umbrkronax the Soul Forge",
+    "id": "caea7d3c",
+    "name": "Umbrauraos the Soul Forge",
     "tier": "GAMMA",
-    "element": "Crystal",
+    "element": "Earth",
     "type": "Abyssal",
-    "faction": "Free Grid Collective",
-    "filename": "7a2de4d3_umbrkronax.json",
-    "stats": {
-      "hp": 763,
-      "atk": 132,
-      "rapid": 58,
-      "charge": 110,
-      "def": 88
-    }
-  },
-  {
-    "id": "925f6203",
-    "name": "Xenpulsear the Grid Breaker",
-    "tier": "IOTA",
-    "element": "Poison",
-    "type": "Celestial",
     "faction": "Celestial Order",
-    "filename": "925f6203_xenpulsear.json",
+    "filename": "caea7d3c_umbrauraos.json",
     "stats": {
-      "hp": 133,
-      "atk": 38,
-      "rapid": 24,
-      "charge": 21,
-      "def": 32
+      "hp": 507,
+      "atk": 100,
+      "rapid": 86,
+      "charge": 117,
+      "def": 95
     }
   },
   {
-    "id": "20ad52a4",
-    "name": "Velopulseux the Soul Forge",
+    "id": "5c3bdab6",
+    "name": "Veloboundor the Radiant",
     "tier": "IOTA",
-    "element": "Poison",
-    "type": "Viral",
-    "faction": "Undernet Syndicate",
-    "filename": "20ad52a4_velopulseux.json",
+    "element": "Wood",
+    "type": "Demonic",
+    "faction": "Celestial Order",
+    "filename": "5c3bdab6_veloboundor.json",
     "stats": {
-      "hp": 142,
-      "atk": 26,
-      "rapid": 17,
-      "charge": 35,
+      "hp": 137,
+      "atk": 29,
+      "rapid": 15,
+      "charge": 29,
+      "def": 22
+    }
+  },
+  {
+    "id": "dece3af0",
+    "name": "Arcmantisum the Flux Sage",
+    "tier": "ZETA",
+    "element": "Metal",
+    "type": "Demonic",
+    "faction": "Undernet Syndicate",
+    "filename": "dece3af0_arcmantisum.json",
+    "stats": {
+      "hp": 198,
+      "atk": 48,
+      "rapid": 38,
+      "charge": 40,
+      "def": 40
+    }
+  },
+  {
+    "id": "3904c454",
+    "name": "Chronboundax the Void Walker",
+    "tier": "ETA",
+    "element": "Aqua",
+    "type": "Guardian",
+    "faction": "Abyssal Covenant",
+    "filename": "3904c454_chronboundax.json",
+    "stats": {
+      "hp": 226,
+      "atk": 41,
+      "rapid": 32,
+      "charge": 42,
+      "def": 35
+    }
+  },
+  {
+    "id": "bfdbb09b",
+    "name": "Luxkronos the Storm Herald",
+    "tier": "THETA",
+    "element": "Sound",
+    "type": "Angelic",
+    "faction": "Aegis Concord",
+    "filename": "bfdbb09b_luxkronos.json",
+    "stats": {
+      "hp": 121,
+      "atk": 35,
+      "rapid": 31,
+      "charge": 42,
       "def": 25
     }
   },
   {
-    "id": "aec4b61b",
-    "name": "Neoboundius the Storm Herald",
+    "id": "7d35cdec",
+    "name": "Speccipheran the Storm Herald",
     "tier": "ETA",
-    "element": "Crystal",
-    "type": "Abyssal",
-    "faction": "Undernet Syndicate",
-    "filename": "aec4b61b_neoboundius.json",
+    "element": "Null",
+    "type": "Guardian",
+    "faction": "Abyssal Covenant",
+    "filename": "7d35cdec_speccipheran.json",
     "stats": {
-      "hp": 222,
-      "atk": 36,
-      "rapid": 39,
-      "charge": 34,
+      "hp": 226,
+      "atk": 32,
+      "rapid": 28,
+      "charge": 37,
       "def": 30
     }
   },
   {
-    "id": "e7f0ceaa",
-    "name": "Specauraox the Dusk Reaper",
-    "tier": "THETA",
-    "element": "Water",
-    "type": "Tank",
-    "faction": "Aegis Concord",
-    "filename": "e7f0ceaa_specauraox.json",
+    "id": "f4b435e8",
+    "name": "Specboundox the Code Warden",
+    "tier": "MU",
+    "element": "Plasma",
+    "type": "Demonic",
+    "faction": "N3T Dominion",
+    "filename": "f4b435e8_specboundox.json",
     "stats": {
-      "hp": 208,
-      "atk": 29,
-      "rapid": 36,
-      "charge": 28,
-      "def": 26
-    }
-  },
-  {
-    "id": "c468399c",
-    "name": "Voidspireox the Echo Lord",
-    "tier": "EPSILON",
-    "element": "Sound",
-    "type": "Celestial",
-    "faction": "Free Grid Collective",
-    "filename": "c468399c_voidspireox.json",
-    "stats": {
-      "hp": 375,
-      "atk": 60,
-      "rapid": 55,
-      "charge": 66,
-      "def": 58
-    }
-  },
-  {
-    "id": "49d62df0",
-    "name": "Neoauraith the Radiant",
-    "tier": "KAPPA",
-    "element": "Sound",
-    "type": "Technical",
-    "faction": "Undernet Syndicate",
-    "filename": "49d62df0_neoauraith.json",
-    "stats": {
-      "hp": 138,
-      "atk": 26,
-      "rapid": 14,
-      "charge": 29,
-      "def": 18
-    }
-  },
-  {
-    "id": "237383b0",
-    "name": "Noxpulsear the Grid Breaker",
-    "tier": "NU",
-    "element": "Metal",
-    "type": "Abyssal",
-    "faction": "Undernet Syndicate",
-    "filename": "237383b0_noxpulsear.json",
-    "stats": {
-      "hp": 68,
-      "atk": 22,
-      "rapid": 16,
+      "hp": 90,
+      "atk": 30,
+      "rapid": 20,
       "charge": 21,
+      "def": 17
+    }
+  },
+  {
+    "id": "6de219cf",
+    "name": "Luxboundith the Grid Breaker",
+    "tier": "MU",
+    "element": "Plasma",
+    "type": "Assassin",
+    "faction": "N3T Dominion",
+    "filename": "6de219cf_luxboundith.json",
+    "stats": {
+      "hp": 130,
+      "atk": 24,
+      "rapid": 13,
+      "charge": 16,
       "def": 14
     }
   },
   {
-    "id": "8f975e90",
-    "name": "Kryspirean the Flux Sage",
+    "id": "7d84e8c7",
+    "name": "Neovortexar the Dusk Reaper",
     "tier": "LAMBDA",
-    "element": "Metal",
-    "type": "Angelic",
-    "faction": "N3T Dominion",
-    "filename": "8f975e90_kryspirean.json",
+    "element": "Fire",
+    "type": "Controller",
+    "faction": "Celestial Order",
+    "filename": "7d84e8c7_neovortexar.json",
     "stats": {
-      "hp": 120,
-      "atk": 28,
-      "rapid": 14,
-      "charge": 23,
+      "hp": 110,
+      "atk": 24,
+      "rapid": 23,
+      "charge": 18,
       "def": 19
     }
   },
   {
-    "id": "55501f76",
-    "name": "Kryveilux the Radiant",
-    "tier": "NU",
-    "element": "Gravity",
-    "type": "Mechanical",
-    "faction": "Free Grid Collective",
-    "filename": "55501f76_kryveilux.json",
-    "stats": {
-      "hp": 91,
-      "atk": 15,
-      "rapid": 11,
-      "charge": 16,
-      "def": 13
-    }
-  },
-  {
-    "id": "efcf721f",
-    "name": "Luminmantisos the Radiant",
-    "tier": "KAPPA",
-    "element": "Water",
-    "type": "Angelic",
-    "faction": "Celestial Order",
-    "filename": "efcf721f_luminmantisos.json",
-    "stats": {
-      "hp": 95,
-      "atk": 21,
-      "rapid": 25,
-      "charge": 20,
-      "def": 23
-    }
-  },
-  {
-    "id": "d6dacfcc",
-    "name": "Luxweavean the Code Warden",
-    "tier": "OMICRON",
-    "element": "Wind",
-    "type": "Celestial",
+    "id": "a8f005cc",
+    "name": "Zenauraos the Storm Herald",
+    "tier": "MU",
+    "element": "Blood",
+    "type": "Controller",
     "faction": "Undernet Syndicate",
-    "filename": "d6dacfcc_luxweavean.json",
+    "filename": "a8f005cc_zenauraos.json",
     "stats": {
-      "hp": 70,
-      "atk": 11,
-      "rapid": 6,
-      "charge": 11,
-      "def": 9
-    }
-  },
-  {
-    "id": "1bfca4be",
-    "name": "Xenforgeith the Flux Sage",
-    "tier": "LAMBDA",
-    "element": "Wind",
-    "type": "Mechanical",
-    "faction": "Aegis Concord",
-    "filename": "1bfca4be_xenforgeith.json",
-    "stats": {
-      "hp": 112,
-      "atk": 31,
-      "rapid": 14,
-      "charge": 27,
+      "hp": 99,
+      "atk": 21,
+      "rapid": 9,
+      "charge": 18,
       "def": 18
     }
   },
   {
-    "id": "fd4e346a",
-    "name": "Kryshadeel the Flux Sage",
-    "tier": "UPSILON",
-    "element": "Void",
-    "type": "Striker",
-    "faction": "Free Grid Collective",
-    "filename": "fd4e346a_kryshadeel.json",
-    "stats": {
-      "hp": 23,
-      "atk": 3,
-      "rapid": 5,
-      "charge": 5,
-      "def": 3
-    }
-  },
-  {
-    "id": "b6e53ef9",
-    "name": "Voidshiftox the Soul Forge",
-    "tier": "RHO",
+    "id": "d5e84287",
+    "name": "Pyrboundel the Echo Lord",
+    "tier": "OMICRON",
     "element": "Nature",
-    "type": "Tank",
-    "faction": "N3T Dominion",
-    "filename": "b6e53ef9_voidshiftox.json",
+    "type": "Guardian",
+    "faction": "Undernet Syndicate",
+    "filename": "d5e84287_pyrboundel.json",
     "stats": {
-      "hp": 49,
-      "atk": 7,
-      "rapid": 2,
-      "charge": 10,
-      "def": 6
-    }
-  },
-  {
-    "id": "9b8c3c00",
-    "name": "Xenforgeum the Null Knight",
-    "tier": "UPSILON",
-    "element": "Nature",
-    "type": "Assassin",
-    "faction": "Free Grid Collective",
-    "filename": "9b8c3c00_xenforgeum.json",
-    "stats": {
-      "hp": 29,
-      "atk": 4,
-      "rapid": 2,
-      "charge": 5,
-      "def": 5
-    }
-  },
-  {
-    "id": "c5ef79a6",
-    "name": "Xenspireel the Dusk Reaper",
-    "tier": "RHO",
-    "element": "Nature",
-    "type": "Tank",
-    "faction": "Celestial Order",
-    "filename": "c5ef79a6_xenspireel.json",
-    "stats": {
-      "hp": 36,
-      "atk": 8,
-      "rapid": 8,
-      "charge": 9,
-      "def": 6
-    }
-  },
-  {
-    "id": "418cbb1c",
-    "name": "Vexhexar the Null Knight",
-    "tier": "RHO",
-    "element": "Sound",
-    "type": "Angelic",
-    "faction": "Free Grid Collective",
-    "filename": "418cbb1c_vexhexar.json",
-    "stats": {
-      "hp": 49,
-      "atk": 8,
-      "rapid": 7,
-      "charge": 9,
+      "hp": 74,
+      "atk": 15,
+      "rapid": 9,
+      "charge": 12,
       "def": 8
     }
   },
   {
-    "id": "a4c85b50",
-    "name": "Aethshadeox the Echo Lord",
-    "tier": "PHI",
-    "element": "Ice",
-    "type": "Mechanical",
+    "id": "c4002899",
+    "name": "Axiauraith the Radiant",
+    "tier": "OMICRON",
+    "element": "Metal",
+    "type": "Tank",
     "faction": "Celestial Order",
-    "filename": "a4c85b50_aethshadeox.json",
+    "filename": "c4002899_axiauraith.json",
+    "stats": {
+      "hp": 69,
+      "atk": 14,
+      "rapid": 10,
+      "charge": 11,
+      "def": 10
+    }
+  },
+  {
+    "id": "e268f48b",
+    "name": "Pyrthorus the Grid Breaker",
+    "tier": "KAPPA",
+    "element": "Dark",
+    "type": "Technical",
+    "faction": "Abyssal Covenant",
+    "filename": "e268f48b_pyrthorus.json",
+    "stats": {
+      "hp": 132,
+      "atk": 38,
+      "rapid": 23,
+      "charge": 27,
+      "def": 26
+    }
+  },
+  {
+    "id": "e67f4726",
+    "name": "Tenebrveilar the Storm Herald",
+    "tier": "PSI",
+    "element": "Time",
+    "type": "Guardian",
+    "faction": "Free Grid Collective",
+    "filename": "e67f4726_tenebrveilar.json",
+    "stats": {
+      "hp": 18,
+      "atk": 5,
+      "rapid": 3,
+      "charge": 4,
+      "def": 1
+    }
+  },
+  {
+    "id": "57e1b3ba",
+    "name": "Chronguardos the Code Warden",
+    "tier": "RHO",
+    "element": "Void",
+    "type": "Controller",
+    "faction": "Undernet Syndicate",
+    "filename": "57e1b3ba_chronguardos.json",
+    "stats": {
+      "hp": 53,
+      "atk": 13,
+      "rapid": 7,
+      "charge": 10,
+      "def": 7
+    }
+  },
+  {
+    "id": "e7f58bdd",
+    "name": "Cyberweaveum the Storm Herald",
+    "tier": "RHO",
+    "element": "Null",
+    "type": "Guardian",
+    "faction": "Free Grid Collective",
+    "filename": "e7f58bdd_cyberweaveum.json",
+    "stats": {
+      "hp": 59,
+      "atk": 11,
+      "rapid": 4,
+      "charge": 7,
+      "def": 8
+    }
+  },
+  {
+    "id": "f158a4e5",
+    "name": "Luxhexen the Void Walker",
+    "tier": "CHI",
+    "element": "Earth",
+    "type": "Technical",
+    "faction": "Free Grid Collective",
+    "filename": "f158a4e5_luxhexen.json",
+    "stats": {
+      "hp": 12,
+      "atk": 4,
+      "rapid": 3,
+      "charge": 3,
+      "def": 1
+    }
+  },
+  {
+    "id": "efa2fca0",
+    "name": "Krycipherox the Dusk Reaper",
+    "tier": "RHO",
+    "element": "Light",
+    "type": "Guardian",
+    "faction": "N3T Dominion",
+    "filename": "efa2fca0_krycipherox.json",
+    "stats": {
+      "hp": 49,
+      "atk": 7,
+      "rapid": 4,
+      "charge": 9,
+      "def": 4
+    }
+  },
+  {
+    "id": "a985d371",
+    "name": "Noxguardon the Dusk Reaper",
+    "tier": "PI",
+    "element": "Void",
+    "type": "Striker",
+    "faction": "Abyssal Covenant",
+    "filename": "a985d371_noxguardon.json",
+    "stats": {
+      "hp": 60,
+      "atk": 15,
+      "rapid": 6,
+      "charge": 8,
+      "def": 9
+    }
+  },
+  {
+    "id": "5b8b64e5",
+    "name": "Voidvortexan the Soul Forge",
+    "tier": "PSI",
+    "element": "Aqua",
+    "type": "Technical",
+    "faction": "Aegis Concord",
+    "filename": "5b8b64e5_voidvortexan.json",
     "stats": {
       "hp": 13,
       "atk": 5,
       "rapid": 2,
-      "charge": 5,
-      "def": 3
+      "charge": 2,
+      "def": 1
     }
   },
   {
-    "id": "68b32879",
-    "name": "Voidvortexax the Null Knight",
-    "tier": "PHI",
-    "element": "Water",
-    "type": "Abyssal",
-    "faction": "Undernet Syndicate",
-    "filename": "68b32879_voidvortexax.json",
-    "stats": {
-      "hp": 27,
-      "atk": 4,
-      "rapid": 1,
-      "charge": 6,
-      "def": 2
-    }
-  },
-  {
-    "id": "8d8c06ff",
-    "name": "Pyraurael the Void Walker",
-    "tier": "PHI",
-    "element": "Metal",
-    "type": "Angelic",
-    "faction": "Undernet Syndicate",
-    "filename": "8d8c06ff_pyraurael.json",
-    "stats": {
-      "hp": 25,
-      "atk": 4,
-      "rapid": 1,
-      "charge": 4,
-      "def": 4
-    }
-  },
-  {
-    "id": "25362214",
-    "name": "Luxvortexa the Storm Herald",
-    "tier": "TAU",
-    "element": "Fire",
-    "type": "Controller",
-    "faction": "Aegis Concord",
-    "filename": "25362214_luxvortexa.json",
-    "stats": {
-      "hp": 32,
-      "atk": 10,
-      "rapid": 5,
-      "charge": 7,
-      "def": 4
-    }
-  },
-  {
-    "id": "9554cbd7",
-    "name": "Axiweaveon the Radiant",
+    "id": "3f30ea62",
+    "name": "Axiveilar the Soul Forge",
     "tier": "RHO",
-    "element": "Light",
+    "element": "Gravity",
     "type": "Demonic",
-    "faction": "Celestial Order",
-    "filename": "9554cbd7_axiweaveon.json",
+    "faction": "Aegis Concord",
+    "filename": "3f30ea62_axiveilar.json",
     "stats": {
-      "hp": 39,
-      "atk": 7,
-      "rapid": 5,
-      "charge": 6,
-      "def": 4
-    }
-  },
-  {
-    "id": "fd74b9fb",
-    "name": "Noxboundar the Echo Lord",
-    "tier": "RHO",
-    "element": "Nature",
-    "type": "Technical",
-    "faction": "Free Grid Collective",
-    "filename": "fd74b9fb_noxboundar.json",
-    "stats": {
-      "hp": 37,
-      "atk": 9,
-      "rapid": 5,
+      "hp": 36,
+      "atk": 8,
+      "rapid": 4,
       "charge": 8,
       "def": 6
     }
   },
   {
-    "id": "efa1e888",
-    "name": "Veloboundis the Echo Lord",
-    "tier": "CHI",
-    "element": "Ice",
-    "type": "Assassin",
-    "faction": "Free Grid Collective",
-    "filename": "efa1e888_veloboundis.json",
+    "id": "b2112d10",
+    "name": "Vexmantisan the Soul Forge",
+    "tier": "SIGMA",
+    "element": "Null",
+    "type": "Technical",
+    "faction": "N3T Dominion",
+    "filename": "b2112d10_vexmantisan.json",
     "stats": {
-      "hp": 16,
+      "hp": 33,
+      "atk": 12,
+      "rapid": 3,
+      "charge": 6,
+      "def": 6
+    }
+  },
+  {
+    "id": "b4911812",
+    "name": "Voidspireius the Code Warden",
+    "tier": "CHI",
+    "element": "Nature",
+    "type": "Assassin",
+    "faction": "Undernet Syndicate",
+    "filename": "b4911812_voidspireius.json",
+    "stats": {
+      "hp": 21,
       "atk": 2,
       "rapid": 1,
-      "charge": 2,
+      "charge": 5,
       "def": 3
     }
   },
   {
-    "id": "7dd16d62",
-    "name": "Vexshadean the Code Warden",
-    "tier": "UPSILON",
-    "element": "Dark",
-    "type": "Abyssal",
-    "faction": "Abyssal Covenant",
-    "filename": "7dd16d62_vexshadean.json",
+    "id": "34503731",
+    "name": "Axiauraar the Dusk Reaper",
+    "tier": "TAU",
+    "element": "Plasma",
+    "type": "Striker",
+    "faction": "Undernet Syndicate",
+    "filename": "34503731_axiauraar.json",
     "stats": {
-      "hp": 20,
-      "atk": 3,
-      "rapid": 4,
-      "charge": 5,
-      "def": 2
+      "hp": 33,
+      "atk": 7,
+      "rapid": 1,
+      "charge": 8,
+      "def": 3
     }
   },
   {
-    "id": "8e363b1e",
-    "name": "Noxveilon the Storm Herald",
-    "tier": "UPSILON",
-    "element": "Light",
-    "type": "Angelic",
-    "faction": "Celestial Order",
-    "filename": "8e363b1e_noxveilon.json",
+    "id": "b536036e",
+    "name": "Chronforgeum the Echo Lord",
+    "tier": "PSI",
+    "element": "Aqua",
+    "type": "Controller",
+    "faction": "Undernet Syndicate",
+    "filename": "b536036e_chronforgeum.json",
     "stats": {
-      "hp": 21,
-      "atk": 4,
+      "hp": 13,
+      "atk": 2,
       "rapid": 1,
       "charge": 3,
       "def": 3
     }
   },
   {
-    "id": "2fd79a28",
-    "name": "Noxforgeux the Echo Lord",
+    "id": "aa581667",
+    "name": "Noxkronum the Radiant",
     "tier": "UPSILON",
-    "element": "Void",
-    "type": "Controller",
-    "faction": "Abyssal Covenant",
-    "filename": "2fd79a28_noxforgeux.json",
+    "element": "Ice",
+    "type": "Guardian",
+    "faction": "Celestial Order",
+    "filename": "aa581667_noxkronum.json",
     "stats": {
-      "hp": 32,
-      "atk": 5,
+      "hp": 35,
+      "atk": 4,
       "rapid": 1,
-      "charge": 4,
-      "def": 3
+      "charge": 5,
+      "def": 2
+    }
+  },
+  {
+    "id": "039b81cb",
+    "name": "Tenebrspirean the Grid Breaker",
+    "tier": "SIGMA",
+    "element": "Gravity",
+    "type": "Mechanical",
+    "faction": "N3T Dominion",
+    "filename": "039b81cb_tenebrspirean.json",
+    "stats": {
+      "hp": 39,
+      "atk": 11,
+      "rapid": 2,
+      "charge": 8,
+      "def": 4
+    }
+  },
+  {
+    "id": "9a3bbdf2",
+    "name": "Luminkronor the Flux Sage",
+    "tier": "RHO",
+    "element": "Aqua",
+    "type": "Mechanical",
+    "faction": "Aegis Concord",
+    "filename": "9a3bbdf2_luminkronor.json",
+    "stats": {
+      "hp": 39,
+      "atk": 12,
+      "rapid": 3,
+      "charge": 9,
+      "def": 6
     }
   }
 ];

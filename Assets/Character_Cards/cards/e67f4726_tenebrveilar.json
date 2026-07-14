@@ -1,0 +1,25 @@
+{
+  "id": "e67f4726",
+  "name": "Tenebrveilar the Storm Herald",
+  "short_name": "Tenebrveilar",
+  "tier": "PSI",
+  "element": "Time",
+  "type": "Guardian",
+  "faction": "Free Grid Collective",
+  "stats": {
+    "hp": 18,
+    "atk": 5,
+    "rapid": 3,
+    "charge": 4,
+    "def": 1
+  },
+  "programs": [
+    "Chrono Field",
+    "Chrono Burst",
+    "Chrono Wall"
+  ],
+  "description": "A PSI-tier Time-aligned Guardian of the Free Grid Collective.",
+  "color_primary": "#ddc19f",
+  "color_accent": "#d91483",
+  "generated": "2026-07-13T21:07:18.529485"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "e7f58bdd",
+  "name": "Cyberweaveum the Storm Herald",
+  "short_name": "Cyberweaveum",
+  "tier": "RHO",
+  "element": "Null",
+  "type": "Guardian",
+  "faction": "Free Grid Collective",
+  "stats": {
+    "hp": 59,
+    "atk": 11,
+    "rapid": 4,
+    "charge": 7,
+    "def": 8
+  },
+  "programs": [
+    "Hollow Break",
+    "Hollow Burst",
+    "Hollow Strike"
+  ],
+  "description": "A RHO-tier Null-aligned Guardian of the Free Grid Collective.",
+  "color_primary": "#a73992",
+  "color_accent": "#c1cdc2",
+  "generated": "2026-07-13T21:07:18.529485"
+}

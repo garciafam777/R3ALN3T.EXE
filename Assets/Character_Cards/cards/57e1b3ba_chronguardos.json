@@ -1,0 +1,25 @@
+{
+  "id": "57e1b3ba",
+  "name": "Chronguardos the Code Warden",
+  "short_name": "Chronguardos",
+  "tier": "RHO",
+  "element": "Void",
+  "type": "Controller",
+  "faction": "Undernet Syndicate",
+  "stats": {
+    "hp": 53,
+    "atk": 13,
+    "rapid": 7,
+    "charge": 10,
+    "def": 7
+  },
+  "programs": [
+    "Null Field",
+    "Null Lance",
+    "Null Barrier"
+  ],
+  "description": "A RHO-tier Void-aligned Controller of the Undernet Syndicate.",
+  "color_primary": "#a232ee",
+  "color_accent": "#f517aa",
+  "generated": "2026-07-13T21:07:18.529485"
+}

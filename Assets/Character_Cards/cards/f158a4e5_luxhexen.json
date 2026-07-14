@@ -1,0 +1,25 @@
+{
+  "id": "f158a4e5",
+  "name": "Luxhexen the Void Walker",
+  "short_name": "Luxhexen",
+  "tier": "CHI",
+  "element": "Earth",
+  "type": "Technical",
+  "faction": "Free Grid Collective",
+  "stats": {
+    "hp": 12,
+    "atk": 4,
+    "rapid": 3,
+    "charge": 3,
+    "def": 1
+  },
+  "programs": [
+    "Terra Lance",
+    "Terra Break",
+    "Terra Wall"
+  ],
+  "description": "A CHI-tier Earth-aligned Technical of the Free Grid Collective.",
+  "color_primary": "#55e724",
+  "color_accent": "#da1563",
+  "generated": "2026-07-13T21:07:18.529485"
+}

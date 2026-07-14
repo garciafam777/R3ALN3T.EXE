@@ -1,0 +1,25 @@
+{
+  "id": "c4002899",
+  "name": "Axiauraith the Radiant",
+  "short_name": "Axiauraith",
+  "tier": "OMICRON",
+  "element": "Metal",
+  "type": "Tank",
+  "faction": "Celestial Order",
+  "stats": {
+    "hp": 69,
+    "atk": 14,
+    "rapid": 10,
+    "charge": 11,
+    "def": 10
+  },
+  "programs": [
+    "Ferro Wall",
+    "Ferro Pulse",
+    "Ferro Strike"
+  ],
+  "description": "A OMICRON-tier Metal-aligned Tank of the Celestial Order.",
+  "color_primary": "#155f3f",
+  "color_accent": "#afe72e",
+  "generated": "2026-07-13T21:07:18.529485"
+}
