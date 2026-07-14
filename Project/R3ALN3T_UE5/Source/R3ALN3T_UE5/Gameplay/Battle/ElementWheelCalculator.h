@@ -1,4 +1,4 @@
-// ElementWheelCalculator.h — 18-element combat (Nyx/engine-dev v2, Trinity Matrix canon)
+// ElementWheelCalculator.h — 21-element matrix combat (CEO 07.13 canon)
 #pragma once
 #include "CoreMinimal.h"
 #include "../../Core/Types/TrinityMatrixTypes.h"
@@ -9,8 +9,8 @@ class R3ALN3T_UE5_API UElementWheelCalculator : public UObject
 {
     GENERATED_BODY()
 public:
-    // Elemental multiplier vs defender element (Book 5): counter=1.5x, pair=0.75x,
-    // same=0.5x (mirror clash), else 1.0x.
+    // Elemental multiplier vs defender element: looked up from the 21x21
+    // ElementMatchup table (WIN=1.25, LOSS=0.75, mirror/SELF=0.5, None=1.0 neutral).
     UFUNCTION(BlueprintPure, Category="R3ALN3T|Combat")
     static float ElementMultiplier(EElement Attacker, EElement Defender);
 
