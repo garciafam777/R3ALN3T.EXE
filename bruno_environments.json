@@ -1,0 +1,24 @@
+{
+  "GameVersion": "5.1",
+  "ProjectPath": "C:\Users\richa\Desktop\R3ALN3T_UE5",
+  "SourceControl": {
+    "GitHubRepoUrl": "https://github.com/garciafam777/R3ALN3T.EXE",
+    "Branch": "main"
+  },
+  "GameSettings": {
+    "Resolution": "1920x1080",
+    "QualityPresets": "High",
+    "PostProcessing": true,
+    "Vsync": false,
+    "AudioDevice": "Default Audio device (WASAPI)",
+    "GameMode": "Standalone"
+  },
+  "ObsidianConfig": {
+    "Path": "C:\\Users\\richa\\Vault\\Richy_Vault",
+    "DataDirectory": "Vault\\Richy_Vault\\Data",
+    "Plugins": [
+      "CustomPlugin1",
+      "CustomPlugin2"
+    ]
+  }
+}

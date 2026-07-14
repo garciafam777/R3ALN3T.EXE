@@ -1,0 +1,23 @@
+{
+  "ue5_sources": [],
+  "backend_models": [
+    "data_models.py",
+    "backend_api.py"
+  ],
+  "api_contract": [
+    "POST /api/v1/players/create -> CreatePlayer",
+    "GET /api/v1/players/{player_id} -> GetPlayer",
+    "PUT /api/v1/players/{player_id} -> UpdatePlayer",
+    "GET /api/v1/netps/recruit -> RecruitNetP",
+    "POST /api/v1/battles/start -> StartBattle",
+    "GET /api/v1/battles/{battle_id} -> GetBattle",
+    "POST /api/v1/battles/{battle_id}/execute-turn -> ExecuteTurn",
+    "POST /api/v1/battles/{battle_id}/end -> EndBattle",
+    "POST /api/v1/folders/create -> CreateFolder",
+    "PUT /api/v1/folders/{folder_id}/add-chip -> AddChipToFolder",
+    "POST /api/v1/save -> SaveGame",
+    "GET /api/v1/load/{player_id} -> LoadGame",
+    "WS /ws/battle/{battle_id} -> BattleSync"
+  ],
+  "notes": []
+}
