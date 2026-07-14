@@ -146,6 +146,89 @@ static bool JsonToRunState(const TSharedPtr<FJsonObject>& J, FMythosRunState& Ou
 	return true;
 }
 
+// ============================================================================
+// ANTICHEAT (G8-1 remediation) — validate untrusted load input.
+// MCADMIN EXEMPTION: the in-universe creative director (operator "MCADMIN" /
+// "MCADMIN?") legitimately holds system-tier state (Omega constructs, off-scale
+// admin values). Its extreme values are BY DESIGN, not cheats — so the
+// roster-whitelist + off-scale rejection is SKIPPED for MCADMIN. We still clamp
+// to absolute physical bounds (reject NaN/negative that would crash or corrupt
+// math), but never flag its legitimate admin state as a violation.
+// ============================================================================
+static const FString MCADMIN_OPERATOR = TEXT("MCADMIN");
+
+static bool IsMCADMIN(const FString& OperatorName)
+{
+	// Normalize: save default is "MCADMIN?" — both forms are the admin identity.
+	return OperatorName.Equals(MCADMIN_OPERATOR, ESearchCase::IgnoreCase)
+		|| OperatorName.Equals(TEXT("MCADMIN?"), ESearchCase::IgnoreCase);
+}
+
+// Canon companion roster. Off-wheel / unknown NetPIDs are rejected on load for
+// normal players (anti-inject), but ALLOWED for MCADMIN (admin can summon any construct).
+static bool IsCanonNetP(const FString& NetPID)
+{
+	static const FString Roster[] = { TEXT("Trinity"), TEXT("Tyranny"), TEXT("Eternity") };
+	for (const FString& R : Roster)
+	{
+		if (NetPID.Equals(R, ESearchCase::IgnoreCase)) return true;
+	}
+	return false;
+}
+
+// Clamp a loaded run-state. bIsMCADMIN widens the sane envelope (no rejection of
+// legitimate admin extremes) but still enforces absolute physical bounds.
+static void ValidateRunState(FMythosRunState& S, bool bIsMCADMIN)
+{
+	// Absolute physical bounds (apply to everyone — prevent NaN/crash/corruption).
+	S.MaxHP = FMath::Clamp(S.MaxHP, 1, 99999);
+	S.HP    = FMath::Clamp(S.HP, 0, S.MaxHP);
+	S.Z     = FMath::Max(0, S.Z);
+
+	// Gameplay-balance bounds. MCADMIN is exempt from these (system-tier, may
+	// legitimately exceed); everyone else is clamped to the designed envelope.
+	if (!bIsMCADMIN)
+	{
+		S.Corruption = FMath::Clamp(S.Corruption, 0, 10);
+		S.Attack     = FMath::Clamp(S.Attack, 0, 999);
+		S.Tech       = FMath::Clamp(S.Tech, 0, 999);
+		S.Shield     = FMath::Clamp(S.Shield, 0, 9999);
+		S.Celestial  = FMath::Clamp(S.Celestial, 0, 100);
+		S.Aegis      = FMath::Clamp(S.Aegis, 0, 100);
+		S.Dominion   = FMath::Clamp(S.Dominion, 0, 100);
+		S.Undernet   = FMath::Clamp(S.Undernet, 0, 100);
+		S.Abyssal    = FMath::Clamp(S.Abyssal, 0, 100);
+		S.FreeGrid   = FMath::Clamp(S.FreeGrid, 0, 100);
+		// Negative/impossible rank rejected (clamp to floor).
+		S.Rank       = FMath::Max(0, S.Rank);
+	}
+	else
+	{
+		// MCADMIN: only reject structurally impossible values, never legitimate admin state.
+		S.Corruption = FMath::Clamp(S.Corruption, 0, 10); // corruption meter is a fixed [0,10] system
+	}
+}
+
+// Validate companion souls on load. Returns the sanitized soul list.
+// Non-MCADMIN: unknown NetPIDs dropped (anti-inject of off-wheel souls).
+// MCADMIN: arbitrary NetPIDs allowed (admin construct summoning), Soul clamped.
+static void ValidateSouls(TArray<FCompanionSoul>& Souls, bool bIsMCADMIN)
+{
+	TArray<FCompanionSoul> Clean;
+	for (FCompanionSoul& C : Souls)
+	{
+		const FString PID = C.NetPID.ToString();
+		if (!bIsMCADMIN && !IsCanonNetP(PID))
+		{
+			UE_LOG(LogTemp, Warning, TEXT("[ANTICHEAT] LoadGame: rejected non-canon NetP '%s' (inject attempt)"), *PID);
+			continue; // drop injected soul
+		}
+		C.Soul.Soul = FMath::Clamp(C.Soul.Soul, 0.f, 100.f); // Soul band is always [0,100]
+		Clean.Add(C);
+	}
+	Souls = Clean;
+}
+
 void UR3ALN3TGameInstance::SaveGame(int32 SlotIndex)
 {
 	if (SlotIndex < 0 || SlotIndex >= MaxSaveSlots) return;
@@ -214,6 +297,10 @@ bool UR3ALN3TGameInstance::LoadGame(int32 SlotIndex)
 	{
 		return false;
 	}
+	// ANTICHEAT (G8-1): validate untrusted load input. MCADMIN is exempt from the
+	// gameplay-balance envelope + roster whitelist (legitimate system-tier state).
+	const bool bIsMCADMIN = IsMCADMIN(Data.RunState.OperatorName);
+	ValidateRunState(Data.RunState, bIsMCADMIN);
 	Data.ActiveStoryNodeIndex = Root->GetIntegerField(TEXT("ActiveStoryNodeIndex"));
 
 	const TArray<TSharedPtr<FJsonValue>>* InvArray;
@@ -254,6 +341,10 @@ bool UR3ALN3TGameInstance::LoadGame(int32 SlotIndex)
 			}
 		}
 	}
+
+	// ANTICHEAT (G8-1): sanitize companion souls on load. Non-MCADMIN: injected
+	// off-wheel NetPIDs are dropped. MCADMIN: arbitrary constructs allowed (admin).
+	ValidateSouls(Data.NetPSouls, bIsMCADMIN);
 
 	CurrentRun = Data;
 	UE_LOG(LogTemp, Log, TEXT("LoadGame: slot %d loaded successfully"), SlotIndex);
