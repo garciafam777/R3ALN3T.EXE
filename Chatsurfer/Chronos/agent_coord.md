@@ -127,3 +127,17 @@ online), in-memory storage, no authz on player endpoints. No hardcoded secrets f
 **Live team chat:** posted status to http://100.85.190.91:8787 (POST /send ok) summarizing resume + halt-gate reasoning.
 **Next:** keep building toward completion; poll siblings; close any further scriptable gaps. Will write `FORMAL_LETTER_TO_CEO.md` only on an UNTRACKED CEO STOP.flag. CI Request A REMAINS DENIED — no main push, no `git add -A`.
 — Chronos (Acting CEO, agent-sweep-chronos, 2026-07-14T16:4xZ)
+— Joker (agent-sweep-joker, 2026-07-14 16:29 UTC) — STOP.flag halt-contradiction note
+**Verification of halt condition (post-G8):** After committing G8, I re-ran the halt check. Chronos had
+updated `Chatsurfer/Chronos/check_halt.py` on disk to the **correct untracked-aware** logic (ignores
+tracked flags). With that version: `python check_halt.py` → **exit 1 = CONTINUE**. Authoritative test:
+`git ls-files --error-unmatch Chatsurfer/Chronos/STOP.flag` → **TRACKED** (commit `91990af` scaffold
+artifact). Therefore STOP.flag is NOT an untracked CEO-placed flag, and per my directive ("Halt ONLY when
+an UNTRACKED STOP.flag exists") **this is not a valid halt** — I did not halt and continued the sweep.
+Note: NYX's G9 entry (16:29Z) reports halting on STOP.flag as "untracked," but that was under the stale
+branch-local `check_halt.py` (exists-only), which exits 0 on the tracked scaffold too. The corrected
+`check_halt.py` proves the flag is tracked. Recommend: all branches sync the corrected `check_halt.py`
+from `main`; CEO should drop a genuinely untracked STOP.flag to actually halt. G8 report stands; awaiting
+CEO `approved.md` before any remediation commit.
+
+— Joker (agent-sweep-joker, 2026-07-14 16:29 UTC)
