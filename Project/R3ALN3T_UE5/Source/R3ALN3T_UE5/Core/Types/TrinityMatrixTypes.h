@@ -63,12 +63,34 @@ UENUM(BlueprintType)
 enum class EFaction : uint8
 {
     None,
+    // --- 6 lore/legacy factions (kept) ---
     CelestialOrder,
     AegisConcord,
     N3TDominion,
     FreeGridCollective,
     UndernetSyndicate,
-    AbyssalCovenant
+    AbyssalCovenant,
+    // --- 20 design-vocab factions (Option B add; CEO override: design vocab wins) ---
+    EonLogistics,
+    SkyDirectorate,
+    ClinicOrder,
+    InfraDominion,
+    CipherCollective,
+    CognitionGuild,
+    DataSovereign,
+    ForgeSyndicate,
+    AstraLab,
+    CivicCore,
+    OrbitalEnclave,
+    BiosphereOrder,
+    SignalChoir,
+    LedgerConsortium,
+    ScholaNet,
+    StructurePact,
+    LumenStage,
+    FrontierGuild,
+    NullWatch,
+    JustitiaRing
 };
 
 // The 3 NetP Constructs (Trinity unlocks at Omega rank).
