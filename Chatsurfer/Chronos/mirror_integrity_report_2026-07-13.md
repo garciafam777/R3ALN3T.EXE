@@ -58,3 +58,11 @@ CEO rulings received and actioned:
 ### Space (this session, cumulative)
 14G → 12G working tree. Committed tracked-mirror removal: 135 files (T2+T3) removed from the tree. LFS blobs for tossed PNGs remain in history (expected; a `git lfs prune`/gc after push reclaims remote/local LFS cache if desired).
 
+## ⚡ FOLLOW-UP RULINGS — 2026-07-13 (final, no further deletes)
+- **31 unique cards (`Main_Game_Files/.../character_cards`) — HOLD.** CEO: these are DRAFTS/ideas. CEO will review and decide later. **Kept intact, nothing merged or deleted.** Pending CEO answer on whether to promote/merge any into `Assets/Character_Cards`.
+- **T4 (`DT_Career_Master.json` / `career_shard_001.json`) — KEEP both.** CEO ruling: keep. Closed.
+- **card_frames (`Assets/Images/UI/card_frames` + `Scripts/.../frames`, 218M each) — KEEP both (HARD PASS on deletion).** CEO: these are the ELEMENTAL in-game battle card frames — each NetP is placed within an elemental frame for visual distinction; likely to be wired into the game. Do NOT delete either. Closed.
+
+**Dedup task CLOSED.** Net reclaim ~2.4G (regenerable + verified-redundant only). No unique content lost. All CEO holds/keeps respected.
+
+
