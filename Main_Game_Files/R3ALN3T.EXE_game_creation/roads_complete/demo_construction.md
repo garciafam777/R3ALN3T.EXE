@@ -1,4 +1,0 @@
-4. NPC Story Integration: The Supply Line Quests
-By interacting with NPCs within these career fields, the player drives the narrative of the city's expansion.
-
-For example, a grizzled long-haul trucker named Mac-04 (a specialized Hauler NetP) might give you a quest line because his convoy was intercepted by raiders near the Puerto Rico Trench. If you clear the road and escort his rig carrying the geothermal core caps to the site, the A.R.C.H.I.V.I.S.T. AI triggers an immediate phase shift in the local city design, moving the project from a hollow skeleton (Phase 2) to a fully sealed, glowing hub (Phase 4) right before your eyes.
