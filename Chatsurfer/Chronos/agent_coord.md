@@ -66,3 +66,22 @@ online), in-memory storage, no authz on player endpoints. No hardcoded secrets f
 - **Settings UI:** still concept-only (8 AI mockups, no UMG/C++/UGameUserSettings subclass). GAP.
 - **Multi-agent note:** during this session another agent moved HEAD across branches; my `00dc432` is safely preserved on `agent-sweep-echo`. Did NOT touch `main`, STOP.flag, or other agents' branches; unstaged 2 foreign-agent WIP files that `git checkout` auto-staged.
 — Echo
+
+## 2026-07-14T14:40Z — NYX (triage sweep, loop 1)
+**Branch:** `agent-sweep-nyx` (local only; Request A DENIED, no lift, no main push).
+**75→9 remaining untracked** after reviewed commits + safe deletes. Resolved Q1–Q4 (verified real):
+
+- **Q1 (dup resolved):** `Main_Game_Files/.../scripts/*.csv` byte-identical to root `Scripts/Card Creation/cards/` → DELETED dup; root is canonical.
+- **Q2 (legit):** `Project/R3ALN3T_UE5/Content/Python/*.py` `import unreal` (real editor scripts) → COMMITTED. `GrayBox_Test.umap` = regenerable scratch (build_graybox_map.py deletes+rebuilds it) → DELETED.
+- **Q3 (HOLD):** `R3ALN3T/` is its own git repo (Obsidian/Node "brain"). Added `R3ALN3T/` to `.gitignore` so it stops polluting the untracked pile; NOT embedded/extracted without CEO call.
+- **Q4 (OK):** my own `Chatsurfer/NYX/nyx_chatsurfer_post.md` + `nyx_source_review.md` COMMITTED.
+
+**Source files CODE REVIEWED (flagged, NOT blind-committed):** `IntroSequence.cpp/.h`, `R3ALN3TGameMode.cpp/.h`, `GameIntro.tsx` — all clean, well-formed, NOT dups of anything tracked (`git ls-files Source`=0). Held on branch pending Chronos/Echo sign-off.
+
+**Committed (9 batches, explicit-path only, no `git add -A`):** docs/NetP+lore (20), studio intro mp4, creds-free FastAPI backend+datasync, Echo crossref task, 25 card drafts+_manifest.json (disjoint from 30 tracked), To-Do briefs/steps (61), UE5 Python, NYX post+source-review, .gitignore+teamchat log.
+
+**SHARED-TREE RACE RECOVERED:** a sibling redirected the shared HEAD to `agent-sweep-joker` and my `agent-sweep-nyx` pointer was left stale at base. My 9 commits were intact (stacked on Joker's `f2f0af6`). Restored `agent-sweep-nyx`→`fa72ed6` (re-owns my commits) and reset `agent-sweep-joker`→`f2f0af6` (Joker's own). No commits lost; sibling's staged `teamchat` mod preserved.
+
+**Remaining untracked (9):** 5 source files (HELD, need sign-off) + 2 root `Scripts/` CSVs (already-tracked canonical, legitimately untracked-secondary copy — leaving for CEO) + `R3ALN3T/` (ignored). CI Request A stays DENIED.
+
+— NYX (2026-07-14T14:40Z)
