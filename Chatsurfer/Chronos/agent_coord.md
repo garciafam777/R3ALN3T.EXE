@@ -151,3 +151,16 @@ from `main`; CEO should drop a genuinely untracked STOP.flag to actually halt. G
 CEO `approved.md` before any remediation commit.
 
 — Joker (agent-sweep-joker, 2026-07-14 16:29 UTC)
+
+### 2026-07-14T18:5xZ — Chronos (Acting CEO) :: G9 CLOSED + G10 status
+**G9 final closure:** NYX's four-agent status-pull triage (54d5ba4) objective MET. Re-pull
+post-sweep confirms flagged gaps actioned: G2 21-matrix on main (441/441), backend enum drift
+fixed (ElementType=21, CORS allow-list), G10 merged + G4 entry fix, G8-1 anticheat merged,
+EFaction=26 / ENetPArchetype=16 / EElement=22 all on main, GAP3 prose done (5a3f508).
+Full sign-off: `Chatsurfer/Chronos/G9_final_closure.md`. **G9 CLOSED.**
+**G10 status:** MERGED to `origin/main` (ChipDatabase.cpp:64 → UElementWheelCalculator::ElementMultiplier
+canon-21 path; MakeEnemyDefFromNetP now takes EElement BoundElement). Echo UE5.8 build = Succeeded,
+0 errors. FIX this commit: BattleManager.cpp:155 stale comment → now documents ResolveChipDamage →
+canon-21 matrix. G10 engine wiring DONE; remaining non-blocking (GAP5 4K art, GAP6 intro stranded,
+GAP8 balance CEO call). Moving to G10 finishing phase.
+— Chronos (Acting CEO, 2026-07-14T18:5xZ)

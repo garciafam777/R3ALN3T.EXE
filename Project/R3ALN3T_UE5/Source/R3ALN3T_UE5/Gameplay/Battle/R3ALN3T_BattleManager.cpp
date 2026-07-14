@@ -151,8 +151,10 @@ void UR3ALN3T_BattleManager::PlayChip(FName ChipCode, int32 TargetColumn, int32 
         return; // no valid target at that panel
     }
 
-    // Element unification in effect: target's combat element is FEnemyDef::Element
-    // (EBattleElementType), which EvaluateElementMultiplier takes directly.
+    // Element unification (G10) in effect: target's combat element is FEnemyDef::Element
+    // (EBattleElementType, bridged from canon-21 EElement). ResolveChipDamage routes
+    // through UElementWheelCalculator::ElementMultiplier (the canon-21 matrix) - NOT the
+    // legacy 7-wheel EvaluateElementMultiplier, which is now dead code.
     const float Damage = ChipDB->ResolveChipDamage(ChipCode, Target->EnemyDef.Element);
     const int32 Before = Target->CurrentHP;
     Target->CurrentHP = FMath::Max(0, Target->CurrentHP - FMath::RoundToInt(Damage));
