@@ -1,27 +1,18 @@
 #!/usr/bin/env python3
 """Halt-check for the R3ALN3T agent collective.
-Exit 0 if an UNTRACKED STOP.flag is present (HALT), exit 1 otherwise (CONTINUE).
+Exit 0 if the halt signal is present (HALT), exit 1 otherwise (CONTINUE).
 
-A halt flag must be absent by default and only created by the CEO at runtime.
-If STOP.flag is TRACKED in git, ignore it -- that is the phantom-self-halt bug
-(committing the flag made it always-present after git reset --hard).
+AUTHORITATIVE halt signal (out-of-repo, immune to git/branch state):
+    C:\\Users\\richa\\Desktop\\r3alnet_halt.flag
+The CEO creates this file to stop the collective. It is never tracked by git,
+so it works on any branch. The legacy in-repo Chatsurfer/Chronos/STOP.flag is
+no longer consulted (it was once committed/tracked on every branch, which
+shadowed any CEO-placed copy and caused a phantom-self-halt bug).
 """
-import subprocess
 from pathlib import Path
 
-# Resolve the flag location relative to this script (no hard-coded drive path).
-stop = Path(__file__).resolve().parent / "STOP.flag"
+HALT = Path(r"C:\Users\richa\Desktop\r3alnet_halt.flag")
 
-if stop.exists():
-    try:
-        tracked = subprocess.run(
-            ["git", "ls-files", "--error-unmatch", str(stop)],
-            capture_output=True, text=True,
-        ).returncode == 0
-    except Exception:
-        tracked = False
-    if not tracked:
-        raise SystemExit(0)  # real, untracked halt -> halt
-    # else: tracked (stale) flag -> fall through to continue
-
+if HALT.exists():
+    raise SystemExit(0)
 raise SystemExit(1)
