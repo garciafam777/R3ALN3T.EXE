@@ -1,7 +1,12 @@
 # Story NPC Tiers — Named Hierarchy (4–6 Tiers, Top → Bottom)
 **Author:** NYX (content lane, review-only) | **Date:** 2026-07-13
 **Purpose:** Define the non-customizable *story* NPC tiers (the ones shipped in-game, not player-built NetPs/careers). Collapsible to 4; full detail = 6.
-**Sources:** `MCADMIN_Canon_trinity_family_draft.md`, `omega_prime_lore.md`, `exiled_omega_arc.md`, `act1_narrative_grid.md`, `faction_primers.md`, `easter_eggs/gtrinity_good_affinity_side_story.md` + its cross-ref.
+**Sources:** `MCADMIN_Canon_trinity_family_draft.md`, `act1_narrative_grid.md` (canon rewrite), `faction_primers.md`, `netp_construct_primers.md`, `endgame_paths.md`, `easter_eggs/gtrinity_good_affinity_side_story.md` + its cross-ref.
+> **CANON NOTE (2026-07-14, Joker sweep):** the original cited `omega_prime_lore.md` and
+> `exiled_omega_arc.md` as sources. Both are now **RETIRED** (OMEGA-as-entity framing is dead canon
+> per `Chatsurfer/Override_b_CEO_Decision.md` §RULING #1). Tier 3/4 below were rewritten to remove
+> "OMEGA Rulers / EXILED OMEGA" god-tier enemies — OMEGA is the apex Greek-ladder *rank* only.
+> Story opposition now lives under the 6 factions + Soul-State drift.
 
 ---
 
@@ -22,19 +27,30 @@
 - **Tyranny** (Lord of Chaos, third aspect; mutual-destruction clause). 5000 HP.
 **Population status:** Defined in `MCADMIN_Canon` (DRAFT, awaiting CEO naming confirm). These are the 3 Constructs already in `netp_construct_specials.json`.
 
-## TIER 3 — THE PANTHEON (OMEGA Rulers)
-**Scope:** "The 8 who rule above tiers" (Act-1 node 7). The elemental supreme beings the player can Align / Oppose / Usurp.
+## TIER 3 — THE PANTHEON (Faction Sovereigns / Apex Constructs)
+**Scope:** The highest *story* authorities the player negotiates with — the six faction leadership
+tiers and the three bound Constructs at their Omega-rank apex. (No "OMEGA god" enemies — OMEGA is the
+apex Greek-ladder *rank*, `EGreekTier::Omega` in `TrinityMatrixTypes.h`; it is not an obtainable
+entity. See RETIRED `omega_prime_lore.md`.)
 **Named entities:**
-- **OMEGA PRIME — "The Unbound"** — first coherence, omnidomain (Void-by-convention), maintains the wheel. Only challengable by an OMEGA-tier NetP.
-- **The 7+ ELEMENTAL OMEGAs** — one per domain. Named examples: **Surge Arbiter** (Elec), **Cinder Sovereign** (Fire). (21-element lock may expand the count; board to confirm.)
-**Population status:** PRIME + 2 named; rest are roles, not yet individual entities.
+- **The six faction sovereigns** — one per canonical faction (`faction_primers.md`): Celestial Order,
+  Aegis Concord, N3T Dominion, Free Grid Collective, Undernet Syndicate, Abyssal Covenant. Each pulls
+  Soul State Celestial(+01)/Infernal(-01).
+- **The three Constructs at Omega rank** — Trinity / Tyranny / Eternity (`netp_construct_primers.md`);
+  reaching Omega on any NetP unlocks Eternity. The legitimate "apex" payoff.
+**Population status:** Factions defined; individual sovereign NPCs NOT yet authored (Echo gap).
 
-## TIER 4 — THE FALLEN (Exiled / Opposition)
-**Scope:** Rogue pantheon members and the demonic opposition layer.
+## TIER 4 — THE FALLEN (Opposition / Rogue Factions)
+**Scope:** Rogue / opposition NPCs and the demonic opposition layer — expressed as *faction* opposition
+(Undernet/Abyssal lean) and Soul-State drift toward Infernal, **not** as "Exiled OMEGA" bosses.
+(See RETIRED `exiled_omega_arc.md`.)
 **Named entities:**
-- **EXILED OMEGA** — rogue OMEGA that fled; story-spawned (Act-1 node 15), flees. Mid-tier bridge between Pantheon and field.
-- **Demonic NetPs / Spirits** — opposition in the good-affinity side story; scale *inversely* with good affinity (stronger as affinity rises to 75%, weaker above; multiple spawns if affinity drops below 75%). Cannot enter Hell without renouncing.
-**Population status:** Exiled = role; Demonic = encounter layer undefined as data (Echo gap).
+- **Rogue faction operatives** — story-spawned opposition (Act-1 node 15 style), tied to Undernet
+  Syndicate / Abyssal Covenant. Flee/return behavior is fine; the "OMEGA exile" god-status is not.
+- **Demonic NetPs / Spirits** — opposition in the good-affinity side story; scale *inversely* with good
+  affinity (stronger as affinity rises to 75%, weaker above; multiple spawns if affinity drops below
+  75%). Cannot enter Hell without renouncing.
+**Population status:** Rogue = faction-opposition role; Demonic = encounter layer undefined as data (Echo gap).
 
 ## TIER 5 — THE DOMINIONS (Faction Rulers)
 **Scope:** The six canonical factions and their leadership — the in-world authority the player negotiates with.

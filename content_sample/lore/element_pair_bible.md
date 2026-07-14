@@ -3,6 +3,14 @@
 > **Classification:** TACTICAL DOCTRINE / CORE MECHANICS
 > **Clearance:** OPERATOR-LEVEL
 > **Source:** BOOK 5 — COMBIT MATRIX SPECIFICATION
+>
+> **CANON STATUS (2026-07-14, Joker sweep):** CEO ruling (2026-07-13) locks the **21-element**
+> Trinity Matrix as authoritative (`gamedata/canon/ELEMENT_MATCHUP_MATRIX_21.csv`). This document
+> currently profiles **18** of the 21 (Fire/Aqua/Elec/Wood/Wind/Earth/Light/Dark/Null/Glitch/
+> Plasma/Crystal/Time/Gravity/Sound/Metal/Poison/Nature). The three added-by-ruling elements —
+> **Ice, Blood, Void** — still need their profiles written (see `Chatsurfer/Joker/element21_header_draft.md`).
+> The 9 pair-relationships below are canonical; the 3 missing profiles are a known gap, NOT a
+> contradiction. Holy/Void are NOT canonical elements (Void = the added apex element; Holy folded out).
 
 ---
 
