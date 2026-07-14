@@ -1,0 +1,25 @@
+{
+  "id": "dae2b79d",
+  "name": "Aethcoreix the Void Walker",
+  "short_name": "Aethcoreix",
+  "tier": "XI",
+  "element": "Earth",
+  "type": "Technical",
+  "faction": "Undernet Syndicate",
+  "stats": {
+    "hp": 84,
+    "atk": 14,
+    "rapid": 4,
+    "charge": 16,
+    "def": 11
+  },
+  "programs": [
+    "Terra Break",
+    "Terra Wave",
+    "Terra Wall"
+  ],
+  "description": "A XI-tier Earth-aligned Technical of the Undernet Syndicate.",
+  "color_primary": "#9d3e36",
+  "color_accent": "#14d2e6",
+  "generated": "2026-07-13T21:46:15.450231"
+}

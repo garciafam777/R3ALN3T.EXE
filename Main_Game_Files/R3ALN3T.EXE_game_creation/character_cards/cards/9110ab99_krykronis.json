@@ -1,0 +1,25 @@
+{
+  "id": "9110ab99",
+  "name": "Krykronis the Void Walker",
+  "short_name": "Krykronis",
+  "tier": "SIGMA",
+  "element": "Poison",
+  "type": "Tank",
+  "faction": "Undernet Syndicate",
+  "stats": {
+    "hp": 26,
+    "atk": 9,
+    "rapid": 3,
+    "charge": 8,
+    "def": 4
+  },
+  "programs": [
+    "Toxin Lance",
+    "Toxin Wall",
+    "Toxin Field"
+  ],
+  "description": "A SIGMA-tier Poison-aligned Tank of the Undernet Syndicate.",
+  "color_primary": "#7463a2",
+  "color_accent": "#d52512",
+  "generated": "2026-07-13T21:46:15.450318"
+}

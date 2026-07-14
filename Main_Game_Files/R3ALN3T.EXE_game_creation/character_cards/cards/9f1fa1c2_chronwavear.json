@@ -1,0 +1,25 @@
+{
+  "id": "9f1fa1c2",
+  "name": "Chronwavear the Flux Sage",
+  "short_name": "Chronwavear",
+  "tier": "XI",
+  "element": "Earth",
+  "type": "Assassin",
+  "faction": "Abyssal Covenant",
+  "stats": {
+    "hp": 77,
+    "atk": 18,
+    "rapid": 10,
+    "charge": 15,
+    "def": 11
+  },
+  "programs": [
+    "Terra Lance",
+    "Terra Field",
+    "Terra Wave"
+  ],
+  "description": "A XI-tier Earth-aligned Assassin of the Abyssal Covenant.",
+  "color_primary": "#272410",
+  "color_accent": "#b420ab",
+  "generated": "2026-07-13T21:46:15.450281"
+}

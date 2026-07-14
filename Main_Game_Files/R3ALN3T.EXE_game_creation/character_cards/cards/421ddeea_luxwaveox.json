@@ -1,0 +1,25 @@
+{
+  "id": "421ddeea",
+  "name": "Luxwaveox the Echo Lord",
+  "short_name": "Luxwaveox",
+  "tier": "THETA",
+  "element": "Sound",
+  "type": "Striker",
+  "faction": "Free Grid Collective",
+  "stats": {
+    "hp": 215,
+    "atk": 39,
+    "rapid": 35,
+    "charge": 29,
+    "def": 32
+  },
+  "programs": [
+    "Sonic Barrier",
+    "Sonic Break",
+    "Sonic Strike"
+  ],
+  "description": "A THETA-tier Sound-aligned Striker of the Free Grid Collective.",
+  "color_primary": "#015cca",
+  "color_accent": "#799d24",
+  "generated": "2026-07-13T21:46:15.450222"
+}

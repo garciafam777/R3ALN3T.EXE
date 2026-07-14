@@ -1,0 +1,25 @@
+{
+  "id": "885ef85c",
+  "name": "Pyrguardix the Code Warden",
+  "short_name": "Pyrguardix",
+  "tier": "TAU",
+  "element": "Earth",
+  "type": "Guardian",
+  "faction": "Celestial Order",
+  "stats": {
+    "hp": 33,
+    "atk": 4,
+    "rapid": 6,
+    "charge": 4,
+    "def": 3
+  },
+  "programs": [
+    "Terra Strike",
+    "Terra Barrier",
+    "Terra Lance"
+  ],
+  "description": "A TAU-tier Earth-aligned Guardian of the Celestial Order.",
+  "color_primary": "#41e28d",
+  "color_accent": "#0997bf",
+  "generated": "2026-07-13T21:46:15.450350"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "b912629b",
+  "name": "Neokronax the Void Walker",
+  "short_name": "Neokronax",
+  "tier": "XI",
+  "element": "Earth",
+  "type": "Celestial",
+  "faction": "Aegis Concord",
+  "stats": {
+    "hp": 60,
+    "atk": 18,
+    "rapid": 6,
+    "charge": 11,
+    "def": 11
+  },
+  "programs": [
+    "Terra Wave",
+    "Terra Burst",
+    "Terra Barrier"
+  ],
+  "description": "A XI-tier Earth-aligned Celestial of the Aegis Concord.",
+  "color_primary": "#0baa2d",
+  "color_accent": "#73d58c",
+  "generated": "2026-07-13T21:46:15.450264"
+}

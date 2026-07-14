@@ -1,0 +1,25 @@
+{
+  "id": "adefe0f0",
+  "name": "Aethweaveox the Soul Forge",
+  "short_name": "Aethweaveox",
+  "tier": "NU",
+  "element": "Gravity",
+  "type": "Angelic",
+  "faction": "Celestial Order",
+  "stats": {
+    "hp": 92,
+    "atk": 17,
+    "rapid": 11,
+    "charge": 22,
+    "def": 14
+  },
+  "programs": [
+    "Grav Pulse",
+    "Grav Break",
+    "Grav Field"
+  ],
+  "description": "A NU-tier Gravity-aligned Angelic of the Celestial Order.",
+  "color_primary": "#619dec",
+  "color_accent": "#ea832b",
+  "generated": "2026-07-13T21:46:15.450247"
+}

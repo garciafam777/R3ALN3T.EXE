@@ -1,0 +1,25 @@
+{
+  "id": "8d87d043",
+  "name": "Cyberboundar the Null Knight",
+  "short_name": "Cyberboundar",
+  "tier": "ETA",
+  "element": "Lightning",
+  "type": "Technical",
+  "faction": "Free Grid Collective",
+  "stats": {
+    "hp": 216,
+    "atk": 43,
+    "rapid": 35,
+    "charge": 26,
+    "def": 39
+  },
+  "programs": [
+    "Volt Shift",
+    "Volt Wall",
+    "Volt Barrier"
+  ],
+  "description": "A ETA-tier Lightning-aligned Technical of the Free Grid Collective.",
+  "color_primary": "#d1e8b7",
+  "color_accent": "#2fe91a",
+  "generated": "2026-07-13T21:46:15.450193"
+}

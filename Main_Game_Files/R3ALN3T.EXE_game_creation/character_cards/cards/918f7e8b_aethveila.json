@@ -1,0 +1,25 @@
+{
+  "id": "918f7e8b",
+  "name": "Aethveila the Null Knight",
+  "short_name": "Aethveila",
+  "tier": "CHI",
+  "element": "Earth",
+  "type": "Viral",
+  "faction": "N3T Dominion",
+  "stats": {
+    "hp": 14,
+    "atk": 3,
+    "rapid": 3,
+    "charge": 2,
+    "def": 1
+  },
+  "programs": [
+    "Terra Lance",
+    "Terra Shift",
+    "Terra Barrier"
+  ],
+  "description": "A CHI-tier Earth-aligned Viral of the N3T Dominion.",
+  "color_primary": "#4a4dcb",
+  "color_accent": "#fee25a",
+  "generated": "2026-07-13T21:46:15.450360"
+}

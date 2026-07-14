@@ -1,0 +1,25 @@
+{
+  "id": "7e9d8241",
+  "name": "Voidauraian the Null Knight",
+  "short_name": "Voidauraian",
+  "tier": "RHO",
+  "element": "Sound",
+  "type": "Mechanical",
+  "faction": "Free Grid Collective",
+  "stats": {
+    "hp": 30,
+    "atk": 11,
+    "rapid": 8,
+    "charge": 7,
+    "def": 5
+  },
+  "programs": [
+    "Sonic Burst",
+    "Sonic Wall",
+    "Sonic Wave"
+  ],
+  "description": "A RHO-tier Sound-aligned Mechanical of the Free Grid Collective.",
+  "color_primary": "#b5345f",
+  "color_accent": "#545ae9",
+  "generated": "2026-07-13T21:46:15.450310"
+}

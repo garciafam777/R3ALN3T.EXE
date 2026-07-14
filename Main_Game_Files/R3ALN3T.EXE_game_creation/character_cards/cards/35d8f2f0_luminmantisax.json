@@ -1,0 +1,25 @@
+{
+  "id": "35d8f2f0",
+  "name": "Luminmantisax the Null Knight",
+  "short_name": "Luminmantisax",
+  "tier": "XI",
+  "element": "Crystal",
+  "type": "Tank",
+  "faction": "Abyssal Covenant",
+  "stats": {
+    "hp": 89,
+    "atk": 19,
+    "rapid": 12,
+    "charge": 10,
+    "def": 11
+  },
+  "programs": [
+    "Prism Lance",
+    "Prism Burst",
+    "Prism Wave"
+  ],
+  "description": "A XI-tier Crystal-aligned Tank of the Abyssal Covenant.",
+  "color_primary": "#9edabb",
+  "color_accent": "#19ad86",
+  "generated": "2026-07-13T21:46:15.450256"
+}

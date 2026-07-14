@@ -1,0 +1,25 @@
+{
+  "id": "f7647768",
+  "name": "Axishadeis the Dusk Reaper",
+  "short_name": "Axishadeis",
+  "tier": "LAMBDA",
+  "element": "Time",
+  "type": "Viral",
+  "faction": "Celestial Order",
+  "stats": {
+    "hp": 88,
+    "atk": 16,
+    "rapid": 23,
+    "charge": 16,
+    "def": 22
+  },
+  "programs": [
+    "Chrono Field",
+    "Chrono Wall",
+    "Chrono Burst"
+  ],
+  "description": "A LAMBDA-tier Time-aligned Viral of the Celestial Order.",
+  "color_primary": "#c09787",
+  "color_accent": "#54789c",
+  "generated": "2026-07-13T21:46:15.450273"
+}
