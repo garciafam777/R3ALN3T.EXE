@@ -9,11 +9,24 @@
 UENUM(BlueprintType)
 enum class ENetPArchetype : uint8
 {
+    // --- 5 existing ---
     Vanguard      UMETA(DisplayName = "Vanguard Daemon"),
     LogicGate     UMETA(DisplayName = "Logic Gate Keeper"),
     Infiltrator   UMETA(DisplayName = "Ghost Infiltrator"),
     SentientNode  UMETA(DisplayName = "Sentient AI Node"),
-    Wraith        UMETA(DisplayName = "Void Wraith")
+    Wraith        UMETA(DisplayName = "Void Wraith"),
+    // --- 11 design archetypes (Option B add; CEO: apply all listed) ---
+    Trucker       UMETA(DisplayName = "Trucker"),
+    ATC           UMETA(DisplayName = "ATC"),
+    Medical       UMETA(DisplayName = "Medical"),
+    Construction  UMETA(DisplayName = "Construction"),
+    Cipher        UMETA(DisplayName = "Cipher"),
+    Cognition     UMETA(DisplayName = "Cognition"),
+    DataCenter    UMETA(DisplayName = "Data Center"),
+    Factory       UMETA(DisplayName = "Factory"),
+    Lab           UMETA(DisplayName = "Lab"),
+    Civic         UMETA(DisplayName = "Civic"),
+    Orbital       UMETA(DisplayName = "Orbital")
 };
 
 USTRUCT(BlueprintType)
