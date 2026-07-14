@@ -129,3 +129,7 @@ Project/Content/Developers/
 Project/Content/Collections/
 .env.nodebase
 .scratch/
+
+# Nested separate repo ("brain" — Obsidian/Node app, its own git repo).
+# Keep it out of this repo's tree per NYX triage 2026-07-14 (Q3).
+R3ALN3T/
