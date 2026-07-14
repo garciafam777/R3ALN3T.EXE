@@ -1,6 +1,7 @@
 // CombatTypes.cpp
 #include "CombatTypes.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "TrinityMatrixTypes.h" // EElement (G10 canon-21 bridge)
 // Full FVirusDef definition (MakeEnemyDefFromVirus reads its fields). Including the
 // manager header here is safe: CombatTypes.h no longer includes it, so no .h cycle.
 #include "../../Gameplay/Battle/R3ALN3T_BattleManager.h"
@@ -166,4 +167,39 @@ float EvaluateElementMultiplier(
 	}
 
 	return Mult;
+}
+
+// G10 (element unification): 7-wheel combat enum <-> canon-21 EElement bridge.
+// Combat structs carry EBattleElementType (7-wheel subset); the canon matrix
+// (UElementWheelCalculator::ElementMultiplier) consumes EElement (21). Map the
+// 7-wheel values into canon-21. Holy has no canon equivalent -> Light (closest).
+EElement ToEElement(EBattleElementType Battle)
+{
+	switch (Battle)
+	{
+		case EBattleElementType::None:  return EElement::None;
+		case EBattleElementType::Fire:  return EElement::Fire;
+		case EBattleElementType::Aqua:  return EElement::Aqua;
+		case EBattleElementType::Elec:  return EElement::Elec;
+		case EBattleElementType::Wood:  return EElement::Wood;
+		case EBattleElementType::Wind:  return EElement::Wind;
+		case EBattleElementType::Holy:  return EElement::Light; // no canon Holy -> Light
+		case EBattleElementType::Void:  return EElement::Void;
+		default:                        return EElement::None;
+	}
+}
+
+EBattleElementType ToBattleElement(EElement Canon)
+{
+	switch (Canon)
+	{
+		case EElement::Fire:  return EBattleElementType::Fire;
+		case EElement::Aqua:  return EBattleElementType::Aqua;
+		case EElement::Elec:  return EBattleElementType::Elec;
+		case EElement::Wood:  return EBattleElementType::Wood;
+		case EElement::Wind:  return EBattleElementType::Wind;
+		case EElement::Light: return EBattleElementType::Holy; // Light -> Holy for display
+		case EElement::Void:  return EBattleElementType::Void;
+		default:              return EBattleElementType::None;
+	}
 }

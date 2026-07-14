@@ -20,6 +20,7 @@
 #include "BattleChipTypes.h"                          // FBattleChip, EChipCode (Greek), EChipClass
 #include "../../Gameplay/Characters/R3ALN3T_NetPStructures.h" // FR3ALN3TNetPProfileRow, ENetPArchetype
 #include "MythosGameTypes.h"                          // EMythosElement (run-flavor only)
+#include "TrinityMatrixTypes.h"                       // G10: EElement (canon-21 bridge)
 #include "../../Gameplay/World/R3ALN3T_WorldStructures.h"     // ER3ALN3TLayer
 // FVirusDef is the source model for MakeEnemyDefFromVirus. Forward-declared here so the
 // free-function declaration (line ~105) compiles without pulling in the manager header
@@ -128,3 +129,12 @@ float EvaluateElementMultiplier(
 	EBattleElementType ChipElement,
 	EBattleElementType TargetElement,
 	EBattleElementType PanelElement = EBattleElementType::None);
+
+// G10 (element unification): bridge between the 7-wheel combat enum and the
+// canon-21 element system. Combat structs store EBattleElementType (7-wheel);
+// the canon matrix (UElementWheelCalculator) consumes EElement (21). These map
+// the 7-wheel subset into canon-21 so combat math uses the verified 21x21 table.
+// Holy has no canon-21 equivalent -> mapped to Light (closest). All other
+// canon-21 elements have no 7-wheel counterpart and only arise via EElement.
+EElement ToEElement(EBattleElementType Battle);
+EBattleElementType ToBattleElement(EElement Canon);
