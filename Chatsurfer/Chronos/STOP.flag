@@ -1,4 +1,0 @@
-# STOP flag — agent collective halts and writes final letter when this file exists.
-# CEO (Life) will create this in the morning with "stop". Do NOT delete.
-# Created intentionally? If present, orchestrator wraps up: sets halt, compiles
-# agent_coord.md + gaps into Chatsurfer/Chronos/FORMAL_LETTER_TO_CEO.md.

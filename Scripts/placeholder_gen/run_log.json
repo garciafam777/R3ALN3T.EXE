@@ -1,0 +1,20 @@
+{
+  "generated_at": "2026-07-14T14:10:09Z",
+  "author": "Chronos (A_Team)",
+  "action": "scriptable placeholder asset gap-fix",
+  "renames": [
+    "aqua_frame.png",
+    "elec_frame.png",
+    "elec_alt_frame.png",
+    "poison_frame.png"
+  ],
+  "generated_frames": [
+    "wood_frame.png",
+    "null_frame.png",
+    "glitch_frame.png"
+  ],
+  "generated_construct": [
+    "Trinity.png"
+  ],
+  "note": "PLACEHOLDERS only \u2014 Echo lane to replace with final 4K art. Engine not required."
+}

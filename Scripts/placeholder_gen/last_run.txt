@@ -1,0 +1,10 @@
+{"generated_at": "2026-07-14T14:10:09Z", "author": "Chronos (A_Team)", "action": "scriptable placeholder asset gap-fix", "renames": ["aqua_frame.png", "elec_frame.png", "elec_alt_frame.png", "poison_frame.png"], "generated_frames": ["wood_frame.png", "null_frame.png", "glitch_frame.png"], "generated_construct": ["Trinity.png"], "note": "PLACEHOLDERS only \u2014 Echo lane to replace with final 4K art. Engine not required."}
+[2026-07-14T14:10:09Z] Chronos placeholder-gen start (scriptable asset gaps)
+  ~ renamed water_frame.png -> aqua_frame.png (Water->Aqua (canon))
+  - absent lightning_frame.png (nothing to do)
+  ~ renamed thunder_frame.png -> elec_alt_frame.png (Thunder->Elec variant (canon))
+  ~ renamed venom_frame.png -> poison_frame.png (Venom->Poison (canon))
+  + generated wood_frame.png (1536x2752, elem=Wood)
+  + generated null_frame.png (1536x2752, elem=Null)
+  + generated glitch_frame.png (1536x2752, elem=Glitch)
+  + generated Trinity.png (1024x1536)
