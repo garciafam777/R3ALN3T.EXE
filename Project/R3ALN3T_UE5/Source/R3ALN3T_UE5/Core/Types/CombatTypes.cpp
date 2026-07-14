@@ -59,7 +59,7 @@ static int32 ArchetypeShield(ENetPArchetype A)
 	}
 }
 
-FEnemyDef MakeEnemyDefFromNetP(const FR3ALN3TNetPProfileRow& N)
+FEnemyDef MakeEnemyDefFromNetP(const FR3ALN3TNetPProfileRow& N, EElement BoundElement)
 {
 	FEnemyDef E;
 	E.EnemyID       = N.NetPID;
@@ -83,8 +83,11 @@ FEnemyDef MakeEnemyDefFromNetP(const FR3ALN3TNetPProfileRow& N)
 	// Shield from archetype.
 	E.Shield = ArchetypeShield(N.Archetype);
 
-	// Element from archetype (see table above).
-	E.Element = ArchetypeElement(N.Archetype);
+	// G4 fix: prefer the bound NetP's canon-21 element (bridged to 7-wheel combat
+	// enum); fall back to the archetype map only when unbound (BoundElement == None).
+	E.Element = (BoundElement != EElement::None)
+		? ToBattleElement(BoundElement)
+		: ArchetypeElement(N.Archetype);
 
 	// ZReward from throughput (economy link: faster nodes pay more).
 	E.ZReward = FMath::RoundToInt(N.BaseThroughputSpeed / 10.0f); // 300 -> 30

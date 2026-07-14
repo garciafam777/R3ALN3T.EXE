@@ -111,7 +111,11 @@ FEnemyDef MakeEnemyDefFromVirus(const FVirusDef& V);
 //   BaseProcessingLevel (1+) -> Attack
 //   BaseThroughputSpeed (300) -> ZReward
 //   Archetype -> CombatElement + Shield
-FEnemyDef MakeEnemyDefFromNetP(const FR3ALN3TNetPProfileRow& N);
+// NetP -> Enemy (G4 fix): honors the bound NetP's canon-21 element (EElement) when
+// provided, bridging it into the 7-wheel combat element; archetype map is fallback
+// only when BoundElement is None (unbound / DataTable-only spawn).
+FEnemyDef MakeEnemyDefFromNetP(const FR3ALN3TNetPProfileRow& N,
+    EElement BoundElement = EElement::None);
 
 // ---- Element unification (REQUIRED before any multiplier math) ----
 // EMythosElement is RUN-FLAVOR ONLY (career screen). Combat compares EBattleElementType exclusively.
