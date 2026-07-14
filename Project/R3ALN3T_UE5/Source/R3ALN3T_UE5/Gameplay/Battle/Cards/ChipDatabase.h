@@ -14,8 +14,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "../../../Core/Types/CombatTypes.h" // EBattleElementType, EvaluateElementMultiplier
+#include "../../../Core/Types/CombatTypes.h" // EBattleElementType, EvaluateElementMultiplier, ToEElement (G10)
 #include "../../../Core/Types/SoulState.h"   // Gap C: ESoulFork
+#include "../ElementWheelCalculator.h"        // G10: UElementWheelCalculator::ElementMultiplier
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "ChipDatabase.generated.h"
 

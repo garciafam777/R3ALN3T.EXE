@@ -61,6 +61,8 @@ float UChipDatabase::ResolveChipDamage(FName ChipCode, EBattleElementType Defend
         return 0.0f;
     }
 
-    const float Multiplier = EvaluateElementMultiplier(Chip->Element, DefenderElement);
+    // G10: use canon-21 matrix (UElementWheelCalculator) bridged from 7-wheel combat enums.
+    const float Multiplier = UElementWheelCalculator::ElementMultiplier(
+    	ToEElement(Chip->Element), ToEElement(DefenderElement));
     return Chip->BasePower * Multiplier;
 }

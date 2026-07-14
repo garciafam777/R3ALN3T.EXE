@@ -20,6 +20,7 @@
 #include "BattleChipTypes.h"                          // FBattleChip, EChipCode (Greek), EChipClass
 #include "../../Gameplay/Characters/R3ALN3T_NetPStructures.h" // FR3ALN3TNetPProfileRow, ENetPArchetype
 #include "MythosGameTypes.h"                          // EMythosElement (run-flavor only)
+#include "TrinityMatrixTypes.h"                       // G10: EElement (canon-21 bridge)
 #include "../../Gameplay/World/R3ALN3T_WorldStructures.h"     // ER3ALN3TLayer
 // FVirusDef is the source model for MakeEnemyDefFromVirus. Forward-declared here so the
 // free-function declaration (line ~105) compiles without pulling in the manager header
@@ -110,7 +111,11 @@ FEnemyDef MakeEnemyDefFromVirus(const FVirusDef& V);
 //   BaseProcessingLevel (1+) -> Attack
 //   BaseThroughputSpeed (300) -> ZReward
 //   Archetype -> CombatElement + Shield
-FEnemyDef MakeEnemyDefFromNetP(const FR3ALN3TNetPProfileRow& N);
+// NetP -> Enemy (G4 fix): honors the bound NetP's canon-21 element (EElement) when
+// provided, bridging it into the 7-wheel combat element; archetype map is fallback
+// only when BoundElement is None (unbound / DataTable-only spawn).
+FEnemyDef MakeEnemyDefFromNetP(const FR3ALN3TNetPProfileRow& N,
+    EElement BoundElement = EElement::None);
 
 // ---- Element unification (REQUIRED before any multiplier math) ----
 // EMythosElement is RUN-FLAVOR ONLY (career screen). Combat compares EBattleElementType exclusively.
@@ -128,3 +133,12 @@ float EvaluateElementMultiplier(
 	EBattleElementType ChipElement,
 	EBattleElementType TargetElement,
 	EBattleElementType PanelElement = EBattleElementType::None);
+
+// G10 (element unification): bridge between the 7-wheel combat enum and the
+// canon-21 element system. Combat structs store EBattleElementType (7-wheel);
+// the canon matrix (UElementWheelCalculator) consumes EElement (21). These map
+// the 7-wheel subset into canon-21 so combat math uses the verified 21x21 table.
+// Holy has no canon-21 equivalent -> mapped to Light (closest). All other
+// canon-21 elements have no 7-wheel counterpart and only arise via EElement.
+EElement ToEElement(EBattleElementType Battle);
+EBattleElementType ToBattleElement(EElement Canon);
