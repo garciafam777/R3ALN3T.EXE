@@ -1,0 +1,47 @@
+# R3ALN3T.EXE — Gap C Soul State: band-tuning command sheet (FINAL / proven)
+# Paste into the PIE console in the running GrayBox_Test map (pawn auto-possessed,
+# EncounterTrigger force-starts the Fishy Grunt at col4,row0, HP=120).
+#
+# REAL BAND TABLE (from SoulState.h):
+#   Radiant 0-13 | Serene 14-27 | Settled 28-41 | Cracked 42-55
+#   Fractured 56-69 | Twisted 70-83 | Corrupted 84-100
+# SHIFT ON SURVIVE (enemy lives, Alpha 80 < 120 HP):  Spare +4 | Purge +3 | Corrupt +7
+# SHIFT ON KILL:  Spare -2 | Purge -6 | Corrupt +2   (only down-paths; need a real kill)
+#
+# Per-call logging is ON: each step prints
+#   [GAPC-SEQ] step NN fork=<F> shift=+X.X -> Soul YY.Y (Band)
+# and START/END lines. Read them from the UE console or Saved/Logs/GapC_*.log.
+#
+# IMPORTANT: UE console cannot parse comma/quote/semicolon arg lists. Use the
+# PRIMITIVE form below (same shape as the proven SoulForkConsole command).
+# ------------------------------------------------------------------------------
+
+# Sequence A — pure Spare, 10x from baseline 50 (-> 90 Corrupted):
+RunSoulSequence 50 Spare 10
+# Sequence B — pure Corrupt, 10x from baseline 50 (-> 100 Corrupted, clamps):
+RunSoulSequence 50 Corrupt 10
+# Sequence C — pure Purge, 10x from baseline 50 (-> 80 Twisted):
+RunSoulSequence 50 Purge 10
+
+# Sequence D — boundary crossings (single fork each):
+RunSoulSequence 54 Spare 1      # 54 -> 58  crosses Cracked->Fractured
+RunSoulSequence 83 Corrupt 1    # 83 -> 90  crosses Twisted->Corrupted
+RunSoulSequence 13 Spare 1      # 13 -> 17  crosses Radiant->Serene
+RunSoulSequence 27 Spare 1      # 27 -> 31  crosses Serene->Settled
+RunSoulSequence 41 Spare 1      # 41 -> 45  crosses Settled->Cracked
+RunSoulSequence 69 Spare 1      # 69 -> 73  crosses Fractured->Twisted
+RunSoulSequence 55 Spare 1      # 55 -> 59  crosses Cracked->Fractured (no double-cross)
+
+# Sequence E — realistic mixed session (Spare,Spare,Purge,Corrupt,Spare,Purge,Corrupt,Corrupt,Spare,Purge), 10 forks from 50 (-> 96 Corrupted):
+RunSoulSequenceMixed 50
+
+# Single manual fork (also proven): SoulForkConsole <Fork> Alpha 4 0
+#   SoulForkConsole Spare Alpha 4 0
+# Set baseline / reseed enemy by hand:
+#   SetSoul 50
+#   ResetTestEnemy
+#
+# DESIGN FLAG: under normal play soul only ever climbs — 'Spare' (+4) is the SAME
+# direction as 'Corrupt' (+7). Only KILLING pulls it back (Purge-kill -6, Spare-kill -2).
+# That's a tuning decision, not a bug. If you want 'Spare' to be redeeming, it needs a
+# negative shift; currently all survive-branches are positive.
