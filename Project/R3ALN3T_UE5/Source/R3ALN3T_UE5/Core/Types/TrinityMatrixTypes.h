@@ -62,7 +62,7 @@ enum class ECodePhilosophy : uint8
 UENUM(BlueprintType)
 enum class EFaction : uint8
 {
-    None,
+    None        UMETA(DisplayName = "None"),
     // --- 6 lore/legacy factions (kept) ---
     CelestialOrder,
     AegisConcord,
