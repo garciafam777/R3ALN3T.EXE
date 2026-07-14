@@ -40,3 +40,21 @@ Verification: `git status` shows NO tracked-file deletions (`^ D`); `git fsck --
 
 ## RECOMMENDATION
 Safe pass done. For T1–T4 (tracked dedup), give one ruling on canonical location per group and I'll `git rm` the stale copies in one reviewed commit (LFS-aware). T5 leave alone.
+
+---
+
+## ⚡ CEO RULINGS EXECUTED — 2026-07-13 (update)
+CEO rulings received and actioned:
+
+- **T1 — KEEP + INTEGRATE.** `intro_lifein6thgearSTUDIOS/` is the studio intro that plays before the start screen; it needs integration, NOT deletion. **Left fully intact.** (Follow-up task: wire it into the pre-start-screen flow — added to future tasks.)
+- **T2 — TOSSED.** All 9 `*_complete/` dirs (39 files) `git rm`'d. Every file was byte-identical to a copy outside `_complete` (0 unique, verified against 2,192 outside hashes). Canonical copies (in `docs/`, `Assets/`, etc.) retained.
+- **T3 — PARTIAL TOSS (safety catch).**
+  - ✅ Tossed: `Main_Game_Files/.../scripts/Card Creation` — full stale mirror of root `Scripts/Card Creation` (96 files, 523M, 0 unique).
+  - ⚠️ KEPT `Main_Game_Files/.../character_cards` — **NOT a duplicate**: it has **31 unique card JSONs** not in `Assets/Character_Cards`. Tossing would have lost 31 cards. This is a different card SET, not a mirror. Flagged for CEO: do you want these 31 merged into `Assets/Character_Cards`?
+  - ⚠️ KEPT both `Assets/Images/UI/card_frames` and `Scripts/.../frames` (identical 218M each) — each is a LIVE location (asset library vs renderer working dir). Deleting either risks breaking references. Advise which is canonical if you want one gone.
+- **T4 — HELD (56KB, pipeline risk).** `DT_Career_Master.json` and `shards/career_shard_001.json` are byte-identical AND same mtime — can't pick "most updated," they're equal. They serve distinct pipeline roles (master aggregate vs shard input). Deleting either risks the volume generator for 56KB. Recommend keep both. Confirm if you still want one gone.
+- **T5 — LEFT ALONE.** Root `R3ALN3T/` (the "brain," Obsidian/Node app) untouched. ✅
+
+### Space (this session, cumulative)
+14G → 12G working tree. Committed tracked-mirror removal: 135 files (T2+T3) removed from the tree. LFS blobs for tossed PNGs remain in history (expected; a `git lfs prune`/gc after push reclaims remote/local LFS cache if desired).
+
