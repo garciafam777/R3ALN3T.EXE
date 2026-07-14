@@ -45,11 +45,10 @@ Each item: what, owner, blocker, next concrete step.
 - **Blocker:** needs a canon ruling — Override_b confirmed Holy/Void are NOT in the canonical 18, but didn't define their status (lore-only? out-of-wheel? retired?).
 - **Next step:** Chronos drafts the Holy/Void disposition (e.g., lore-flavor outside the combat wheel) → CEO signs.
 
-### 7. Verify cruft-faction prune landed on main
-- **What:** Override_b Ruling #1 says NYX pruned 4 cruft factions (IRON CORTEX / HALO CORE / PANDEMONIUM NET / BRIMSTONE CELL) from generator ALIGNMENTS on `nyx/engine-dev`.
-- **Owner:** Nyx (executed) / Chronos (verify on main).
-- **Blocker:** need to confirm the prune is merged to `main`, not stranded on the branch.
-- **Next step:** grep `main` generator ALIGNMENTS for the 4 names → confirm 0 hits. If present, pull the prune to main.
+### 7. Cruft-faction prune on main — DONE (verified 2026-07-13)
+- Override_b Ruling #1: NYX pruned 4 cruft factions (IRON CORTEX / HALO CORE / PANDEMONIUM NET / BRIMSTONE CELL) from generator ALIGNMENTS on `nyx/engine-dev`.
+- **Verified on main:** the only remaining hits are code COMMENTS (`# cruft IRON CORTEX pruned`). Live ALIGNMENTS contain none. PANDEMONIUM NET / BRIMSTONE CELL → 0 hits anywhere. Commit `606d698`.
+- **Status: CLOSED. No further action.**
 
 ### 8. GAPF — DONE (reference, not open)
 - Closed this morning: `GapFTest()` written + run, 9/9 real-engine markers. Commit `40d2fc5`. No further action.
