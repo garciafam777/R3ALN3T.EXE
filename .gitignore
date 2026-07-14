@@ -129,3 +129,6 @@ Project/Content/Developers/
 Project/Content/Collections/
 .env.nodebase
 .scratch/
+
+# Agent halt flag UNTRACKED by design
+Chatsurfer/Chronos/STOP.flag
