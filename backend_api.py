@@ -32,11 +32,15 @@ app = FastAPI(
 )
 
 # CORS configuration for UE5
+# G8/F1 remediation (Joker): no wildcard + credentials (invalid + unsafe). Explicit allow-list,
+# overridable via R3ALN3T_CORS_ORIGINS (comma-separated); localhost defaults for local dev.
+import os
+_ALLOWED = [o.strip() for o in os.environ.get("R3ALN3T_CORS_ORIGINS", "http://localhost:8080,http://127.0.0.1:8080").split(",") if o.strip()]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, restrict to specific UE5 engine IPs
+    allow_origins=_ALLOWED,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
 
@@ -555,7 +559,7 @@ async def startup_event():
             name="Aqua Needle",
             code="B",
             chip_type="Attack",
-            element=ElementType.WATER,
+            element=ElementType.AQUA,
             rarity="Common",
             power=50,
             accuracy=0.90,

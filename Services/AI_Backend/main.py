@@ -9,12 +9,16 @@ import uvicorn
 
 app = FastAPI(title="NETAdmin_EXE AI Backend")
 
-# Configure CORS for Godot integration
+# Configure CORS for Godot/UE5 integration.
+# G8/F1 remediation (Joker): no wildcard + credentials (invalid + unsafe). Explicit allow-list,
+# overridable via R3ALN3T_CORS_ORIGINS (comma-separated); localhost defaults for local dev.
+import os
+_ALLOWED = [o.strip() for o in os.environ.get("R3ALN3T_CORS_ORIGINS", "http://localhost:8080,http://127.0.0.1:8080").split(",") if o.strip()]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=_ALLOWED,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
 

@@ -15,13 +15,29 @@ from datetime import datetime
 # ============================================================================
 
 class ElementType(str, Enum):
-    """6 Element system for NetP and progression"""
+    """Canon-21 element system (CEO Override_b; Void apex). Aqua replaces Water, Elec replaces Lightning;
+    Wood/Null/Glitch added. WIN=1.25/LOSS=0.75/SELF=0.5 neutral=1.0."""
     FIRE = "Fire"
-    WATER = "Water"
-    LIGHTNING = "Lightning"
+    AQUA = "Aqua"
+    ELEC = "Elec"
     ICE = "Ice"
     WIND = "Wind"
     EARTH = "Earth"
+    LIGHT = "Light"
+    DARK = "Dark"
+    VOID = "Void"
+    METAL = "Metal"
+    NATURE = "Nature"
+    SOUND = "Sound"
+    GRAVITY = "Gravity"
+    TIME = "Time"
+    BLOOD = "Blood"
+    POISON = "Poison"
+    CRYSTAL = "Crystal"
+    PLASMA = "Plasma"
+    WOOD = "Wood"
+    NULL = "Null"
+    GLITCH = "Glitch"
 
 
 class CareerType(str, Enum):
