@@ -83,8 +83,13 @@ def roll_stat(tier, key):
 
 def gen_card(tier=None, element=None, type_=None, faction=None):
     if tier is None:
-        weights = [0.01,0.01,0.02,0.02,0.03,0.03,0.04,0.04,0.05,0.05,0.05,0.05,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06]
-        tier = random.choices([t[0] for t in TIERS], weights=weights, k=1)[0]
+        # Default random tier for DEV batch use. Excludes OMEGA (apex) to avoid
+        # accidental apex spawns; weights = one per non-OMEGA tier (23 tiers).
+        pool = [t[0] for t in TIERS if t[0] != 'OMEGA']   # 23 tiers, no OMEGA
+        weights = [0.01,0.02,0.02,0.03,0.03,0.04,0.04,0.05,0.05,0.05,
+                   0.05,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06,
+                   0.06,0.06,0.06]                          # 23 weights, matches pool
+        tier = random.choices(pool, weights=weights, k=1)[0]
     if element is None: element = random.choice(ELEMENTS)
     if type_ is None: type_ = random.choice(TYPES)
     if faction is None: faction = random.choice(FACTIONS)
@@ -120,6 +125,40 @@ def gen_card(tier=None, element=None, type_=None, faction=None):
     actions = ['Strike','Barrier','Pulse','Break','Shift','Burst','Wall','Lance','Field','Wave']
     card['programs'] = [f'{pp} {a}' for a in random.sample(actions, 3)]
     
+    return card
+
+# ============================================================
+# PLAYER-FACING RANDOMIZER  (safe, rank-capped)
+# For players who pick "Randomize NetP" instead of hand-building one.
+# HARD RULE: must NEVER produce OMEGA or the top power tiers.
+# Ceiling = ZETA (starter-grade). Excludes OMEGA + EPSILON..ALPHA.
+# ============================================================
+RANDOMIZER_MAX_TIER = 'ZETA'   # highest tier a player randomize can roll
+FORBIDDEN_TIERS = {'OMEGA'}    # apex, never obtainable via randomize
+
+def _allowed_random_tiers():
+    """Tiers at or below the ZETA ceiling (by power value), OMEGA excluded.
+    Greek value: higher = stronger; OMEGA=0 is treated as apex (forbidden)."""
+    cap = dict(TIERS)[RANDOMIZER_MAX_TIER]          # ZETA -> 18
+    allowed = [name for (name, val) in TIERS
+               if name not in FORBIDDEN_TIERS and 0 < val <= cap]
+    return allowed  # ZETA, ETA, THETA, IOTA, KAPPA, LAMBDA, MU, NU, XI,
+                    # OMICRON, PI, RHO, SIGMA, TAU, UPSILON, PHI, CHI, PSI
+
+def randomize_netp(element=None, type_=None, faction=None):
+    """Generate ONE random player NetP, rank-capped so it can't be abused
+    to farm high-tier/OMEGA NetPs. Tier is weighted toward the low-mid so a
+    ZETA (best obtainable) is rare and most rolls land starter/mid-grade."""
+    allowed = _allowed_random_tiers()
+    # Weight: rarer as tier gets stronger. Strongest allowed (ZETA) is scarcest.
+    # allowed is ordered strongest->weakest, so reverse the ramp.
+    n = len(allowed)
+    weights = [i + 1 for i in range(n)]             # weakest gets highest weight
+    weights = list(reversed(weights))               # align to strongest-first order
+    tier = random.choices(allowed, weights=weights, k=1)[0]
+    card = gen_card(tier=tier, element=element, type_=type_, faction=faction)
+    card['origin'] = 'randomizer'                   # provenance tag for the game
+    card['rank_capped'] = RANDOMIZER_MAX_TIER
     return card
 
 def generate_batch(count=25):
@@ -162,6 +201,16 @@ def save_cards(cards):
 
 if __name__ == '__main__':
     import sys
+    # ---- PLAYER RANDOMIZER MODE ----
+    # Usage: python generate_cards.py randomize
+    # Emits ONE rank-capped NetP as JSON to stdout (safe for player use, no OMEGA).
+    if len(sys.argv) > 1 and sys.argv[1] == 'randomize':
+        netp = randomize_netp()
+        assert netp['tier'] not in FORBIDDEN_TIERS, 'SAFETY: randomizer produced forbidden tier'
+        assert dict(TIERS)[netp['tier']] <= dict(TIERS)[RANDOMIZER_MAX_TIER], 'SAFETY: over ceiling'
+        print(json.dumps(netp, indent=2))
+        sys.exit(0)
+    # ---- DEV BATCH MODE ----
     count = int(sys.argv[1]) if len(sys.argv) > 1 else 25
     print(f'Generating {count} character cards...')
     cards = generate_batch(count)
