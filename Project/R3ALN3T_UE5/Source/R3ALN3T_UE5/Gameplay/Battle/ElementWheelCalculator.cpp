@@ -27,8 +27,8 @@ float UElementWheelCalculator::ElementMultiplier(EElement Attacker, EElement Def
     if (Attacker == EElement::None || Defender == EElement::None) return 1.0f;
     const int32 ai = ElementIndex(Attacker), di = ElementIndex(Defender);
     if (ai < 0 || di < 0) return 1.0f;
-    if (ai == di) return 0.5f;                       // mirror clash (SELF)
-    return ElementMatchup[ai][di];                   // 1.25 (WIN) / 0.75 (LOSS) from matrix
+    // Self-clash (ai==di) resolves to 0.5f via the matrix diagonal — no separate guard needed (GAP 2d cleanup).
+    return ElementMatchup[ai][di];                   // 1.25 (WIN) / 0.75 (LOSS) / 0.5 (SELF) from matrix
 }
 
 int32 UElementWheelCalculator::CalculateDamage(int32 BaseDamage, EElement Attacker, EElement Defender,
