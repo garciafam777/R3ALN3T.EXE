@@ -133,3 +133,6 @@ Project/Content/Collections/
 # Nested separate repo ("brain" — Obsidian/Node app, its own git repo).
 # Keep it out of this repo's tree per NYX triage 2026-07-14 (Q3).
 R3ALN3T/
+
+# Agent halt flag — UNTRACKED by design (absent = run, present = halt). Never git-add.
+Chatsurfer/Chronos/STOP.flag
