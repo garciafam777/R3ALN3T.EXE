@@ -5,7 +5,7 @@
 #include "Cards/ChipDatabase.h" // included in .cpp only, to avoid circular include with CombatTypes.h
 #include "../../Core/Types/SoulState.h" // Gap C: FSoulState, ApplyDamageFork
 #include "../../Core/Managers/R3ALN3TGameInstance.h" // Gap D: UR3ALN3TGameInstance (CurrentRun souls)
-#include "../NetP/FactionTypes.h"                   // FConstructRosterRow, FNetPRosterUnit
+#include "../../Battle/NetP/FactionTypes.h"          // FConstructRosterRow, FNetPRosterUnit
 #include "../NetP/NetPRandomizer.h"                 // UNetPRandomizer::RandomizeNetP (ZETA-capped)
 
 TArray<FR3ALN3TNetPStatus> UR3ALN3T_BattleManager::GenerateConstructSpawns(
