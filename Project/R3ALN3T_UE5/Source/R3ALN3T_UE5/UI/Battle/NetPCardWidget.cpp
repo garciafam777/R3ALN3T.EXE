@@ -2,7 +2,7 @@
 #include "NetPCardWidget.h"
 #include "Components/Image.h"
 #include "Engine/Texture2D.h"
-#include "Battle/NetP/NetPCardViewModel.h"
+#include "../../Battle/NetP/NetPCardViewModel.h"
 
 void UNetPCardWidget::SetNetP(const FR3ALN3TNetPStatus& NetP)
 {

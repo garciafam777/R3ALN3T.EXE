@@ -1,6 +1,6 @@
 // NetPCardViewModel.cpp — explicit EElement->RowName resolution off FrameByElement.
-#include "Battle/NetP/NetPCardViewModel.h"
-#include "UI/Battle/NetPCardWidget.h" // for FFrameByElementRow (row struct lives with the widget)
+#include "NetPCardViewModel.h"
+#include "../../UI/Battle/NetPCardWidget.h" // for FFrameByElementRow (row struct lives with the widget)
 
 const TMap<EElement, FName>& UNetPCardViewModel::GetElementRowMap()
 {
