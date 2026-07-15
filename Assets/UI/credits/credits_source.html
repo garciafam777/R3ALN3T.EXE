@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R3ALN3T.EXE — Credits</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #000; color: #fff; font-family: 'Share Tech Mono', monospace; min-height: 100vh; overflow-x: hidden; }
+  .grid-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: linear-gradient(rgba(139,92,246,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(139,92,246,0.05) 1px, transparent 1px);
+    background-size: 60px 60px; animation: gridScroll 20s linear infinite; z-index: 0; }
+  @keyframes gridScroll { 0% { transform: translateY(0); } 100% { transform: translateY(60px); } }
+  .scanlines { position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px); z-index: 1; pointer-events: none; }
+  .container { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; padding: 80px 40px 120px; animation: creditsScroll 60s linear forwards; }
+  @keyframes creditsScroll { 0% { transform: translateY(100vh); } 100% { transform: translateY(-100%); } }
+  .game-title { font-family: 'Orbitron', monospace; font-size: 3rem; font-weight: 900; text-align: center; letter-spacing: 0.3em;
+    background: linear-gradient(135deg, #a855f7, #06b6d4, #a855f7); background-size: 200% auto; -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; background-clip: text; animation: shimmer 3s linear infinite; margin-bottom: 8px; }
+  @keyframes shimmer { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
+  .game-subtitle { font-family: 'Orbitron', monospace; font-size: 0.75rem; text-align: center; letter-spacing: 0.5em; color: rgba(139,92,246,0.6); margin-bottom: 16px; }
+  .year-tag { text-align: center; font-size: 0.7rem; color: rgba(6,182,212,0.5); letter-spacing: 0.3em; margin-bottom: 80px; }
+  .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(139,92,246,0.8), rgba(6,182,212,0.8), rgba(139,92,246,0.8), transparent); margin: 48px 0; position: relative; }
+  .divider::before { content: '◆'; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); color: rgba(139,92,246,0.9); font-size: 0.6rem; background: #000; padding: 0 12px; }
+  .section-label { font-family: 'Orbitron', monospace; font-size: 0.6rem; letter-spacing: 0.4em; color: rgba(6,182,212,0.6); text-align: center; margin-bottom: 32px; text-transform: uppercase; }
+  .credit-block { text-align: center; margin-bottom: 52px; }
+  .credit-role { font-size: 0.65rem; letter-spacing: 0.35em; color: rgba(139,92,246,0.6); text-transform: uppercase; margin-bottom: 8px; }
+  .credit-name { font-family: 'Orbitron', monospace; font-size: 1.4rem; font-weight: 700; color: #fff; letter-spacing: 0.15em;
+    text-shadow: 0 0 20px rgba(139,92,246,0.8), 0 0 40px rgba(139,92,246,0.4); }
+  .credit-name.lead { font-size: 1.8rem; background: linear-gradient(135deg, #fff 0%, #a855f7 50%, #06b6d4 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: none; filter: drop-shadow(0 0 20px rgba(139,92,246,0.6)); }
+  .thanks-block { text-align: center; margin-bottom: 48px; }
+  .thanks-entry { font-family: 'Orbitron', monospace; font-size: 0.9rem; color: rgba(255,255,255,0.7); letter-spacing: 0.1em; margin-bottom: 16px; text-shadow: 0 0 12px rgba(6,182,212,0.4); }
+  .player-message { text-align: center; margin-top: 24px; padding: 32px; border: 1px solid rgba(139,92,246,0.3); background: rgba(139,92,246,0.04); position: relative; }
+  .player-message::before, .player-message::after { content: ''; position: absolute; width: 12px; height: 12px; border-color: rgba(6,182,212,0.7); border-style: solid; }
+  .player-message::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+  .player-message::after { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+  .player-message-text { font-family: 'Orbitron', monospace; font-size: 1rem; color: #fff; letter-spacing: 0.15em; line-height: 1.8; text-shadow: 0 0 16px rgba(6,182,212,0.6); }
+  .player-message-sub { font-size: 0.65rem; color: rgba(6,182,212,0.5); letter-spacing: 0.3em; margin-top: 12px; }
+  .studio-footer { text-align: center; margin-top: 80px; }
+  .studio-name { font-family: 'Orbitron', monospace; font-size: 0.7rem; letter-spacing: 0.5em; color: rgba(139,92,246,0.5); margin-bottom: 8px; }
+  .copyright-line { font-size: 0.6rem; color: rgba(255,255,255,0.2); letter-spacing: 0.2em; }
+  .credit-name:hover { animation: glitch 0.3s infinite; }
+  @keyframes glitch { 0% { transform: translate(0); } 20% { transform: translate(-2px, 1px); } 40% { transform: translate(2px, -1px); } 60% { transform: translate(-1px, 2px); } 80% { transform: translate(1px, -2px); } 100% { transform: translate(0); } }
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<div class="scanlines"></div>
+<div class="container">
+  <div class="game-title">R3ALN3T.EXE</div>
+  <div class="game-subtitle">A LIFEIN6THGEAR STUDIOS PRODUCTION</div>
+  <div class="year-tag">// AD3026 //</div>
+  <div class="section-label">// Core Development Team //</div>
+  <div class="credit-block"><div class="credit-role">Produced by</div><div class="credit-name lead">Richard Garcia-Nieves</div></div>
+  <div class="credit-block"><div class="credit-role">Co-Producer</div><div class="credit-name">Chronos</div></div>
+  <div class="credit-block"><div class="credit-role">Development</div><div class="credit-name">Nyx</div></div>
+  <div class="credit-block"><div class="credit-role">Designs</div><div class="credit-name">Echo</div></div>
+  <div class="credit-block"><div class="credit-role">Cyber-Integrator</div><div class="credit-name">Joker</div></div>
+  <div class="divider"></div>
+  <div class="section-label">// Special Thanks //</div>
+  <div class="thanks-block">
+    <div class="thanks-entry">The Makers of the Bible</div>
+    <div class="thanks-entry">Lifein6thgear Studios</div>
+    <div class="thanks-entry">R&Y Productions</div>
+  </div>
+  <div class="divider"></div>
+  <div class="player-message">
+    <div class="player-message-text">And to every player<br>who jacked in,<br>ran the grid,<br>and made it their own —</div>
+    <div class="player-message-sub">// THANK YOU //</div>
+  </div>
+  <div class="studio-footer">
+    <div class="studio-name">LIFEIN6THGEAR STUDIOS</div>
+    <div class="copyright-line">© AD3026 R&Y Productions · All Rights Reserved</div>
+  </div>
+</div>
+</body>
+</html>

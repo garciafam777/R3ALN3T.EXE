@@ -9,6 +9,7 @@
 #include "Components/Image.h"
 #include "MediaPlayer.h"
 #include "MediaSource.h"
+class UCreditsWidget;
 #include "MainMenuWidget.generated.h"
 
 UCLASS()
@@ -27,6 +28,20 @@ public:
 
     UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
     UButton* QuitButton;
+
+    UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
+    UButton* CreditsButton;
+
+    // Credits panel to spawn when CreditsButton is pressed (set in WBP_MainMenu).
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Menu")
+    TSubclassOf<UCreditsWidget> CreditsWidgetClass;
+
+    UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
+    UButton* CreditsButton;
+
+    // Credits widget to spawn when CreditsButton is clicked.
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Menu")
+    TSubclassOf<UUserWidget> CreditsWidgetClass;
 
     UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
     UTextBlock* TitleText;
@@ -58,6 +73,12 @@ protected:
 
     UFUNCTION()
     void OnQuitClicked();
+
+    UFUNCTION()
+    void OnCreditsClicked();
+
+    UFUNCTION()
+    void OnCreditsClicked();
 
 private:
     UPROPERTY()

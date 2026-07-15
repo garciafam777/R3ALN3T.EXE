@@ -1,6 +1,7 @@
 // MainMenuWidget.cpp
 #include "MainMenuWidget.h"
 #include "MenuGameMode.h"
+#include "CreditsWidget.h"
 #include "../../Core/Managers/R3ALN3TGameInstance.h"
 #include "Components/AudioComponent.h"
 #include "Kismet/GameplayStatics.h"
@@ -20,6 +21,8 @@ void UMainMenuWidget::NativeConstruct()
         ContinueButton->OnClicked.AddDynamic(this, &UMainMenuWidget::OnContinueClicked);
     if (QuitButton)
         QuitButton->OnClicked.AddDynamic(this, &UMainMenuWidget::OnQuitClicked);
+    if (CreditsButton)
+        CreditsButton->OnClicked.AddDynamic(this, &UMainMenuWidget::OnCreditsClicked);
 
     // Start with intro cinematic
     if (IntroMediaPlayer && IntroMediaSource)
@@ -123,5 +126,15 @@ void UMainMenuWidget::OnQuitClicked()
     if (PC)
     {
         UKismetSystemLibrary::QuitGame(this, PC, EQuitPreference::Quit, false);
+    }
+}
+
+void UMainMenuWidget::OnCreditsClicked()
+{
+    if (!CreditsWidgetClass) return;
+    UUserWidget* Credits = CreateWidget<UUserWidget>(GetWorld(), CreditsWidgetClass);
+    if (Credits)
+    {
+        Credits->AddToViewport(10); // above main menu
     }
 }
