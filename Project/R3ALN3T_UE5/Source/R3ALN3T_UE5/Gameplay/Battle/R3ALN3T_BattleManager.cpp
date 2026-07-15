@@ -5,6 +5,52 @@
 #include "Cards/ChipDatabase.h" // included in .cpp only, to avoid circular include with CombatTypes.h
 #include "../../Core/Types/SoulState.h" // Gap C: FSoulState, ApplyDamageFork
 #include "../../Core/Managers/R3ALN3TGameInstance.h" // Gap D: UR3ALN3TGameInstance (CurrentRun souls)
+#include "../../Battle/NetP/FactionTypes.h"          // FConstructRosterRow, FNetPRosterUnit
+#include "../../Battle/NetP/NetPRandomizer.h"        // UNetPRandomizer::RandomizeNetP (ZETA-capped)
+
+TArray<FR3ALN3TNetPStatus> UR3ALN3T_BattleManager::GenerateConstructSpawns(
+    UDataTable* RosterTable, ENetPConstruct Construct, int32 SpawnCount) const
+{
+    TArray<FR3ALN3TNetPStatus> OutSpawns;
+
+    if (!RosterTable)
+    {
+        UE_LOG(LogTemp, Error, TEXT("[Roster] RosterTable is NULL! Bind a ConstructRoster DataTable."));
+        return OutSpawns;
+    }
+
+    const FString RowName = UEnum::GetValueAsString(Construct);
+    const FConstructRosterRow* Row = RosterTable->FindRow<FConstructRosterRow>(*RowName, TEXT("ConstructRoster"));
+    if (!Row || Row->Units.Num() == 0)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("[Roster] No units for construct: %s"), *RowName);
+        return OutSpawns;
+    }
+
+    // Weighted pool: expand weights into an index list (PoC-grade, no alloc churn concerns at this scale).
+    TArray<int32> Pool;
+    Pool.Reserve(Row->Units.Num()); // at least; exact size after expansion
+    for (int32 i = 0; i < Row->Units.Num(); ++i)
+    {
+        const int32 W = FMath::Max(1, FMath::RoundToInt(Row->Units[i].SpawnWeight));
+        for (int32 k = 0; k < W; ++k) Pool.Add(i);
+    }
+
+    for (int32 i = 0; i < SpawnCount; ++i)
+    {
+        const FNetPRosterUnit& Unit = Row->Units[Pool[FMath::RandRange(0, Pool.Num() - 1)]];
+
+        // ZETA-capped base roll (single source of truth for tiers), then stamp roster identity.
+        FR3ALN3TNetPStatus NetP = UNetPRandomizer::RandomizeNetP();
+        NetP.Construct   = Unit.Construct;
+        NetP.FactionLean = Unit.FactionLean;
+        if (Unit.Element != EElement::None) NetP.Element = Unit.Element; // None => keep randomizer's canon pick
+
+        OutSpawns.Add(NetP);
+    }
+
+    return OutSpawns;
+}
 
 void UR3ALN3T_BattleManager::Initialize(FSubsystemCollectionBase& Collection)
 {

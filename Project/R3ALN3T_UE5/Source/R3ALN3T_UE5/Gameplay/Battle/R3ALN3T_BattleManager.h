@@ -163,6 +163,17 @@ private:
 
     // Gap B: places incoming enemies across columns 4-7, one per column, capped at 4 for the slice.
     void PlaceEnemiesOnGrid(const TArray<FEnemyDef>& Enemies);
+
+    // ---- Faction/Construct Roster seam ----
+    // Data-driven: given a bound roster DataTable (rows keyed by ENetPConstruct name:
+    // "Trinity"/"Tyranny"/"Eternity", each FConstructRosterRow), roll SpawnCount NetPs
+    // for the active construct. Each NetP is ZETA-capped via UNetPRandomizer, then stamped
+    // with the roster unit's Construct/Element/FactionLean identity. Caller feeds the
+    // results into ABattleGridManager::TryPlaceNetPAtCell (col 4-7 gate + ZETA clamp).
+    // Returns empty if Table is null or the construct has no row/units.
+    UFUNCTION(BlueprintCallable, Category = "Battle|Roster")
+    TArray<FR3ALN3TNetPStatus> GenerateConstructSpawns(UDataTable* RosterTable, ENetPConstruct Construct, int32 SpawnCount) const;
+
     FGridEnemySlot* FindSlotAt(int32 Column, int32 Row);
     const FGridEnemySlot* FindSlotAt(int32 Column, int32 Row) const;
 
