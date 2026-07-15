@@ -1,0 +1,24 @@
+@echo off
+REM build_g1g3g4_powerbox.bat — POWER BOX ONLY (richa's machine, UE_5.8 at C:\Program Files\Epic Games\UE_5.8)
+REM Builds the G1/G3/G4 prep branch. Run from the repo root: Project\R3ALN3T_UE5\
+REM Chronos (prep) -> power box (build). Gate: BUILD_EXIT must be 0 before merge to main.
+
+cd /d C:\Users\richa\Desktop\R3ALN3T_UE5
+echo === ensure G1/G3/G4 prep branch ===
+git fetch origin
+git checkout engine/g1-g3-g4-powerbox
+git pull --ff-only origin engine/g1-g3-g4-powerbox
+
+echo === kill stray editor ===
+taskkill /F /IM UnrealEditor.exe >nul 2>&1
+
+echo === CLEAN BUILD ===
+call "C:\Program Files\Epic Games\UE_5.8\Engine\Build\BatchFiles\Build.bat" R3ALN3T_UE5Editor Development Win64 -Project="C:\Users\richa\Desktop\R3ALN3T_UE5\Project\R3ALN3T_UE5\R3ALN3T_UE5.uproject" -NoHotReload -WaitMutex -clean
+echo CLEAN_EXIT=%ERRORLEVEL%
+
+echo === BUILD ===
+call "C:\Program Files\Epic Games\UE_5.8\Engine\Build\BatchFiles\Build.bat" R3ALN3T_UE5Editor Development Win64 -Project="C:\Users\richa\Desktop\R3ALN3T_UE5\Project\R3ALN3T_UE5\R3ALN3T_UE5.uproject" -NoHotReload -WaitMutex
+echo BUILD_EXIT=%ERRORLEVEL%
+
+REM If BUILD_EXIT==0: report to Chronos (chat or this window). Chronos merges to main.
+REM If non-zero: paste the error to Chronos; do NOT merge.
