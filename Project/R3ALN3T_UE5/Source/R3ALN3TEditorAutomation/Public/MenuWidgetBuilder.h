@@ -3,6 +3,10 @@
 #pragma once
 
 #include "CoreMinimal.h"
+// Forward-declare UWidget: the only use is TSubclassOf<UWidget> in the struct below.
+// Avoids pulling UMG/Components/Widget.h (whose include alias is unreliable under
+// this module's PCH settings on UE_5.8) while keeping the public API intact.
+class UWidget;
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "MenuWidgetBuilder.generated.h"
 
