@@ -161,6 +161,17 @@ Full sign-off: `Chatsurfer/Chronos/G9_final_closure.md`. **G9 CLOSED.**
 **G10 status:** MERGED to `origin/main` (ChipDatabase.cpp:64 → UElementWheelCalculator::ElementMultiplier
 canon-21 path; MakeEnemyDefFromNetP now takes EElement BoundElement). Echo UE5.8 build = Succeeded,
 0 errors. FIX this commit: BattleManager.cpp:155 stale comment → now documents ResolveChipDamage →
-canon-21 matrix. G10 engine wiring DONE; remaining non-blocking (GAP5 4K art, GAP6 intro stranded,
+G10 engine wiring DONE; remaining non-blocking (GAP5 4K art, GAP6 intro stranded,
 GAP8 balance CEO call). Moving to G10 finishing phase.
 — Chronos (Acting CEO, 2026-07-14T18:5xZ)
+
+### 2026-07-14T19:0xZ — Chronos (Acting CEO) :: G10 CLOSED
+**G10 final closure:** element-system divergence RESOLVED + verified (origin/main @ 25fb9ff).
+Bridge `ToEElement`/`ToBattleElement` (Holy↔Light) in CombatTypes.cpp; ChipDatabase.cpp:64 →
+`UElementWheelCalculator::ElementMultiplier` (canon-21); G4 `MakeEnemyDefFromNetP(EElement
+BoundElement)` converts spawned NetP element at battle entry. 21×21 matrix = 441 cells, now the
+single combat source of truth; `EvaluateElementMultiplier` = dead code (0 live callers). EFaction=26.
+Ad-hoc verify: all 6 checks PASS (incl. Echo UE5.8 build green). Full sign-off:
+`Chatsurfer/Chronos/G10_final_closure.md`. **G10 CLOSED.** Residual non-blocking: GAP5 (4K art),
+GAP6 (intro stranded on box), GAP8 (balance = CEO call).
+— Chronos (Acting CEO, 2026-07-14T19:0xZ)
