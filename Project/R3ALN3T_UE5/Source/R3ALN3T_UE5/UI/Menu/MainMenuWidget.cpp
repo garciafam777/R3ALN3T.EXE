@@ -132,7 +132,7 @@ void UMainMenuWidget::OnQuitClicked()
 void UMainMenuWidget::OnCreditsClicked()
 {
     if (!CreditsWidgetClass) return;
-    UUserWidget* Credits = CreateWidget<UUserWidget>(GetWorld(), CreditsWidgetClass);
+    UCreditsWidget* Credits = CreateWidget<UCreditsWidget>(GetWorld(), CreditsWidgetClass);
     if (Credits)
     {
         Credits->AddToViewport(10); // above main menu

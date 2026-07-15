@@ -1,5 +1,5 @@
 // R3ALN3T_UE5 MainMenuWidget.h
-// UMG-based main menu with background music and intro cinematic trigger.
+// UMG-based main menu with background music, intro cinematic trigger, and Credits button.
 #pragma once
 
 #include "CoreMinimal.h"
@@ -37,13 +37,6 @@ public:
     TSubclassOf<UCreditsWidget> CreditsWidgetClass;
 
     UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
-    UButton* CreditsButton;
-
-    // Credits widget to spawn when CreditsButton is clicked.
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Menu")
-    TSubclassOf<UUserWidget> CreditsWidgetClass;
-
-    UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
     UTextBlock* TitleText;
 
     UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
@@ -73,9 +66,6 @@ protected:
 
     UFUNCTION()
     void OnQuitClicked();
-
-    UFUNCTION()
-    void OnCreditsClicked();
 
     UFUNCTION()
     void OnCreditsClicked();
