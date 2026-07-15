@@ -1,0 +1,128 @@
+[
+  {
+    "RowName": "Row01",
+    "Element": "Fire",
+    "FrameTexture": "/Game/Assets/Images/UI/card_frames/fire_frame.fire_frame",
+    "FrameName": "Fire Frame"
+  },
+  {
+    "RowName": "Row02",
+    "Element": "Aqua",
+    "FrameTexture": "/Game/Assets/Images/UI/card_frames/aqua_frame.aqua_frame",
+    "FrameName": "Aqua Frame"
+  },
+  {
+    "RowName": "Row03",
+    "Element": "Elec",
+    "FrameTexture": "/Game/Assets/Images/UI/card_frames/elec_frame.elec_frame",
+    "FrameName": "Elec Frame"
+  },
+  {
+    "RowName": "Row04",
+    "Element": "Wood",
+    "FrameTexture": "/Game/Assets/Images/UI/card_frames/wood_frame.wood_frame",
+    "FrameName": "Wood Frame"
+  },
+  {
+    "RowName": "Row05",
+    "Element": "Wind",
+    "FrameTexture": "/Game/Assets/Images/UI/card_frames/wind_frame.wind_frame",
+    "FrameName": "Wind Frame"
+  },
+  {
+    "RowName": "Row06",
+    "Element": "Holy",
+    "FrameTexture": "/Game/Assets/Images/UI/card_frames/holy_frame.holy_frame",
+    "FrameName": "Holy Frame"
+  },
+  {
+    "RowName": "Row07",
+    "Element": "Void",
+    "FrameTexture": "/Game/Assets/Images/UI/card_frames/void_frame.void_frame",
+    "FrameName": "Void Frame"
+  },
+  {
+    "RowName": "Row08",
+    "Element": "Ice",
+    "FrameTexture": "/Game/Assets/Images/UI/card_frames/ice_frame.ice_frame",
+    "FrameName": "Ice Frame"
+  },
+  {
+    "RowName": "Row09",
+    "Element": "Blood",
+    "FrameTexture": "/Game/Assets/Images/UI/card_frames/blood_frame.blood_frame",
+    "FrameName": "Blood Frame"
+  },
+  {
+    "RowName": "Row10",
+    "Element": "Crystal",
+    "FrameTexture": "/Game/Assets/Images/UI/card_frames/crystal_frame.crystal_frame",
+    "FrameName": "Crystal Frame"
+  },
+  {
+    "RowName": "Row11",
+    "Element": "Dark",
+    "FrameTexture": "/Game/Assets/Images/UI/card_frames/dark_frame.dark_frame",
+    "FrameName": "Dark Frame"
+  },
+  {
+    "RowName": "Row12",
+    "Element": "Earth",
+    "FrameTexture": "/Game/Assets/Images/UI/card_frames/earth_frame.earth_frame",
+    "FrameName": "Earth Frame"
+  },
+  {
+    "RowName": "Row13",
+    "Element": "Glitch",
+    "FrameTexture": "/Game/Assets/Images/UI/card_frames/glitch_frame.glitch_frame",
+    "FrameName": "Glitch Frame"
+  },
+  {
+    "RowName": "Row14",
+    "Element": "Gravity",
+    "FrameTexture": "/Game/Assets/Images/UI/card_frames/gravity_frame.gravity_frame",
+    "FrameName": "Gravity Frame"
+  },
+  {
+    "RowName": "Row15",
+    "Element": "Metal",
+    "FrameTexture": "/Game/Assets/Images/UI/card_frames/metal_frame.metal_frame",
+    "FrameName": "Metal Frame"
+  },
+  {
+    "RowName": "Row16",
+    "Element": "Nature",
+    "FrameTexture": "/Game/Assets/Images/UI/card_frames/nature_frame.nature_frame",
+    "FrameName": "Nature Frame"
+  },
+  {
+    "RowName": "Row17",
+    "Element": "Null",
+    "FrameTexture": "/Game/Assets/Images/UI/card_frames/null_frame.null_frame",
+    "FrameName": "Null Frame"
+  },
+  {
+    "RowName": "Row18",
+    "Element": "Plasma",
+    "FrameTexture": "/Game/Assets/Images/UI/card_frames/plasma_frame.plasma_frame",
+    "FrameName": "Plasma Frame"
+  },
+  {
+    "RowName": "Row19",
+    "Element": "Poison",
+    "FrameTexture": "/Game/Assets/Images/UI/card_frames/poison_frame.poison_frame",
+    "FrameName": "Poison Frame"
+  },
+  {
+    "RowName": "Row20",
+    "Element": "Sound",
+    "FrameTexture": "/Game/Assets/Images/UI/card_frames/sound_frame.sound_frame",
+    "FrameName": "Sound Frame"
+  },
+  {
+    "RowName": "Row21",
+    "Element": "Time",
+    "FrameTexture": "/Game/Assets/Images/UI/card_frames/time_frame.time_frame",
+    "FrameName": "Time Frame"
+  }
+]
