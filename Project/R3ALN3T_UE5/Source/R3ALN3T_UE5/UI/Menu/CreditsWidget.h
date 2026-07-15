@@ -6,6 +6,10 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/ScrollBox.h"
+#include "Components/Button.h"
+#include "Components/TextBlock.h"
+#include "Components/SizeBox.h"
+#include "Components/Border.h"
 #include "CreditsWidget.generated.h"
 
 UCLASS()
@@ -13,6 +17,10 @@ class R3ALN3T_UE5_API UCreditsWidget : public UUserWidget
 {
     GENERATED_BODY()
 public:
+    // Credit data row (ported from credits.html). Public so the .cpp file-scope
+    // arrays can construct it.
+    struct FCreditLine { FString Role; FString Name; bool bLead; };
+
     virtual void NativeConstruct() override;
 
     // Back button (BindWidget in Blueprint). Closes credits, returns to menu.
@@ -30,7 +38,6 @@ private:
     void PopulateCredits();
 
     // ---- Credit data (ported from credits.html) ----
-    struct FCreditLine { FString Role; FString Name; bool bLead; };
     static const TArray<FCreditLine>& GetCoreTeam();
     static const TArray<FString>& GetSpecialThanks();
     static const FString& GetPlayerMessage();

@@ -19,7 +19,9 @@ public:
 
 private:
     // Allowed tiers for the randomizer (weakest..strongest). Ceiling = ZETA.
-    static constexpr EGreekTier AllowedTiers[4] = {
-        EGreekTier::OmicronPSI, EGreekTier::Omicron, EGreekTier::PSI, EGreekTier::Zeta
+    // C++ EGreekTier members are {OmicronPSI=0, Zeta=1, Epsilon=2, Delta=3,
+    //   Gamma=4, Beta=5, Alpha=6, Omega=7}. Python RANDOMIZER_MAX_TIER = ZETA.
+    static constexpr EGreekTier AllowedTiers[2] = {
+        EGreekTier::OmicronPSI, EGreekTier::Zeta
     };
 };
