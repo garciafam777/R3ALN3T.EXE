@@ -1,0 +1,109 @@
+{
+  "Rows": [
+    {
+      "EElement": "Fire",
+      "FrameTexturePath": "Assets/Images/UI/card_frames/fire_frame.png",
+      "FrameName": "fire_frame"
+    },
+    {
+      "EElement": "Aqua",
+      "FrameTexturePath": "Assets/Images/UI/card_frames/aqua_frame.png",
+      "FrameName": "aqua_frame"
+    },
+    {
+      "EElement": "Elec",
+      "FrameTexturePath": "Assets/Images/UI/card_frames/elec_frame.png",
+      "FrameName": "elec_frame"
+    },
+    {
+      "EElement": "Wood",
+      "FrameTexturePath": "Assets/Images/UI/card_frames/wood_frame.png",
+      "FrameName": "wood_frame"
+    },
+    {
+      "EElement": "Wind",
+      "FrameTexturePath": "Assets/Images/UI/card_frames/wind_frame.png",
+      "FrameName": "wind_frame"
+    },
+    {
+      "EElement": "Earth",
+      "FrameTexturePath": "Assets/Images/UI/card_frames/earth_frame.png",
+      "FrameName": "earth_frame"
+    },
+    {
+      "EElement": "Light",
+      "FrameTexturePath": "Assets/Images/UI/card_frames/light_frame.png",
+      "FrameName": "light_frame"
+    },
+    {
+      "EElement": "Dark",
+      "FrameTexturePath": "Assets/Images/UI/card_frames/dark_frame.png",
+      "FrameName": "dark_frame"
+    },
+    {
+      "EElement": "Null",
+      "FrameTexturePath": "Assets/Images/UI/card_frames/null_frame.png",
+      "FrameName": "null_frame"
+    },
+    {
+      "EElement": "Glitch",
+      "FrameTexturePath": "Assets/Images/UI/card_frames/glitch_frame.png",
+      "FrameName": "glitch_frame"
+    },
+    {
+      "EElement": "Plasma",
+      "FrameTexturePath": "Assets/Images/UI/card_frames/plasma_frame.png",
+      "FrameName": "plasma_frame"
+    },
+    {
+      "EElement": "Crystal",
+      "FrameTexturePath": "Assets/Images/UI/card_frames/crystal_frame.png",
+      "FrameName": "crystal_frame"
+    },
+    {
+      "EElement": "Time",
+      "FrameTexturePath": "Assets/Images/UI/card_frames/time_frame.png",
+      "FrameName": "time_frame"
+    },
+    {
+      "EElement": "Gravity",
+      "FrameTexturePath": "Assets/Images/UI/card_frames/gravity_frame.png",
+      "FrameName": "gravity_frame"
+    },
+    {
+      "EElement": "Sound",
+      "FrameTexturePath": "Assets/Images/UI/card_frames/sound_frame.png",
+      "FrameName": "sound_frame"
+    },
+    {
+      "EElement": "Metal",
+      "FrameTexturePath": "Assets/Images/UI/card_frames/metal_frame.png",
+      "FrameName": "metal_frame"
+    },
+    {
+      "EElement": "Poison",
+      "FrameTexturePath": "Assets/Images/UI/card_frames/poison_frame.png",
+      "FrameName": "poison_frame"
+    },
+    {
+      "EElement": "Nature",
+      "FrameTexturePath": "Assets/Images/UI/card_frames/nature_frame.png",
+      "FrameName": "nature_frame"
+    },
+    {
+      "EElement": "Ice",
+      "FrameTexturePath": "Assets/Images/UI/card_frames/ice_frame.png",
+      "FrameName": "ice_frame"
+    },
+    {
+      "EElement": "Blood",
+      "FrameTexturePath": "Assets/Images/UI/card_frames/blood_frame.png",
+      "FrameName": "blood_frame"
+    },
+    {
+      "EElement": "Void",
+      "FrameTexturePath": "Assets/Images/UI/card_frames/void_frame.png",
+      "FrameName": "void_frame"
+    }
+  ]
+}
