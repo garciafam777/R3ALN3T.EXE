@@ -9,6 +9,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "../../../Core/Types/BattleGridTypes.h"
+#include "../../../Core/Types/TrinityMatrixTypes.h"
 #include "BattleGridManager.generated.h"
 
 class ABattleStagePanel;
@@ -70,6 +71,18 @@ public:
 	// Call when a unit moves onto/off of a panel, drives the EdgeGlow highlight pulse
 	UFUNCTION(BlueprintCallable, Category = "Grid")
 	void SetPanelOccupied(const FGridCoord& Coord, bool bOccupied, FLinearColor OccupantHighlightColor);
+
+	// Encounter seam: place an enemy NetP on the 8x4 board.
+	// Gate 1: enemies restricted to columns 4-7 (EnemyColumns, mirrors R3ALN3T_BattleManager).
+	// Gate 2: ZETA ceiling clamp on Tier (never Omega) so a bad data feed can't corrupt run state.
+	// Returns false (and logs) if the cell is outside the enemy zone or the coord is invalid;
+	// on success it sanitizes Tier and marks the panel occupied via SetPanelOccupied.
+	UFUNCTION(BlueprintCallable, Category = "Grid|Encounter")
+	bool TryPlaceNetPAtCell(int32 Row, int32 Col, FR3ALN3TNetPStatus& NetP, FLinearColor OccupantColor);
+
+	// ZETA ceiling constant (canonical: starter-grade, excludes OMEGA + EPSILON..ALPHA).
+	// Mirrors NetPRandomizer::AllowedTiers. Tunable here for the grid's slice.
+	static constexpr EGreekTier ZetaCeiling = EGreekTier::Zeta;
 
 protected:
 	virtual void BeginPlay() override;

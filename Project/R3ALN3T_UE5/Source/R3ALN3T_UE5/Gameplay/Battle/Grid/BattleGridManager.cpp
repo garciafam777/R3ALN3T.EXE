@@ -2,6 +2,7 @@
 #include "BattleGridManager.h"
 #include "BattleStagePanel.h"
 #include "../../../Core/Types/BattleGridTypes.h"
+#include "../../../Core/Types/TrinityMatrixTypes.h"
 
 ABattleGridManager::ABattleGridManager()
 {
@@ -116,4 +117,36 @@ void ABattleGridManager::SetPanelOccupied(const FGridCoord& Coord, bool bOccupie
 	{
 		Panel->SetHighlighted(bOccupied, OccupantHighlightColor);
 	}
+}
+
+bool ABattleGridManager::TryPlaceNetPAtCell(int32 Row, int32 Col, FR3ALN3TNetPStatus& NetP, FLinearColor OccupantColor)
+{
+	// Gate 1: enemy NetPs spawn only in columns 4-7 of the 8x4 board.
+	if (Col < 4 || Col > 7)
+	{
+		UE_LOG(LogTemp, Warning,
+			TEXT("[BattleGrid] Blocked NetP placement at cell (%d, %d). Enemies must spawn in columns 4-7!"),
+			Row, Col);
+		return false;
+	}
+
+	const FGridCoord Coord(Col, Row);
+	if (!IsValidCoord(Coord))
+	{
+		UE_LOG(LogTemp, Warning,
+			TEXT("[BattleGrid] Invalid coord (%d, %d) for NetP placement; board is 8x4."), Col, Row);
+		return false;
+	}
+
+	// Gate 2: ZETA ceiling clamp on Tier (canonical: never Omega).
+	if (NetP.Tier > ZetaCeiling)
+	{
+		UE_LOG(LogTemp, Warning,
+			TEXT("[BattleGrid] NetP Tier %d exceeded ZETA ceiling! Clamping to Zeta (%d)."),
+			static_cast<int32>(NetP.Tier), static_cast<int32>(ZetaCeiling));
+		NetP.Tier = ZetaCeiling;
+	}
+
+	SetPanelOccupied(Coord, true, OccupantColor);
+	return true;
 }
