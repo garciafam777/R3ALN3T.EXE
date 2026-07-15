@@ -1,13 +1,13 @@
 @echo off
-REM build_g1g3g4_powerbox.bat — POWER BOX ONLY (richa's machine, UE_5.8 at C:\Program Files\Epic Games\UE_5.8)
-REM Builds the G1/G3/G4 prep branch. Run from the repo root: Project\R3ALN3T_UE5\
+REM build_g1g3g4_powerbox.bat - POWER BOX ONLY (richa's machine, UE_5.8 at C:\Program Files\Epic Games\UE_5.8)
+REM Builds the consolidated prep branch: G1/G3/G4 + CREDITS. Run from repo root: Project\R3ALN3T_UE5\
 REM Chronos (prep) -> power box (build). Gate: BUILD_EXIT must be 0 before merge to main.
 
 cd /d C:\Users\richa\Desktop\R3ALN3T_UE5
-echo === ensure G1/G3/G4 prep branch ===
+echo === ensure consolidated G1/G3/G4 + credits prep branch ===
 git fetch origin
-git checkout engine/g1-g3-g4-powerbox
-git pull --ff-only origin engine/g1-g3-g4-powerbox
+git checkout engine/credits-powerbox
+git pull --ff-only origin engine/credits-powerbox
 
 echo === kill stray editor ===
 taskkill /F /IM UnrealEditor.exe >nul 2>&1
