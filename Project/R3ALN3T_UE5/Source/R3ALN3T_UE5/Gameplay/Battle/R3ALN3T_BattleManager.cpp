@@ -5,6 +5,7 @@
 #include "Cards/ChipDatabase.h" // included in .cpp only, to avoid circular include with CombatTypes.h
 #include "../../Core/Types/SoulState.h" // Gap C: FSoulState, ApplyDamageFork
 #include "../../Core/Managers/R3ALN3TGameInstance.h" // Gap D: UR3ALN3TGameInstance (CurrentRun souls)
+#include "../../Core/Managers/R3ALN3T_DeveloperSettings.h" // Phase1-A2: balance/grid/element consts
 #include "../../Battle/NetP/FactionTypes.h"          // FConstructRosterRow, FNetPRosterUnit
 #include "../NetP/NetPRandomizer.h"                 // UNetPRandomizer::RandomizeNetP (ZETA-capped)
 #include "Grid/BattleGridManager.h"                 // ABattleGridManager::TryPlaceNetPAtCell
@@ -23,14 +24,13 @@ static TAutoConsoleVariable<int32> CVarAutoFireGoldenLoop(
 
 // ZETA power ceiling for a single chip resolution (canonical: a played chip may never
 // exceed the Zeta-tier power band; OMEGA is unreachable by design). Applied to the final
-// BasePower*Multiplier result everywhere a chip is resolved, so no single PlayChip can
-// break the balance ceiling. NaN/Inf guarded.
-static constexpr float PlayChipPowerCeiling = 120.f;
-
+// Balance envelope now lives in UR3ALN3T_DeveloperSettings (Phase1-A2):
+// tunable from Project Settings / DefaultGame.ini without recompile.
 static float ClampChipDamage(float Damage)
 {
-    if (!FMath::IsFinite(Damage)) return 0.f;
-    return FMath::Min(Damage, PlayChipPowerCeiling);
+	if (!FMath::IsFinite(Damage)) return 0.f;
+	const float Ceil = UR3ALN3T_DeveloperSettings::Get()->PlayChipPowerCeiling;
+	return FMath::Min(Damage, Ceil);
 }
 
 TArray<FR3ALN3TNetPStatus> UR3ALN3T_BattleManager::GenerateConstructSpawns(

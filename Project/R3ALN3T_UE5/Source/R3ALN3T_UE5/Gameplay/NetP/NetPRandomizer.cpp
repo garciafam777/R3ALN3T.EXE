@@ -1,6 +1,7 @@
 // NetPRandomizer.cpp — G4 implementation.
 #include "NetPRandomizer.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "../../Core/Managers/R3ALN3T_DeveloperSettings.h" // Phase1-A2: element canon bounds
 
 FR3ALN3TNetPStatus UNetPRandomizer::RandomizeNetP()
 {
@@ -16,9 +17,10 @@ FR3ALN3TNetPStatus UNetPRandomizer::RandomizeNetP()
     NetP.Tier = AllowedTiers[Idx]; // ceiling ZETA, never OMEGA
 
     // Element: random canon-21 (indices 1..21; EElement::None == 0 is excluded by design).
-    // Canon elements are Fire(1) .. Void(21).
-    static constexpr int32 CanonElementFirst = 1;   // EElement::Fire
-    static constexpr int32 CanonElementLast  = 21;  // EElement::Void
+    // Canon bounds now live in UR3ALN3T_DeveloperSettings (Phase1-A2), tunable w/o recompile.
+    const UR3ALN3T_DeveloperSettings* Dev = UR3ALN3T_DeveloperSettings::Get();
+    const int32 CanonElementFirst = Dev->CanonElementFirst; // EElement::Fire
+    const int32 CanonElementLast  = Dev->CanonElementLast;  // EElement::Void
     NetP.Element = static_cast<EElement>(FMath::RandRange(CanonElementFirst, CanonElementLast));
 
     // Baseline stats by tier band (kept inside canon ranges; not balance-final).
