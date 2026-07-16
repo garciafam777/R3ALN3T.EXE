@@ -188,7 +188,7 @@ private:
     void BeginConstructEncounterConsole(FString FactionName, int32 EnemyCount);
 
     // New callback to execute the Golden Loop automatically when the CVar is set
-    void OnWorldBeginPlay_AutoFireGoldenLoop(UWorld* World);
+    void OnWorldBeginPlay_AutoFireGoldenLoop(UWorld* World, const UWorld::InitializationValues IVS);
 
     FGridEnemySlot* FindSlotAt(int32 Column, int32 Row);
     const FGridEnemySlot* FindSlotAt(int32 Column, int32 Row) const;

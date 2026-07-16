@@ -159,12 +159,16 @@ void UR3ALN3T_BattleManager::Initialize(FSubsystemCollectionBase& Collection)
     // ChipDB is fetched lazily in BeginEncounter/PlayChip so we don't depend on
     // subsystem init order here.
 
-    // Golden Loop: optional PIE auto-fire (CVar-gated, OFF by default).
-    FWorldDelegates::OnWorldBeginPlay.AddUObject(this, &UR3ALN3T_BattleManager::OnWorldBeginPlay_AutoFireGoldenLoop);
+    // Golden Loop: optional PIE auto-fire (CVar-gated, 0 by default).
+    FWorldDelegates::OnPostWorldInitialization.AddUObject(this, &UR3ALN3T_BattleManager::OnWorldBeginPlay_AutoFireGoldenLoop);
 }
 
-void UR3ALN3T_BattleManager::OnWorldBeginPlay_AutoFireGoldenLoop(UWorld* World)
+void UR3ALN3T_BattleManager::OnWorldBeginPlay_AutoFireGoldenLoop(UWorld* World, const UWorld::InitializationValues IVS)
 {
+    if (!World || !World->IsPlayInEditor())
+    {
+        return;
+    }
     if (CVarAutoFireGoldenLoop.GetValueOnGameThread() == 1)
     {
         UE_LOG(LogTemp, Log, TEXT("[Roster] AutoFireGoldenLoop CVar is enabled. Executing Trinity construct encounter..."));
