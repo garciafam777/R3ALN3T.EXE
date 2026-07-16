@@ -1,7 +1,6 @@
 // R3ALN3T_DeveloperSettings.cpp
 // Phase1-A2: single-source balance/grid/element constants.
 #include "R3ALN3T_DeveloperSettings.h"
-#include "ISettingsModule.h"
 #include "Internationalization/Internationalization.h"
 
 UR3ALN3T_DeveloperSettings::UR3ALN3T_DeveloperSettings()
