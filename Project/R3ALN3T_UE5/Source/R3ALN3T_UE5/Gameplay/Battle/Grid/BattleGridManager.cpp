@@ -17,12 +17,28 @@ void ABattleGridManager::BeginPlay()
 	RefreshAllPanelColors();
 }
 
+void ABattleGridManager::EnsureGrid()
+{
+	if (PanelData.Num() == GridCols * GridRows)
+	{
+		return; // already sized (e.g. by SpawnPanels in BeginPlay)
+	}
+	PanelData.SetNum(GridCols * GridRows);
+	PanelActors.SetNum(GridCols * GridRows);
+	for (int32 Row = 0; Row < GridRows; ++Row)
+	{
+		for (int32 Col = 0; Col < GridCols; ++Col)
+		{
+			PanelData[Row * GridCols + Col].Coord = FGridCoord(Col, Row);
+		}
+	}
+}
+
 void ABattleGridManager::SpawnPanels()
 {
 	// The logical grid (PanelData) must always exist so placement math is valid,
 	// independent of whether a visual PanelClass is assigned (it's a Blueprint prop).
-	PanelData.SetNum(GridCols * GridRows);
-	PanelActors.SetNum(GridCols * GridRows);
+	EnsureGrid();
 
 	if (!PanelClass)
 	{
@@ -56,6 +72,7 @@ void ABattleGridManager::SpawnPanels()
 
 FBattleGridPanel& ABattleGridManager::GetPanelData(const FGridCoord& Coord)
 {
+	EnsureGrid();
 	check(IsValidCoord(Coord));
 	return PanelData[Coord.Row * GridCols + Coord.Col];
 }
@@ -63,6 +80,7 @@ FBattleGridPanel& ABattleGridManager::GetPanelData(const FGridCoord& Coord)
 ABattleStagePanel* ABattleGridManager::GetPanelActor(const FGridCoord& Coord)
 {
 	if (!IsValidCoord(Coord)) return nullptr;
+	EnsureGrid();
 	return PanelActors[Coord.Row * GridCols + Coord.Col];
 }
 
@@ -120,6 +138,10 @@ void ABattleGridManager::SetPanelOccupied(const FGridCoord& Coord, bool bOccupie
 
 bool ABattleGridManager::TryPlaceNetPAtCell(int32 Row, int32 Col, FR3ALN3TNetPStatus& NetP, FLinearColor OccupantColor)
 {
+	// Guarantee the logical grid exists even if called before BeginPlay (e.g. from a
+	// world-initialization delegate that fires ahead of the grid actor's BeginPlay).
+	EnsureGrid();
+
 	// Gate 1: enemy NetPs spawn only in columns 4-7 of the 8x4 board.
 	if (Col < 4 || Col > 7)
 	{

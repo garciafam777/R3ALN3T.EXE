@@ -87,4 +87,7 @@ public:
 protected:
 	virtual void BeginPlay() override;
 	void SpawnPanels();
+	// Lifecycle-independent: guarantees PanelData/PanelActors are sized + Coord-filled
+	// regardless of whether BeginPlay (SpawnPanels) has run yet. Call before any indexed access.
+	void EnsureGrid();
 };
