@@ -9,6 +9,7 @@
 #include "../NetP/NetPRandomizer.h"                 // UNetPRandomizer::RandomizeNetP (ZETA-capped)
 #include "Grid/BattleGridManager.h"                 // ABattleGridManager::TryPlaceNetPAtCell
 #include "../../Battle/NetP/NetPCardViewModel.h"    // UNetPCardViewModel::ResolveNetPCardFrame
+#include "Engine/World.h"                            // TActorIterator, UWorld
 
 TArray<FR3ALN3TNetPStatus> UR3ALN3T_BattleManager::GenerateConstructSpawns(
     UDataTable* RosterTable, ENetPConstruct Construct, int32 SpawnCount) const
@@ -97,7 +98,7 @@ void UR3ALN3T_BattleManager::BeginConstructEncounter(UDataTable* RosterTable, UD
         const int32 TargetCol = 4 + (i % 4); // distribute across columns 4..7
 
         FR3ALN3TNetPStatus NetP = Roster[i]; // copy: TryPlaceNetPAtCell may clamp Tier in-place
-        if (Grid->TryPlaceNetPAtCell(TargetRow, TargetCol, NetP))
+        if (Grid->TryPlaceNetPAtCell(TargetRow, TargetCol, NetP, FLinearColor::Red))
         {
             ++Placed;
             UE_LOG(LogTemp, Log, TEXT("[BattleGrid] NetP placed at cell (Row=%d, Col=%d) [Construct=%s, Element=%s, Tier=%d]"),
