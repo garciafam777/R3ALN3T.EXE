@@ -6,6 +6,7 @@
 #include "MenuGameMode.generated.h"
 
 class UMainMenuWidget;
+class UEngineSplashWidget;
 class USoundBase;
 class UMediaPlayer;
 class UMediaSource;
@@ -20,8 +21,16 @@ public:
 
 	virtual void BeginPlay() override;
 
+	// Spawns the studio/main-menu screen. Called directly when no splash is set,
+	// or deferred until the opening splash finishes.
+	void ShowMainMenu();
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Menu")
 	TSubclassOf<UMainMenuWidget> MenuWidgetClass;
+
+	// Opening engine splash, shown before the studio/main-menu screen.
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Splash")
+	TSubclassOf<UEngineSplashWidget> EngineSplashClass;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Menu")
 	USoundBase* BackgroundMusic;
