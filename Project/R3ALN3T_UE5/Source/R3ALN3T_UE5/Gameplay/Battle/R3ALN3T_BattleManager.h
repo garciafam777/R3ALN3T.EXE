@@ -174,6 +174,13 @@ private:
     UFUNCTION(BlueprintCallable, Category = "Battle|Roster")
     TArray<FR3ALN3TNetPStatus> GenerateConstructSpawns(UDataTable* RosterTable, ENetPConstruct Construct, int32 SpawnCount) const;
 
+    // Golden-Loop integration entry point. Rolls ConstructRoster (data-driven), pipes each
+    // NetP through ABattleGridManager::TryPlaceNetPAtCell (col 4-7 gate + ZETA clamp), and
+    // resolves its card frame via UNetPCardViewModel. BeginEncounter(const TArray<FEnemyDef>&)
+    // (Gap B) is unchanged; callers that want the roster seam use this instead.
+    UFUNCTION(BlueprintCallable, Category = "Battle|Roster")
+    void BeginConstructEncounter(UDataTable* RosterTable, UDataTable* FrameTable, ENetPConstruct Construct, int32 EnemyCount);
+
     FGridEnemySlot* FindSlotAt(int32 Column, int32 Row);
     const FGridEnemySlot* FindSlotAt(int32 Column, int32 Row) const;
 

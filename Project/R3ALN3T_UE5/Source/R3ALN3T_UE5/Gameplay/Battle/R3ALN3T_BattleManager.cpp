@@ -7,6 +7,8 @@
 #include "../../Core/Managers/R3ALN3TGameInstance.h" // Gap D: UR3ALN3TGameInstance (CurrentRun souls)
 #include "../../Battle/NetP/FactionTypes.h"          // FConstructRosterRow, FNetPRosterUnit
 #include "../NetP/NetPRandomizer.h"                 // UNetPRandomizer::RandomizeNetP (ZETA-capped)
+#include "Grid/BattleGridManager.h"                 // ABattleGridManager::TryPlaceNetPAtCell
+#include "../../Battle/NetP/NetPCardViewModel.h"    // UNetPCardViewModel::ResolveNetPCardFrame
 
 TArray<FR3ALN3TNetPStatus> UR3ALN3T_BattleManager::GenerateConstructSpawns(
     UDataTable* RosterTable, ENetPConstruct Construct, int32 SpawnCount) const
@@ -50,6 +52,70 @@ TArray<FR3ALN3TNetPStatus> UR3ALN3T_BattleManager::GenerateConstructSpawns(
     }
 
     return OutSpawns;
+}
+
+// ---- Faction/Construct Roster seam: live Golden-Loop entry point ----
+// Data-driven: roll a construct's roster, pipe each NetP through ABattleGridManager's
+// col 4-7 gate + ZETA clamp (TryPlaceNetPAtCell), and resolve its card frame. This is the
+// real integration of GenerateConstructSpawns -> TryPlaceNetPAtCell -> ResolveNetPCardFrame;
+// BeginEncounter(const TArray<FEnemyDef>&) (Gap B) is left intact for existing callers.
+void UR3ALN3T_BattleManager::BeginConstructEncounter(UDataTable* RosterTable, UDataTable* FrameTable,
+                                                     ENetPConstruct Construct, int32 EnemyCount)
+{
+    UE_LOG(LogTemp, Log, TEXT("[Roster] Initiating encounter for Construct: %s (count=%d)"),
+        *UEnum::GetValueAsString(Construct), EnemyCount);
+
+    // 1) Data-driven roster roll.
+    const TArray<FR3ALN3TNetPStatus> Roster = GenerateConstructSpawns(RosterTable, Construct, EnemyCount);
+    if (Roster.Num() == 0)
+    {
+        // No silent legacy fallback: an empty roster means the DataTable row is missing/empty.
+        // That's a data authoring gap, not a code path to mask. Caller must populate the DT.
+        UE_LOG(LogTemp, Error, TEXT("[Roster] Generated roster EMPTY for %s — populate the ConstructRoster DataTable row."),
+            *UEnum::GetValueAsString(Construct));
+        return;
+    }
+
+    // 2) Reach the live grid (level-spawned ABattleGridManager actor).
+    UWorld* World = GetGameInstance() ? GetGameInstance()->GetWorld() : nullptr;
+    ABattleGridManager* Grid = nullptr;
+    if (World)
+    {
+        for (TActorIterator<ABattleGridManager> It(World); It; ++It) { Grid = *It; break; }
+    }
+    if (!Grid)
+    {
+        UE_LOG(LogTemp, Error, TEXT("[BattleGrid] BattleGridManager not found in world during BeginConstructEncounter!"));
+        return;
+    }
+
+    // 3) Pipe each NetP through the col 4-7 gated spawn matrix + resolve its card frame.
+    int32 Placed = 0;
+    for (int32 i = 0; i < Roster.Num(); ++i)
+    {
+        const int32 TargetRow = FMath::RandRange(0, 3);
+        const int32 TargetCol = 4 + (i % 4); // distribute across columns 4..7
+
+        FR3ALN3TNetPStatus NetP = Roster[i]; // copy: TryPlaceNetPAtCell may clamp Tier in-place
+        if (Grid->TryPlaceNetPAtCell(TargetRow, TargetCol, NetP))
+        {
+            ++Placed;
+            UE_LOG(LogTemp, Log, TEXT("[BattleGrid] NetP placed at cell (Row=%d, Col=%d) [Construct=%s, Element=%s, Tier=%d]"),
+                TargetRow, TargetCol, *UEnum::GetValueAsString(NetP.Construct),
+                *UEnum::GetValueAsString(NetP.Element), static_cast<int32>(NetP.Tier));
+
+            // 4) Resolve the card frame (logs its own warnings on data gap; never crashes).
+            FNetPCardFrame Frame;
+            if (UNetPCardViewModel::ResolveNetPCardFrame(NetP.Element, FrameTable, Frame))
+            {
+                UE_LOG(LogTemp, Log, TEXT("[NetPCard] ResolveNetPCardFrame success for %s -> '%s' (bFound=%d)"),
+                    *UEnum::GetValueAsString(NetP.Element), *Frame.FrameName, Frame.bFound);
+            }
+        }
+    }
+
+    UE_LOG(LogTemp, Log, TEXT("[Roster] Placed %d of %d NetPs from roster on the grid."), Placed, Roster.Num());
+    OnBattleStart.Broadcast();
 }
 
 void UR3ALN3T_BattleManager::Initialize(FSubsystemCollectionBase& Collection)
