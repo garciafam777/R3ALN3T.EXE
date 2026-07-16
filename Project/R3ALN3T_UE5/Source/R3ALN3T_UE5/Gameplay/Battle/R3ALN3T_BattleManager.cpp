@@ -32,7 +32,10 @@ TArray<FR3ALN3TNetPStatus> UR3ALN3T_BattleManager::GenerateConstructSpawns(
         return OutSpawns;
     }
 
-    const FString RowName = UEnum::GetValueAsString(Construct);
+    const FString RawName = UEnum::GetValueAsString(Construct);          // e.g. "ENetPConstruct::Trinity"
+    FString RowName = RawName;
+    const FString Prefix = TEXT("ENetPConstruct::");
+    if (RowName.StartsWith(Prefix)) RowName.RightChopInline(Prefix.Len()); // -> "Trinity" (matches DT row names)
     const FConstructRosterRow* Row = RosterTable->FindRow<FConstructRosterRow>(*RowName, TEXT("ConstructRoster"));
     if (!Row || Row->Units.Num() == 0)
     {
