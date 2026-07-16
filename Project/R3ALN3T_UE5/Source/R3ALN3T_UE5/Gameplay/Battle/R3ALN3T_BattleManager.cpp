@@ -9,7 +9,6 @@
 #include "../NetP/NetPRandomizer.h"                 // UNetPRandomizer::RandomizeNetP (ZETA-capped)
 #include "Grid/BattleGridManager.h"                 // ABattleGridManager::TryPlaceNetPAtCell
 #include "../../Battle/NetP/NetPCardViewModel.h"    // UNetPCardViewModel::ResolveNetPCardFrame
-#include "Engine/World.h"                            // TActorIterator, UWorld
 
 TArray<FR3ALN3TNetPStatus> UR3ALN3T_BattleManager::GenerateConstructSpawns(
     UDataTable* RosterTable, ENetPConstruct Construct, int32 SpawnCount) const
