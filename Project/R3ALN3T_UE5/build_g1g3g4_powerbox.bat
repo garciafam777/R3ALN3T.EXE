@@ -12,6 +12,15 @@ git pull --ff-only origin engine/credits-powerbox
 echo === kill stray editor ===
 taskkill /F /IM UnrealEditor.exe >nul 2>&1
 
+echo === HERMES GATE STACK: content-canon gate (canon-21 element enforcement) ===
+python Scripts\hermes-gap-gate.py Project\R3ALN3T_UE5\Source
+if errorlevel 1 (
+    echo HERMES_GATE_EXIT=1
+    echo [GATE FAIL] content-canon violations found - aborting build per road-map gate discipline.
+    exit /b 1
+)
+echo HERMES_GATE_EXIT=0
+
 echo === CLEAN BUILD ===
 call "C:\Program Files\Epic Games\UE_5.8\Engine\Build\BatchFiles\Build.bat" R3ALN3T_UE5Editor Development Win64 -Project="C:\Users\richa\Desktop\R3ALN3T_UE5\Project\R3ALN3T_UE5\R3ALN3T_UE5.uproject" -NoHotReload -WaitMutex -clean
 echo CLEAN_EXIT=%ERRORLEVEL%

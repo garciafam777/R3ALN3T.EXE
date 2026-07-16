@@ -19,12 +19,13 @@ For each file it reports per-row violations and exits non-zero if any found.
 """
 import sys, os, json, argparse, csv
 
-CANON = {"fire","aqua","elec","wood","wind","holy","void"}
-# off-wheel tokens that must NEVER appear as an element value
-OFFWHEEL = {"earth","dark","sound","ice","time","water","crystal","blood","nature",
-            "metal","gravity","poison","plasma","lightning","light","lava","frost",
-            "shadow","spirit","beast","machine","quantum","astro","psy","magma",
-            "storm","chaos","order","bone","sand","steel","gold","moon","sun"}
+CANON = {"fire","aqua","elec","wood","wind","holy","void","ice","blood","crystal",
+          "dark","earth","glitch","gravity","metal","nature","null","plasma",
+          "poison","sound","time"}  # canon-21 (CEO ruling: 21 elements, NO Light)
+# off-wheel tokens that must NEVER appear as an element value (bogus / non-canon)
+OFFWHEEL = {"light","lightning","lava","frost","shadow","spirit","beast","machine",
+            "quantum","astro","psy","magma","storm","chaos","order","bone","sand",
+            "steel","gold","moon","sun","water","rain","leaf"}
 
 ELEMENT_KEYS = {"element","elements","elem"}
 NAME_KEYS    = {"name","title","id_name"}
@@ -43,7 +44,7 @@ def check_obj(obj, path, problems):
             if klow in ELEMENT_KEYS and isinstance(v, str):
                 val = norm(v)
                 if val not in CANON:
-                    problems.append(f"{path}.{k} = '{v}' (not in 7-wheel)")
+                    problems.append(f"{path}.{k} = '{v}' (not in canon-21)")
             if klow in NAME_KEYS and isinstance(v, str):
                 if v.strip() == "" or v.strip() == "?":
                     problems.append(f"{path}.{k} = EMPTY/?")
@@ -99,7 +100,7 @@ def scan_csv(fp, problems):
                 if elem_idx is not None and elem_idx < len(r):
                     ev = r[elem_idx].strip().lower()
                     if ev and ev not in CANON:
-                        problems.append(f"{fp}:row{rows}.{header[elem_idx]} = '{r[elem_idx]}' (not in 7-wheel)")
+                        problems.append(f"{fp}:row{rows}.{header[elem_idx]} = '{r[elem_idx]}' (not in canon-21)")
                 if id_idx < len(r):
                     rid = r[id_idx]
                     if rid in seen_ids:
