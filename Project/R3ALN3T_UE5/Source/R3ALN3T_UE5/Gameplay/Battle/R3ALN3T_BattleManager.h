@@ -181,6 +181,12 @@ private:
     UFUNCTION(BlueprintCallable, Category = "Battle|Roster")
     void BeginConstructEncounter(UDataTable* RosterTable, UDataTable* FrameTable, ENetPConstruct Construct, int32 EnemyCount);
 
+    // Console-driven Golden-Loop test entry (mirrors PlayChipConsole). Loads the two DTs by
+    // /Game/... asset path at call time, so no editor property binding is required to fire it.
+    // e.g. `BeginConstructEncounterConsole Trinity /Game/R3ALN3T/Battle/ConstructRoster.ConstructRoster /Game/Data/FrameByElement.FrameByElement 4`
+    UFUNCTION(BlueprintCallable, Category = "Battle|Roster")
+    void BeginConstructEncounterConsole(const FString& ConstructStr, const FString& RosterTablePath, const FString& FrameTablePath, int32 Count);
+
     FGridEnemySlot* FindSlotAt(int32 Column, int32 Row);
     const FGridEnemySlot* FindSlotAt(int32 Column, int32 Row) const;
 

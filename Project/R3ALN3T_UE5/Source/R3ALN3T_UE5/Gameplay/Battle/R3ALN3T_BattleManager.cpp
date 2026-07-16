@@ -120,6 +120,27 @@ void UR3ALN3T_BattleManager::BeginConstructEncounter(UDataTable* RosterTable, UD
     OnBattleStart.Broadcast();
 }
 
+// Console-driven Golden-Loop test entry (mirrors PlayChipConsole). Loads DTs by asset path.
+void UR3ALN3T_BattleManager::BeginConstructEncounterConsole(const FString& ConstructStr,
+    const FString& RosterTablePath, const FString& FrameTablePath, int32 Count)
+{
+    UEnum* E = StaticEnum<ENetPConstruct>();
+    if (!E) { UE_LOG(LogTemp, Error, TEXT("[Roster] ENetPConstruct enum not found!")); return; }
+    const int64 Val = E->GetValueByName(FName(*ConstructStr));
+    if (Val == INDEX_NONE)
+    {
+        UE_LOG(LogTemp, Error, TEXT("[Roster] Unknown construct '%s' (use Trinity/Tyranny/Eternity)"), *ConstructStr);
+        return;
+    }
+    UDataTable* Roster = LoadObject<UDataTable>(nullptr, *RosterTablePath);
+    if (!Roster) { UE_LOG(LogTemp, Error, TEXT("[Roster] Failed to load RosterTable: %s"), *RosterTablePath); return; }
+    UDataTable* Frame = LoadObject<UDataTable>(nullptr, *FrameTablePath);
+    if (!Frame) { UE_LOG(LogTemp, Warning, TEXT("[NetPCard] FrameTable missing: %s (card frames will warn, no crash)"), *FrameTablePath); }
+
+    UE_LOG(LogTemp, Log, TEXT("[Roster] Console firing encounter for '%s' (count=%d)"), *ConstructStr, Count);
+    BeginConstructEncounter(Roster, Frame, static_cast<ENetPConstruct>(Val), Count);
+}
+
 void UR3ALN3T_BattleManager::Initialize(FSubsystemCollectionBase& Collection)
 {
     Super::Initialize(Collection);
