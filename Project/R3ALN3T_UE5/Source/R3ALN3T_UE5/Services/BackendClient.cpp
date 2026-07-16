@@ -3,6 +3,7 @@
 #include "Http.h"
 #include "JsonUtilities.h"
 #include "Kismet/GameplayStatics.h"
+#include "../Core/Managers/R3ALSaveGame.h"   // Area-2 fix: local mock fallback target
 
 ABackendClient::ABackendClient()
 {
@@ -309,6 +310,16 @@ void ABackendClient::MakeRequest(
 	Request->SetHeader("Content-Type", "application/json");
 	Request->SetHeader("User-Agent", "R3ALN3T-Client/1.0");
 
+	if (bUseMockBackend)
+	{
+		// Area-2 fix: service locally, no live endpoint. Returns true if handled.
+		if (HandleMockRequest(Endpoint, Verb, JsonContent))
+		{
+			return;
+		}
+		// Unhandled mock case falls through to a real request (e.g. explicitly forced live).
+	}
+
 	if (!JsonContent.IsEmpty())
 	{
 		Request->SetContentAsString(JsonContent);
@@ -462,4 +473,74 @@ TSharedPtr<FJsonObject> ABackendClient::ParseJsonResponse(const FString& JsonStr
 	}
 
 	return nullptr;
+}
+
+// --- Area-2 fix: local mock backend (no live FastAPI required) ---
+// Services the request from the on-disk UR3ALSaveGame slot. Prevents null/standalone
+// crashes when the endpoint is unreachable. Returns true if the request was handled
+// locally (caller must then skip the live HTTP send).
+bool ABackendClient::HandleMockRequest(const FString& Endpoint, const FString& Verb, const FString& JsonContent)
+{
+	if (bDebugLogging)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[BackendClient] MOCK handling: %s %s"), *Verb, *Endpoint);
+	}
+
+	if (Endpoint.Contains(TEXT("/save")) || LastRequestType == TEXT("SaveGame"))
+	{
+		// Persist the supplied player state into the local save slot.
+		UR3ALSaveGame* Save = UR3ALSaveGame::LoadOrCreate(GetWorld());
+		if (Save)
+		{
+			// PlayerData is forwarded as the canonical "notes" payload; the schema's
+			// structured fields (rewards, soul, roster) are written by the gameplay path.
+			Save->PlayerNotes = PlayerDataToNotes(JsonContent);
+			UR3ALSaveGame::Save(GetWorld(), Save);
+		}
+		OnGameSaved.Broadcast(true, TEXT("mock-save-local"));
+		return true;
+	}
+
+	if (Endpoint.Contains(TEXT("/load")) || LastRequestType == TEXT("LoadGame"))
+	{
+		UR3ALSaveGame* Save = UR3ALSaveGame::LoadOrCreate(GetWorld());
+		if (Save)
+		{
+			OnDataReceived.Broadcast(true, Save->PlayerNotes);
+		}
+		else
+		{
+			OnDataReceived.Broadcast(false, TEXT(""));
+		}
+		return true;
+	}
+
+	if (Endpoint.Contains(TEXT("/health")) || LastRequestType == TEXT("HealthCheck"))
+	{
+		OnDataReceived.Broadcast(true, TEXT("{\"status\":\"mock-ok\"}"));
+		return true;
+	}
+
+	// Generic mock: synthesize a success so game flow never deadlocks on a missing server.
+	OnDataReceived.Broadcast(true, TEXT("{\"mock\":true}"));
+	return true;
+}
+
+FString ABackendClient::PlayerDataToNotes(const FString& JsonContent) const
+{
+	// Lightweight: stash the raw player_state JSON as the save's notes field.
+	// Structured persistence (rewards/soul/roster) is handled by the gameplay save path.
+	TSharedPtr<FJsonObject> Obj = ParseJsonResponse(JsonContent);
+	if (Obj.IsValid())
+	{
+		const TSharedPtr<FJsonObject>* PlayerObj = nullptr;
+		if (Obj->TryGetObjectField(TEXT("player_state"), PlayerObj) && PlayerObj->IsValid())
+		{
+			FString Out;
+			TSharedRef<TJsonWriter<>> W = TJsonWriterFactory<>::Create(&Out);
+			FJsonSerializer::Serialize((*PlayerObj).ToSharedRef(), W);
+			return Out;
+		}
+	}
+	return JsonContent;
 }

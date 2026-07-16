@@ -228,6 +228,9 @@ void UR3ALN3T_BattleManager::EndBattle(bool bPlayerWon)
         Rec.LocationTag = TEXT("Rotterdam"); // TODO Phase4: pass actual location tag
         Rec.TimestampUTC = FDateTime::UtcNow().ToUnixTimestamp();
         Save->PersistReward(Rec);
+        // Area-3 fix: persist the player's current soul band alongside the reward block
+        // so grid/faction/soul edits survive a restart (not just rewards).
+        Save->PlayerSoulBand = PlayerSoul.GetBand();
         UR3ALSaveGame::Save(this, Save);
     }
 

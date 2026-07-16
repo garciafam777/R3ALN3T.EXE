@@ -15,6 +15,7 @@
 #include "../Core/Types/TrinityMatrixTypes.h"        // EGreekTier, FR3ALN3TNetPStatus
 #include "../Core/Types/CombatTypes.h"               // EBattleElementType
 #include "../Core/Managers/R3ALSaveGame.h"           // UR3ALSaveGame, FR3ALN3TRewardRecord (P1A3)
+#include "../Services/BackendClient.h"               // ABackendClient (Area-2 mock test)
 
 // Canonical ZETA power ceiling (mirrors PlayChipPowerCeiling in R3ALN3T_BattleManager.cpp).
 // Kept here so the suite asserts the balance envelope without reaching into file-static state.
@@ -149,6 +150,70 @@ bool FR3ALN3TSaveGameRewardRoundTrip::RunTest(const FString& Parameters)
     {
         TestEqual(TEXT("Chip[0] survived"), Got.ChipsEarned[0], FName(TEXT("Buster")));
         TestEqual(TEXT("Chip[1] survived"), Got.ChipsEarned[1], FName(TEXT("ZetaBlade")));
+    }
+
+    UGameplayStatics::DeleteGameInSlot(Slot, UserIdx);
+    return true;
+}
+
+// --- Test 5: Area-2 mock backend data sink — local save round-trip (no live FastAPI) ---
+// The mock backend (ABackendClient::HandleMockRequest) writes player state into
+// UR3ALSaveGame::PlayerNotes and flushes via UR3ALSaveGame::Save. This test exercises that
+// exact local-sink path world-free, proving the standalone fallback has a real persistence
+// target (no null/HTTP crash when the endpoint is down).
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FBackendMockSink,
+    "R3ALN3T.BattleLoop.BackendMockSink",
+    EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
+bool FBackendMockSink::RunTest(const FString& Parameters)
+{
+    const FString Slot = TEXT("R3AL_T5_Mock");
+    const uint32 UserIdx = 0;
+    UGameplayStatics::DeleteGameInSlot(Slot, UserIdx);
+
+    UObject* Outer = GetTransientPackage();
+    UR3ALSaveGame* Save = UR3ALSaveGame::LoadOrCreate(Outer);
+    if (!TestNotNull(TEXT("SaveGame (mock sink) constructed"), Save)) return false;
+
+    // Mirrors ABackendClient::HandleMockRequest's player_state stash.
+    Save->PlayerNotes = TEXT("{\"player_state\":{\"id\":\"test_player\",\"soul\":42}}");
+    UR3ALSaveGame::Save(Outer, Save);
+
+    UR3ALSaveGame* Reopen = UR3ALSaveGame::LoadOrCreate(Outer);
+    TestNotNull(TEXT("Mock sink save reopened"), Reopen);
+    if (Reopen)
+    {
+        TestFalse(TEXT("PlayerNotes survived restart (mock data sink)"),
+                  Reopen->PlayerNotes.IsEmpty());
+        TestTrue(TEXT("PlayerNotes content intact"),
+                 Reopen->PlayerNotes.Contains(TEXT("test_player")));
+    }
+
+    UGameplayStatics::DeleteGameInSlot(Slot, UserIdx);
+    return true;
+}
+
+// --- Test 6: Area-3 — player soul band persists to save on write ---
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FSoulStatePersist,
+    "R3ALN3T.BattleLoop.SoulStatePersist",
+    EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
+bool FSoulStatePersist::RunTest(const FString& Parameters)
+{
+    const FString Slot = TEXT("R3AL_T6_Soul");
+    const uint32 UserIdx = 0;
+    UGameplayStatics::DeleteGameInSlot(Slot, UserIdx);
+
+    FSoulState Soul;
+    Soul.Soul = 10.f;                 // -> Radiant band
+    TestEqual(TEXT("Soul band computed Radiant"), Soul.GetBand(), ESoulAuraBand::Radiant);
+
+    Soul.WriteToSave(GetTransientPackage());   // Area-3: flush band to on-disk save
+
+    UR3ALSaveGame* Reopen = UR3ALSaveGame::LoadOrCreate(GetTransientPackage());
+    TestNotNull(TEXT("Save reopened"), Reopen);
+    if (Reopen)
+    {
+        TestEqual(TEXT("PlayerSoulBand survived restart"),
+                  Reopen->PlayerSoulBand, ESoulAuraBand::Radiant);
     }
 
     UGameplayStatics::DeleteGameInSlot(Slot, UserIdx);

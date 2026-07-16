@@ -71,6 +71,16 @@ public:
     UFUNCTION(BlueprintCallable, Category = "World")
     const TArray<FWorldLayerInfo>& GetLayerInfos() const { return LayerInfos; }
 
+    // --- Area-1 fix: exposed streaming sub-level list (canonical layer package names) ---
+    // Populated by Init() from LayerInfos. The engine/Blueprints read this to stream
+    // each dimension's .umap in/out instead of silently operating on an empty array.
+    UPROPERTY(BlueprintReadOnly, Category = "World|Streaming")
+    TArray<FName> StreamingLayerLevels;
+
+    // (Re)builds StreamingLayerLevels from the current LayerInfos. Safe to call after Init.
+    UFUNCTION(BlueprintCallable, Category = "World|Streaming")
+    void RebuildStreamingList();
+
     UFUNCTION(BlueprintCallable, Category = "World")
     bool IsInEncounterZone(FVector Location, FEncounterZone& OutZone) const;
 

@@ -3,6 +3,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/SaveGame.h"
 #include "../../Core/Types/TrinityMatrixTypes.h"
+#include "../../Core/Types/SoulState.h"   // Area-3: ESoulAuraBand for player soul band
 #include "R3ALSaveGame.generated.h"
 
 // Phase1-A3: Rotterdam reward block. Mirrors the battle-time FBattleResult
@@ -71,6 +72,16 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Save")
 	TMap<ENetPConstruct, ESoulState> SoulState;
 
+	// Area-3 fix: the player's own soul band (0-100 mapped to ESoulAuraBand), persisted
+	// on battle resolution so grid/faction/soul edits survive a restart.
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Save|Soul")
+	ESoulAuraBand PlayerSoulBand = ESoulAuraBand::Cracked;
+
+	// Chapter 5.3: player's overworld location at the moment an encounter triggered, so
+	// the overworld can be re-entered at the same spot after battle resolves.
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Save|World")
+	FVector LastWorldLocation = FVector::ZeroVector;
+
 	// Story flags (act completion, secret-chapter discovery).
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Save")
 	TSet<FString> StoryFlags;
@@ -88,6 +99,9 @@ public:
 	void PersistReward(const FR3ALN3TRewardRecord& Reward);
 
 	// Phase1-A3: canonical slot + load/create/save helpers (round-trip survives restart).
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Save|Mock")
+	FString PlayerNotes;   // Area-2: raw player-state JSON stash used by the local mock backend
+
 	static const FString SaveSlotName;
 	static UR3ALSaveGame* LoadOrCreate(UObject* Outer);
 	static bool Save(UObject* Outer, UR3ALSaveGame* Save);

@@ -4,6 +4,8 @@
 #include "GameFramework/Pawn.h"
 #include "GameFramework/PlayerController.h"
 #include "Engine/World.h"
+#include "Kismet/GameplayStatics.h"            // OpenLevel, UGameplayStatics (save)
+#include "../../Core/Managers/R3ALSaveGame.h"   // Chapter 5.3: stash player world location
 
 UEncounterTriggerComponent::UEncounterTriggerComponent()
 {
@@ -74,6 +76,23 @@ void UEncounterTriggerComponent::ForceEncounter()
         *Enemy.DisplayName.ToString(), (int32)Enemy.Element, HP);
     UE_LOG(LogTemp, Log, TEXT("[GAPB-PIE] From PIE console run:  PlayChipConsole Alpha 4 0   (expect HP %d -> %d)"),
         HP, FMath::Max(0, HP - 80));
+
+    TransitionToBattle();
+}
+
+void UEncounterTriggerComponent::TransitionToBattle()
+{
+    if (!GetOwner() || !GetWorld()) return;
+
+    // Chapter 5.3 (a): stash player world location into the save slot.
+    if (UR3ALSaveGame* Save = UR3ALSaveGame::LoadOrCreate(this))
+    {
+        Save->LastWorldLocation = GetOwner()->GetActorLocation();
+        UR3ALSaveGame::Save(this, Save);
+    }
+
+    // Chapter 5.3 (b): transition to the battle level (Rotterdam PoC).
+    UGameplayStatics::OpenLevel(GetWorld(), FName(TEXT("Rotterdam_PoC")));
 }
 
 void UEncounterTriggerComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
@@ -127,6 +146,7 @@ void UEncounterTriggerComponent::TryEncounter(FVector CurrentLocation)
                 EnemyDefs.Add(MakeEnemyDefFromVirus(Viruses[Idx]));
             }
             BM->BeginEncounter(EnemyDefs);
+            TransitionToBattle();
         }
         else
         {

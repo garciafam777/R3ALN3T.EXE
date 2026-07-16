@@ -63,4 +63,9 @@ private:
     // Forces a single deterministic encounter immediately (used for PIE acceptance test).
     UFUNCTION(BlueprintCallable, Category = "Encounter|Test")
     void ForceEncounter();
+
+    // Chapter 5.3: stash the player's current world location into UR3ALSaveGame, then
+    // transition to the battle level (Rotterdam_PoC). Used by both random and forced paths.
+    UFUNCTION(BlueprintCallable, Category = "Encounter")
+    void TransitionToBattle();
 };

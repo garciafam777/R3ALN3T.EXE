@@ -193,6 +193,11 @@ public:
 	// ========================================================================
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Backend|Config")
+	bool bUseMockBackend = true;  // Area-2 fix: when true (default), skip live HTTP and
+	                              // service requests from local UR3ALSaveGame. Prevents
+	                              // null/standalone crashes when the FastAPI endpoint is down.
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Backend|Config")
 	FString BackendUrl = "http://127.0.0.1:8000";
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Backend|Config")
@@ -230,6 +235,12 @@ protected:
 	// Utility
 	FString GetApiUrl(const FString& Endpoint) const;
 	TSharedPtr<FJsonObject> ParseJsonResponse(const FString& JsonString) const;
+
+	// Area-2 fix: local fallback when bUseMockBackend is true. Services the request from
+	// UR3ALSaveGame (local disk) instead of the live FastAPI endpoint. Returns true if handled.
+	bool HandleMockRequest(const FString& Endpoint, const FString& Verb, const FString& JsonContent);
+	// Extracts the player_state sub-object as a JSON string for local stash.
+	FString PlayerDataToNotes(const FString& JsonContent) const;
 
 private:
 	FString LastRequestType;

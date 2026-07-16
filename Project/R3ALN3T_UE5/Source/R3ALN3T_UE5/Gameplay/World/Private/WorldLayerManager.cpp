@@ -24,6 +24,20 @@ void UWorldLayerManager::Init()
     AddLayer(ER3ALN3TLayer::Reality,       TEXT("R3AL World"),    TEXT("L_Reality"),       FVector(0,0,0),       3);
     AddLayer(ER3ALN3TLayer::Cyberspace,    TEXT("Cyberspace"),    TEXT("L_Cyberspace"),    FVector(0,0,0),       2);
     AddLayer(ER3ALN3TLayer::Hell,          TEXT("Hell"),          TEXT("L_Hell"),          FVector(0,0,-100000), 1);
+
+    RebuildStreamingList();
+}
+
+void UWorldLayerManager::RebuildStreamingList()
+{
+    StreamingLayerLevels.Empty(LayerInfos.Num());
+    for (const FWorldLayerInfo& Info : LayerInfos)
+    {
+        if (!Info.LevelName.IsNone())
+        {
+            StreamingLayerLevels.Add(Info.LevelName);
+        }
+    }
 }
 
 FString UWorldLayerManager::GetLayerName(ER3ALN3TLayer Layer) const

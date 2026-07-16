@@ -1,6 +1,18 @@
 // SoulState.cpp
 #include "SoulState.h"
 #include "UObject/NoExportTypes.h"
+#include "../Managers/R3ALSaveGame.h"   // Area-3: persist player soul band to disk
+
+void FSoulState::WriteToSave(UObject* Outer)
+{
+	UR3ALSaveGame* Save = UR3ALSaveGame::LoadOrCreate(Outer);
+	if (!Save)
+	{
+		return;
+	}
+	Save->PlayerSoulBand = GetBand();
+	UR3ALSaveGame::Save(Outer, Save);
+}
 
 ESoulFork ClassifyOutcome(int32 EnemyHPBefore, int32 EnemyHPAfter)
 {

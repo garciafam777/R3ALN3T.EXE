@@ -63,6 +63,11 @@ struct R3ALN3T_UE5_API FSoulState
 		const UEnum* E = StaticEnum<ESoulAuraBand>();
 		return E ? E->GetNameStringByValue(static_cast<int64>(GetBand())) : FString(TEXT("?"));
 	}
+
+	// Area-3 fix: persist this soul's current band into the on-disk UR3ALSaveGame so the
+	// player's soul state survives a restart. Loads (or creates) the save, writes PlayerSoulBand,
+	// then flushes. No-op if the save subsystem is unavailable.
+	void WriteToSave(UObject* Outer);
 };
 
 // Soul shift rule (Gap C v1):
