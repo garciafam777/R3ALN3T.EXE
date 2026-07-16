@@ -21,6 +21,18 @@ static TAutoConsoleVariable<int32> CVarAutoFireGoldenLoop(
     TEXT("If 1, automatically triggers the Trinity construct encounter with 3 enemies on World Begin Play."),
     ECVF_Cheat);
 
+// ZETA power ceiling for a single chip resolution (canonical: a played chip may never
+// exceed the Zeta-tier power band; OMEGA is unreachable by design). Applied to the final
+// BasePower*Multiplier result everywhere a chip is resolved, so no single PlayChip can
+// break the balance ceiling. NaN/Inf guarded.
+static constexpr float PlayChipPowerCeiling = 120.f;
+
+static float ClampChipDamage(float Damage)
+{
+    if (!FMath::IsFinite(Damage)) return 0.f;
+    return FMath::Min(Damage, PlayChipPowerCeiling);
+}
+
 TArray<FR3ALN3TNetPStatus> UR3ALN3T_BattleManager::GenerateConstructSpawns(
     UDataTable* RosterTable, ENetPConstruct Construct, int32 SpawnCount) const
 {
@@ -323,7 +335,7 @@ void UR3ALN3T_BattleManager::PlayChip(FName ChipCode, int32 TargetColumn, int32 
     // (EBattleElementType, bridged from canon-21 EElement). ResolveChipDamage routes
     // through UElementWheelCalculator::ElementMultiplier (the canon-21 matrix) - NOT the
     // legacy 7-wheel EvaluateElementMultiplier, which is now dead code.
-    const float Damage = ChipDB->ResolveChipDamage(ChipCode, Target->EnemyDef.Element);
+    const float Damage = ClampChipDamage(ChipDB->ResolveChipDamage(ChipCode, Target->EnemyDef.Element));
     const int32 Before = Target->CurrentHP;
     Target->CurrentHP = FMath::Max(0, Target->CurrentHP - FMath::RoundToInt(Damage));
 
@@ -369,7 +381,7 @@ void UR3ALN3T_BattleManager::SoulForkConsole(const FString& ForkStr, const FStri
         UE_LOG(LogTemp, Warning, TEXT("SoulForkConsole: no valid target at column %d row %d"), TargetColumn, TargetRow);
         return;
     }
-    const float Damage = ChipDB->ResolveChipDamage(FName(*ChipCodeStr), Target->EnemyDef.Element);
+    const float Damage = ClampChipDamage(ChipDB->ResolveChipDamage(FName(*ChipCodeStr), Target->EnemyDef.Element));
     const int32 Before = Target->CurrentHP;
     Target->CurrentHP = FMath::Max(0, Target->CurrentHP - FMath::RoundToInt(Damage));
 
@@ -422,7 +434,7 @@ float UR3ALN3T_BattleManager::ApplyForcedFork(const FString& ForkStr, const FStr
         UE_LOG(LogTemp, Warning, TEXT("[GAPC-SEQ] no valid target at (%d,%d)"), Col, Row);
         return 0.f;
     }
-    const float Damage = ChipDB->ResolveChipDamage(FName(*ChipCodeStr), Target->EnemyDef.Element);
+    const float Damage = ClampChipDamage(ChipDB->ResolveChipDamage(FName(*ChipCodeStr), Target->EnemyDef.Element));
     const int32 Before = Target->CurrentHP;
     Target->CurrentHP = FMath::Max(0, Target->CurrentHP - FMath::RoundToInt(Damage));
     return ApplyDamageFork(PlayerSoul, Before, Target->CurrentHP, Fork);
