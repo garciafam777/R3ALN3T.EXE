@@ -7,12 +7,14 @@
 
 #include "CoreMinimal.h"
 #include "Misc/AutomationTest.h"
+#include "Kismet/GameplayStatics.h"                      // SaveGameToSlot / LoadGameFromSlot / DeleteGameInSlot
 #include "Engine/GameInstance.h"                       // UGameInstance (valid Outer for GameInstanceSubsystem)
 #include "../Gameplay/Battle/Cards/ChipDatabase.h"   // UChipDatabase (PopulateSliceChips, ResolveChipDamage)
 #include "../Gameplay/NetP/NetPRandomizer.h"         // UNetPRandomizer::RandomizeNetP (ZETA-capped)
 #include "../Gameplay/Battle/Grid/BattleGridManager.h" // ABattleGridManager::TryPlaceNetPAtCell (ZETA tier clamp)
 #include "../Core/Types/TrinityMatrixTypes.h"        // EGreekTier, FR3ALN3TNetPStatus
 #include "../Core/Types/CombatTypes.h"               // EBattleElementType
+#include "../Core/Managers/R3ALSaveGame.h"           // UR3ALSaveGame, FR3ALN3TRewardRecord (P1A3)
 
 // Canonical ZETA power ceiling (mirrors PlayChipPowerCeiling in R3ALN3T_BattleManager.cpp).
 // Kept here so the suite asserts the balance envelope without reaching into file-static state.
@@ -94,6 +96,62 @@ bool FR3ALN3TBattleLoopGridTierClamp::RunTest(const FString& Parameters)
     TestTrue(TEXT("Over-ceiling NetP still placed on a valid enemy column"), bPlaced);
     TestEqual(TEXT("Tier clamped from OMEGA(7) to ZETA(1)"),
               static_cast<int32>(NetP.Tier), static_cast<int32>(EGreekTier::Zeta));
+    return true;
+}
+
+// --- Test 4: Save-Game reward block round-trips across a "restart" (P1A3 Tier-3) ---
+// Writes a Rotterdam FR3ALN3TRewardRecord, flushes via SaveGameToSlot, then loads
+// fresh (LoadOrCreate = emulates a new session) and asserts the record survived.
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FR3ALN3TSaveGameRewardRoundTrip,
+    "R3ALN3T.BattleLoop.SaveGameRewardRoundTrip",
+    EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
+bool FR3ALN3TSaveGameRewardRoundTrip::RunTest(const FString& Parameters)
+{
+    // Isolated slot so the test never touches the player's real save.
+    const FString Slot = TEXT("R3ALN3T_TEST_RewardRT");
+    const int32 UserIdx = 0;
+    if (UGameplayStatics::DoesSaveGameExist(Slot, UserIdx))
+    {
+        UGameplayStatics::DeleteGameInSlot(Slot, UserIdx);
+    }
+
+    UGameInstance* GI = NewObject<UGameInstance>();
+    UR3ALSaveGame* Save = NewObject<UR3ALSaveGame>(GI);
+    TestNotNull(TEXT("SaveGame constructed"), Save);
+
+    FR3ALN3TRewardRecord Rec;
+    Rec.bPlayerWon = true;
+    Rec.ZEarned = 137;
+    Rec.ChipsEarned = { FName(TEXT("Buster")), FName(TEXT("ZetaBlade")) };
+    Rec.XP_Earned = 42;
+    Rec.EnemiesDefeated = 3;
+    Rec.LocationTag = TEXT("Rotterdam");
+    Rec.TimestampUTC = 1710000000;
+    Save->PersistReward(Rec);
+
+    const bool bWritten = UGameplayStatics::SaveGameToSlot(Save, Slot, UserIdx);
+    TestTrue(TEXT("SaveGameToSlot succeeded"), bWritten);
+
+    // Emulate a restart: load from disk into a NEW object.
+    USaveGame* Loaded = UGameplayStatics::LoadGameFromSlot(Slot, UserIdx);
+    UR3ALSaveGame* Reopen = Cast<UR3ALSaveGame>(Loaded);
+    TestNotNull(TEXT("Reloaded save cast to UR3ALSaveGame"), Reopen);
+    TestEqual(TEXT("RewardHistory length survived restart"), Reopen->RewardHistory.Num(), 1);
+    const FR3ALN3TRewardRecord& Got = Reopen->RewardHistory[0];
+    TestTrue(TEXT("bPlayerWon survived"), Got.bPlayerWon == true);
+    TestEqual(TEXT("ZEarned survived"), Got.ZEarned, 137);
+    TestEqual(TEXT("XP_Earned survived"), Got.XP_Earned, 42);
+    TestEqual(TEXT("EnemiesDefeated survived"), Got.EnemiesDefeated, 3);
+    TestEqual(TEXT("LocationTag survived"), Got.LocationTag, FString(TEXT("Rotterdam")));
+    TestEqual(TEXT("TimestampUTC survived"), Got.TimestampUTC, (int64)1710000000);
+    TestEqual(TEXT("ChipsEarned count survived"), Got.ChipsEarned.Num(), 2);
+    if (Got.ChipsEarned.Num() == 2)
+    {
+        TestEqual(TEXT("Chip[0] survived"), Got.ChipsEarned[0], FName(TEXT("Buster")));
+        TestEqual(TEXT("Chip[1] survived"), Got.ChipsEarned[1], FName(TEXT("ZetaBlade")));
+    }
+
+    UGameplayStatics::DeleteGameInSlot(Slot, UserIdx);
     return true;
 }
 

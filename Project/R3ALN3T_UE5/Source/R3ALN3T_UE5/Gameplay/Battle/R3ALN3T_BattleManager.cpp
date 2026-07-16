@@ -6,6 +6,7 @@
 #include "../../Core/Types/SoulState.h" // Gap C: FSoulState, ApplyDamageFork
 #include "../../Core/Managers/R3ALN3TGameInstance.h" // Gap D: UR3ALN3TGameInstance (CurrentRun souls)
 #include "../../Core/Managers/R3ALN3T_DeveloperSettings.h" // Phase1-A2: balance/grid/element consts
+#include "../../Core/Managers/R3ALSaveGame.h" // Phase1-A3: reward persistence
 #include "../../Battle/NetP/FactionTypes.h"          // FConstructRosterRow, FNetPRosterUnit
 #include "../NetP/NetPRandomizer.h"                 // UNetPRandomizer::RandomizeNetP (ZETA-capped)
 #include "Grid/BattleGridManager.h"                 // ABattleGridManager::TryPlaceNetPAtCell
@@ -213,6 +214,22 @@ void UR3ALN3T_BattleManager::EndBattle(bool bPlayerWon)
     PendingResult = FBattleResult();
     PendingResult.bPlayerWon = bPlayerWon;
     CalculateRewards();
+
+    // Phase1-A3: bind the Rotterdam reward block into the save schema on every resolved
+    // encounter. Convert FBattleResult -> FR3ALN3TRewardRecord and append to the save.
+    if (UR3ALSaveGame* Save = UR3ALSaveGame::LoadOrCreate(this))
+    {
+        FR3ALN3TRewardRecord Rec;
+        Rec.bPlayerWon = PendingResult.bPlayerWon;
+        Rec.ZEarned = PendingResult.ZEarned;
+        Rec.ChipsEarned = PendingResult.ChipsEarned;
+        Rec.XP_Earned = PendingResult.XP_Earned;
+        Rec.EnemiesDefeated = PendingResult.EnemiesDefeated;
+        Rec.LocationTag = TEXT("Rotterdam"); // TODO Phase4: pass actual location tag
+        Rec.TimestampUTC = FDateTime::UtcNow().ToUnixTimestamp();
+        Save->PersistReward(Rec);
+        UR3ALSaveGame::Save(this, Save);
+    }
 
     OnBattleEnd.Broadcast(PendingResult);
     UE_LOG(LogTemp, Log, TEXT("Battle ended. Player %s. Earned %d Z."),
