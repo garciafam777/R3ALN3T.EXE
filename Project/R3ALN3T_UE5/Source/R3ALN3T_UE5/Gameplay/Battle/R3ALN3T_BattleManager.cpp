@@ -9,6 +9,17 @@
 #include "../NetP/NetPRandomizer.h"                 // UNetPRandomizer::RandomizeNetP (ZETA-capped)
 #include "Grid/BattleGridManager.h"                 // ABattleGridManager::TryPlaceNetPAtCell
 #include "../../Battle/NetP/NetPCardViewModel.h"    // UNetPCardViewModel::ResolveNetPCardFrame
+#include "HAL/IConsoleManager.h"                   // TAutoConsoleVariable (PIE auto-fire gate)
+#include "Engine/World.h"                          // FWorldDelegates::OnWorldBeginPlay
+
+// PIE-only auto-fire gate for the Golden Loop seam. Default 0 so shipping
+// code never auto-fires; set `r3alnet.AutoFireGoldenLoop 1` in the PIE console
+// (or via -ExecCmds) to exercise BeginConstructEncounter on world begin.
+static TAutoConsoleVariable<int32> CVarAutoFireGoldenLoop(
+    TEXT("r3alnet.AutoFireGoldenLoop"),
+    0,
+    TEXT("If 1, automatically triggers the Trinity construct encounter with 3 enemies on World Begin Play."),
+    ECVF_Cheat);
 
 TArray<FR3ALN3TNetPStatus> UR3ALN3T_BattleManager::GenerateConstructSpawns(
     UDataTable* RosterTable, ENetPConstruct Construct, int32 SpawnCount) const
@@ -120,25 +131,26 @@ void UR3ALN3T_BattleManager::BeginConstructEncounter(UDataTable* RosterTable, UD
     OnBattleStart.Broadcast();
 }
 
-// Console-driven Golden-Loop test entry (mirrors PlayChipConsole). Loads DTs by asset path.
-void UR3ALN3T_BattleManager::BeginConstructEncounterConsole(const FString& ConstructStr,
-    const FString& RosterTablePath, const FString& FrameTablePath, int32 Count)
+// Console-driven Golden-Loop test entry (mirrors PlayChipConsole). Loads the two DTs by
+// their fixed /Game/... asset paths at call time, so no editor property binding is required.
+// e.g. `BeginConstructEncounterConsole Trinity 3` from the PIE console.
+void UR3ALN3T_BattleManager::BeginConstructEncounterConsole(FString FactionName, int32 EnemyCount)
 {
     UEnum* E = StaticEnum<ENetPConstruct>();
     if (!E) { UE_LOG(LogTemp, Error, TEXT("[Roster] ENetPConstruct enum not found!")); return; }
-    const int64 Val = E->GetValueByName(FName(*ConstructStr));
+    const int64 Val = E->GetValueByName(FName(*FactionName));
     if (Val == INDEX_NONE)
     {
-        UE_LOG(LogTemp, Error, TEXT("[Roster] Unknown construct '%s' (use Trinity/Tyranny/Eternity)"), *ConstructStr);
+        UE_LOG(LogTemp, Error, TEXT("[Roster] Unknown construct '%s' (use Trinity/Tyranny/Eternity)"), *FactionName);
         return;
     }
-    UDataTable* Roster = LoadObject<UDataTable>(nullptr, *RosterTablePath);
-    if (!Roster) { UE_LOG(LogTemp, Error, TEXT("[Roster] Failed to load RosterTable: %s"), *RosterTablePath); return; }
-    UDataTable* Frame = LoadObject<UDataTable>(nullptr, *FrameTablePath);
-    if (!Frame) { UE_LOG(LogTemp, Warning, TEXT("[NetPCard] FrameTable missing: %s (card frames will warn, no crash)"), *FrameTablePath); }
+    UDataTable* Roster = LoadObject<UDataTable>(nullptr, TEXT("/Game/R3ALN3T/Battle/ConstructRoster.ConstructRoster"));
+    if (!Roster) { UE_LOG(LogTemp, Error, TEXT("[Roster] Failed to load RosterTable: /Game/R3ALN3T/Battle/ConstructRoster")); return; }
+    UDataTable* Frame = LoadObject<UDataTable>(nullptr, TEXT("/Game/Data/FrameByElement.FrameByElement"));
+    if (!Frame) { UE_LOG(LogTemp, Warning, TEXT("[NetPCard] FrameTable missing: /Game/Data/FrameByElement (card frames will warn, no crash)")); }
 
-    UE_LOG(LogTemp, Log, TEXT("[Roster] Console firing encounter for '%s' (count=%d)"), *ConstructStr, Count);
-    BeginConstructEncounter(Roster, Frame, static_cast<ENetPConstruct>(Val), Count);
+    UE_LOG(LogTemp, Log, TEXT("[Roster] Console firing encounter for '%s' (count=%d)"), *FactionName, EnemyCount);
+    BeginConstructEncounter(Roster, Frame, static_cast<ENetPConstruct>(Val), EnemyCount);
 }
 
 void UR3ALN3T_BattleManager::Initialize(FSubsystemCollectionBase& Collection)
@@ -146,6 +158,20 @@ void UR3ALN3T_BattleManager::Initialize(FSubsystemCollectionBase& Collection)
     Super::Initialize(Collection);
     // ChipDB is fetched lazily in BeginEncounter/PlayChip so we don't depend on
     // subsystem init order here.
+
+    // Golden Loop: optional PIE auto-fire (CVar-gated, OFF by default).
+    FWorldDelegates::OnWorldBeginPlay.AddUObject(this, &UR3ALN3T_BattleManager::OnWorldBeginPlay_AutoFireGoldenLoop);
+}
+
+void UR3ALN3T_BattleManager::OnWorldBeginPlay_AutoFireGoldenLoop(UWorld* World)
+{
+    if (CVarAutoFireGoldenLoop.GetValueOnGameThread() == 1)
+    {
+        UE_LOG(LogTemp, Log, TEXT("[Roster] AutoFireGoldenLoop CVar is enabled. Executing Trinity construct encounter..."));
+
+        // Execute the newly wired flow (loads DTs internally).
+        BeginConstructEncounterConsole(TEXT("Trinity"), 3);
+    }
 }
 
 // ---- Legacy Phase2 (unchanged) ----
