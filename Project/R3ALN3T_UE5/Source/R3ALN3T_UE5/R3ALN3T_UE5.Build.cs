@@ -14,7 +14,7 @@ public class R3ALN3T_UE5 : ModuleRules
 			"LevelSequence", "MovieScene", "MovieSceneTracks",
 			"Json", "JsonUtilities", "HTTP",
 			"MediaAssets", "MediaUtils", "AIModule",
-			"DeveloperSettings"
+			"DeveloperSettings", "RenderCore"
 			});
 
 		PrivateDependencyModuleNames.AddRange(new string[] { 
