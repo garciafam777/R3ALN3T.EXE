@@ -119,6 +119,10 @@
 			"Enabled": true
 		},
 		{
+			"Name": "GameFeatures",
+			"Enabled": true
+		},
+		{
 			"Name": "MediaViewer",
 			"Enabled": false
 		},
