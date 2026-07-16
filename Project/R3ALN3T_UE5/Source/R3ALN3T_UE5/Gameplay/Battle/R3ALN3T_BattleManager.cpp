@@ -82,7 +82,9 @@ void UR3ALN3T_BattleManager::BeginConstructEncounter(UDataTable* RosterTable, UD
     ABattleGridManager* Grid = nullptr;
     if (World)
     {
-        for (TActorIterator<ABattleGridManager> It(World); It; ++It) { Grid = *It; break; }
+        TArray<AActor*> GridActors;
+        UGameplayStatics::GetAllActorsOfClass(World, ABattleGridManager::StaticClass(), GridActors);
+        if (GridActors.Num() > 0) Grid = Cast<ABattleGridManager>(GridActors[0]);
     }
     if (!Grid)
     {
