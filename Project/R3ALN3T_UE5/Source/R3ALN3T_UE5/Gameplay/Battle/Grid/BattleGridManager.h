@@ -26,6 +26,12 @@ public:
 	static constexpr int32 GridRows = 4;
 	static constexpr int32 MedianCol = 4;
 
+	// Grid *geometry* stays compile-time constexpr (used in array sizing below).
+	// The tunable *balance envelope* (ZETA ceiling, element canon bounds) lives in
+	// UR3ALN3T_DeveloperSettings (Phase1-A2) and is ini-hot-reloadable.
+	// Assumed per Section 4: fixed board geometry need not be config-driven; only the
+	// gameplay envelope must be. Logged.
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grid")
 	float TileSize = 200.f;
 
