@@ -19,14 +19,16 @@ void ABattleGridManager::BeginPlay()
 
 void ABattleGridManager::SpawnPanels()
 {
-	if (!PanelClass)
-	{
-		UE_LOG(LogTemp, Error, TEXT("ABattleGridManager: PanelClass not set, no panels spawned"));
-		return;
-	}
-
+	// The logical grid (PanelData) must always exist so placement math is valid,
+	// independent of whether a visual PanelClass is assigned (it's a Blueprint prop).
 	PanelData.SetNum(GridCols * GridRows);
 	PanelActors.SetNum(GridCols * GridRows);
+
+	if (!PanelClass)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("ABattleGridManager: PanelClass not set; logical grid allocated, visual panels skipped"));
+		return;
+	}
 
 	for (int32 Row = 0; Row < GridRows; ++Row)
 	{
@@ -46,9 +48,6 @@ void ABattleGridManager::SpawnPanels()
 			if (Panel)
 			{
 				Panel->Coord = Data.Coord;
-				// Slightly scale panel mesh down vs TileSize so TileGap reads as a visible seam
-				// between panels — do the actual scale-to-fit math against your specific mesh's
-				// bounds in BP or here once you've picked the chamfered-box asset.
 			}
 			PanelActors[Index] = Panel;
 		}
